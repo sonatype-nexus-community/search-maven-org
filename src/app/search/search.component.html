@@ -31,7 +31,11 @@
 
       <ng-container matColumnDef="download">
         <mat-header-cell *matHeaderCellDef>Download</mat-header-cell>
-        <mat-cell *matCellDef="let row"><div *ngFor="let ec of row.ec">{{ ec }}</div></mat-cell>
+        <mat-cell *matCellDef="let row">
+          <div *ngFor="let ec of row.ec">
+            {{ ec }}
+          </div>
+        </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
