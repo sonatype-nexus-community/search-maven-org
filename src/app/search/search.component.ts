@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, Input } from '@angular/core';
 import { SearchService } from "./search.service";
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
@@ -9,6 +9,7 @@ import 'rxjs/add/observable/fromEvent';
 import { MatPaginator } from "@angular/material";
 import { SearchDataSource } from "./api/search-data-source";
 import { Observable } from "rxjs/Observable";
+import { SearchDoc } from './api/search-doc';
 
 @Component({
   selector: 'app-search',
@@ -16,6 +17,7 @@ import { Observable } from "rxjs/Observable";
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+  @Input() doc: SearchDoc;
 
   displayedColumns = [
     'groupId',
@@ -43,5 +45,14 @@ export class SearchComponent implements OnInit {
       .debounceTime(150)
       .distinctUntilChanged()
       .subscribe(() => this.dataSource.qSubject.next(this.q.nativeElement.value));
+  }
+
+  getLink(doc: SearchDoc, latest: boolean) {
+    if (latest) {
+      return `#artifactdetails/${doc.g}/${doc.a}/${doc.latestVersion}/${doc.p}`;
+    }
+    else {
+      return `#artifactdetails/${doc.g}/${doc.a}/${doc.v}/${doc.p}`;
+    }
   }
 }

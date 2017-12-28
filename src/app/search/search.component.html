@@ -11,17 +11,23 @@
 
       <ng-container matColumnDef="groupId">
         <mat-header-cell *matHeaderCellDef>Group ID</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{ row.id }}</mat-cell>
+        <mat-cell *matCellDef="let row">
+          <a [routerLink]="['/search/g', row.g]" >{{ row.id }}</a>
+        </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="artifactId">
         <mat-header-cell *matHeaderCellDef>Artifact ID</mat-header-cell>
-        <mat-cell *matCellDef="let row">{{row.a}}</mat-cell>
+        <mat-cell *matCellDef="let row">
+          <a [routerLink]="['/search/a', row.a]">{{row.a}}</a>
+        </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="latestVersion">
         <mat-header-cell *matHeaderCellDef>Latest Version</mat-header-cell>
-        <mat-cell *matCellDef="let row">{{row.latestVersion}}</mat-cell>
+        <mat-cell *matCellDef="let row">
+          <a [routerLink]="['/artifact', row.g, row.a, row.latestVersion, row.p]">{{row.latestVersion}}</a>
+        </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="updated">

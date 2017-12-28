@@ -7,6 +7,7 @@ import {
 } from "@angular/material";
 import { SearchService } from "./search.service";
 import { HttpClientModule } from "@angular/common/http";
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { HttpClientModule } from "@angular/common/http";
     MatTableModule,
     MatFormFieldModule,
     MatIconModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    RouterModule
   ],
   providers: [
     SearchService
