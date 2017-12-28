@@ -26,12 +26,12 @@
 
       <ng-container matColumnDef="updated">
         <mat-header-cell *matHeaderCellDef>Updated</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.timestamp | date : format : timezone }}</mat-cell>
+        <mat-cell *matCellDef="let row"> {{row.timestamp | date : format : timezone}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="download">
         <mat-header-cell *matHeaderCellDef>Download</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.timestamp}}</mat-cell>
+        <mat-cell *matCellDef="let row"><div *ngFor="let ec of row.ec">{{ ec }}</div></mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
