@@ -1,11 +1,13 @@
 div.search {
   display: flex;
+  flex-direction: column;
 
   .search-form {
-    display: flex;
+    //display: flex;
     justify-content: center;
     flex: 1 1 auto;
     padding-top: 50px;
+    text-align: center;
 
     > * {
       width: 50%;

@@ -53,12 +53,4 @@
   $warn: map-get($theme, warn);
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
-
-  app-navbar {
-    //color: mat-color($primary, default-contrast);
-
-    .navbar, .navbar-header {
-      //background: mat-color($primary);
-    }
-  }
 }

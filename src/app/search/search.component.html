@@ -5,4 +5,45 @@
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
   </div>
+
+  <div class="doc-search-result mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="groupId">
+        <mat-header-cell *matHeaderCellDef>Group ID</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.id }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="artifactId">
+        <mat-header-cell *matHeaderCellDef>Artifact ID</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.a}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="latestVersion">
+        <mat-header-cell *matHeaderCellDef>Latest Version</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.latestVersion}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="updated">
+        <mat-header-cell *matHeaderCellDef>Updated</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.timestamp}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="download">
+        <mat-header-cell *matHeaderCellDef>Download</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.timestamp}}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    </mat-table>
+
+    <mat-paginator #paginator
+                   [length]="400"
+                   [pageIndex]="0"
+                   [pageSize]="25"
+                   [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+  </div>
 </div>

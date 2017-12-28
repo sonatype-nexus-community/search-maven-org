@@ -65,3 +65,7 @@ router-outlet + * {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.muted {
+  color: #999;
+}
