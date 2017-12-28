@@ -10,20 +10,10 @@ export class SearchService {
   constructor(private httpClient: HttpClient) {
   }
 
-  // search(): Observable<SearchDoc[]> {
-  //   console.log('aaa');
-  //   return this
-  //     .httpClient
-  //     .get<SearchDoc[]>(
-  //       `${environment.search.endpoint}?q=test`)
-  //     .map(data => data['response']['docs'] as SearchDoc[]);
-  // }
-
-  search(): Observable<SearchResult> {
-    console.log('aaa');
+  search(q: string, start: number = 0): Observable<SearchResult> {
     return this
       .httpClient
       .get<SearchResult>(
-        `${environment.search.endpoint}?q=test`);
+        `${environment.search.endpoint}?q=${q}&start=${start}`);
   }
 }

@@ -1,7 +1,7 @@
 <div class="search">
   <div class="search-form">
     <mat-form-field>
-      <input matInput placeholder="Search" class="">
+      <input matInput #q placeholder="Search" class="">
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
   </div>
@@ -46,10 +46,10 @@
     </mat-table>
 
     <mat-paginator #paginator
-                   [length]="400"
+                   [length]="dataSource.totalCount"
                    [pageIndex]="0"
-                   [pageSize]="25"
-                   [pageSizeOptions]="[5, 10, 25, 100]">
+                   [pageSize]="20">
     </mat-paginator>
+
   </div>
 </div>
