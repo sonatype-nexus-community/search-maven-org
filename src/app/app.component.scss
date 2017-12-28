@@ -1,0 +1,11 @@
+@import './shared/navbar/navbar.component';
+
+@mixin smo-app-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  @include nav-bar-theme($theme);
+}

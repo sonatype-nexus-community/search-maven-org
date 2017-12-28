@@ -2,9 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
-import { TranslateHttpLoader } from "@ngx-translate/http-loader";
-import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NavbarModule } from "./shared/navbar/navbar.module";
+import { RouterModule } from "@angular/router";
+import { createTranslateModule } from "./shared/translate/translate";
 
 @NgModule({
   declarations: [
@@ -13,20 +15,13 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
   imports: [
     BrowserModule,
     HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]
-      }
-    })
+    RouterModule.forRoot([]),
+    BrowserAnimationsModule,
+    createTranslateModule(),
+    NavbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-}
-
-export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }

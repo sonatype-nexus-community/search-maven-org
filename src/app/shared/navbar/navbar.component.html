@@ -1,0 +1,42 @@
+<nav class="navbar-header">
+  <div class="flex-spacer"></div>
+  <a mat-button
+     class="button navbar-hide-small"
+     routerLink="search"
+     aria-label="Search">
+    {{ 'navbar.search' | translate }}
+  </a>
+  <a mat-button
+     class="button navbar-hide-small"
+     routerLink="advanced-search"
+     aria-label="Advanced Search">
+    {{ 'navbar.advanced' | translate }}
+  </a>
+  <a mat-button
+     class="button"
+     href="https://repo1.maven.org/maven2/"
+     target="_blank"
+     aria-label="Browse">
+    {{ 'navbar.browse' | translate }}
+  </a>
+  <a mat-button
+     class="button"
+     routerLink="stats"
+     aria-label="Quick Stats">
+    {{ 'navbar.stats' | translate }}
+  </a>
+</nav>
+<nav class="navbar navbar-show-small">
+  <a mat-button
+     class="navbar-link"
+     routerLink="search"
+     aria-label="Search">
+    {{ 'navbar.search' | translate }}
+  </a>
+  <a mat-button
+     class="navbar-link"
+     routerLink="advanced-search"
+     aria-label="Advanced Search">
+    {{ 'navbar.advanced' | translate }}
+  </a>
+</nav>
