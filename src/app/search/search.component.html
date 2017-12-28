@@ -26,7 +26,9 @@
 
       <ng-container matColumnDef="updated">
         <mat-header-cell *matHeaderCellDef>Updated</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.timestamp | date : format : timezone}}</mat-cell>
+        <mat-cell *matCellDef="let row">
+          {{row.timestamp | date : format : timezone}}
+        </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="download">
