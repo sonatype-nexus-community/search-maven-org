@@ -7,6 +7,9 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NavbarModule } from "./shared/navbar/navbar.module";
 import { RouterModule } from "@angular/router";
 import { createTranslateModule } from "./shared/translate/translate";
+import { SMO_ROUTES } from "./routes";
+import { SearchModule } from "./search/search.module";
+import { FooterModule } from "./shared/footer/footer.module";
 
 @NgModule({
   declarations: [
@@ -15,10 +18,12 @@ import { createTranslateModule } from "./shared/translate/translate";
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot([]),
+    RouterModule.forRoot(SMO_ROUTES),
     BrowserAnimationsModule,
     createTranslateModule(),
-    NavbarModule
+    NavbarModule,
+    FooterModule,
+    SearchModule
   ],
   providers: [],
   bootstrap: [AppComponent]

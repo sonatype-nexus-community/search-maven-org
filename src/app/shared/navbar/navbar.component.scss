@@ -9,6 +9,10 @@
       margin-left: auto;
     }
   }
+
+  .logo {
+    max-width: 300px;
+  }
 }
 
 .navbar-link {
@@ -39,6 +43,7 @@
 
   .navbar {
     display: flex;
+    padding: 0 3px;
   }
 }
 
@@ -50,10 +55,10 @@
   $foreground: map-get($theme, foreground);
 
   app-navbar {
-    color: mat-color($primary, default-contrast);
+    //color: mat-color($primary, default-contrast);
 
     .navbar, .navbar-header {
-      background: mat-color($primary);
+      //background: mat-color($primary);
     }
   }
 }

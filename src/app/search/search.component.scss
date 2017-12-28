@@ -1,0 +1,19 @@
+div.search {
+  display: flex;
+
+  .search-form {
+    display: flex;
+    justify-content: center;
+    flex: 1 1 auto;
+    padding-top: 50px;
+
+    > * {
+      width: 50%;
+      max-width: 660px;
+
+      @media (max-width: 720px) {
+        width: 80%;
+      }
+    }
+  }
+}

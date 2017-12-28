@@ -10,5 +10,13 @@
     "advanced": "Advanced Search",
     "browse": "Browse",
     "stats": "Quick Stats"
+  },
+  "footer": {
+    "tm": {
+      "comment1": "Apache and Apache Maven are trademarks of the",
+      "comment2": "The Central Repository is a service mark of Sonatype, Inc",
+      "comment3": "and is intended to complement Apache Maven and should not be confused with Apache Maven. Copyright ©2018 Sonatype, Inc.",
+      "link1": "Apache Software Foundation"
+    }
   }
 }

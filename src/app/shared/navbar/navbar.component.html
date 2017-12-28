@@ -1,4 +1,5 @@
 <nav class="navbar-header">
+  <img class="logo" src="/assets/images/logo.png"/>
   <div class="flex-spacer"></div>
   <a mat-button
      class="button navbar-hide-small"
@@ -13,14 +14,14 @@
     {{ 'navbar.advanced' | translate }}
   </a>
   <a mat-button
-     class="button"
+     class="button navbar-hide-small"
      href="https://repo1.maven.org/maven2/"
      target="_blank"
      aria-label="Browse">
     {{ 'navbar.browse' | translate }}
   </a>
   <a mat-button
-     class="button"
+     class="button navbar-hide-small"
      routerLink="stats"
      aria-label="Quick Stats">
     {{ 'navbar.stats' | translate }}
@@ -28,15 +29,28 @@
 </nav>
 <nav class="navbar navbar-show-small">
   <a mat-button
-     class="navbar-link"
+     class="navbar-link ellipsis"
      routerLink="search"
      aria-label="Search">
     {{ 'navbar.search' | translate }}
   </a>
   <a mat-button
-     class="navbar-link"
+     class="navbar-link ellipsis"
      routerLink="advanced-search"
      aria-label="Advanced Search">
     {{ 'navbar.advanced' | translate }}
+  </a>
+  <a mat-button
+     class="navbar-link ellipsis"
+     href="https://repo1.maven.org/maven2/"
+     target="_blank"
+     aria-label="Browse">
+    {{ 'navbar.browse' | translate }}
+  </a>
+  <a mat-button
+     class="navbar-link ellipsis"
+     routerLink="stats"
+     aria-label="Quick Stats">
+    {{ 'navbar.stats' | translate }}
   </a>
 </nav>
