@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchComponent } from './search.component';
 import {
+  MatButtonModule,
   MatFormFieldModule, MatIconModule, MatInputModule, MatPaginatorModule,
   MatTableModule
 } from "@angular/material";
@@ -19,6 +20,7 @@ import { createTranslateModule } from "../shared/translate/translate";
     MatFormFieldModule,
     MatIconModule,
     MatPaginatorModule,
+    MatButtonModule,
     RouterModule,
     createTranslateModule()
   ],
