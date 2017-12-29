@@ -35,7 +35,6 @@
         <mat-cell *matCellDef="let row" class="ellipsis xs-hide">
           <a [routerLink]="['/artifact', row.g, row.a, row.latestVersion, row.p]">{{row.latestVersion}}</a>
         </mat-cell>
-        >
       </ng-container>
 
       <ng-container matColumnDef="updated">
