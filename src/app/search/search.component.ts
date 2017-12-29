@@ -10,6 +10,7 @@ import { MatPaginator } from "@angular/material";
 import { SearchDataSource } from "./api/search-data-source";
 import { Observable } from "rxjs/Observable";
 import { SearchDoc } from './api/search-doc';
+import { environment } from "../../environments/environment";
 
 @Component({
   selector: 'app-search',
@@ -47,12 +48,8 @@ export class SearchComponent implements OnInit {
       .subscribe(() => this.dataSource.qSubject.next(this.q.nativeElement.value));
   }
 
-  getLink(doc: SearchDoc, latest: boolean) {
-    if (latest) {
-      return `#artifactdetails/${doc.g}/${doc.a}/${doc.latestVersion}/${doc.p}`;
-    }
-    else {
-      return `#artifactdetails/${doc.g}/${doc.a}/${doc.v}/${doc.p}`;
-    }
+  remoteRepositoryLink(g: string, a: string, v: string, ec: string): string {
+    let groupSlash = g.replace(/\.+/g, '/');
+    return `${environment.smoBaseUrl}/${groupSlash}/${a}/${v}/${a}-${v}${ec}`;
   }
 }

@@ -7,5 +7,6 @@ export const environment = {
   production: false,
   search: {
     endpoint : 'http://localhost:8080/central/solrsearch/select'
-  }
+  },
+  smoBaseUrl: 'http://localhost:8181/remotecontent?filepath='
 };
