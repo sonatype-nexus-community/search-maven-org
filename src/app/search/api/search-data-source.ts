@@ -17,12 +17,16 @@ export class SearchDataSource extends DataSource<SearchDoc> {
   subject: BehaviorSubject<SearchDoc[]>;
   qSubject: BehaviorSubject<string>;
 
-  totalCount: number;
+  totalCount: number = 0;
+
+  hasSearched: boolean = false;
 
   private q: string;
 
   constructor(private searchService: SearchService, private paginator: MatPaginator) {
     super();
+
+    this.qSubject = new BehaviorSubject<string>("");
   }
 
   /**
@@ -34,7 +38,6 @@ export class SearchDataSource extends DataSource<SearchDoc> {
     ];
 
     this.subject = new BehaviorSubject<SearchDoc[]>([]);
-    this.qSubject = new BehaviorSubject<string>("");
 
     Observable.merge(...displayedChanges).subscribe(() => {
       this.getData();
@@ -67,6 +70,7 @@ export class SearchDataSource extends DataSource<SearchDoc> {
 
     if (q) {
       this.searchService.search(q, start).map(searchResult => {
+        this.hasSearched = true;
         this.totalCount = searchResult.response.numFound;
         return searchResult;
       }).subscribe(
@@ -79,5 +83,7 @@ export class SearchDataSource extends DataSource<SearchDoc> {
 
   private clearData() {
     this.subject.next([]);
+    this.totalCount = 0;
+    this.hasSearched = false;
   }
 }

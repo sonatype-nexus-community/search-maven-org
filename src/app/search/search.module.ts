@@ -8,6 +8,7 @@ import {
 import { SearchService } from "./search.service";
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from '@angular/router';
+import { createTranslateModule } from "../shared/translate/translate";
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { RouterModule } from '@angular/router';
     MatFormFieldModule,
     MatIconModule,
     MatPaginatorModule,
-    RouterModule
+    RouterModule,
+    createTranslateModule()
   ],
   providers: [
     SearchService

@@ -1,44 +1,56 @@
 <div class="search">
-  <div class="search-form">
+  <div class="search-form" [ngClass]="{'search-mode' : dataSource.hasSearched}">
     <mat-form-field>
       <input matInput #q placeholder="Search" class="">
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
   </div>
 
-  <div class="doc-search-result mat-elevation-z8">
+  <div class="search-result mat-elevation-z8" [ngClass]="{'hidden' : !dataSource.totalCount}">
+
     <mat-table #table [dataSource]="dataSource">
 
       <ng-container matColumnDef="groupId">
-        <mat-header-cell *matHeaderCellDef>Group ID</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>
+          {{'search.header.groupId' | translate}}
+        </mat-header-cell>
         <mat-cell *matCellDef="let row">
-          <a [routerLink]="['/search/g', row.g]" >{{ row.id }}</a>
+          <a [routerLink]="['/search/g', row.g]">{{ row.id }}</a>
         </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="artifactId">
-        <mat-header-cell *matHeaderCellDef>Artifact ID</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>
+          {{'search.header.artifactId' | translate}}
+        </mat-header-cell>
         <mat-cell *matCellDef="let row">
           <a [routerLink]="['/search/a', row.a]">{{row.a}}</a>
         </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="latestVersion">
-        <mat-header-cell *matHeaderCellDef>Latest Version</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>
+          {{'search.header.latestVersion' | translate}}
+        </mat-header-cell>
         <mat-cell *matCellDef="let row">
           <a [routerLink]="['/artifact', row.g, row.a, row.latestVersion, row.p]">{{row.latestVersion}}</a>
         </mat-cell>
+        >
       </ng-container>
 
       <ng-container matColumnDef="updated">
-        <mat-header-cell *matHeaderCellDef>Updated</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>
+          {{'search.header.updated' | translate}}
+        </mat-header-cell>
         <mat-cell *matCellDef="let row">
           {{row.timestamp | date : format : timezone}}
         </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="download">
-        <mat-header-cell *matHeaderCellDef>Download</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>
+          {{'search.header.download' | translate}}
+        </mat-header-cell>
         <mat-cell *matCellDef="let row">
           <div *ngFor="let ec of row.ec">
             {{ ec }}
@@ -57,5 +69,9 @@
                    [pageSize]="20">
     </mat-paginator>
 
+  </div>
+
+  <div *ngIf="dataSource.totalCount == 0  && dataSource.hasSearched">
+    <h3>{{'search.result.none' | translate}}</h3>
   </div>
 </div>

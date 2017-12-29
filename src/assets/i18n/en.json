@@ -11,6 +11,18 @@
     "browse": "Browse",
     "stats": "Quick Stats"
   },
+  "search" : {
+    "result" : {
+      "none" : "No results found"
+    },
+    "header" : {
+      "artifactId": "Artifact ID",
+      "groupId": "Group ID",
+      "latestVersion" : "Latest Version",
+      "updated" : "Updated",
+      "download" : "Download"
+    }
+  },
   "footer": {
     "tm": {
       "comment1": "Apache and Apache Maven are trademarks of the",

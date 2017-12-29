@@ -3,7 +3,7 @@ div.search {
   flex-direction: column;
 
   .search-form {
-    //display: flex;
+    display: flex;
     justify-content: center;
     flex: 1 1 auto;
     padding-top: 50px;
@@ -16,6 +16,57 @@ div.search {
       @media (max-width: 720px) {
         width: 80%;
       }
+    }
+  }
+
+  .search-mode {
+    position: fixed;
+    top: 7px;
+    left: 45px;
+    background: white;
+
+    > * {
+      width: 100%;
+    }
+
+    ::ng-deep .mat-input-container {
+      .mat-form-field-wrapper {
+        padding-bottom: 0;
+
+        .mat-form-field-infix {
+          border-top: none;
+
+          .mat-form-field-label {
+            display: none;
+          }
+        }
+
+        .mat-form-field-underline {
+          bottom: 0.25em;
+        }
+      }
+    }
+
+    &.search-form {
+      padding-top: 0;
+      padding-left: 10px;
+      width: 300px;
+    }
+  }
+
+  .search-result {
+    background-color: gold;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &.hidden {
+      display: none;
+    }
+
+    .mat-table {
+      flex: 1 1 auto;
+      overflow: auto;
     }
   }
 }
