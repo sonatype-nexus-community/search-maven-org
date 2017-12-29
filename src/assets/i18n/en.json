@@ -11,23 +11,24 @@
     "browse": "Browse",
     "stats": "Quick Stats"
   },
-  "search" : {
-    "result" : {
-      "none" : "No results found"
+  "search": {
+    "result": {
+      "none": "No results found"
     },
-    "header" : {
+    "header": {
       "artifactId": "Artifact ID",
       "groupId": "Group ID",
-      "latestVersion" : "Latest Version",
-      "updated" : "Updated",
-      "download" : "Download"
+      "latestVersion": "Latest Version",
+      "updated": "Updated",
+      "download": "Download"
     }
   },
   "footer": {
     "tm": {
       "comment1": "Apache and Apache Maven are trademarks of the",
       "comment2": "The Central Repository is a service mark of Sonatype, Inc",
-      "comment3": "and is intended to complement Apache Maven and should not be confused with Apache Maven. Copyright ©2018 Sonatype, Inc.",
+      "comment3": "and is intended to complement Apache Maven and should not be confused with Apache Maven.",
+      "copyright": "Copyright ©2018 Sonatype, Inc.",
       "link1": "Apache Software Foundation"
     }
   }
