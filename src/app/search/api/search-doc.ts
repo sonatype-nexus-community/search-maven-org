@@ -12,4 +12,8 @@ export class SearchDoc implements Doc {
   versionCount: number;
   text: string[];
   ec: string[];
+  gReplace(r: string, s: string): string {
+    let regEx = new RegExp(r);
+    return this.g.replace(regEx, s);
+  }
 }

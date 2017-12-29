@@ -52,7 +52,7 @@
         </mat-header-cell>
         <mat-cell *matCellDef="let row" class="ellipsis sm-hide">
           <span *ngFor="let ec of row.ec">
-            {{ ec }}
+            <a [routerLink]="['/remotecontent', row.g, row.a, row.latestVersion, row.a + '-' + row.latestVersion + ec]">{{ ec }}</a>
           </span>
         </mat-cell>
       </ng-container>

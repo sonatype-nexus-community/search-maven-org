@@ -10,4 +10,5 @@ export interface Doc {
   versionCount: number;
   text: string[];
   ec: string[];
+  gReplace(r: string, s: string): string;
 }
