@@ -1,3 +1,5 @@
+@import '../../styles.scss';
+
 div.search {
   display: flex;
   flex-direction: column;
@@ -67,6 +69,22 @@ div.search {
     .mat-table {
       flex: 1 1 auto;
       overflow: auto;
+    }
+
+    .mat-header-row {
+      position: sticky;
+      top: 0;
+      background: mat-color($accent);
+
+      .mat-header-cell {
+        color: #fff;
+        font-size: 14px;
+        text-transform: uppercase;
+      }
+    }
+
+    .mat-cell {
+      padding-right: 15px;
     }
   }
 }

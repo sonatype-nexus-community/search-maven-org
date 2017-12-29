@@ -33,11 +33,16 @@
   * Moves content two rows instead of one.
   */
 @media (max-width: 720px) {
+  .navbar-header {
+    box-shadow: none;
+  }
+
   .navbar-hide-small {
     display: none;
   }
 
   .navbar-show-small {
+    box-shadow: 0 3px 0 -2px rgba(0, 0, 0, 0.2), 0 2px 0 0 rgba(0, 0, 0, 0.14), 0 1px 0 0 rgba(0, 0, 0, 0.12);
     display: block;
   }
 

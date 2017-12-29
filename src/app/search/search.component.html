@@ -6,7 +6,7 @@
     </mat-form-field>
   </div>
 
-  <div class="search-result mat-elevation-z8" [ngClass]="{'hidden' : !dataSource.totalCount}">
+  <div class="search-result" [ngClass]="{'hidden' : !dataSource.totalCount}">
 
     <mat-table #table [dataSource]="dataSource">
 
@@ -14,47 +14,47 @@
         <mat-header-cell *matHeaderCellDef>
           {{'search.header.groupId' | translate}}
         </mat-header-cell>
-        <mat-cell *matCellDef="let row">
+        <mat-cell *matCellDef="let row" class="ellipsis">
           <a [routerLink]="['/search/g', row.g]">{{ row.id }}</a>
         </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="artifactId">
-        <mat-header-cell *matHeaderCellDef>
+        <mat-header-cell *matHeaderCellDef class="xs-hide">
           {{'search.header.artifactId' | translate}}
         </mat-header-cell>
-        <mat-cell *matCellDef="let row">
+        <mat-cell *matCellDef="let row" class="ellipsis xs-hide">
           <a [routerLink]="['/search/a', row.a]">{{row.a}}</a>
         </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="latestVersion">
-        <mat-header-cell *matHeaderCellDef>
+        <mat-header-cell *matHeaderCellDef class="xs-hide">
           {{'search.header.latestVersion' | translate}}
         </mat-header-cell>
-        <mat-cell *matCellDef="let row">
+        <mat-cell *matCellDef="let row" class="ellipsis xs-hide">
           <a [routerLink]="['/artifact', row.g, row.a, row.latestVersion, row.p]">{{row.latestVersion}}</a>
         </mat-cell>
         >
       </ng-container>
 
       <ng-container matColumnDef="updated">
-        <mat-header-cell *matHeaderCellDef>
+        <mat-header-cell *matHeaderCellDef class="sm-hide">
           {{'search.header.updated' | translate}}
         </mat-header-cell>
-        <mat-cell *matCellDef="let row">
+        <mat-cell *matCellDef="let row" class="ellipsis sm-hide">
           {{row.timestamp | date : format : timezone}}
         </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="download">
-        <mat-header-cell *matHeaderCellDef>
+        <mat-header-cell *matHeaderCellDef class="sm-hide">
           {{'search.header.download' | translate}}
         </mat-header-cell>
-        <mat-cell *matCellDef="let row">
-          <div *ngFor="let ec of row.ec">
+        <mat-cell *matCellDef="let row" class="ellipsis sm-hide">
+          <span *ngFor="let ec of row.ec">
             {{ ec }}
-          </div>
+          </span>
         </mat-cell>
       </ng-container>
 

@@ -4,7 +4,7 @@
 @import './app/app.component';
 
 $primary: mat-palette($md-smo);
-$accent: mat-palette($mat-pink, A200, A100, A400);
+$accent: mat-palette($md-smo-accent);
 $theme: mat-light-theme($primary, $accent);
 
 @include mat-core();
@@ -63,4 +63,16 @@ router-outlet + * {
 
 .muted {
   color: #999;
+}
+
+.xs-hide {
+  @media (max-width: 480px) {
+    display: none !important;
+  }
+}
+
+.sm-hide {
+  @media (max-width: 840px) {
+    display: none !important;
+  }
 }
