@@ -10,6 +10,7 @@ import { createTranslateModule } from "./shared/translate/translate";
 import { SMO_ROUTES } from "./routes";
 import { SearchModule } from "./search/search.module";
 import { FooterModule } from "./shared/footer/footer.module";
+import { StatsModule } from "./stats/stats.module";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FooterModule } from "./shared/footer/footer.module";
     createTranslateModule(),
     NavbarModule,
     FooterModule,
-    SearchModule
+    SearchModule,
+    StatsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

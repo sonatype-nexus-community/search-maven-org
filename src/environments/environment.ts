@@ -8,5 +8,8 @@ export const environment = {
   search: {
     endpoint : 'http://localhost:8080/central/solrsearch/select'
   },
+  stats: {
+    endpoint : 'http://localhost:8080/central/quickstats'
+  },
   smoBaseUrl: 'http://localhost:8181/remotecontent?filepath='
 };

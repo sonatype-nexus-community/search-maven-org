@@ -1,0 +1,92 @@
+// inspired by https://github.com/angular/flex-layout/wiki/Responsive-API
+// TODO might need to use flex-layout instead of this?
+
+@mixin xs {
+  @media screen and (max-width: 599px) {
+    @content
+  }
+}
+
+@mixin sm {
+  @media screen and (min-width: 600px) and (max-width: 959px) {
+    @content
+  }
+}
+
+@mixin md {
+  @media screen and (min-width: 960px) and (max-width: 1279px) {
+    @content
+  }
+}
+
+@mixin lg {
+  @media screen and (min-width: 1280px) and (max-width: 1919px) {
+    @content
+  }
+}
+
+@mixin xl {
+  @media screen and (min-width: 1920px) and (max-width: 5000px) {
+    @content
+  }
+}
+
+@mixin lt-sm {
+  @media screen and (max-width: 599px) {
+    @content
+  }
+}
+
+@mixin lt-md {
+  @media screen and (max-width: 959px) {
+    @content
+  }
+}
+
+@mixin lt-lg {
+  @media screen and (max-width: 1279px) {
+    @content
+  }
+}
+
+@mixin lt-xl {
+  @media screen and (max-width: 1919px) {
+    @content
+  }
+}
+
+@mixin gt-xs {
+  @media screen and (min-width: 600px) {
+    @content
+  }
+}
+
+@mixin gt-sm {
+  @media screen and (min-width: 960px) {
+    @content
+  }
+}
+
+@mixin gt-md {
+  @media screen and (min-width: 1280px) {
+    @content
+  }
+}
+
+@mixin gt-lg {
+  @media screen and (min-width: 1920px) {
+    @content
+  }
+}
+
+.xs-hide {
+  @include lt-sm {
+    display: none !important;
+  }
+}
+
+.sm-hide {
+  @include lt-md {
+    display: none !important;
+  }
+}

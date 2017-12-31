@@ -1,0 +1,30 @@
+@import '../../styles';
+
+.stats {
+  flex-direction: column;
+
+  .stats-card {
+    flex: 1 1 auto;
+
+    .stats-header-image {
+      color: #008000;
+
+      .mat-icon {
+        @include md-icon-size(36px);
+      }
+    }
+
+    .mat-card-content {
+      padding-top: 15px;
+
+      .label-value-table {
+        .label-column,
+        .value-column {
+          > div {
+            margin: 10px 0;
+          }
+        }
+      }
+    }
+  }
+}

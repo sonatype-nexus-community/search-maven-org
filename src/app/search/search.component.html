@@ -38,19 +38,19 @@
       </ng-container>
 
       <ng-container matColumnDef="updated">
-        <mat-header-cell *matHeaderCellDef class="sm-hide">
+        <mat-header-cell *matHeaderCellDef class="xs-hide sm-hide">
           {{'search.header.updated' | translate}}
         </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="ellipsis sm-hide">
+        <mat-cell *matCellDef="let row" class="ellipsis xs-hide sm-hide">
           {{row.timestamp | date : format : timezone}}
         </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="download">
-        <mat-header-cell *matHeaderCellDef class="sm-hide">
+        <mat-header-cell *matHeaderCellDef class="xs-hide sm-hide">
           {{'search.header.download' | translate}}
         </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="ellipsis sm-hide">
+        <mat-cell *matCellDef="let row" class="ellipsis xs-hide sm-hide">
           <span *ngFor="let ec of row.ec">
             <a href="{{ remoteRepositoryLink(row.g, row.a, row.latestVersion, ec) }}">{{ ec }}</a>
           </span>

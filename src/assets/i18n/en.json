@@ -23,6 +23,16 @@
       "download": "Download"
     }
   },
+  "stats" : {
+    "title": "Statistics for the Central Repository",
+    "status": "Status",
+    "optimal": "Systems is running optimal",
+    "modifiedDate": "Date index last refreshed",
+    "gav": "Total number of artifacts indexed (GAV)",
+    "ga": "Total number of unique artifacts indexed (GA)",
+    "repoSize": "Current size of repository on disk",
+    "repoSizeUnit": "MB"
+  },
   "footer": {
     "tm": {
       "comment1": "Apache and Apache Maven are trademarks of the",

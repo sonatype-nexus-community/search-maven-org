@@ -1,0 +1,31 @@
+<div class="stats">
+
+  <h3 class="ellipsis">{{ 'stats.title' | translate}}</h3>
+
+  <mat-card class="stats-card">
+    <mat-card-header>
+      <div mat-card-avatar class="stats-header-image">
+        <mat-icon>check_circle</mat-icon>
+      </div>
+      <mat-card-title>{{ 'stats.status' | translate }}</mat-card-title>
+      <mat-card-subtitle>{{ 'stats.optimal' | translate }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="label-value-table">
+        <div class="label-column">
+          <div class="ellipsis">{{ 'stats.modifiedDate' | translate }}</div>
+          <div class="ellipsis">{{ 'stats.gav' | translate }}</div>
+          <div class="ellipsis">{{ 'stats.ga' | translate }}</div>
+          <div class="ellipsis">{{ 'stats.repoSize' | translate }}</div>
+        </div>
+        <div class="value-column">
+          <div>{{ stat?.dateModified }}</div>
+          <div>{{ stat?.gavNumber }}</div>
+          <div>{{ stat?.gaNumber }}</div>
+          <div>{{ stat?.repoSize }} {{ 'stats.repoSizeUnit' | translate}}</div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+</div>
