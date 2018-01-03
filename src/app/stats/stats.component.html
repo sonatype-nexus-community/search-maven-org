@@ -2,7 +2,8 @@
 
   <h3 class="ellipsis">{{ 'stats.title' | translate}}</h3>
 
-  <mat-card class="stats-card">
+  <mat-card class="stats-card" *ngIf="stat">
+
     <mat-card-header>
       <div mat-card-avatar class="stats-header-image">
         <mat-icon>check_circle</mat-icon>
@@ -10,6 +11,7 @@
       <mat-card-title>{{ 'stats.status' | translate }}</mat-card-title>
       <mat-card-subtitle>{{ 'stats.optimal' | translate }}</mat-card-subtitle>
     </mat-card-header>
+
     <mat-card-content>
       <div class="label-value-table">
         <div class="label-column">
@@ -26,6 +28,19 @@
         </div>
       </div>
     </mat-card-content>
+
+  </mat-card>
+
+  <mat-card class="stats-card" *ngIf="!stat">
+
+    <mat-card-header>
+      <div mat-card-avatar class="stats-header-image warning">
+        <mat-icon>warning</mat-icon>
+      </div>
+      <mat-card-title>{{ 'stats.status' | translate }}</mat-card-title>
+      <mat-card-subtitle>{{ 'stats.unavailable' | translate }}</mat-card-subtitle>
+    </mat-card-header>
+
   </mat-card>
 
 </div>

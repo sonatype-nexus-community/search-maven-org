@@ -9,6 +9,10 @@
     .stats-header-image {
       color: #008000;
 
+      &.warning {
+        color: #FFA500;
+      }
+
       .mat-icon {
         @include md-icon-size(36px);
       }

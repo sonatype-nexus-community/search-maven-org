@@ -27,6 +27,7 @@
     "title": "Statistics for the Central Repository",
     "status": "Status",
     "optimal": "Systems is running optimal",
+    "unavailable": "Systems appears unavailable",
     "modifiedDate": "Date index last refreshed",
     "gav": "Total number of artifacts indexed (GAV)",
     "ga": "Total number of unique artifacts indexed (GA)",
