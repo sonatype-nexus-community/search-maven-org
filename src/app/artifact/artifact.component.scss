@@ -1,0 +1,54 @@
+div.artifact {
+  flex-direction: column;
+
+  .artifact-details {
+    display: flex;
+
+    .mat-card {
+      margin: 5px;
+    }
+
+    .left {
+      display: flex;
+      flex: 1 1 auto;
+      flex-direction: column;
+      width: 50%;
+
+      .mat-card {
+        height: 100%;
+        overflow: scroll;
+
+        &.project-information {
+          height: 400px;
+          overflow: hidden;
+        }
+
+        &.dependency-information {
+          .mat-card-title {
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+          }
+        }
+
+        .mat-card-content {
+          > * {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+      flex: 1 1 auto;
+      width: 50%;
+
+      .project-information {
+        flex: 1 1 auto;
+      }
+    }
+  }
+
+}

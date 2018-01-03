@@ -11,5 +11,6 @@ export const environment = {
   stats: {
     endpoint : 'http://localhost:8080/central/quickstats'
   },
-  smoBaseUrl: 'http://localhost:8181/remotecontent?filepath='
+  smoBaseUrl: 'http://localhost:8181/remotecontent?filepath=',
+  repositoryBaseUrl: 'http://repo1.maven.org/maven2'
 };

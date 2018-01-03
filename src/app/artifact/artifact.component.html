@@ -1,0 +1,138 @@
+<div class="artifact">
+
+  <div>
+    <h3>
+      <a target="_blank" href="{{ repositoryLink(group, artifact, version) }}">
+        &nbsp;{{ group }}:{{ artifact }}:{{ version }}
+        &nbsp;<mat-icon style="vertical-align: bottom;">open_in_new</mat-icon>
+      </a>
+    </h3>
+  </div>
+
+  <div class="artifact-details">
+
+    <div class="left">
+
+      <mat-card class="project-information">
+        <mat-card-title>{{ 'artifact.projectInformation' | translate }}</mat-card-title>
+
+        <mat-card-content>
+          <mat-form-field>
+            <input matInput placeholder="{{ 'artifact.groupId' | translate }}" value="{{ group }}"/>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="{{ 'artifact.artifactId' | translate }}" value="{{ artifact }}"/>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="{{ 'artifact.latestVersion' | translate }}" value="{{ version }}"/>
+          </mat-form-field>
+        </mat-card-content>
+
+      </mat-card>
+
+      <mat-card class="dependency-information">
+        <mat-card-title>{{ 'artifact.dependencyInformation' | translate }}</mat-card-title>
+
+        <mat-card-content>
+          <mat-form-field>
+            <textarea matInput
+                      placeholder="{{ 'artifact.apacheMaven' | translate }}"
+                      matTextareaAutosize
+                      #apacheMavenTarget>
+              {{ apacheMavenTemplate(group, artifact, version) }}
+            </textarea>
+            <button mat-button color="accent" [ngxClipboard]="apacheMavenTarget">
+              <mat-icon>content_copy</mat-icon>
+              {{ 'artifact.copy' | translate }}
+            </button>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="{{ 'artifact.apacheBuildr' | translate }}"
+                   value="{{ apacheBuildrTemplate(group, artifact, version) }}" #apacheBuildrTarget/>
+            <button mat-button color="accent" [ngxClipboard]="apacheBuildrTarget">
+              <mat-icon>content_copy</mat-icon>
+              {{ 'artifact.copy' | translate }}
+            </button>
+          </mat-form-field>
+
+          <mat-form-field>
+            <textarea matInput
+                      placeholder="{{ 'artifact.apacheIvy' | translate }}"
+                      matTextareaAutosize
+                      #apacheIvyTarget>
+              {{ apacheIvyTemplate(group, artifact, version) }}
+            </textarea>
+            <button mat-button color="accent" [ngxClipboard]="apacheIvyTarget">
+              <mat-icon>content_copy</mat-icon>
+              {{ 'artifact.copy' | translate }}
+            </button>
+          </mat-form-field>
+
+          <mat-form-field>
+            <textarea matInput
+                      placeholder="{{ 'artifact.groovyGrape' | translate }}"
+                      matTextareaAutosize
+                      #groovyGrapeTarget>
+              {{ groovyGrapeTemplate(group, artifact, version) }}
+            </textarea>
+            <button mat-button color="accent" [ngxClipboard]="groovyGrapeTarget">
+              <mat-icon>content_copy</mat-icon>
+              {{ 'artifact.copy' | translate }}
+            </button>
+          </mat-form-field>
+
+          <mat-form-field>
+            <textarea matInput
+                      placeholder="{{ 'artifact.gradleGrails' | translate }}"
+                      matTextareaAutosize
+                      #gradleGrailsTarget>
+              {{ gradleGrailsTemplate(group, artifact, version) }}
+            </textarea>
+            <button mat-button color="accent" [ngxClipboard]="gradleGrailsTarget">
+              <mat-icon>content_copy</mat-icon>
+              {{ 'artifact.copy' | translate }}
+            </button>
+          </mat-form-field>
+
+          <mat-form-field>
+            <textarea matInput
+                      placeholder="{{ 'artifact.scalaSbt' | translate }}"
+                      matTextareaAutosize
+                      #scalaSBTTarget>
+              {{ scalaSbtTemplate(group, artifact, version) }}
+            </textarea>
+            <button mat-button color="accent" [ngxClipboard]="scalaSBTTarget">
+              <mat-icon>content_copy</mat-icon>
+              {{ 'artifact.copy' | translate }}
+            </button>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="{{ 'artifact.leiningen' | translate }}"
+                   value='{{ leiningenTemplate(group, artifact, version) }}' #leiningenTarget/>
+            <button mat-button color="accent" [ngxClipboard]="leiningenTarget">
+              <mat-icon>content_copy</mat-icon>
+              {{ 'artifact.copy' | translate }}
+            </button>
+          </mat-form-field>
+
+        </mat-card-content>
+
+      </mat-card>
+
+    </div>
+
+    <div class="right">
+
+      <mat-card class="project-information">
+        <mat-card-title>{{ 'artifact.projectModel' | translate }}</mat-card-title>
+      </mat-card>
+
+    </div>
+
+  </div>
+
+</div>

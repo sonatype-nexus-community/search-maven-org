@@ -3,7 +3,8 @@
     "title": "The Search Engine for The Central Repository",
     "page": {
       "title": "The Central Repository Search Engine!"
-    }
+    },
+    "unavailable": "Systems appears unavailable"
   },
   "navbar": {
     "search": "Search",
@@ -27,12 +28,27 @@
     "title": "Statistics for the Central Repository",
     "status": "Status",
     "optimal": "Systems is running optimal",
-    "unavailable": "Systems appears unavailable",
     "modifiedDate": "Date index last refreshed",
     "gav": "Total number of artifacts indexed (GAV)",
     "ga": "Total number of unique artifacts indexed (GA)",
     "repoSize": "Current size of repository on disk",
     "repoSizeUnit": "MB"
+  },
+  "artifact": {
+    "projectInformation": "Project Information",
+    "projectModel": "Project Model",
+    "artifactId": "Artifact ID",
+    "groupId": "Group ID",
+    "latestVersion" : "Version",
+    "dependencyInformation": "Dependency Information",
+    "apacheMaven": "Apache Maven",
+    "apacheBuildr": "Apache Buildr",
+    "apacheIvy": "Apache Ivy",
+    "groovyGrape": "Groovy Grape",
+    "gradleGrails": "Gradle/Grails",
+    "scalaSbt": "Scala SBT",
+    "leiningen": "Leiningen",
+    "copy": "Copy"
   },
   "footer": {
     "tm": {
