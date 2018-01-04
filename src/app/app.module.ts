@@ -12,6 +12,7 @@ import { SearchModule } from "./search/search.module";
 import { FooterModule } from "./shared/footer/footer.module";
 import { StatsModule } from "./stats/stats.module";
 import { ArtifactModule } from './artifact/artifact.module';
+import { NotificationsModule } from "./shared/notifications/notifications.module";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ArtifactModule } from './artifact/artifact.module';
     createTranslateModule(),
     NavbarModule,
     FooterModule,
+    NotificationsModule,
     SearchModule,
     StatsModule,
     ArtifactModule

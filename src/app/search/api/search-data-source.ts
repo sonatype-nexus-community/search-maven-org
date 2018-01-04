@@ -75,7 +75,10 @@ export class SearchDataSource extends DataSource<SearchDoc> {
         return searchResult;
       }).subscribe(
         (searchResult: SearchResult) => this.subject.next(searchResult.response.docs),
-        (error: any) => this.clearData());
+        (error: any) => {
+          this.qSubject.error(error);
+          this.clearData();
+        });
     } else {
       this.clearData();
     }

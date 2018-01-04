@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { SearchService } from "./search.service";
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
@@ -9,8 +9,8 @@ import 'rxjs/add/observable/fromEvent';
 import { MatPaginator } from "@angular/material";
 import { SearchDataSource } from "./api/search-data-source";
 import { Observable } from "rxjs/Observable";
-import { SearchDoc } from './api/search-doc';
 import { environment } from "../../environments/environment";
+import { NotificationService } from "../shared/notifications/notification.service";
 
 @Component({
   selector: 'app-search',
@@ -18,7 +18,6 @@ import { environment } from "../../environments/environment";
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  @Input() doc: SearchDoc;
 
   displayedColumns = [
     'groupId',
@@ -34,8 +33,8 @@ export class SearchComponent implements OnInit {
 
   @ViewChild('q') q: ElementRef;
 
-  constructor(private searchService: SearchService) {
-
+  constructor(private searchService: SearchService,
+              private notificationService: NotificationService) {
   }
 
   ngOnInit() {
@@ -46,6 +45,8 @@ export class SearchComponent implements OnInit {
       .debounceTime(150)
       .distinctUntilChanged()
       .subscribe(() => this.dataSource.qSubject.next(this.q.nativeElement.value));
+
+    this.dataSource.qSubject.subscribe(s => s, error => this.notificationService.notifySystemUnavailable());
   }
 
   remoteRepositoryLink(g: string, a: string, v: string, ec: string): string {
