@@ -13,8 +13,21 @@
 
     <div class="left">
 
-      <mat-card class="project-information">
-        <mat-card-title>{{ 'artifact.projectInformation' | translate }}</mat-card-title>
+      <mat-card class="project-information-card">
+
+        <mat-card-header class="mat-smo-card-header-toolbar">
+
+          <mat-toolbar color="primary">
+            <mat-toolbar-row></mat-toolbar-row>
+
+            <mat-toolbar-row>
+              <span>{{ 'artifact.projectInformation' | translate }}</span>
+              <span class="flex-spacer"></span>
+            </mat-toolbar-row>
+
+          </mat-toolbar>
+
+        </mat-card-header>
 
         <mat-card-content>
           <mat-form-field>
@@ -38,83 +51,51 @@
 
       </mat-card>
 
-      <mat-card class="dependency-information">
-        <mat-card-title>{{ 'artifact.dependencyInformation' | translate }}</mat-card-title>
+      <mat-card class="dependency-information-card">
+
+        <mat-card-header class="mat-smo-card-header-toolbar">
+
+          <mat-toolbar color="primary">
+            <mat-toolbar-row></mat-toolbar-row>
+
+            <mat-toolbar-row>
+              <span>{{ 'artifact.dependencyInformation' | translate }}</span>
+              <span class="flex-spacer"></span>
+            </mat-toolbar-row>
+
+          </mat-toolbar>
+
+        </mat-card-header>
 
         <mat-card-content>
-          <mat-form-field>
-            <textarea matInput
-                      placeholder="{{ 'artifact.apacheMaven' | translate }}"
-                      matTextareaAutosize
-                      #apacheMavenTarget
-                      readonly>{{ apacheMavenTemplate(group, artifact, version) }}</textarea>
-            <button mat-button color="accent" [ngxClipboard]="apacheMavenTarget">
-              <mat-icon>content_copy</mat-icon>
-              {{ 'artifact.copy' | translate }}
-            </button>
-          </mat-form-field>
 
-          <mat-form-field>
-            <input matInput placeholder="{{ 'artifact.apacheBuildr' | translate }}"
-                   value="{{ apacheBuildrTemplate(group, artifact, version) }}" #apacheBuildrTarget/>
-            <button mat-button color="accent" [ngxClipboard]="apacheBuildrTarget">
-              <mat-icon>content_copy</mat-icon>
-              {{ 'artifact.copy' | translate }}
-            </button>
-          </mat-form-field>
+          <app-dependency-information title="artifact.apacheMaven"
+                                      value="{{apacheMavenTemplate(group, artifact, version)}}">
+          </app-dependency-information>
 
-          <mat-form-field>
-            <textarea matInput
-                      placeholder="{{ 'artifact.apacheIvy' | translate }}"
-                      matTextareaAutosize
-                      #apacheIvyTarget>{{ apacheIvyTemplate(group, artifact, version) }}</textarea>
-            <button mat-button color="accent" [ngxClipboard]="apacheIvyTarget">
-              <mat-icon>content_copy</mat-icon>
-              {{ 'artifact.copy' | translate }}
-            </button>
-          </mat-form-field>
+          <app-dependency-information title="artifact.apacheBuildr"
+                                      value="{{apacheBuildrTemplate(group, artifact, version)}}">
+          </app-dependency-information>
 
-          <mat-form-field>
-            <textarea matInput
-                      placeholder="{{ 'artifact.groovyGrape' | translate }}"
-                      matTextareaAutosize
-                      #groovyGrapeTarget>{{ groovyGrapeTemplate(group, artifact, version) }}</textarea>
-            <button mat-button color="accent" [ngxClipboard]="groovyGrapeTarget">
-              <mat-icon>content_copy</mat-icon>
-              {{ 'artifact.copy' | translate }}
-            </button>
-          </mat-form-field>
+          <app-dependency-information title="artifact.apacheIvy"
+                                      value="{{apacheIvyTemplate(group, artifact, version)}}">
+          </app-dependency-information>
 
-          <mat-form-field>
-            <textarea matInput
-                      placeholder="{{ 'artifact.gradleGrails' | translate }}"
-                      matTextareaAutosize
-                      #gradleGrailsTarget>{{ gradleGrailsTemplate(group, artifact, version) }}</textarea>
-            <button mat-button color="accent" [ngxClipboard]="gradleGrailsTarget">
-              <mat-icon>content_copy</mat-icon>
-              {{ 'artifact.copy' | translate }}
-            </button>
-          </mat-form-field>
+          <app-dependency-information title="artifact.groovyGrape"
+                                      value="{{groovyGrapeTemplate(group, artifact, version)}}">
+          </app-dependency-information>
 
-          <mat-form-field>
-            <textarea matInput
-                      placeholder="{{ 'artifact.scalaSbt' | translate }}"
-                      matTextareaAutosize
-                      #scalaSBTTarget>{{ scalaSbtTemplate(group, artifact, version) }}</textarea>
-            <button mat-button color="accent" [ngxClipboard]="scalaSBTTarget">
-              <mat-icon>content_copy</mat-icon>
-              {{ 'artifact.copy' | translate }}
-            </button>
-          </mat-form-field>
+          <app-dependency-information title="artifact.gradleGrails"
+                                      value="{{gradleGrailsTemplate(group, artifact, version)}}">
+          </app-dependency-information>
 
-          <mat-form-field>
-            <input matInput placeholder="{{ 'artifact.leiningen' | translate }}"
-                   value='{{ leiningenTemplate(group, artifact, version) }}' #leiningenTarget/>
-            <button mat-button color="accent" [ngxClipboard]="leiningenTarget">
-              <mat-icon>content_copy</mat-icon>
-              {{ 'artifact.copy' | translate }}
-            </button>
-          </mat-form-field>
+          <app-dependency-information title="artifact.scalaSbt"
+                                      value="{{scalaSbtTemplate(group, artifact, version)}}">
+          </app-dependency-information>
+
+          <app-dependency-information title="artifact.leiningen"
+                                      value="{{leiningenTemplate(group, artifact, version)}}">
+          </app-dependency-information>
 
         </mat-card-content>
 
@@ -124,8 +105,27 @@
 
     <div class="right">
 
-      <mat-card class="project-information">
-        <mat-card-title>{{ 'artifact.projectModel' | translate }}</mat-card-title>
+
+      <mat-card class="project-model-card">
+
+        <mat-card-header class="mat-smo-card-header-toolbar">
+
+          <mat-toolbar color="primary">
+            <mat-toolbar-row></mat-toolbar-row>
+
+            <mat-toolbar-row>
+              <span>{{ 'artifact.projectModel' | translate }}</span>
+              <span class="flex-spacer"></span>
+            </mat-toolbar-row>
+
+          </mat-toolbar>
+
+        </mat-card-header>
+
+        <mat-card-content>
+          No Content yet
+        </mat-card-content>
+
       </mat-card>
 
     </div>

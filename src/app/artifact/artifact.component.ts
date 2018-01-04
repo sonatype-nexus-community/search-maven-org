@@ -56,4 +56,9 @@ export class ArtifactComponent implements OnInit {
   gradleGrailsTemplate(g: string, a: string, v: string): string {
     return `compile '${g}:${a}:${v}'`;
   }
+
+  remoteRepositoryLink(g: string, a: string, v: string, ec: string): string {
+    let groupSlash = g.replace(/\.+/g, '/');
+    return `${environment.smoBaseUrl}/${groupSlash}/${a}/${v}/${a}-${v}${ec}`;
+  }
 }

@@ -1,0 +1,22 @@
+<div class="dependency-information">
+
+  <mat-toolbar color="accent">
+
+    <mat-toolbar-row>
+      <span>{{title | translate}}</span>
+      <span class="flex-spacer"></span>
+      <button mat-button [ngxClipboard]="copyTarget">
+        <mat-icon>content_copy</mat-icon>
+        {{ 'artifact.copy' | translate }}
+      </button>
+    </mat-toolbar-row>
+
+  </mat-toolbar>
+
+  <mat-form-field class="template-value input-no-underline muted-input">
+    <textarea matInput
+              matTextareaAutosize
+              #copyTarget
+              readonly>{{ value }}</textarea>
+  </mat-form-field>
+</div>

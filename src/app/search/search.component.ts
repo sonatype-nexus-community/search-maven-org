@@ -48,9 +48,4 @@ export class SearchComponent implements OnInit {
 
     this.dataSource.qSubject.subscribe(s => s, error => this.notificationService.notifySystemUnavailable());
   }
-
-  remoteRepositoryLink(g: string, a: string, v: string, ec: string): string {
-    let groupSlash = g.replace(/\.+/g, '/');
-    return `${environment.smoBaseUrl}/${groupSlash}/${a}/${v}/${a}-${v}${ec}`;
-  }
 }

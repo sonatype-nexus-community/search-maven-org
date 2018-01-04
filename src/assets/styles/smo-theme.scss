@@ -1,4 +1,4 @@
-$md-smo: (
+$mat-smo: (
   50 : #e0edf3,
   100 : #b3d1e0,
   200 : #80b3cc,
@@ -31,7 +31,7 @@ $md-smo: (
   )
 );
 
-$md-smo-accent: (
+$mat-smo-accent: (
   50 : #fce7f1,
   100 : #f9c3dc,
   200 : #f59bc5,
@@ -63,3 +63,5 @@ $md-smo-accent: (
     A700 : #000000,
   )
 );
+
+$mat-smo-white: #fff;

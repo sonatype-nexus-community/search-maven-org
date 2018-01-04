@@ -1,8 +1,13 @@
+@import '../../styles';
+
 div.artifact {
   flex-direction: column;
 
   .artifact-details {
     display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    overflow: auto;
 
     .mat-card {
       margin: 5px;
@@ -12,23 +17,25 @@ div.artifact {
       display: flex;
       flex: 1 1 auto;
       flex-direction: column;
-      width: 50%;
+      width: 100%;
+
+      @include gt-sm() {
+        width: 50%;
+      }
 
       .mat-card {
         height: 100%;
         overflow: scroll;
 
-        &.project-information {
-          height: 400px;
+        &.project-information-card {
+          height: 550px;
           overflow: hidden;
         }
 
-        &.dependency-information {
-          .mat-card-title {
-            background: #fff;
-            position: sticky;
-            top: 0;
-            z-index: 1;
+        &.dependency-information-card {
+
+          ::ng-deep .dependency-information {
+            padding-bottom: 15px;
           }
         }
 
@@ -43,9 +50,13 @@ div.artifact {
     .right {
       display: flex;
       flex: 1 1 auto;
-      width: 50%;
+      width: 100%;
 
-      .project-information {
+      @include gt-sm() {
+        width: 50%;
+      }
+
+      .project-model-card {
         flex: 1 1 auto;
       }
     }

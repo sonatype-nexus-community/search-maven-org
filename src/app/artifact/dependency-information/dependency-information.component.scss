@@ -1,0 +1,21 @@
+.dependency-information {
+  > * {
+    width: 100%;
+  }
+
+  .mat-toolbar-multiple-rows,
+  .mat-toolbar-row,
+  .mat-toolbar-single-row {
+    height: 48px;
+    max-height: 48px;
+    min-height: 48px;
+  }
+
+  .template-value {
+    height: 110px;
+
+    textarea {
+      padding: 0 10px;
+    }
+  }
+}
