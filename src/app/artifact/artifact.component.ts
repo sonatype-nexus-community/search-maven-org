@@ -30,11 +30,7 @@ export class ArtifactComponent implements OnInit {
   }
 
   apacheMavenTemplate(g: string, a: string, v: string): string {
-    return `<dependency>
-    <groupId>${g}</groupId>
-    <artifactId>${a}</artifactId>
-    <version>${v}</version>
-  </dependency>`;
+    return `<dependency>\n  <groupId>${g}</groupId>\n  <artifactId>${a}</artifactId>\n  <version>${v}</version>\n</dependency>`;
   }
 
   apacheBuildrTemplate(g: string, a: string, v: string): string {
@@ -46,9 +42,7 @@ export class ArtifactComponent implements OnInit {
   }
 
   groovyGrapeTemplate(g: string, a: string, v: string): string {
-    return `@Grapes( 
-      @Grab(group='${g}', module='${a}', version='${v}') 
-    )`;
+    return `@Grapes(\n  @Grab(group='${g}', module='${a}', version='${v}')\n)`;
   }
 
   scalaSbtTemplate(g: string, a: string, v: string): string {

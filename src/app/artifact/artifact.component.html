@@ -18,15 +18,21 @@
 
         <mat-card-content>
           <mat-form-field>
-            <input matInput placeholder="{{ 'artifact.groupId' | translate }}" value="{{ group }}"/>
+            <input matInput
+                   placeholder="{{ 'artifact.groupId' | translate }}" value="{{ group }}"
+                   readonly/>
           </mat-form-field>
 
           <mat-form-field>
-            <input matInput placeholder="{{ 'artifact.artifactId' | translate }}" value="{{ artifact }}"/>
+            <input matInput
+                   placeholder="{{ 'artifact.artifactId' | translate }}" value="{{ artifact }}"
+                   readonly/>
           </mat-form-field>
 
           <mat-form-field>
-            <input matInput placeholder="{{ 'artifact.latestVersion' | translate }}" value="{{ version }}"/>
+            <input matInput
+                   placeholder="{{ 'artifact.latestVersion' | translate }}" value="{{ version }}"
+                   readonly/>
           </mat-form-field>
         </mat-card-content>
 
@@ -40,9 +46,8 @@
             <textarea matInput
                       placeholder="{{ 'artifact.apacheMaven' | translate }}"
                       matTextareaAutosize
-                      #apacheMavenTarget>
-              {{ apacheMavenTemplate(group, artifact, version) }}
-            </textarea>
+                      #apacheMavenTarget
+                      readonly>{{ apacheMavenTemplate(group, artifact, version) }}</textarea>
             <button mat-button color="accent" [ngxClipboard]="apacheMavenTarget">
               <mat-icon>content_copy</mat-icon>
               {{ 'artifact.copy' | translate }}
@@ -62,9 +67,7 @@
             <textarea matInput
                       placeholder="{{ 'artifact.apacheIvy' | translate }}"
                       matTextareaAutosize
-                      #apacheIvyTarget>
-              {{ apacheIvyTemplate(group, artifact, version) }}
-            </textarea>
+                      #apacheIvyTarget>{{ apacheIvyTemplate(group, artifact, version) }}</textarea>
             <button mat-button color="accent" [ngxClipboard]="apacheIvyTarget">
               <mat-icon>content_copy</mat-icon>
               {{ 'artifact.copy' | translate }}
@@ -75,9 +78,7 @@
             <textarea matInput
                       placeholder="{{ 'artifact.groovyGrape' | translate }}"
                       matTextareaAutosize
-                      #groovyGrapeTarget>
-              {{ groovyGrapeTemplate(group, artifact, version) }}
-            </textarea>
+                      #groovyGrapeTarget>{{ groovyGrapeTemplate(group, artifact, version) }}</textarea>
             <button mat-button color="accent" [ngxClipboard]="groovyGrapeTarget">
               <mat-icon>content_copy</mat-icon>
               {{ 'artifact.copy' | translate }}
@@ -88,9 +89,7 @@
             <textarea matInput
                       placeholder="{{ 'artifact.gradleGrails' | translate }}"
                       matTextareaAutosize
-                      #gradleGrailsTarget>
-              {{ gradleGrailsTemplate(group, artifact, version) }}
-            </textarea>
+                      #gradleGrailsTarget>{{ gradleGrailsTemplate(group, artifact, version) }}</textarea>
             <button mat-button color="accent" [ngxClipboard]="gradleGrailsTarget">
               <mat-icon>content_copy</mat-icon>
               {{ 'artifact.copy' | translate }}
@@ -101,9 +100,7 @@
             <textarea matInput
                       placeholder="{{ 'artifact.scalaSbt' | translate }}"
                       matTextareaAutosize
-                      #scalaSBTTarget>
-              {{ scalaSbtTemplate(group, artifact, version) }}
-            </textarea>
+                      #scalaSBTTarget>{{ scalaSbtTemplate(group, artifact, version) }}</textarea>
             <button mat-button color="accent" [ngxClipboard]="scalaSBTTarget">
               <mat-icon>content_copy</mat-icon>
               {{ 'artifact.copy' | translate }}
