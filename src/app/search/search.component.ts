@@ -11,6 +11,7 @@ import { SearchDataSource } from "./api/search-data-source";
 import { Observable } from "rxjs/Observable";
 import { environment } from "../../environments/environment";
 import { NotificationService } from "../shared/notifications/notification.service";
+import { Doc } from "./api/doc";
 
 @Component({
   selector: 'app-search',

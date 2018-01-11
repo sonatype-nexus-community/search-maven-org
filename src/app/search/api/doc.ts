@@ -11,5 +11,6 @@ export interface Doc {
   versionCount: number;
   text: string[];
   ec: string[];
+  downloadLinks: {name:string, link:string}[];
   gReplace(r: string, s: string): string;
 }

@@ -51,8 +51,8 @@
           {{'search.header.download' | translate}}
         </mat-header-cell>
         <mat-cell *matCellDef="let row" class="ellipsis xs-hide sm-hide">
-          <span *ngFor="let ec of row.ec">
-            <a href="{{ remoteRepositoryLink(row.g, row.a, row.latestVersion, ec) }}">{{ ec }}</a>
+          <span *ngFor="let dl of row.downloadLinks">
+            <a target="_blank" href="{{ dl.link}}">{{ dl.name | slice:1}}</a>
           </span>
         </mat-cell>
       </ng-container>

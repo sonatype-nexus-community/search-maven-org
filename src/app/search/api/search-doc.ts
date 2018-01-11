@@ -12,6 +12,7 @@ export class SearchDoc implements Doc {
   versionCount: number;
   text: string[];
   ec: string[];
+  downloadLinks: {name:string, link:string}[];
   gReplace(r: string, s: string): string {
     let regEx = new RegExp(r);
     return this.g.replace(regEx, s);

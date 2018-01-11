@@ -7,6 +7,7 @@ import {
 } from '@angular/material';
 import { createTranslateModule } from "../shared/translate/translate";
 import { DependencyInformationComponent } from './dependency-information/dependency-information.component';
+import { ArtifactService } from "./artifact.service";
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { DependencyInformationComponent } from './dependency-information/depende
     MatToolbarModule,
     createTranslateModule()
   ],
+  providers: [ArtifactService],
   declarations: [ArtifactComponent, DependencyInformationComponent]
 })
 export class ArtifactModule { }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from "../../environments/environment";
+import { ArtifactService } from "./artifact.service";
 
 @Component({
   selector: 'app-artifact',
@@ -12,8 +13,11 @@ export class ArtifactComponent implements OnInit {
   artifact: string;
   version: string;
   classifier: string;
+  pom: string;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,
+              private artifactService: ArtifactService) {
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -21,6 +25,11 @@ export class ArtifactComponent implements OnInit {
       this.artifact = params['artifact'];
       this.version = params['version'];
       this.classifier = params['classifier'];
+
+
+      this.artifactService.remoteContent(this.remoteRepositoryLink()).subscribe(content => {
+        this.pom = content;
+      })
     });
   }
 
@@ -57,8 +66,8 @@ export class ArtifactComponent implements OnInit {
     return `compile '${g}:${a}:${v}'`;
   }
 
-  remoteRepositoryLink(g: string, a: string, v: string, ec: string): string {
-    let groupSlash = g.replace(/\.+/g, '/');
-    return `${environment.smoBaseUrl}/${groupSlash}/${a}/${v}/${a}-${v}${ec}`;
+  remoteRepositoryLink(): string {
+    let groupSlash = this.group.replace(/\.+/g, '/');
+    return `${groupSlash}/${this.artifact}/${this.version}/${this.artifact}-${this.version}.pom`;
   }
 }
