@@ -15,7 +15,7 @@
           {{'search.header.groupId' | translate}}
         </mat-header-cell>
         <mat-cell *matCellDef="let row" class="ellipsis">
-          <a [routerLink]="['/search/g', row.g]">{{ row.id }}</a>
+          <a (click)='filterSearch("g", row.id)'>{{ row.id }}</a>
         </mat-cell>
       </ng-container>
 
@@ -24,7 +24,7 @@
           {{'search.header.artifactId' | translate}}
         </mat-header-cell>
         <mat-cell *matCellDef="let row" class="ellipsis xs-hide">
-          <a [routerLink]="['/search/a', row.a]">{{row.a}}</a>
+          <a (click)='filterSearch("a", row.a)'>{{row.a}}</a>
         </mat-cell>
       </ng-container>
 

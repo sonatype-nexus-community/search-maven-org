@@ -21,12 +21,14 @@ export class SearchDataSource extends DataSource<SearchDoc> {
 
   hasSearched: boolean = false;
 
+  searchRegEx: RegExp = new RegExp('([a-zA-Z]*?):([a-zA-Z0-9.]*)+', 'g');
+
   private q: string;
 
   constructor(private searchService: SearchService, private paginator: MatPaginator) {
     super();
 
-    this.qSubject = new BehaviorSubject<string>("");
+    this.qSubject = new BehaviorSubject<string>('');
   }
 
   /**
@@ -69,6 +71,9 @@ export class SearchDataSource extends DataSource<SearchDoc> {
     let q: string = this.q;
 
     if (q) {
+      if (q.length > 2) {
+        q = this.getSearchString(q);
+      }
       this.searchService.search(q, start).map(searchResult => {
         this.hasSearched = true;
         this.totalCount = searchResult.response.numFound;
@@ -81,6 +86,15 @@ export class SearchDataSource extends DataSource<SearchDoc> {
         });
     } else {
       this.clearData();
+    }
+  }
+
+  private getSearchString(q: string): string {
+    let match: RegExpExecArray;
+    if (q.length > 2) {
+      match = this.searchRegEx.exec(q);
+      
+      return match ? match[1] + ':' + '\"' + match[2] + '\"' : q; 
     }
   }
 

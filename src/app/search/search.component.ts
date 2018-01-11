@@ -45,8 +45,18 @@ export class SearchComponent implements OnInit {
       .fromEvent(this.q.nativeElement, 'keyup')
       .debounceTime(150)
       .distinctUntilChanged()
-      .subscribe(() => this.dataSource.qSubject.next(this.q.nativeElement.value));
+      .subscribe(() => this.search(this.q.nativeElement.value));
 
     this.dataSource.qSubject.subscribe(s => s, error => this.notificationService.notifySystemUnavailable());
+  }
+
+  search(query: string) {
+    this.dataSource.qSubject.next(query)
+  }
+
+  filterSearch(type: string, term: string) {
+    let query = type + ":" + term;
+    this.search(query);
+    this.q.nativeElement.value = query;
   }
 }
