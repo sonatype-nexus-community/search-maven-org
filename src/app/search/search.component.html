@@ -15,7 +15,7 @@
           {{'search.header.groupId' | translate}}
         </mat-header-cell>
         <mat-cell *matCellDef="let row" class="ellipsis">
-          <a (click)='filterSearch("g", row.id)'>{{ row.id }}</a>
+          <a (click)='filterSearch("g", row.g)'>{{ row.g }}</a>
         </mat-cell>
       </ng-container>
 
@@ -33,7 +33,9 @@
           {{'search.header.latestVersion' | translate}}
         </mat-header-cell>
         <mat-cell *matCellDef="let row" class="ellipsis xs-hide">
-          <a [routerLink]="['/artifact', row.g, row.a, row.latestVersion, row.p]">{{row.latestVersion}}</a>
+          <a *ngIf='row.latestVersion' [routerLink]="['/artifact', row.g, row.a, row.latestVersion, row.p]">{{row.latestVersion}}</a> 
+          <a *ngIf='row.latestVersion' (click)='allVersions(row.g, row.a)'>all ({{ row.versionCount }})</a>
+          <a *ngIf='row.v' [routerLink]="['/artifact', row.g, row.a, row.v, row.p]">{{row.v}}</a>
         </mat-cell>
       </ng-container>
 

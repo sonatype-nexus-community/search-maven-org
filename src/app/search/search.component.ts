@@ -54,9 +54,18 @@ export class SearchComponent implements OnInit {
     this.dataSource.qSubject.next(query)
   }
 
+  allVersions(g: string, a: string) {
+    let query = 'g:' + g + '+AND+' + 'a:' + a;
+    this.updateSearch(query + '&core=gav', query);
+  }
+
   filterSearch(type: string, term: string) {
     let query = type + ":" + term;
+    this.updateSearch(query, query);
+  }
+
+  updateSearch(query: string, inputString: string) {
     this.search(query);
-    this.q.nativeElement.value = query;
+    this.q.nativeElement.value = inputString;
   }
 }
