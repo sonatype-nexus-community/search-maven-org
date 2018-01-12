@@ -6,11 +6,13 @@ div.artifact {
   .artifact-details {
     display: flex;
     flex-wrap: wrap;
-    height: 100%;
-    overflow: auto;
 
     .mat-card {
       margin: 5px;
+    }
+
+    ::ng-deep .dependency-information {
+      padding-bottom: 15px;
     }
 
     .left {
@@ -20,30 +22,7 @@ div.artifact {
       width: 100%;
 
       @include gt-sm() {
-        width: 50%;
-      }
-
-      .mat-card {
-        height: 100%;
-        overflow: scroll;
-
-        &.project-information-card {
-          height: 550px;
-          overflow: hidden;
-        }
-
-        &.dependency-information-card {
-
-          ::ng-deep .dependency-information {
-            padding-bottom: 15px;
-          }
-        }
-
-        .mat-card-content {
-          > * {
-            width: 100%;
-          }
-        }
+        width: 70%;
       }
     }
 
@@ -53,13 +32,29 @@ div.artifact {
       width: 100%;
 
       @include gt-sm() {
-        width: 50%;
+        width: 30%;
       }
 
       .project-model-card {
         flex: 1 1 auto;
       }
     }
-  }
 
+    .mat-card-pom-content {
+      display: flex;
+
+      app-dependency-information {
+        overflow: hidden;
+      }
+
+      ::ng-deep .dependency-information {
+        height: 100%;
+        overflow: hidden;
+
+        .template-value {
+          height: 100%;
+        }
+      }
+    }
+  }
 }

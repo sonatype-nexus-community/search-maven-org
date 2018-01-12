@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class DependencyInformationComponent implements OnInit {
 
   @Input()
-  title: string;
+  headerText: string;
 
   @Input()
   value: string;

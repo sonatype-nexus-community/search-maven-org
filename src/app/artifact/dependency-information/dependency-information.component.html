@@ -1,9 +1,9 @@
 <div class="dependency-information">
 
-  <mat-toolbar color="accent" *ngIf="title">
+  <mat-toolbar color="primary" *ngIf="headerText">
 
     <mat-toolbar-row>
-      <span>{{title | translate}}</span>
+      <span>{{headerText | translate}}</span>
       <span class="flex-spacer"></span>
       <button mat-button [ngxClipboard]="copyTarget">
         <mat-icon>content_copy</mat-icon>

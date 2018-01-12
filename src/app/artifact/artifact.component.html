@@ -13,88 +13,27 @@
 
     <div class="left">
 
-      <mat-card class="project-information-card">
+      <mat-card class="mat-smo-default-card">
 
-        <mat-card-header class="mat-smo-card-header-toolbar">
+        <mat-card-header>
+          <mat-card-title>
+            <h2>{{ group }}:{{ artifact }}</h2>
+          </mat-card-title>
+          <mat-card-subtitle>
+            <h3>{{ version }}</h3>
+          </mat-card-subtitle>
+        </mat-card-header>
 
-          <mat-toolbar color="primary">
-            <mat-toolbar-row></mat-toolbar-row>
-
-            <mat-toolbar-row>
-              <span>{{ 'artifact.projectInformation' | translate }}</span>
-              <span class="flex-spacer"></span>
-            </mat-toolbar-row>
-
-          </mat-toolbar>
+        <mat-card-header>
 
         </mat-card-header>
 
-        <mat-card-content>
-          <mat-form-field>
-            <input matInput
-                   placeholder="{{ 'artifact.groupId' | translate }}" value="{{ group }}"
-                   readonly/>
-          </mat-form-field>
+        <mat-card-content class="mat-card-pom-content">
 
-          <mat-form-field>
-            <input matInput
-                   placeholder="{{ 'artifact.artifactId' | translate }}" value="{{ artifact }}"
-                   readonly/>
-          </mat-form-field>
+          <app-dependency-information headerText="artifact.projectModel"
+                                      value="{{ pom }}"
+                                      *ngIf="pom">
 
-          <mat-form-field>
-            <input matInput
-                   placeholder="{{ 'artifact.latestVersion' | translate }}" value="{{ version }}"
-                   readonly/>
-          </mat-form-field>
-        </mat-card-content>
-
-      </mat-card>
-
-      <mat-card class="dependency-information-card">
-
-        <mat-card-header class="mat-smo-card-header-toolbar">
-
-          <mat-toolbar color="primary">
-            <mat-toolbar-row></mat-toolbar-row>
-
-            <mat-toolbar-row>
-              <span>{{ 'artifact.dependencyInformation' | translate }}</span>
-              <span class="flex-spacer"></span>
-            </mat-toolbar-row>
-
-          </mat-toolbar>
-
-        </mat-card-header>
-
-        <mat-card-content>
-
-          <app-dependency-information title="artifact.apacheMaven"
-                                      value="{{apacheMavenTemplate(group, artifact, version)}}">
-          </app-dependency-information>
-
-          <app-dependency-information title="artifact.apacheBuildr"
-                                      value="{{apacheBuildrTemplate(group, artifact, version)}}">
-          </app-dependency-information>
-
-          <app-dependency-information title="artifact.apacheIvy"
-                                      value="{{apacheIvyTemplate(group, artifact, version)}}">
-          </app-dependency-information>
-
-          <app-dependency-information title="artifact.groovyGrape"
-                                      value="{{groovyGrapeTemplate(group, artifact, version)}}">
-          </app-dependency-information>
-
-          <app-dependency-information title="artifact.gradleGrails"
-                                      value="{{gradleGrailsTemplate(group, artifact, version)}}">
-          </app-dependency-information>
-
-          <app-dependency-information title="artifact.scalaSbt"
-                                      value="{{scalaSbtTemplate(group, artifact, version)}}">
-          </app-dependency-information>
-
-          <app-dependency-information title="artifact.leiningen"
-                                      value="{{leiningenTemplate(group, artifact, version)}}">
           </app-dependency-information>
 
         </mat-card-content>
@@ -105,27 +44,36 @@
 
     <div class="right">
 
-
-      <mat-card class="project-model-card">
-
-        <mat-card-header class="mat-smo-card-header-toolbar">
-
-          <mat-toolbar color="primary">
-            <mat-toolbar-row></mat-toolbar-row>
-
-            <mat-toolbar-row>
-              <span>{{ 'artifact.projectModel' | translate }}</span>
-              <span class="flex-spacer"></span>
-            </mat-toolbar-row>
-
-          </mat-toolbar>
-
-        </mat-card-header>
+      <mat-card class="mat-smo-default-card">
 
         <mat-card-content>
 
-          <app-dependency-information value="{{ pom }}">
+          <app-dependency-information headerText="artifact.apacheMaven"
+                                      value="{{apacheMavenTemplate(group, artifact, version)}}">
+          </app-dependency-information>
 
+          <app-dependency-information headerText="artifact.apacheBuildr"
+                                      value="{{apacheBuildrTemplate(group, artifact, version)}}">
+          </app-dependency-information>
+
+          <app-dependency-information headerText="artifact.apacheIvy"
+                                      value="{{apacheIvyTemplate(group, artifact, version)}}">
+          </app-dependency-information>
+
+          <app-dependency-information headerText="artifact.groovyGrape"
+                                      value="{{groovyGrapeTemplate(group, artifact, version)}}">
+          </app-dependency-information>
+
+          <app-dependency-information headerText="artifact.gradleGrails"
+                                      value="{{gradleGrailsTemplate(group, artifact, version)}}">
+          </app-dependency-information>
+
+          <app-dependency-information headerText="artifact.scalaSbt"
+                                      value="{{scalaSbtTemplate(group, artifact, version)}}">
+          </app-dependency-information>
+
+          <app-dependency-information headerText="artifact.leiningen"
+                                      value="{{leiningenTemplate(group, artifact, version)}}">
           </app-dependency-information>
 
         </mat-card-content>

@@ -1,9 +1,14 @@
-.footer {
-  background-color: #fff;
-  position: relative;
+@import '../../../styles.scss';
 
-  .tm-comment {
-    font-size: 10px;
-    text-align: center;
+::ng-deep app-footer {
+  background-color: $mat-smo-blue1;
+
+  .footer {
+    position: relative;
+
+    .tm-comment {
+      font-size: 10px;
+      text-align: center;
+    }
   }
 }

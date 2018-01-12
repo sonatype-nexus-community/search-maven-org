@@ -42,6 +42,7 @@ router-outlet + * {
   flex: 1 1 auto;
 
   > * {
+    background-color: $mat-smo-blue1;
     display: flex;
     flex: 1 1 auto;
     padding: 8px 16px;
@@ -101,7 +102,6 @@ router-outlet + * {
       width: 75%;
     }
   }
-
 }
 
 .mat-smo-card-header-toolbar {
@@ -113,4 +113,22 @@ router-outlet + * {
   height: 128px;
   margin: -24px -24px 16px -24px !important;
   width: calc(100% + 48px);
+}
+
+.mat-card {
+
+  &.mat-smo-default-card {
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+
+    .mat-card-content {
+      flex: auto;
+      overflow-y: auto;
+
+      > * {
+        width: 100%;
+      }
+    }
+  }
 }
