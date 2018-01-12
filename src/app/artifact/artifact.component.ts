@@ -66,6 +66,10 @@ export class ArtifactComponent implements OnInit {
     return `compile '${g}:${a}:${v}'`;
   }
 
+  gradleKotlinDslTemplate(g: string, a: string, v: string): string {
+  return `compile(group = "${g}", name = "${a}", version = "${v}")`;
+  }
+
   remoteRepositoryLink(): string {
     let groupSlash = this.group.replace(/\.+/g, '/');
     return `${groupSlash}/${this.artifact}/${this.version}/${this.artifact}-${this.version}.pom`;

@@ -46,6 +46,7 @@
     "apacheIvy": "Apache Ivy",
     "groovyGrape": "Groovy Grape",
     "gradleGrails": "Gradle/Grails",
+    "gradleKotlinDsl": "Gradle Kotlin DSL",
     "scalaSbt": "Scala SBT",
     "leiningen": "Leiningen",
     "copy": "Copy"
