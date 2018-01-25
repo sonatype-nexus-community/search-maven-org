@@ -17,7 +17,7 @@ export class SearchDataSource extends DataSource<SearchDoc> {
   subject: BehaviorSubject<SearchDoc[]>;
   qSubject: BehaviorSubject<string>;
 
-  totalCount: number = 0;
+  totalCount: number = -1;
 
   hasSearched: boolean = false;
 
@@ -116,6 +116,6 @@ export class SearchDataSource extends DataSource<SearchDoc> {
 
   private clearData() {
     this.subject.next([]);
-    this.totalCount = 0;
+    this.totalCount = -1;
   }
 }

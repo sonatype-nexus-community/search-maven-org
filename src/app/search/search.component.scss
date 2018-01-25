@@ -12,6 +12,7 @@ div.search {
     text-align: center;
 
     > * {
+      transition: 0.5s;
       width: 50%;
       max-width: 660px;
 
@@ -19,44 +20,43 @@ div.search {
         width: 80%;
       }
     }
-  }
 
-  .search-mode {
-    position: fixed;
-    top: 7px;
-    left: 45px;
-    background: white;
-    justify-content: left;
-
-    > * {
-      width: 100%;
-    }
-
-    ::ng-deep .mat-input-container {
-      .mat-form-field-wrapper {
-        padding-bottom: 0;
-
-        .mat-form-field-infix {
-          border-top: none;
-
-          .mat-form-field-label {
-            display: none;
-          }
-        }
-
-        .mat-form-field-underline {
-          bottom: 0.25em;
-        }
-      }
-    }
-
-    &.search-form {
+    &.search-mode {
       padding-top: 0;
       padding-left: 10px;
       width: calc(100% - 410px);
 
       @media (max-width: 720px) {
         width: calc(100% - 80px);
+      }
+
+      position: fixed;
+      top: 7px;
+      left: 45px;
+      background: white;
+      justify-content: left;
+
+      > * {
+        transition: 0.5s;
+        width: 100%;
+      }
+
+      ::ng-deep .mat-input-container {
+        .mat-form-field-wrapper {
+          padding-bottom: 0;
+
+          .mat-form-field-infix {
+            border-top: none;
+
+            .mat-form-field-label {
+              display: none;
+            }
+          }
+
+          .mat-form-field-underline {
+            bottom: 0.25em;
+          }
+        }
       }
     }
   }
@@ -66,8 +66,21 @@ div.search {
     flex-direction: column;
     height: 100%;
 
+    animation: slide-up .3s ease-out;
+
     &.hidden {
       display: none;
+    }
+
+    .none {
+      background: white;
+      bottom: 38px;
+      color: rgba(0, 0, 0, 0.54);
+      position: absolute;
+      padding: 0 24px;
+      text-align: right;
+      width: calc(100% - 80px);
+      z-index: 1;
     }
 
     .mat-table {
@@ -90,5 +103,27 @@ div.search {
     .mat-cell {
       padding-right: 15px;
     }
+  }
+}
+
+@-webkit-keyframes slide-up {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+
+@-moz-keyframes slide-up {
+  0% {
+    opacity: 0;
+    -moz-transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    -moz-transform: translateY(0);
   }
 }

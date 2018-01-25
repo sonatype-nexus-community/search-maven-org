@@ -6,9 +6,14 @@
     </mat-form-field>
   </div>
 
-  <div class="search-result" [ngClass]="{'hidden' : !dataSource.totalCount}">
+  <div class="search-result" [ngClass]="{'hidden' : dataSource.totalCount < 0}">
+
+    <div class="none" *ngIf="dataSource.totalCount == 0  && dataSource.hasSearched">
+      <h3>{{'search.result.none' | translate}}</h3>
+    </div>
 
     <mat-table #table [dataSource]="dataSource">
+
 
       <ng-container matColumnDef="groupId">
         <mat-header-cell *matHeaderCellDef>
@@ -33,7 +38,7 @@
           {{'search.header.latestVersion' | translate}}
         </mat-header-cell>
         <mat-cell *matCellDef="let row" class="ellipsis xs-hide">
-          <a *ngIf='row.latestVersion' [routerLink]="['/artifact', row.g, row.a, row.latestVersion, row.p]">{{row.latestVersion}}</a> 
+          <a *ngIf='row.latestVersion' [routerLink]="['/artifact', row.g, row.a, row.latestVersion, row.p]">{{row.latestVersion}}</a>
           <a *ngIf='row.latestVersion' (click)='allVersions(row.g, row.a)'>all ({{ row.versionCount }})</a>
           <a *ngIf='row.v' [routerLink]="['/artifact', row.g, row.a, row.v, row.p]">{{row.v}}</a>
         </mat-cell>
@@ -72,7 +77,4 @@
 
   </div>
 
-  <div *ngIf="dataSource.totalCount == 0  && dataSource.hasSearched">
-    <h3>{{'search.result.none' | translate}}</h3>
-  </div>
 </div>
