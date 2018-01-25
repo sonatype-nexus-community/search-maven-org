@@ -26,6 +26,7 @@ div.search {
     top: 7px;
     left: 45px;
     background: white;
+    justify-content: left;
 
     > * {
       width: 100%;
@@ -52,7 +53,11 @@ div.search {
     &.search-form {
       padding-top: 0;
       padding-left: 10px;
-      width: 300px;
+      width: calc(100% - 410px);
+
+      @media (max-width: 720px) {
+        width: calc(100% - 80px);
+      }
     }
   }
 
