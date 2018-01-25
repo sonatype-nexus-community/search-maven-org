@@ -42,7 +42,6 @@ router-outlet + * {
   flex: 1 1 auto;
 
   > * {
-    background-color: $mat-smo-blue1;
     display: flex;
     flex: 1 1 auto;
     padding: 8px 16px;

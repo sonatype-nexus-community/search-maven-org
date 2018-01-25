@@ -14,7 +14,6 @@ div.search {
     > * {
       transition: 0.5s;
       width: 50%;
-      max-width: 660px;
 
       @media (max-width: 720px) {
         width: 80%;
@@ -25,16 +24,18 @@ div.search {
       padding-top: 0;
       padding-left: 10px;
       width: calc(100% - 410px);
-
-      @media (max-width: 720px) {
-        width: calc(100% - 80px);
-      }
-
+      max-width: 660px;
       position: fixed;
       top: 7px;
       left: 45px;
       background: white;
       justify-content: left;
+      padding-right: 10px;
+      border-radius: 5px;
+
+      @media (max-width: 720px) {
+        width: calc(100% - 80px);
+      }
 
       > * {
         transition: 0.5s;
@@ -91,10 +92,9 @@ div.search {
     .mat-header-row {
       position: sticky;
       top: 0;
-      background: mat-color($accent);
 
       .mat-header-cell {
-        color: #fff;
+        //color: #fff;
         font-size: 14px;
         text-transform: uppercase;
       }

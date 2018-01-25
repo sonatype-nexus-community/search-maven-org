@@ -1,8 +1,12 @@
+@import '../../../assets/styles/smo-theme';
+
 .navbar-header {
+  background: linear-gradient(to right, #4776e6, #8e54e9);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   padding: 8px 16px;
+  color: $mat-smo-white;
 
   > .mat-button {
     &:last-child {
