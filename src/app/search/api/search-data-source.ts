@@ -72,8 +72,9 @@ export class SearchDataSource extends DataSource<SearchDoc> {
       if (q.length > 2) {
         q = this.getSearchString(q);
       }
+      this.hasSearched = true;
+
       this.searchService.search(q, start).map(searchResult => {
-        this.hasSearched = true;
         this.totalCount = searchResult.response.numFound;
         return searchResult;
       }).subscribe(
@@ -84,9 +85,10 @@ export class SearchDataSource extends DataSource<SearchDoc> {
         });
     } else {
       this.clearData();
+      this.hasSearched = false;
     }
   }
-  
+
   // LOL
   private isValid(query: string): boolean {
     if (query) {
@@ -115,6 +117,5 @@ export class SearchDataSource extends DataSource<SearchDoc> {
   private clearData() {
     this.subject.next([]);
     this.totalCount = 0;
-    this.hasSearched = false;
   }
 }
