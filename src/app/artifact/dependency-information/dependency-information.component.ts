@@ -11,7 +11,13 @@ export class DependencyInformationComponent implements OnInit {
   headerText: string;
 
   @Input()
+  subText: string;
+
+  @Input()
   value: string;
+
+  @Input()
+  image: string;
 
   constructor() { }
 

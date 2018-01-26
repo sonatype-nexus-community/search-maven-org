@@ -6,55 +6,78 @@ div.artifact {
   .artifact-details {
     display: flex;
     flex-wrap: wrap;
+    height: 100%;
 
     .mat-card {
       margin: 5px;
     }
 
-    ::ng-deep .dependency-information {
-      padding-bottom: 15px;
+    .dependency-information {
+      flex: 1 1 auto;
     }
 
     .left {
       display: flex;
       flex: 1 1 auto;
       flex-direction: column;
+      height: 100%;
       width: 100%;
+      overflow-y: scroll;
 
       @include gt-sm() {
         width: 70%;
+      }
+
+      app-dependency-information {
+        height: 100%;
+        display: flex;
+        flex: 1 1 auto;
+      }
+
+      ::ng-deep .mat-smo-dependency-information-card {
+
+        .mat-card-content {
+          margin-top: 30px;
+
+          .template-value {
+            height: 100%;
+            overflow: scroll;
+          }
+        }
       }
     }
 
     .right {
       display: flex;
       flex: 1 1 auto;
+      flex-direction: column;
       width: 100%;
+      overflow-y: scroll;
 
       @include gt-sm() {
         width: 30%;
       }
-
-      .project-model-card {
-        flex: 1 1 auto;
-      }
     }
 
-    .mat-card-pom-content {
-      display: flex;
-
-      app-dependency-information {
-        overflow: hidden;
-      }
-
-      ::ng-deep .dependency-information {
-        height: 100%;
-        overflow: hidden;
-
-        .template-value {
-          height: 100%;
-        }
-      }
+    ::ng-deep .mat-smo-dependency-information-card {
+      margin: 5px;
     }
+
+    //.mat-card-pom-content {
+    //  display: flex;
+    //
+    //  app-dependency-information {
+    //    overflow: hidden;
+    //  }
+    //
+    //  //::ng-deep .dependency-information {
+    //  //  height: 100%;
+    //  //  overflow: hidden;
+    //  //
+    //  //  .template-value {
+    //  //    height: 100%;
+    //  //  }
+    //  //}
+    //}
   }
 }

@@ -1,22 +1,27 @@
-<div class="dependency-information">
+<mat-card class="mat-elevation-z mat-smo-default-card mat-smo-dependency-information-card">
 
-  <mat-toolbar color="primary" *ngIf="headerText">
+  <mat-card-header>
+    <div mat-card-avatar class="mat-card-avatar img-{{ image }}">
+    </div>
+    <mat-card-title>{{ headerText | translate }}</mat-card-title>
+    <mat-card-subtitle>{{ subText | translate }}</mat-card-subtitle>
 
-    <mat-toolbar-row>
-      <span>{{headerText | translate}}</span>
-      <span class="flex-spacer"></span>
-      <button mat-button [ngxClipboard]="copyTarget">
+    <mat-card-actions>
+      <button mat-icon-button [ngxClipboard]="copyTarget">
         <mat-icon>content_copy</mat-icon>
-        {{ 'artifact.copy' | translate }}
       </button>
-    </mat-toolbar-row>
+    </mat-card-actions>
 
-  </mat-toolbar>
+  </mat-card-header>
 
-  <mat-form-field class="template-value input-no-underline muted-input">
-    <textarea matInput
-              matTextareaAutosize
-              #copyTarget
-              readonly>{{ value }}</textarea>
-  </mat-form-field>
-</div>
+  <mat-card-content>
+    <mat-form-field class="template-value input-no-underline">
+      <textarea matInput
+                matTextareaAutosize
+                #copyTarget
+                readonly>{{ value }}</textarea>
+    </mat-form-field>
+  </mat-card-content>
+
+
+</mat-card>

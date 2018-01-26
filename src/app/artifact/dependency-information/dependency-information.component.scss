@@ -1,22 +1,72 @@
-.dependency-information {
-  > * {
-    width: 100%;
+.mat-smo-dependency-information-card {
+
+  .mat-card-avatar {
+    background-size: cover;
+    border: 1px solid #eee;
+
+    &.img-mvn {
+      background-image: url('/assets/images/mvn.png');
+    }
+
+    &.img-buildr {
+      background-image: url('/assets/images/buildr.png');
+    }
+
+    &.img-ivy {
+      background-image: url('/assets/images/ivy.png');
+    }
+
+    &.img-groovy {
+      background-image: url('/assets/images/groovy.png');
+    }
+
+    &.img-grails {
+      background-image: url('/assets/images/grails.png');
+    }
+
+    &.img-kotlin {
+      background-image: url('/assets/images/kotlin.png');
+    }
+
+    &.img-purl {
+      background-image: url('/assets/images/purl.png');
+    }
+
+    &.img-scala {
+      background-image: url('/assets/images/sbt.svg');
+      background-position-x: center;
+    }
+
+    &.img-leiningen {
+      background-image: url('/assets/images/leiningen.jpg');
+    }
+
+    &.img-xml {
+      background-image: url('/assets/images/xml.svg');
+      background-position-x: center;
+    }
   }
 
-  .mat-toolbar-multiple-rows,
-  .mat-toolbar-row,
-  .mat-toolbar-single-row {
-    height: 48px;
-    max-height: 48px;
-    min-height: 48px;
-  }
+  .mat-card-content {
+    overflow-x: hidden;
+    padding: 0 15px;
 
-  .template-value {
-    height: 110px;
-    overflow: scroll;
+    .template-value {
 
-    textarea {
-      padding: 0 10px;
+      ::ng-deep .mat-form-field-wrapper {
+        margin: 0 15px;
+      }
+
+      overflow: hidden;
+      background-color: whitesmoke;
+
+      font-family: "Courier New", Courier, monospace;
+      line-height: 1.3;
+
+      textarea {
+        overflow: auto;
+        white-space: pre;
+      }
     }
   }
 }

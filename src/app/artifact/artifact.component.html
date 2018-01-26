@@ -13,76 +13,70 @@
 
     <div class="left">
 
-      <mat-card class="mat-smo-default-card">
-
-        <mat-card-header style="height: 170px;">
-          <mat-card-title>
-            <h2>{{ group }}:{{ artifact }}</h2>
-          </mat-card-title>
-          <mat-card-subtitle>
-            <h3>{{ version }}</h3>
-          </mat-card-subtitle>
-        </mat-card-header>
-
-        <mat-card-content class="mat-card-pom-content">
-
-          <app-dependency-information headerText="artifact.projectModel"
-                                      value="{{ pom }}"
-                                      *ngIf="pom">
-
-          </app-dependency-information>
-
-        </mat-card-content>
-
-      </mat-card>
+      <app-dependency-information headerText="{{ group }}:{{ artifact }}"
+                                  subText="{{ version }}"
+                                  image="xml"
+                                  value="{{ pom }}"
+                                  *ngIf="pom">
+      </app-dependency-information>
 
     </div>
 
     <div class="right">
 
-      <mat-card class="mat-smo-default-card">
+      <app-dependency-information headerText="artifact.apacheMaven"
+                                  subText="maven.apache.org"
+                                  image="mvn"
+                                  value="{{apacheMavenTemplate(group, artifact, version)}}">
+      </app-dependency-information>
 
-        <mat-card-content>
+      <app-dependency-information headerText="artifact.apacheBuildr"
+                                  subText="buildr.apache.org"
+                                  image="buildr"
+                                  value="{{apacheBuildrTemplate(group, artifact, version)}}">
+      </app-dependency-information>
 
-          <app-dependency-information headerText="artifact.apacheMaven"
-                                      value="{{apacheMavenTemplate(group, artifact, version)}}">
-          </app-dependency-information>
+      <app-dependency-information headerText="artifact.apacheIvy"
+                                  subText="ant.apache.org/ivy/"
+                                  image="ivy"
+                                  value="{{apacheIvyTemplate(group, artifact, version)}}">
+      </app-dependency-information>
 
-          <app-dependency-information headerText="artifact.apacheBuildr"
-                                      value="{{apacheBuildrTemplate(group, artifact, version)}}">
-          </app-dependency-information>
+      <app-dependency-information headerText="artifact.groovyGrape"
+                                  subText="groovy-lang.org/grape.html"
+                                  image="groovy"
+                                  value="{{groovyGrapeTemplate(group, artifact, version)}}">
+      </app-dependency-information>
 
-          <app-dependency-information headerText="artifact.apacheIvy"
-                                      value="{{apacheIvyTemplate(group, artifact, version)}}">
-          </app-dependency-information>
+      <app-dependency-information headerText="artifact.gradleGrails"
+                                  subText="grails.github.io/grails-gradle-plugin/"
+                                  image="grails"
+                                  value="{{gradleGrailsTemplate(group, artifact, version)}}">
+      </app-dependency-information>
 
-          <app-dependency-information headerText="artifact.groovyGrape"
-                                      value="{{groovyGrapeTemplate(group, artifact, version)}}">
-          </app-dependency-information>
+      <app-dependency-information headerText="artifact.gradleKotlinDsl"
+                                  subText="github.com/gradle/kotlin-dsl"
+                                  image="kotlin"
+                                  value="{{gradleKotlinDslTemplate(group, artifact, version)}}">
+      </app-dependency-information>
 
-          <app-dependency-information headerText="artifact.gradleGrails"
-                                      value="{{gradleGrailsTemplate(group, artifact, version)}}">
-          </app-dependency-information>
+      <app-dependency-information headerText="artifact.purlSpec"
+                                  subText="github.com/package-url/purl-spec"
+                                  image=""
+                                  value="{{purlTemplate(group, artifact, version)}}">
+      </app-dependency-information>
 
-          <app-dependency-information headerText="artifact.gradleKotlinDsl"
-                                      value="{{gradleKotlinDslTemplate(group, artifact, version)}}">
-          </app-dependency-information>
+      <app-dependency-information headerText="artifact.scalaSbt"
+                                  subText="scala-sbt.org"
+                                  image="scala"
+                                  value="{{scalaSbtTemplate(group, artifact, version)}}">
+      </app-dependency-information>
 
-          <app-dependency-information headerText="artifact.purlSpec"
-                                      value="{{purlTemplate(group, artifact, version)}}">
-          </app-dependency-information>
-
-          <app-dependency-information headerText="artifact.scalaSbt"
-                                      value="{{scalaSbtTemplate(group, artifact, version)}}">
-          </app-dependency-information>
-
-          <app-dependency-information headerText="artifact.leiningen"
-                                      value="{{leiningenTemplate(group, artifact, version)}}">
-          </app-dependency-information>
-
-        </mat-card-content>
-
-      </mat-card>
+      <app-dependency-information headerText="artifact.leiningen"
+                                  subText="leiningen.org"
+                                  image="leiningen"
+                                  value="{{leiningenTemplate(group, artifact, version)}}">
+      </app-dependency-information>
 
     </div>
 
