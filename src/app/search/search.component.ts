@@ -9,9 +9,7 @@ import 'rxjs/add/observable/fromEvent';
 import { MatPaginator } from "@angular/material";
 import { SearchDataSource } from "./api/search-data-source";
 import { Observable } from "rxjs/Observable";
-import { environment } from "../../environments/environment";
 import { NotificationService } from "../shared/notifications/notification.service";
-import { Doc } from "./api/doc";
 
 @Component({
   selector: 'app-search',
@@ -36,6 +34,7 @@ export class SearchComponent implements OnInit {
 
   constructor(private searchService: SearchService,
               private notificationService: NotificationService) {
+    console.log('consturctor')
   }
 
   ngOnInit() {
