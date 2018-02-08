@@ -24,6 +24,11 @@
 
     <div class="right">
 
+      <app-dependency-information headerText="artifact.mavenCentral"
+                                  subText="search.maven.org"
+                                  image="mvn"
+                                  value="{{mavenCentralBadge(group, artifact, version)}}">
+      </app-dependency-information>
       <app-dependency-information headerText="artifact.apacheMaven"
                                   subText="maven.apache.org"
                                   image="mvn"

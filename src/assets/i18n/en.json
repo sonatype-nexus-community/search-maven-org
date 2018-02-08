@@ -47,6 +47,7 @@
     "groovyGrape": "Groovy Grape",
     "gradleGrails": "Gradle/Grails",
     "gradleKotlinDsl": "Gradle Kotlin DSL",
+    "mavenCentral": "Maven Central Badge",
     "purlSpec": "PURL",
     "scalaSbt": "Scala SBT",
     "leiningen": "Leiningen",
