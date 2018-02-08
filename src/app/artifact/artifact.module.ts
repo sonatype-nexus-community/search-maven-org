@@ -8,11 +8,13 @@ import {
 import { createTranslateModule } from "../shared/translate/translate";
 import { DependencyInformationComponent } from './dependency-information/dependency-information.component';
 import { ArtifactService } from "./artifact.service";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   imports: [
     CommonModule,
     ClipboardModule,
+    FormsModule,
     MatInputModule,
     MatButtonModule,
     MatCardModule,
