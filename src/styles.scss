@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
 @import '~@angular/material/theming';
 @import './assets/styles/smo-theme';
 @import './assets/styles/smo-responsive';
@@ -9,7 +8,11 @@ $primary: mat-palette($mat-smo);
 $accent: mat-palette($mat-smo-accent);
 $theme: mat-light-theme($primary, $accent);
 
-@include mat-core();
+$custom-typography: mat-typography-config(
+  $font-family: 'BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;'
+);
+
+@include mat-core($custom-typography);
 @include angular-material-theme($theme);
 @include smo-app-theme($theme);
 
@@ -18,7 +21,10 @@ html, body {
 }
 
 body {
-  font-family: "Roboto", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
+  font-size: 1rem !important;
+  line-height: 1.7 !important;
+
   margin: 0;
   box-sizing: border-box;
   color: #333;

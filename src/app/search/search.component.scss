@@ -19,89 +19,70 @@ div.search {
         width: 80%;
       }
     }
+  }
+}
 
-    &.search-mode {
-      background: white;
-      border-radius: 5px;
-      padding-top: 0;
-      padding-left: 10px;
-      position: fixed;
-      max-width: 660px;
-      top: 7px;
-      left: 43px;
-      justify-content: left;
-      padding-right: 10px;
-      width: calc(100% - 410px);
+::ng-deep .mat-autocomplete-panel.search-auto-complete {
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  height: 70vh;
+  max-height: none;
 
-      @media (max-width: 720px) {
-        width: calc(100% - 80px);
+  .search-grouped-options {
+    margin-bottom: 10px;
+
+    .mat-option {
+      line-height: 24px;
+      height: 24px;
+
+      &.mat-option-title-value {
+        margin-top: 15px;
+        margin-bottom: 10px;
       }
 
-      > * {
-        transition: 0.5s;
-        width: 100%;
-      }
+      &.mat-active {
+        background-color: transparent;
 
-      ::ng-deep .mat-input-container {
-        .mat-form-field-wrapper {
-          padding-bottom: 0;
-
-          .mat-form-field-infix {
-            border-top: none;
-
-            .mat-form-field-label {
-              display: none;
-            }
-          }
-
-          .mat-form-field-underline {
-            bottom: 0.25em;
-          }
+        .option-value, .option-title-value {
+          background: rgba(69, 142, 225, 0.05);
         }
       }
-    }
-  }
 
-  .search-result {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+      &:hover:not(.mat-option-disabled) {
+        background-color: transparent;
 
-    animation: slide-up .3s ease-out;
-
-    &.hidden {
-      display: none;
-    }
-
-    .none {
-      background: white;
-      bottom: 38px;
-      color: rgba(0, 0, 0, 0.54);
-      position: absolute;
-      padding: 0 24px;
-      text-align: right;
-      width: calc(100% - 80px);
-      z-index: 1;
-    }
-
-    .mat-table {
-      flex: 1 1 auto;
-      overflow: auto;
-    }
-
-    .mat-header-row {
-      position: sticky;
-      top: 0;
-
-      .mat-header-cell {
-        //color: #fff;
-        font-size: 14px;
-        text-transform: uppercase;
+        .option-value, .option-title-value {
+          background: rgba(69, 142, 225, 0.05);
+        }
       }
-    }
 
-    .mat-cell {
-      padding-right: 15px;
+      .mat-option-text {
+        display: flex;
+        font-size: 14px;
+
+        .option-title-value {
+          border-bottom: 1px solid #ddd;
+          flex: 1 1 auto;
+          width: 15%;
+          font-size: 16px;
+          font-weight: 100;
+        }
+
+        .option-title {
+          color: #a4a7ae;
+          border-right: 1px solid #ddd;
+          flex: 1 1 auto;
+          text-align: right;
+          width: 15%;
+          padding-right: 10px;
+          font-weight: 100;
+        }
+
+        .option-value {
+          flex: 1 1 auto;
+          width: 85%;
+          padding-left: 10px;
+        }
+      }
     }
   }
 }

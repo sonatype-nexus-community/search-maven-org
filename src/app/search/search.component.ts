@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SearchService } from "./search.service";
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
@@ -6,10 +6,11 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/observable/fromEvent';
-import { MatPaginator } from "@angular/material";
-import { SearchDataSource } from "./api/search-data-source";
-import { Observable } from "rxjs/Observable";
 import { NotificationService } from "../shared/notifications/notification.service";
+import { Router } from "@angular/router";
+import { BehaviorSubject } from "rxjs/BehaviorSubject";
+import { FormControl } from "@angular/forms";
+import { SearchDoc } from "./api/search-doc";
 
 @Component({
   selector: 'app-search',
@@ -18,53 +19,37 @@ import { NotificationService } from "../shared/notifications/notification.servic
 })
 export class SearchComponent implements OnInit {
 
-  displayedColumns = [
-    'groupId',
-    'artifactId',
-    'latestVersion',
-    'updated',
-    'download'
-  ];
+  searchDocs: BehaviorSubject<SearchDoc[]> = new BehaviorSubject<SearchDoc[]>([]);
 
-  dataSource: SearchDataSource;
+  stateCtrl: FormControl;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  @ViewChild('q') q: ElementRef;
+  private query: string;
 
   constructor(private searchService: SearchService,
+              private router: Router,
               private notificationService: NotificationService) {
-    console.log('consturctor')
   }
 
   ngOnInit() {
-    this.dataSource = new SearchDataSource(this.searchService, this.paginator);
-
-    Observable
-      .fromEvent(this.q.nativeElement, 'keyup')
-      .debounceTime(150)
-      .distinctUntilChanged()
-      .subscribe(() => this.search(this.q.nativeElement.value));
-
-    this.dataSource.qSubject.subscribe(s => s, error => this.notificationService.notifySystemUnavailable());
+    this.stateCtrl = new FormControl();
+    this.stateCtrl.valueChanges.subscribe(s => this.search(s));
   }
 
   search(query: string) {
-    this.dataSource.qSubject.next(query)
+    this.query = query;
+
+    if (this.query) {
+      this.searchService
+        .search(this.query, 0)
+        .subscribe(
+          searchResult => this.searchDocs.next(searchResult.response.docs),
+          error => this.notificationService.notifySystemUnavailable());
+    } else {
+      this.searchDocs.next([]);
+    }
   }
 
-  allVersions(g: string, a: string) {
-    let query = 'g:' + g + '+AND+' + 'a:' + a;
-    this.updateSearch(query + '&core=gav', query);
-  }
-
-  filterSearch(type: string, term: string) {
-    let query = type + ":" + term;
-    this.updateSearch(query, query);
-  }
-
-  updateSearch(query: string, inputString: string) {
-    this.search(query);
-    this.q.nativeElement.value = inputString;
+  onEnter() {
+    this.router.navigate(['/search'], {queryParams: {q: this.query}});
   }
 }

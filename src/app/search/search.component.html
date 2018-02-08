@@ -1,79 +1,35 @@
 <div class="search">
-  <div class="search-form" [ngClass]="{'search-mode' : dataSource.hasSearched}">
+  <div class="search-form" [ngClass]="{'search-mode' : true}">
     <mat-form-field>
-      <input matInput #q placeholder="Search" class="">
+
+      <input matInput
+             placeholder="Search"
+             [matAutocomplete]="auto"
+             [formControl]="stateCtrl"
+             (keyup.enter)="onEnter()"
+             class="">
+
+      <mat-autocomplete #auto="matAutocomplete" class="search-auto-complete mat-elevation-z">
+        <div *ngFor="let doc of searchDocs | async" class="search-grouped-options">
+          <mat-option [routerLink]="['/search']"
+                      [queryParams]="{q: 'g:' + doc.g}" [value]="'g:' + doc.g"
+                      class="mat-option-title-value">
+            <div class="option-title-value">{{ doc.g}}</div>
+          </mat-option>
+          <mat-option [routerLink]="['/search']" [queryParams]="{q: 'a:' + doc.a}" [value]="'a:' + doc.a">
+            <div class="option-title">{{'search.header.artifactId' | translate}}</div>
+            <div class="option-value">{{ doc.a }}</div>
+          </mat-option>
+          <mat-option [routerLink]="['/artifact', doc.g, doc.a, doc.latestVersion, doc.p]">
+            <div class="option-title">{{'search.header.latestVersion' | translate}}</div>
+            <div class="option-value">{{ doc.latestVersion }}</div>
+          </mat-option>
+        </div>
+      </mat-autocomplete>
+
       <mat-icon matSuffix color="primary">search</mat-icon>
+
     </mat-form-field>
-  </div>
-
-  <div class="search-result" [ngClass]="{'hidden' : dataSource.totalCount < 0}">
-
-    <div class="none" *ngIf="dataSource.totalCount == 0  && dataSource.hasSearched">
-      <h3>{{'search.result.none' | translate}}</h3>
-    </div>
-
-    <mat-table #table [dataSource]="dataSource">
-
-
-      <ng-container matColumnDef="groupId">
-        <mat-header-cell *matHeaderCellDef>
-          {{'search.header.groupId' | translate}}
-        </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="ellipsis">
-          <a (click)='filterSearch("g", row.g)'>{{ row.g }}</a>
-        </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="artifactId">
-        <mat-header-cell *matHeaderCellDef class="xs-hide">
-          {{'search.header.artifactId' | translate}}
-        </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="ellipsis xs-hide">
-          <a (click)='filterSearch("a", row.a)'>{{row.a}}</a>
-        </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="latestVersion">
-        <mat-header-cell *matHeaderCellDef class="xs-hide">
-          {{'search.header.latestVersion' | translate}}
-        </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="ellipsis xs-hide">
-          <a *ngIf='row.latestVersion' [routerLink]="['/artifact', row.g, row.a, row.latestVersion, row.p]">{{row.latestVersion}}</a>
-          <a *ngIf='row.latestVersion' (click)='allVersions(row.g, row.a)'>all ({{ row.versionCount }})</a>
-          <a *ngIf='row.v' [routerLink]="['/artifact', row.g, row.a, row.v, row.p]">{{row.v}}</a>
-        </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="updated">
-        <mat-header-cell *matHeaderCellDef class="xs-hide sm-hide">
-          {{'search.header.updated' | translate}}
-        </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="ellipsis xs-hide sm-hide">
-          {{row.timestamp | date : format : timezone}}
-        </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="download">
-        <mat-header-cell *matHeaderCellDef class="xs-hide sm-hide">
-          {{'search.header.download' | translate}}
-        </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="ellipsis xs-hide sm-hide">
-          <span *ngFor="let dl of row.downloadLinks">
-            <a target="_blank" href="{{ dl.link}}">{{ dl.name | slice:1}}</a>
-          </span>
-        </mat-cell>
-      </ng-container>
-
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-
-    </mat-table>
-
-    <mat-paginator #paginator
-                   [length]="dataSource.totalCount"
-                   [pageIndex]="0"
-                   [pageSize]="20">
-    </mat-paginator>
 
   </div>
 

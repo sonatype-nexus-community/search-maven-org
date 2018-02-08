@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchComponent } from './search.component';
 import {
+  MatAutocompleteModule,
   MatButtonModule,
   MatFormFieldModule, MatIconModule, MatInputModule, MatPaginatorModule,
   MatTableModule
@@ -10,6 +11,7 @@ import { SearchService } from "./search.service";
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from '@angular/router';
 import { createTranslateModule } from "../shared/translate/translate";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   imports: [
@@ -21,7 +23,10 @@ import { createTranslateModule } from "../shared/translate/translate";
     MatIconModule,
     MatPaginatorModule,
     MatButtonModule,
+    MatAutocompleteModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
     createTranslateModule()
   ],
   providers: [
