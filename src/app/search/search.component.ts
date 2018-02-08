@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SearchService } from "./search.service";
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
@@ -23,7 +23,10 @@ export class SearchComponent implements OnInit {
 
   stateCtrl: FormControl;
 
-  private query: string;
+  @Input()
+  startQuery: string;
+
+  query: string;
 
   constructor(private searchService: SearchService,
               private router: Router,
@@ -33,9 +36,22 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.stateCtrl = new FormControl();
     this.stateCtrl.valueChanges.subscribe(s => this.search(s));
+    this.stateCtrl.setValue(this.startQuery);
   }
 
-  search(query: string) {
+  navigate() {
+    if (this.query) {
+      this.router.navigate(['/search'], {queryParams: {q: this.query}});
+      this.clearSearchResults();
+    }
+  }
+
+  clearQuery() {
+    this.stateCtrl.setValue('');
+    this.clearSearchResults();
+  }
+
+  private search(query: string) {
     this.query = query;
 
     if (this.query) {
@@ -45,11 +61,11 @@ export class SearchComponent implements OnInit {
           searchResult => this.searchDocs.next(searchResult.response.docs),
           error => this.notificationService.notifySystemUnavailable());
     } else {
-      this.searchDocs.next([]);
+      this.clearSearchResults();
     }
   }
 
-  onEnter() {
-    this.router.navigate(['/search'], {queryParams: {q: this.query}});
+  private clearSearchResults() {
+    this.searchDocs.next([]);
   }
 }

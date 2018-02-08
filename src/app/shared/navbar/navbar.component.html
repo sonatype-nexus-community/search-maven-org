@@ -7,6 +7,8 @@
         fill="#fff"></path>
     </svg>
   </a>
+  <app-search *ngIf="q" [startQuery]="q" class="navbar-search">
+  </app-search>
   <div class="flex-spacer"></div>
   <!--<button mat-button
      class="button navbar-hide-small"
@@ -35,7 +37,7 @@
   </button>
 </nav>
 <nav class="navbar navbar-show-small">
-  <button mat-button
+  <!--<button mat-button
      class="navbar-link ellipsis"
      routerLink="search"
      aria-label="Search">
@@ -46,7 +48,7 @@
      routerLink="advanced-search"
      aria-label="Advanced Search">
     {{ 'navbar.advanced' | translate }}
-  </button>
+  </button>-->
   <!--<button mat-button
      class="navbar-link ellipsis"
      href="https://repo1.maven.org/maven2/"

@@ -1,12 +1,13 @@
 <div class="search">
-  <div class="search-form" [ngClass]="{'search-mode' : true}">
+  <div class="search-form">
+
     <mat-form-field>
 
       <input matInput
              placeholder="Search"
              [matAutocomplete]="auto"
              [formControl]="stateCtrl"
-             (keyup.enter)="onEnter()"
+             (keyup.enter)="navigate()"
              class="">
 
       <mat-autocomplete #auto="matAutocomplete" class="search-auto-complete mat-elevation-z">
@@ -27,7 +28,12 @@
         </div>
       </mat-autocomplete>
 
-      <mat-icon matSuffix color="primary">search</mat-icon>
+      <mat-icon *ngIf="query?.length > 0"
+                matSuffix color="primary"
+                (click)="clearQuery()">close</mat-icon>
+
+      <mat-icon matSuffix color="primary"
+                (click)="navigate()">search</mat-icon>
 
     </mat-form-field>
 

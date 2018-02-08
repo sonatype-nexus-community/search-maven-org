@@ -19,6 +19,10 @@ div.search {
         width: 80%;
       }
     }
+
+    ::ng-deep .mat-icon {
+      cursor: pointer;
+    }
   }
 }
 
@@ -75,12 +79,21 @@ div.search {
           width: 15%;
           padding-right: 10px;
           font-weight: 100;
+          min-width: 150px;
+
+          @media (max-width: 720px) {
+            width: 40%;
+          }
         }
 
         .option-value {
           flex: 1 1 auto;
           width: 85%;
           padding-left: 10px;
+
+          @media (max-width: 720px) {
+            width: 60%;
+          }
         }
       }
     }

@@ -17,6 +17,52 @@
   .logo {
     max-width: 300px;
   }
+
+  ::ng-deep .navbar-search {
+    flex: 1 1 auto;
+
+    @media (max-width: 720px) {
+      width: 100%;
+    }
+
+    div.search {
+
+      .search-form {
+        padding-top: 0;
+        background: white;
+        border-radius: 5px;
+        color: black;
+
+        > * {
+          width: 100% !important;
+
+          @media (max-width: 720px) {
+            width: 100% !important;
+          }
+        }
+
+        .mat-input-container {
+          padding: 0 10px;
+
+          .mat-form-field-wrapper {
+            padding-bottom: 0;
+
+            .mat-form-field-infix {
+              border-top: none;
+
+              .mat-form-field-label {
+                display: none;
+              }
+            }
+
+            .mat-form-field-underline {
+              bottom: 0.25em;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .navbar-link {

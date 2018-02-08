@@ -4,6 +4,7 @@ import { MatButtonModule, MatMenuModule } from "@angular/material";
 import { RouterModule } from "@angular/router";
 import { NavbarComponent } from "./navbar.component";
 import { createTranslateModule } from "../translate/translate";
+import { SearchModule } from "../../search/search.module";
 
 @NgModule({
   imports: [
@@ -11,6 +12,7 @@ import { createTranslateModule } from "../translate/translate";
     MatMenuModule,
     RouterModule,
     CommonModule,
+    SearchModule,
     createTranslateModule()
   ],
   exports: [NavbarComponent],
