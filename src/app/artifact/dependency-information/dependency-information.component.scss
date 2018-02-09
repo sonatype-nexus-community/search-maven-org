@@ -45,6 +45,11 @@
       background-image: url('/assets/images/xml.svg');
       background-position-x: center;
     }
+
+    &.img-badge {
+      background-image: url('/assets/images/badge.svg');
+      background-position-x: left;
+    }
   }
 
   .mat-card-content {
