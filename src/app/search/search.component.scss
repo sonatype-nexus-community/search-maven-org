@@ -20,13 +20,16 @@ div.search {
       }
     }
 
-    ::ng-deep .mat-icon {
-      cursor: pointer;
+    @include deep {
+      .mat-icon {
+        cursor: pointer;
+      }
     }
   }
 }
 
-::ng-deep .mat-autocomplete-panel.search-auto-complete {
+@include deep {
+  .mat-autocomplete-panel.search-auto-complete {
   box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
   height: 70vh;
   max-height: none;
@@ -98,6 +101,7 @@ div.search {
       }
     }
   }
+}
 }
 
 @-webkit-keyframes slide-up {

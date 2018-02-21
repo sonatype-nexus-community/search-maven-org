@@ -1,13 +1,14 @@
-@import '../../../styles.scss';
+@import '../../../assets/styles/mixins.scss';
 
-::ng-deep app-footer {
+@include deep {
+  app-footer {
+    .footer {
+      position: relative;
 
-  .footer {
-    position: relative;
-
-    .tm-comment {
-      font-size: 10px;
-      text-align: center;
+      .tm-comment {
+        font-size: 10px;
+        text-align: center;
+      }
     }
   }
 }

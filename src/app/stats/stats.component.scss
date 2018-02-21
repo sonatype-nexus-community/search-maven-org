@@ -32,3 +32,31 @@
     }
   }
 }
+
+.label-value-table {
+  display: flex;
+
+  .label-column {
+    width: 50%;
+
+    @include md {
+      width: 40%;
+    }
+
+    @include gt-md {
+      width: 25%;
+    }
+  }
+
+  .value-column {
+    width: 50%;
+
+    @include md {
+      width: 60%;
+    }
+
+    @include gt-md {
+      width: 75%;
+    }
+  }
+}

@@ -90,3 +90,34 @@
     display: none !important;
   }
 }
+
+@mixin display-flex() {
+  display: flex;
+}
+
+@mixin flex-auto() {
+  flex: 1 1 auto;
+}
+
+@mixin display-flex-auto() {
+  @include display-flex();
+
+  flex: 1 1 auto;
+}
+
+@mixin display-flex-column() {
+  @include display-flex();
+
+  flex-direction: column;
+}
+
+@mixin display-flex-column-auto() {
+  @include display-flex-column();
+
+  flex: 1 1 auto;
+}
+
+@mixin full-size() {
+  height: 100%;
+  width: 100%;
+}

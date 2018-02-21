@@ -1,5 +1,32 @@
+@import '../../assets/styles/smo-theme';
+
+@mixin deep() {
+  ::ng-deep {
+    @content
+  }
+}
+
 @mixin md-icon-size($size: 24px) {
   font-size: $size;
   height: $size;
   width: $size;
+}
+
+.mat-input-container.input-no-underline .mat-input-underline {
+  display: none;
+}
+
+.flex-spacer {
+  flex-grow: 1;
+}
+
+.ellipsis {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.muted {
+  color: $smo-muted-color;
 }

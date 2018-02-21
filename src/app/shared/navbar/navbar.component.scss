@@ -1,12 +1,13 @@
+@import '../../../assets/styles/mixins';
 @import '../../../assets/styles/smo-theme';
 
 .navbar-header {
-  background: linear-gradient(to right, #4776e6, #8e54e9);
+  background: linear-gradient(to right, $smo-blue, $smo-purple);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   padding: 8px 16px;
-  color: $mat-smo-white;
+  color: $smo-white;
 
   > .mat-button {
     &:last-child {
@@ -18,45 +19,47 @@
     max-width: 300px;
   }
 
-  ::ng-deep .navbar-search {
-    flex: 1 1 auto;
+  @include deep {
+    .navbar-search {
+      flex: 1 1 auto;
 
-    @media (max-width: 720px) {
-      width: 100%;
-    }
+      @media (max-width: 720px) {
+        width: 100%;
+      }
 
-    div.search {
+      div.search {
 
-      .search-form {
-        padding-top: 0;
-        background: white;
-        border-radius: 5px;
-        color: black;
+        .search-form {
+          padding-top: 0;
+          background: white;
+          border-radius: 5px;
+          color: black;
 
-        > * {
-          width: 100% !important;
-
-          @media (max-width: 720px) {
+          > * {
             width: 100% !important;
-          }
-        }
 
-        .mat-input-container {
-          padding: 0 10px;
-
-          .mat-form-field-wrapper {
-            padding-bottom: 0;
-
-            .mat-form-field-infix {
-              border-top: none;
-
-              .mat-form-field-label {
-                display: none;
-              }
+            @media (max-width: 720px) {
+              width: 100% !important;
             }
+          }
 
-            .mat-form-field-underline {
-              bottom: 0.25em;
+          .mat-input-container {
+            padding: 0 10px;
+
+            .mat-form-field-wrapper {
+              padding-bottom: 0;
+
+              .mat-form-field-infix {
+                border-top: none;
+
+                .mat-form-field-label {
+                  display: none;
+                }
+              }
+
+              .mat-form-field-underline {
+                bottom: 0.25em;
+              }
             }
           }
         }
@@ -100,12 +103,4 @@
     display: flex;
     padding: 0 3px;
   }
-}
-
-@mixin nav-bar-theme($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $background: map-get($theme, background);
-  $foreground: map-get($theme, foreground);
 }

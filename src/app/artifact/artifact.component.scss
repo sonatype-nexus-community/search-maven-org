@@ -34,14 +34,16 @@ div.artifact {
         flex: 1 1 auto;
       }
 
-      ::ng-deep .mat-smo-dependency-information-card {
+      @include deep {
+        .mat-smo-dependency-information-card {
 
-        .mat-card-content {
-          margin-top: 30px;
+          .mat-card-content {
+            margin-top: 30px;
 
-          .template-value {
-            height: 100%;
-            overflow: scroll;
+            .template-value {
+              height: 100%;
+              overflow: scroll;
+            }
           }
         }
       }
@@ -59,8 +61,10 @@ div.artifact {
       }
     }
 
-    ::ng-deep .mat-smo-dependency-information-card {
-      margin: 5px;
+    @include deep {
+      .mat-smo-dependency-information-card {
+        margin: 5px;
+      }
     }
   }
 }

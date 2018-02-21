@@ -1,11 +1,24 @@
+@import '../../../assets/styles/mixins.scss';
+@import '../../../assets/styles/smo-theme';
+
+@mixin avatar-img($url) {
+  background-image: url('/assets/images/' + $url);
+}
+
 .mat-smo-dependency-information-card {
 
   .mat-card-avatar {
     background-size: cover;
-    border: 1px solid #eee;
+    border: 1px solid $smo-border-color;
+
+    &.img-badge {
+      background-image: url('/assets/images/badge.svg');
+      background-position-x: left;
+    }
+
 
     &.img-mvn {
-      background-image: url('/assets/images/mvn.png');
+      @include avatar-img('mvn.png');
     }
 
     &.img-buildr {
@@ -45,11 +58,6 @@
       background-image: url('/assets/images/xml.svg');
       background-position-x: center;
     }
-
-    &.img-badge {
-      background-image: url('/assets/images/badge.svg');
-      background-position-x: left;
-    }
   }
 
   .mat-card-content {
@@ -58,8 +66,10 @@
 
     .template-value {
 
-      ::ng-deep .mat-form-field-wrapper {
-        margin: 0 15px;
+      @include deep {
+        .mat-form-field-wrapper {
+          margin: 0 15px;
+        }
       }
 
       overflow: hidden;

@@ -1,4 +1,18 @@
-$mat-smo: (
+@import '~@angular/material/theming';
+
+// Individual colours
+
+$smo-white: #fff;
+$smo-blue: #4776e6;
+$smo-purple: #8e54e9;
+$smo-text-color: #333;
+$smo-muted-color: #999;
+$smo-border-color:  rgba(10, 10, 10, 0.1);
+$smo-border-color-2:  #eee;
+
+// Theme Pallets
+
+$smo-primary: (
   50 : #e7eef6,
   100 : #c2d5e7,
   200 : #9ab9d8,
@@ -31,7 +45,7 @@ $mat-smo: (
   )
 );
 
-$mat-smo-accent: (
+$smo-accent: (
   50 : #f1eafc,
   100 : #ddccf8,
   200 : #c7aaf4,
@@ -64,5 +78,8 @@ $mat-smo-accent: (
   )
 );
 
-$mat-smo-white: #fff;
-$mat-smo-blue1: #E8EEF4;
+$primary: mat-palette($smo-primary);
+$accent: mat-palette($smo-accent);
+$theme: mat-light-theme($primary, $accent);
+
+@include angular-material-theme($theme);

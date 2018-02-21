@@ -1,11 +1,33 @@
 @import './shared/navbar/navbar.component';
+@import '../assets/styles/responsive';
+@import '../assets/styles/smo-theme';
 
-@mixin smo-app-theme($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $background: map-get($theme, background);
-  $foreground: map-get($theme, foreground);
+.mat-card {
+  &.mat-smo-default-card {
+    background-color: $smo-white;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px $smo-border-color, 0 0 0 1px $smo-border-color;
+    padding: 1.25rem;
 
-  @include nav-bar-theme($theme);
+    @include display-flex-column-auto();
+
+    .mat-card-content {
+      overflow-y: auto;
+
+      @include flex-auto();
+
+      > * {
+        width: 100%;
+      }
+    }
+
+    .mat-card-header {
+      .mat-card-actions {
+        color: mat-color($accent);
+        position: absolute;
+        right: 15px;
+        top: 0;
+      }
+    }
+  }
 }
