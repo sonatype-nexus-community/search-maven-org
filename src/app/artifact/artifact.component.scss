@@ -4,34 +4,27 @@ div.artifact {
   flex-direction: column;
 
   .artifact-details {
-    display: flex;
     flex-wrap: wrap;
-    height: 100%;
+
+    @include display-flex();
+    @include full-size();
 
     .mat-card {
       margin: 5px;
     }
 
-    .dependency-information {
-      flex: 1 1 auto;
-    }
-
     .left {
-      display: flex;
-      flex: 1 1 auto;
-      flex-direction: column;
-      height: 100%;
-      width: 100%;
       overflow-y: scroll;
 
+      @include display-flex-column-auto();
+      @include full-size();
       @include gt-sm() {
         width: 70%;
       }
 
       app-dependency-information {
-        height: 100%;
-        display: flex;
-        flex: 1 1 auto;
+        @include display-flex-auto();
+        @include full-size();
       }
 
       @include deep {
@@ -41,8 +34,9 @@ div.artifact {
             margin-top: 30px;
 
             .template-value {
-              height: 100%;
               overflow: scroll;
+
+              @include full-size();
             }
           }
         }
@@ -50,12 +44,10 @@ div.artifact {
     }
 
     .right {
-      display: flex;
-      flex: 1 1 auto;
-      flex-direction: column;
-      width: 100%;
       overflow-y: scroll;
+      width: 100%;
 
+      @include display-flex-column-auto();
       @include gt-sm() {
         width: 30%;
       }
