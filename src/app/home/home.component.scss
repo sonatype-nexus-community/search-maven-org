@@ -2,7 +2,48 @@
 @import '../../assets/styles/responsive';
 
 @include deep {
-  .home-search div.search {
-    @include full-size();
+
+  app-home {
+    flex-direction: column;
+
+    .center {
+      justify-content: center;
+
+      .bg-community-img {
+        width: 100%;
+        background-image: url('/assets/images/1500x500.jpeg');
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        @include gt-sm() {
+          width: 50%;
+        }
+      }
+    }
+  }
+
+  .home-search {
+    max-height: 150px;
+
+    div.search {
+      @include full-size();
+    }
+  }
+
+  .home-sub-text {
+    max-height: 105px;
+
+    h1 {
+      color: $smo-muted-color;
+      text-align: center;
+      font-style: italic;
+      font-size: 18px;
+      font-weight: 100;
+      width: 50%;
+
+      @include gt-sm() {
+        font-size: 2em;
+      }
+    }
   }
 }
