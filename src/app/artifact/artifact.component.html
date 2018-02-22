@@ -24,21 +24,22 @@
 
     <div class="right">
 
-      <app-dependency-information headerText="artifact.mavenCentral"
-                                  subText="search.maven.org"
-                                  image="badge"
-                                  value="{{mavenCentralBadge(group, artifact, version)}}">
-      </app-dependency-information>
       <app-dependency-information headerText="artifact.apacheMaven"
                                   subText="maven.apache.org"
                                   image="mvn"
                                   value="{{apacheMavenTemplate(group, artifact, version)}}">
       </app-dependency-information>
 
-      <app-dependency-information headerText="artifact.apacheBuildr"
-                                  subText="buildr.apache.org"
-                                  image="buildr"
-                                  value="{{apacheBuildrTemplate(group, artifact, version)}}">
+      <app-dependency-information headerText="artifact.gradleGrails"
+                                  subText="grails.github.io/grails-gradle-plugin/"
+                                  image="grails"
+                                  value="{{gradleGrailsTemplate(group, artifact, version)}}">
+      </app-dependency-information>
+
+      <app-dependency-information headerText="artifact.scalaSbt"
+                                  subText="scala-sbt.org"
+                                  image="scala"
+                                  value="{{scalaSbtTemplate(group, artifact, version)}}">
       </app-dependency-information>
 
       <app-dependency-information headerText="artifact.apacheIvy"
@@ -53,10 +54,16 @@
                                   value="{{groovyGrapeTemplate(group, artifact, version)}}">
       </app-dependency-information>
 
-      <app-dependency-information headerText="artifact.gradleGrails"
-                                  subText="grails.github.io/grails-gradle-plugin/"
-                                  image="grails"
-                                  value="{{gradleGrailsTemplate(group, artifact, version)}}">
+      <app-dependency-information headerText="artifact.leiningen"
+                                  subText="leiningen.org"
+                                  image="leiningen"
+                                  value="{{leiningenTemplate(group, artifact, version)}}">
+      </app-dependency-information>
+
+      <app-dependency-information headerText="artifact.apacheBuildr"
+                                  subText="buildr.apache.org"
+                                  image="buildr"
+                                  value="{{apacheBuildrTemplate(group, artifact, version)}}">
       </app-dependency-information>
 
       <app-dependency-information headerText="artifact.gradleKotlinDsl"
@@ -65,22 +72,16 @@
                                   value="{{gradleKotlinDslTemplate(group, artifact, version)}}">
       </app-dependency-information>
 
+      <app-dependency-information headerText="artifact.mavenCentral"
+                                  subText="search.maven.org"
+                                  image="badge"
+                                  value="{{mavenCentralBadge(group, artifact, version)}}">
+      </app-dependency-information>
+
       <app-dependency-information headerText="artifact.purlSpec"
                                   subText="github.com/package-url/purl-spec"
                                   image=""
                                   value="{{purlTemplate(group, artifact, version)}}">
-      </app-dependency-information>
-
-      <app-dependency-information headerText="artifact.scalaSbt"
-                                  subText="scala-sbt.org"
-                                  image="scala"
-                                  value="{{scalaSbtTemplate(group, artifact, version)}}">
-      </app-dependency-information>
-
-      <app-dependency-information headerText="artifact.leiningen"
-                                  subText="leiningen.org"
-                                  image="leiningen"
-                                  value="{{leiningenTemplate(group, artifact, version)}}">
       </app-dependency-information>
 
     </div>
