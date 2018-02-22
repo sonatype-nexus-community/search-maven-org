@@ -1,0 +1,8 @@
+@import '../../assets/styles/mixins';
+@import '../../assets/styles/responsive';
+
+@include deep {
+  .home-search div.search {
+    @include full-size();
+  }
+}

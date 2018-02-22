@@ -13,6 +13,8 @@ import { FooterModule } from "./shared/footer/footer.module";
 import { StatsModule } from "./stats/stats.module";
 import { ArtifactModule } from './artifact/artifact.module';
 import { NotificationsModule } from "./shared/notifications/notifications.module";
+import { HomeComponent } from './home/home.component';
+import { HomeModule } from "./home/home.module";
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { NotificationsModule } from "./shared/notifications/notifications.module
     NavbarModule,
     FooterModule,
     NotificationsModule,
+    HomeModule,
     SearchModule,
     StatsModule,
     ArtifactModule
