@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, isDevMode } from '@angular/core';
 import { TranslateService } from "@ngx-translate/core";
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,19 @@ import { TranslateService } from "@ngx-translate/core";
 })
 export class AppComponent {
 
-  constructor(translate: TranslateService) {
+  constructor(private router: Router, translate: TranslateService) {
+    if (isDevMode()) {
+      console.log('👋 Development!');
+    } else {
+      this.router.events.subscribe(event => {
+        if (event instanceof NavigationEnd) {
+          (<any>window).ga('set', 'page', event.urlAfterRedirects);
+          (<any>window).ga('send', 'pageview');
+        }
+      });
+    }
+
     translate.setDefaultLang('en');
     translate.use('en');
   }
-
 }
