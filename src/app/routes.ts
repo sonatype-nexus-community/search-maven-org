@@ -19,6 +19,7 @@ import { StatsComponent } from "./stats/stats.component";
 import { ArtifactComponent } from "./artifact/artifact.component";
 import { ArtifactsComponent } from "./artifact/artifacts.component";
 import { HomeComponent } from "./home/home.component";
+import { AdvancedSearchComponent } from "./search/advanced-search.component";
 
 export const SMO_ROUTES: Routes = [
   {
@@ -35,6 +36,10 @@ export const SMO_ROUTES: Routes = [
   {
     path: 'search',
     component: ArtifactsComponent
+  },
+  {
+    path: 'advancedsearch',
+    component: AdvancedSearchComponent
   },
   {
     path: '**',
