@@ -36,8 +36,8 @@ It's important to note, as part of understanding this project, how and why it wa
   * Angular 5 - Really low start up cost to learn and to implement
   * Angular CLI - Command Line tool for super easy creation of Angular components
   * Typescript - Easy language for most of our developers to jump on
-  * NPM - "trust" worthy package manager that is supported by Nexus Repository
-    * You can use Yarn instead :)
+  * NPM - package manager that is supported by Nexus Repository
+    * You can use Yarn if you'd like
   * SASS - currently one of the best CSS precompilers
   * Angular Material 5 - Easy setup of a simple UI look and feel
     * We followed the [Quick start guide from Angular](https://angular.io/guide/quickstart)
