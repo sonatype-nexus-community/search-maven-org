@@ -27,9 +27,11 @@ import { ArtifactService } from "./artifact.service";
 import { FormsModule } from "@angular/forms";
 import { ArtifactsComponent } from "./artifacts.component";
 import { RouterModule } from "@angular/router";
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
   imports: [
+    FlexLayoutModule,
     CommonModule,
     ClipboardModule,
     FormsModule,

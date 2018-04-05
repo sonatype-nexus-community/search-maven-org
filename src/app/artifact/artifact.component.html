@@ -1,13 +1,13 @@
 <!--
 
  Copyright 2018-present Sonatype, Inc.
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,7 +16,7 @@
 
 -->
 
-<div class="artifact">
+<div class="artifact" fxLayout="column" fxFill>
 
   <div>
     <h3>
@@ -27,20 +27,23 @@
     </h3>
   </div>
 
-  <div class="artifact-details">
+  <div class="artifact-details" fxLayout="row" fxLayout.lt-sm="column">
 
-    <div class="left">
+    <div class="pom-dependency-information-column" fxFlex="65" fxFlex.lt-sm="50">
 
       <app-dependency-information headerText="{{ group }}:{{ artifact }}"
                                   subText="{{ version }}"
                                   image="xml"
                                   value="{{ pom }}"
-                                  *ngIf="pom">
+                                  autoResizeValue="{{ false }}"
+                                  *ngIf="pom"
+                                  fxLayout="row"
+                                  class="pom-dependency-information">
       </app-dependency-information>
 
     </div>
 
-    <div class="right">
+    <div class="artifact-dependency-information-column" fxFlex="35" fxFlex.lt-sm="50">
 
       <app-dependency-information headerText="artifact.apacheMaven"
                                   subText="maven.apache.org"

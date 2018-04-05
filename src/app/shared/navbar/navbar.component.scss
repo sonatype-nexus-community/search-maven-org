@@ -1,27 +1,39 @@
 /*
  Copyright 2018-present Sonatype, Inc.
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-
 @import '../../../assets/styles/mixins';
+@import '../../../assets/styles/responsive';
 @import '../../../assets/styles/smo-theme';
+
+app-navbar {
+  z-index: 1;
+}
+
+.navbar-link {
+  text-decoration: inherit;
+  flex: 1;
+}
+
+.navbar {
+  box-shadow: 0 3px 0 -2px rgba(0, 0, 0, 0.2), 0 2px 0 0 rgba(0, 0, 0, 0.14), 0 1px 0 0 rgba(0, 0, 0, 0.12);
+  display: flex;
+  padding: 0 3px;
+}
 
 .navbar-header {
   background: linear-gradient(to right, $smo-blue, $smo-purple);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
   padding: 8px 16px;
   color: $smo-white;
 
@@ -36,12 +48,14 @@
   }
 
   @include deep {
-    .navbar-search {
-      flex: 1 1 auto;
 
-      @media (max-width: 720px) {
+    .navbar-search {
+
+      &.full-width {
         width: 100%;
       }
+
+      @include smo-flex();
 
       div.search {
 
@@ -81,42 +95,5 @@
         }
       }
     }
-  }
-}
-
-.navbar-link {
-  text-decoration: inherit;
-  flex: 1;
-}
-
-.navbar {
-  display: none;
-}
-
-.navbar-show-small {
-  display: none;
-}
-
-/**
-  * Rules for when the device is detected to be a small screen.
-  * Moves content two rows instead of one.
-  */
-@media (max-width: 720px) {
-  .navbar-header {
-    box-shadow: none;
-  }
-
-  .navbar-hide-small {
-    display: none;
-  }
-
-  .navbar-show-small {
-    box-shadow: 0 3px 0 -2px rgba(0, 0, 0, 0.2), 0 2px 0 0 rgba(0, 0, 0, 0.14), 0 1px 0 0 rgba(0, 0, 0, 0.12);
-    display: block;
-  }
-
-  .navbar {
-    display: flex;
-    padding: 0 3px;
   }
 }

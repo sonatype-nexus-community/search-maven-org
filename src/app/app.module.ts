@@ -29,8 +29,8 @@ import { FooterModule } from "./shared/footer/footer.module";
 import { StatsModule } from "./stats/stats.module";
 import { ArtifactModule } from './artifact/artifact.module';
 import { NotificationsModule } from "./shared/notifications/notifications.module";
-import { HomeComponent } from './home/home.component';
 import { HomeModule } from "./home/home.module";
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -38,6 +38,7 @@ import { HomeModule } from "./home/home.module";
   ],
   imports: [
     BrowserModule,
+    FlexLayoutModule,
     HttpClientModule,
     RouterModule.forRoot(SMO_ROUTES),
     BrowserAnimationsModule,

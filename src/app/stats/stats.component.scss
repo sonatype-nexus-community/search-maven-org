@@ -39,24 +39,24 @@
   .label-column {
     width: 50%;
 
-    @include md {
-      width: 40%;
-    }
-
-    @include gt-md {
-      width: 25%;
-    }
+    //@include md {
+    //  width: 40%;
+    //}
+    //
+    //@include gt-md {
+    //  width: 25%;
+    //}
   }
 
   .value-column {
     width: 50%;
 
-    @include md {
-      width: 60%;
-    }
-
-    @include gt-md {
-      width: 75%;
-    }
+    //@include md {
+    //  width: 60%;
+    //}
+    //
+    //@include gt-md {
+    //  width: 75%;
+    //}
   }
 }

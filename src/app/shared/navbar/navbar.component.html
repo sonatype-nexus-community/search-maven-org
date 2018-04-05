@@ -1,13 +1,13 @@
 <!--
 
  Copyright 2018-present Sonatype, Inc.
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,7 +16,7 @@
 
 -->
 
-<nav class="navbar-header">
+<nav class="navbar-header" fxLayout="row wrap">
   <a [routerLink]="['/']">
     <svg
       xmlns="http://www.w3.org/2000/svg" width="400" height="30" viewBox="0 -20 1150 100">
@@ -25,9 +25,9 @@
         fill="#fff"></path>
     </svg>
   </a>
-  <app-search *ngIf="q" [startQuery]="q" class="navbar-search">
+  <app-search *ngIf="q" [startQuery]="q" class="navbar-search" ngClass.lt-md="full-width">
   </app-search>
-  <div class="flex-spacer"></div>
+  <div fxFlex></div>
   <!--<button mat-button
      class="button navbar-hide-small"
      routerLink="search"
@@ -35,9 +35,10 @@
     {{ 'navbar.search' | translate }}
   </button>-->
   <button mat-button
-     class="button navbar-hide-small"
-     routerLink="advancedsearch"
-     aria-label="Advanced Search">
+          class="button"
+          routerLink="advancedsearch"
+          aria-label="Advanced Search"
+          fxHide.lt-md>
     {{ 'navbar.advanced' | translate }}
   </button>
   <!--<button mat-button
@@ -48,13 +49,14 @@
     {{ 'navbar.browse' | translate }}
   </button>-->
   <button mat-button
-     class="button navbar-hide-small"
-     routerLink="stats"
-     aria-label="Quick Stats">
+          class="button"
+          routerLink="stats"
+          aria-label="Quick Stats"
+          fxHide.lt-md>
     {{ 'navbar.stats' | translate }}
   </button>
 </nav>
-<nav class="navbar navbar-show-small">
+<nav class="navbar" fxHide fxShow.lt-md>
   <!--<button mat-button
      class="navbar-link ellipsis"
      routerLink="search"
@@ -63,9 +65,9 @@
   </button>
   -->
   <button mat-button
-     class="navbar-link ellipsis"
-     routerLink="advancedsearch"
-     aria-label="Advanced Search">
+          class="navbar-link ellipsis"
+          routerLink="advancedsearch"
+          aria-label="Advanced Search">
     {{ 'navbar.advanced' | translate }}
   </button>
   <!--<button mat-button
@@ -76,9 +78,9 @@
     {{ 'navbar.browse' | translate }}
   </button>-->
   <button mat-button
-     class="navbar-link ellipsis"
-     routerLink="stats"
-     aria-label="Quick Stats">
+          class="navbar-link ellipsis"
+          routerLink="stats"
+          aria-label="Quick Stats">
     {{ 'navbar.stats' | translate }}
   </button>
 </nav>

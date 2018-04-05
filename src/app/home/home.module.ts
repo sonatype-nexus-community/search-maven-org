@@ -18,13 +18,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { SearchModule } from "../search/search.module";
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
   imports: [
+    FlexLayoutModule,
     CommonModule,
     SearchModule
   ],
   exports: [HomeComponent],
   declarations: [HomeComponent]
 })
-export class HomeModule { }
+export class HomeModule {
+}

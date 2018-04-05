@@ -29,9 +29,11 @@ import { RouterModule } from '@angular/router';
 import { createTranslateModule } from "../shared/translate/translate";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AdvancedSearchComponent } from './advanced-search.component';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
   imports: [
+    FlexLayoutModule,
     CommonModule,
     HttpClientModule,
     MatInputModule,

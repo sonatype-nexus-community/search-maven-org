@@ -35,6 +35,9 @@ export class DependencyInformationComponent implements OnInit {
   @Input()
   image: string;
 
+  @Input()
+  autoResizeValue: boolean = true;
+
   constructor() { }
 
   ngOnInit() {

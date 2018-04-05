@@ -1,13 +1,13 @@
 <!--
 
  Copyright 2018-present Sonatype, Inc.
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,39 +16,35 @@
 
 -->
 
-<div class="artifacts">
+<div class="artifacts" fxFill fxLayout="column">
 
-  <div class="search-result" [ngClass]="{'hidden' : dataSource.totalCount < 0}">
+  <div class="search-result" fxLayout="column">
 
-    <div class="none" *ngIf="dataSource.totalCount == 0  && dataSource.hasSearched">
-      <h3>{{'search.result.none' | translate}}</h3>
-    </div>
-
-    <mat-table #table [dataSource]="dataSource">
+    <mat-table #table [dataSource]="dataSource" fxFill>
 
       <ng-container matColumnDef="groupId">
-        <mat-header-cell *matHeaderCellDef>
+        <mat-header-cell *matHeaderCellDef fxHide.lt-sm>
           {{'search.header.groupId' | translate}}
         </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="ellipsis">
+        <mat-cell *matCellDef="let row" class="ellipsis" fxHide.lt-sm>
           <a [routerLink]="['/search']" [queryParams]="{q: 'g:' + row.g}">{{ row.g }}</a>
         </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="artifactId">
-        <mat-header-cell *matHeaderCellDef class="xs-hide">
+        <mat-header-cell *matHeaderCellDef>
           {{'search.header.artifactId' | translate}}
         </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="ellipsis xs-hide">
+        <mat-cell *matCellDef="let row" class="ellipsis">
           <a [routerLink]="['/search']" [queryParams]="{q: 'a:' + row.a}">{{ row.a }}</a>
         </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="latestVersion">
-        <mat-header-cell *matHeaderCellDef class="xs-hide">
+        <mat-header-cell *matHeaderCellDef>
           {{'search.header.latestVersion' | translate}}
         </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="versions-links xs-hide">
+        <mat-cell *matCellDef="let row" class="versions-links">
           <a *ngIf="row.latestVersion"
              class="latest-version-link ellipsis"
              [routerLink]="['/artifact', row.g, row.a, row.latestVersion, row.p]">
@@ -67,19 +63,19 @@
       </ng-container>
 
       <ng-container matColumnDef="updated">
-        <mat-header-cell *matHeaderCellDef class="xs-hide sm-hide">
+        <mat-header-cell *matHeaderCellDef fxHide.lt-sm>
           {{'search.header.updated' | translate}}
         </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="ellipsis xs-hide sm-hide">
+        <mat-cell *matCellDef="let row" class="ellipsis" fxHide.lt-sm>
           {{row.timestamp | date : format : timezone}}
         </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="download">
-        <mat-header-cell *matHeaderCellDef class="xs-hide sm-hide">
+        <mat-header-cell *matHeaderCellDef fxHide.lt-sm>
           {{'search.header.download' | translate}}
         </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="ellipsis xs-hide sm-hide">
+        <mat-cell *matCellDef="let row" class="ellipsis" fxHide.lt-sm>
           <span *ngFor="let dl of row.downloadLinks">
             <a target="_blank" href="{{ dl.link}}">{{ dl.name | slice:1}}</a>
           </span>
@@ -91,12 +87,14 @@
 
     </mat-table>
 
-    <mat-paginator #paginator
-                   [length]="dataSource.totalCount"
-                   [pageIndex]="0"
-                   [pageSize]="20">
-    </mat-paginator>
-
   </div>
+
+  <div fxFlex></div>
+
+  <mat-paginator #paginator
+                 [length]="dataSource.totalCount"
+                 [pageIndex]="0"
+                 [pageSize]="10">
+  </mat-paginator>
 
 </div>

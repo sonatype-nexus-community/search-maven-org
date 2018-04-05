@@ -1,29 +1,23 @@
 /*
  Copyright 2018-present Sonatype, Inc.
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-
 @import '../../styles.scss';
 
 div.search {
-  display: flex;
-  flex-direction: column;
 
   .search-form {
-    display: flex;
-    justify-content: center;
-    flex: 1 1 auto;
     padding-top: 50px;
     text-align: center;
 
@@ -46,78 +40,81 @@ div.search {
 
 @include deep {
   .mat-autocomplete-panel.search-auto-complete {
-  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
-  height: 70vh;
-  max-height: none;
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+    height: 70vh;
+    max-height: none;
 
-  .search-grouped-options {
-    margin-bottom: 10px;
+    .search-grouped-options {
+      margin-bottom: 10px;
 
-    .mat-option {
-      line-height: 24px;
-      height: 24px;
+      .mat-option {
+        line-height: 24px;
+        height: 24px;
 
-      &.mat-option-title-value {
-        margin-top: 15px;
-        margin-bottom: 10px;
-      }
-
-      &.mat-active {
-        background-color: transparent;
-
-        .option-value, .option-title-value {
-          background: rgba(69, 142, 225, 0.05);
-        }
-      }
-
-      &:hover:not(.mat-option-disabled) {
-        background-color: transparent;
-
-        .option-value, .option-title-value {
-          background: rgba(69, 142, 225, 0.05);
-        }
-      }
-
-      .mat-option-text {
-        display: flex;
-        font-size: 14px;
-
-        .option-title-value {
-          border-bottom: 1px solid #ddd;
-          flex: 1 1 auto;
-          width: 15%;
-          font-size: 16px;
-          font-weight: 100;
+        &.mat-option-title-value {
+          margin-top: 15px;
+          margin-bottom: 10px;
         }
 
-        .option-title {
-          color: #a4a7ae;
-          border-right: 1px solid #ddd;
-          flex: 1 1 auto;
-          text-align: right;
-          width: 15%;
-          padding-right: 10px;
-          font-weight: 100;
-          min-width: 150px;
+        &.mat-active {
+          background-color: transparent;
 
-          @media (max-width: 720px) {
-            width: 40%;
+          .option-value, .option-title-value {
+            background: rgba(69, 142, 225, 0.05);
           }
         }
 
-        .option-value {
-          flex: 1 1 auto;
-          width: 85%;
-          padding-left: 10px;
+        &:hover:not(.mat-option-disabled) {
+          background-color: transparent;
 
-          @media (max-width: 720px) {
-            width: 60%;
+          .option-value, .option-title-value {
+            background: rgba(69, 142, 225, 0.05);
+          }
+        }
+
+        .mat-option-text {
+          font-size: 14px;
+
+          @include smo-flex-layout();
+
+          .option-title-value {
+            border-bottom: 1px solid #ddd;
+            width: 15%;
+            font-size: 16px;
+            font-weight: 100;
+
+            @include smo-flex();
+          }
+
+          .option-title {
+            color: #a4a7ae;
+            border-right: 1px solid #ddd;
+            flex: 1 1 auto;
+            text-align: right;
+            width: 15%;
+            padding-right: 10px;
+            font-weight: 100;
+            min-width: 150px;
+
+            @media (max-width: 720px) {
+              width: 40%;
+            }
+          }
+
+          .option-value {
+            width: 85%;
+            padding-left: 10px;
+
+            @include smo-flex();
+
+            @media (max-width: 720px) {
+              width: 60%;
+            }
           }
         }
       }
     }
   }
-}
 }
 
 @-webkit-keyframes slide-up {

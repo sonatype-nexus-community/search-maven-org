@@ -1,54 +1,30 @@
 /*
  Copyright 2018-present Sonatype, Inc.
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-
 @import '../../styles.scss';
 
 div.artifacts {
-  @include display-flex-column();
 
   .search-result {
     animation: slide-up .3s ease-out;
 
-    @include display-flex-column();
-    @include full-size();
-
-    &.hidden {
-      display: none;
-    }
-
-    .none {
-      background: white;
-      bottom: 38px;
-      color: rgba(0, 0, 0, 0.54);
-      position: absolute;
-      padding: 0 24px;
-      text-align: right;
-      width: calc(100% - 80px);
-      z-index: 1;
-    }
-
     .mat-table {
       overflow: auto;
-
-      @include flex-auto();
     }
 
     .mat-header-row {
-      position: sticky;
-      top: 0;
 
       .mat-header-cell {
         font-size: 14px;
@@ -61,7 +37,7 @@ div.artifacts {
     }
 
     .versions-links {
-      @include display-flex();
+      @include smo-flex-layout();
 
       .latest-version-link {
         width: 50%;
