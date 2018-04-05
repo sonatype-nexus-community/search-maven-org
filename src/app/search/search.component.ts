@@ -75,7 +75,7 @@ export class SearchComponent implements OnInit {
         .search(this.query, 0)
         .subscribe(
           searchResult => this.searchDocs.next(searchResult.response.docs),
-          error => this.notificationService.notifySystemUnavailable());
+          error => this.handleError(error))
     } else {
       this.clearSearchResults();
     }
@@ -83,5 +83,19 @@ export class SearchComponent implements OnInit {
 
   private clearSearchResults() {
     this.searchDocs.next([]);
+  }
+
+  private handleError(error) {
+
+    // For "know" exceptions, don't notify users
+    if (error.status == 400 &&
+      (error.error.includes('org.apache.lucene.queryParser.ParseException') ||
+      error.error.includes('400, msg: missing query string'))) {
+      return;
+    } else if (error.status == 500 && (error.statusText.includes('IllegalArgumentException'))) {
+      return;
+    }
+
+    this.notificationService.notifySystemUnavailable();
   }
 }
