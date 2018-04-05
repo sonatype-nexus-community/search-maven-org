@@ -56,7 +56,7 @@
     border: 1px solid $smo-border-color;
 
     &.img-badge {
-      background-image: url('/assets/images/badge.svg');
+      @include avatar-img('badge.svg');
       background-position-x: left;
     }
 
@@ -65,40 +65,40 @@
     }
 
     &.img-buildr {
-      background-image: url('/assets/images/buildr.png');
+      @include avatar-img('buildr.png');
     }
 
     &.img-ivy {
-      background-image: url('/assets/images/ivy.png');
+      @include avatar-img('ivy.png');
     }
 
     &.img-groovy {
-      background-image: url('/assets/images/groovy.png');
+      @include avatar-img('groovy.png');
     }
 
     &.img-grails {
-      background-image: url('/assets/images/grails.png');
+      @include avatar-img('grails.png');
     }
 
     &.img-kotlin {
-      background-image: url('/assets/images/kotlin.png');
+      @include avatar-img('kotlin.png');
     }
 
     &.img-purl {
-      background-image: url('/assets/images/purl.png');
+      @include avatar-img('purl.png');
     }
 
     &.img-scala {
-      background-image: url('/assets/images/sbt.svg');
+      @include avatar-img('sbt.svg');
       background-position-x: center;
     }
 
     &.img-leiningen {
-      background-image: url('/assets/images/leiningen.jpg');
+      @include avatar-img('leiningen.jpg');
     }
 
     &.img-xml {
-      background-image: url('/assets/images/xml.svg');
+      @include avatar-img('xml.svg');
       background-position-x: center;
     }
   }
