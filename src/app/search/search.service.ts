@@ -53,7 +53,11 @@ export class SearchService {
 
   private downloadLink(doc: Doc, extension: string): string {
     let groupSlash = doc.g.replace(/\.+/g, '/');
-    return `${environment.smoBaseUrl}${groupSlash}/${doc.a}/${doc.latestVersion}/${doc.a}-${doc.latestVersion}${extension}`;
+    return doc.latestVersion ? this.getDownloadLink(doc, doc.latestVersion, extension, groupSlash) : this.getDownloadLink(doc, doc.v, extension, groupSlash);
+  }
+
+  private getDownloadLink(doc: Doc, version: string, extension: string, groupSlash: string): string {
+    return `${environment.smoBaseUrl}${groupSlash}/${doc.a}/${version}/${doc.a}-${version}${extension}`;
   }
 
 }
