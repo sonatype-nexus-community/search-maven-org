@@ -28,6 +28,7 @@ import { FormsModule } from "@angular/forms";
 import { ArtifactsComponent } from "./artifacts.component";
 import { RouterModule } from "@angular/router";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { PomDependencyInformationComponent } from "./dependency-information/pom-dependency-information.component";
 
 @NgModule({
   imports: [
@@ -49,7 +50,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
   declarations: [
     ArtifactsComponent,
     ArtifactComponent,
-    DependencyInformationComponent
+    DependencyInformationComponent,
+    PomDependencyInformationComponent
   ]
 })
 export class ArtifactModule { }

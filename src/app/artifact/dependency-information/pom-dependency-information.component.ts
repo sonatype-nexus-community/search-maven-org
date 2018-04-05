@@ -15,27 +15,18 @@
  */
 
 import { Component, Input, OnInit } from '@angular/core';
+import { DependencyInformationComponent } from "./dependency-information.component";
 
 @Component({
-  selector: 'app-dependency-information',
-  templateUrl: './dependency-information.component.html',
+  selector: 'app-pom-dependency-information',
+  templateUrl: './pom-dependency-information.component.html',
   styleUrls: ['./dependency-information.component.scss']
 })
-export class DependencyInformationComponent implements OnInit {
+export class PomDependencyInformationComponent extends DependencyInformationComponent {
 
-  @Input()
-  headerText: string;
-
-  @Input()
-  subText: string;
-
-  @Input()
-  value: string;
-
-  @Input()
-  image: string;
-
-  constructor() { }
+  constructor() {
+    super();
+  }
 
   ngOnInit() {
   }

@@ -31,15 +31,14 @@
 
     <div class="pom-dependency-information-column" fxFlex="65" fxFlex.lt-sm="50">
 
-      <app-dependency-information headerText="{{ group }}:{{ artifact }}"
+      <app-pom-dependency-information headerText="{{ group }}:{{ artifact }}"
                                   subText="{{ version }}"
                                   image="xml"
                                   value="{{ pom }}"
-                                  autoResizeValue="{{ false }}"
                                   *ngIf="pom"
                                   fxLayout="row"
                                   class="pom-dependency-information">
-      </app-dependency-information>
+      </app-pom-dependency-information>
 
     </div>
 

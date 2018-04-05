@@ -48,6 +48,11 @@ div.artifact {
                     height: 100%;
 
                     @include smo-flex-layout();
+
+                    textarea {
+                      overflow-x: auto;
+                      overflow-y: auto;
+                    }
                   }
                 }
               }
