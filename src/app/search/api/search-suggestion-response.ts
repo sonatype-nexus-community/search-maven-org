@@ -14,11 +14,9 @@
  * limitations under the License.
  */
 
-import { SearchResponse } from "./search-response";
-import { SearchSpellcheck } from "./search-spellcheck";
-
-export class SearchResult {
-  response: SearchResponse;
-  responseHeader: object;
-  spellcheck: SearchSpellcheck;
+export class SearchSuggestionResponse {
+  suggestion: string[];
+  endOffset: number;
+  numFound: number;
+  startOffset: number;
 }

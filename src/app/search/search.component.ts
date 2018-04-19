@@ -27,6 +27,8 @@ import { Router } from "@angular/router";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { FormControl } from "@angular/forms";
 import { SearchDoc } from "./api/search-doc";
+import { SearchSuggestion } from "./api/search-suggestion";
+import { SearchResult } from "./api/search-result";
 
 @Component({
   selector: 'app-search',
@@ -74,8 +76,30 @@ export class SearchComponent implements OnInit {
       this.searchService
         .search(this.query, 0)
         .subscribe(
-          searchResult => this.searchDocs.next(searchResult.response.docs),
+          searchResult => this.handleSearchResults(searchResult),
           error => this.handleError(error))
+    } else {
+      this.clearSearchResults();
+    }
+  }
+
+  private searchSuggestion(suggestion: SearchSuggestion) {
+    if (suggestion.suggestionResponse) {
+      this.searchService
+        .search(suggestion.suggestionResponse.suggestion[0], 0)
+        .subscribe(
+          searchResult => {
+            this.searchDocs.next(searchResult.response.docs)
+          },
+          error => this.handleError(error));
+    }
+  }
+
+  private handleSearchResults(searchResult: SearchResult) {
+    if (searchResult.response.docs.length) {
+      this.searchDocs.next(searchResult.response.docs);
+    } else if (searchResult.spellcheck.suggestion) {
+      this.searchSuggestion(searchResult.spellcheck.suggestion);
     } else {
       this.clearSearchResults();
     }

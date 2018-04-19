@@ -20,8 +20,8 @@ import { environment } from "../../environments/environment";
 import { Observable } from "rxjs/Observable";
 import { SearchResult } from "./api/search-result";
 import { Doc } from "./api/doc";
-import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Subject } from "rxjs/Subject";
+import { SearchSpellcheck } from "./api/search-spellcheck";
 
 @Injectable()
 export class SearchService {
@@ -37,6 +37,13 @@ export class SearchService {
         searchResult.response.docs.forEach((doc:Doc) => {
           this.addDownloadLinks(doc);
         });
+
+        if(searchResult.spellcheck &&
+          searchResult.spellcheck.suggestions.length >= 2) {
+          searchResult.spellcheck.suggestions.sort((c1, c2) => c1.localeCompare(c2));
+          searchResult.spellcheck = new SearchSpellcheck(searchResult.spellcheck.suggestions);
+        }
+
         return searchResult;
       });
   }
