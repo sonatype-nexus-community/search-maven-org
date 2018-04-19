@@ -27,6 +27,12 @@
     overflow-x: hidden;
     padding: 0 15px;
 
+    //turn off flex, currently solely used for the dependency snippets, as flex isn't necessary
+    //and the column flex layout of the single item is hosing IE up
+    &.no-flex {
+      flex: 0 1 auto;
+    }
+
     .template-value {
 
       @include deep {
