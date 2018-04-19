@@ -45,7 +45,7 @@
     "apacheBuildr": "Apache Buildr",
     "apacheIvy": "Apache Ivy",
     "groovyGrape": "Groovy Grape",
-    "gradleGrails": "Gradle/Grails",
+    "gradle": "Gradle Groovy DSL",
     "gradleKotlinDsl": "Gradle Kotlin DSL",
     "mavenCentral": "Maven Central Badge",
     "purlSpec": "PURL",

@@ -80,6 +80,10 @@
       @include avatar-img('grails.png');
     }
 
+    &.img-gradle {
+      @include avatar-img('gradle.png');
+    }
+
     &.img-kotlin {
       @include avatar-img('kotlin.png');
     }

@@ -30,6 +30,9 @@ export class DependencyInformationComponent implements OnInit {
   subText: string;
 
   @Input()
+  subTextUrl: string;
+
+  @Input()
   value: string;
 
   @Input()

@@ -22,7 +22,14 @@
     <div mat-card-avatar class="mat-card-avatar img-{{ image }}">
     </div>
     <mat-card-title>{{ headerText | translate }}</mat-card-title>
-    <mat-card-subtitle>{{ subText | translate }}</mat-card-subtitle>
+    <mat-card-subtitle>
+      <span *ngIf="!subTextUrl">{{ subText | translate }}</span>
+      <a target="_blank"
+         href="{{ subTextUrl }}"
+         *ngIf="subTextUrl">
+        {{ subText | translate }}
+      </a>
+    </mat-card-subtitle>
 
     <mat-card-actions>
       <button mat-icon-button [ngxClipboard]="copyTarget">

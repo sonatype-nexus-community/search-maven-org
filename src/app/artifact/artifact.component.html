@@ -75,60 +75,70 @@
 
       <app-dependency-information headerText="artifact.apacheMaven"
                                   subText="maven.apache.org"
+                                  subTextUrl="https://maven.apache.org"
                                   image="mvn"
                                   value="{{apacheMavenTemplate(group, artifact, version)}}">
       </app-dependency-information>
 
-      <app-dependency-information headerText="artifact.gradleGrails"
-                                  subText="grails.github.io/grails-gradle-plugin/"
-                                  image="grails"
+      <app-dependency-information headerText="artifact.gradle"
+                                  subText="gradle.org"
+                                  subTextUrl="https://gradle.org"
+                                  image="gradle"
                                   value="{{gradleGrailsTemplate(group, artifact, version)}}">
+      </app-dependency-information>
+
+      <app-dependency-information headerText="artifact.gradleKotlinDsl"
+                                  subText="github.com/gradle/kotlin-dsl"
+                                  subTextUrl="https://github.com/gradle/kotlin-dsl"
+                                  image="kotlin"
+                                  value="{{gradleKotlinDslTemplate(group, artifact, version)}}">
       </app-dependency-information>
 
       <app-dependency-information headerText="artifact.scalaSbt"
                                   subText="scala-sbt.org"
+                                  subTextUrl="https://www.scala-sbt.org"
                                   image="scala"
                                   value="{{scalaSbtTemplate(group, artifact, version)}}">
       </app-dependency-information>
 
       <app-dependency-information headerText="artifact.apacheIvy"
                                   subText="ant.apache.org/ivy/"
+                                  subTextUrl="https://ant.apache.org/ivy/"
                                   image="ivy"
                                   value="{{apacheIvyTemplate(group, artifact, version)}}">
       </app-dependency-information>
 
       <app-dependency-information headerText="artifact.groovyGrape"
                                   subText="groovy-lang.org/grape.html"
+                                  subTextUrl="http://groovy-lang.org/grape.html"
                                   image="groovy"
                                   value="{{groovyGrapeTemplate(group, artifact, version)}}">
       </app-dependency-information>
 
       <app-dependency-information headerText="artifact.leiningen"
                                   subText="leiningen.org"
+                                  subTextUrl="https://leiningen.org"
                                   image="leiningen"
                                   value="{{leiningenTemplate(group, artifact, version)}}">
       </app-dependency-information>
 
       <app-dependency-information headerText="artifact.apacheBuildr"
                                   subText="buildr.apache.org"
+                                  subTextUrl="https://buildr.apache.org/"
                                   image="buildr"
                                   value="{{apacheBuildrTemplate(group, artifact, version)}}">
       </app-dependency-information>
 
-      <app-dependency-information headerText="artifact.gradleKotlinDsl"
-                                  subText="github.com/gradle/kotlin-dsl"
-                                  image="kotlin"
-                                  value="{{gradleKotlinDslTemplate(group, artifact, version)}}">
-      </app-dependency-information>
-
       <app-dependency-information headerText="artifact.mavenCentral"
                                   subText="search.maven.org"
+                                  subTextUrl="https://search.maven.org"
                                   image="badge"
                                   value="{{mavenCentralBadge(group, artifact, version)}}">
       </app-dependency-information>
 
       <app-dependency-information headerText="artifact.purlSpec"
                                   subText="github.com/package-url/purl-spec"
+                                  subTextUrl="https://github.com/package-url/purl-spec"
                                   image=""
                                   value="{{purlTemplate(group, artifact, version)}}">
       </app-dependency-information>
