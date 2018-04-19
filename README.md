@@ -99,3 +99,5 @@ Looking to contribute to our code but need some help? There's a few ways to get 
 
 * Chat with us on [Gitter](https://gitter.im/sonatype/nexus-developers)
 * Connect with us on [Twitter](https://twitter.com/sonatypeDev)
+
+testing Jeffry's CLA process
