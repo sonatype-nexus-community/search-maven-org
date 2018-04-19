@@ -35,4 +35,15 @@ export class NotificationService {
       verticalPosition: verticalPosition
     });
   }
+
+  notifySystem(message: string) {
+    let horizontalPosition: MatSnackBarHorizontalPosition = 'end';
+    let verticalPosition: MatSnackBarVerticalPosition = 'top';
+
+    this.snackBar.open(this.translateService.instant(message), '', {
+      duration: 3000,
+      horizontalPosition: horizontalPosition,
+      verticalPosition: verticalPosition
+    });
+  }
 }

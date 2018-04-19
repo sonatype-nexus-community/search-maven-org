@@ -18,13 +18,42 @@
 
 <div class="artifact" fxLayout="column" fxFill>
 
-  <div>
-    <h3>
-      <a target="_blank" href="{{ repositoryLink(group, artifact, version) }}">
-        &nbsp;{{ group }}:{{ artifact }}:{{ version }}
-        &nbsp;<mat-icon style="vertical-align: bottom;">open_in_new</mat-icon>
+  <div fxLayout="row">
+
+    <div class="artifact-title">{{ group + ':' + artifact }}:</div>
+
+    <mat-form-field class="more-versions-from-field">
+
+      <mat-select [(value)]="version">
+        <mat-option *ngFor="let doc of searchDocs" [value]="doc.v">
+          <a [routerLink]="['/artifact', doc.g, doc.a, doc.v, doc.p]">{{ doc.v }}</a>
+        </mat-option>
+      </mat-select>
+
+    </mat-form-field>
+
+    <div fxFlex></div>
+
+    <div class="artifact-actions" fxHide fxShow.gt-sm>
+
+      <a target="_blank"
+         href="{{ repositoryLink(group, artifact, version) }}"
+         mat-button>
+        <span>{{ 'artifact.browse' | translate }}</span>
+        <mat-icon>folder</mat-icon>
       </a>
-    </h3>
+
+      <button mat-button [matMenuTriggerFor]="menuDownloads">
+        <span>{{ 'artifact.downloads' | translate }}</span>
+        <mat-icon>file_download</mat-icon>
+      </button>
+      <mat-menu #menuDownloads="matMenu">
+        <button mat-menu-item *ngFor="let dl of downloadLinks">
+          <a target="_blank" href="{{ dl.link }}">{{ dl.name }}</a>
+        </button>
+      </mat-menu>
+    </div>
+
   </div>
 
   <div class="artifact-details" fxLayout="row" fxLayout.lt-sm="column">

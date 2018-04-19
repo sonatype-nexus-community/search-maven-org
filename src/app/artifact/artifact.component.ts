@@ -18,6 +18,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from "../../environments/environment";
 import { ArtifactService } from "./artifact.service";
+import { SearchService } from "../search/search.service";
+import { SearchDoc } from "../search/api/search-doc";
+import { NotificationService } from "../shared/notifications/notification.service";
 
 @Component({
   selector: 'app-artifact',
@@ -30,9 +33,13 @@ export class ArtifactComponent implements OnInit {
   version: string;
   classifier: string;
   pom: string;
+  searchDocs: SearchDoc[];
+  downloadLinks: { name: string, link: string }[];
 
   constructor(private route: ActivatedRoute,
-              private artifactService: ArtifactService) {
+              private artifactService: ArtifactService,
+              private searchService: SearchService,
+              private notificationService: NotificationService) {
   }
 
   ngOnInit() {
@@ -42,10 +49,11 @@ export class ArtifactComponent implements OnInit {
       this.version = params['version'];
       this.classifier = params['classifier'];
 
-
       this.artifactService.remoteContent(this.remoteRepositoryLink()).subscribe(content => {
         this.pom = content;
-      })
+      });
+
+      this.initOnRelatedArtifacts();
     });
   }
 
@@ -97,5 +105,27 @@ export class ArtifactComponent implements OnInit {
   remoteRepositoryLink(): string {
     let groupSlash = this.group.replace(/\.+/g, '/');
     return `${groupSlash}/${this.artifact}/${this.version}/${this.artifact}-${this.version}.pom`;
+  }
+
+  private initOnRelatedArtifacts() {
+    let query: string = `g:${this.group} AND a:${this.artifact}&core=gav`;
+
+    this.searchService
+      .all(query)
+      .subscribe(
+        searchResult => this.initRelatedArtifacts(searchResult.response.docs),
+        error => this.notificationService.notifySystem('artifact.related.search.result.unavailable'));
+  }
+
+  private initRelatedArtifacts(searchDocs: SearchDoc[]) {
+    this.searchDocs = searchDocs;
+
+    let currentVersionSearchDocs: SearchDoc[] = this.searchDocs.filter((value) => {
+      return value.v == this.version
+    });
+
+    if(currentVersionSearchDocs.length) {
+      this.downloadLinks = currentVersionSearchDocs[0].downloadLinks;
+    }
   }
 }

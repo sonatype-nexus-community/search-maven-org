@@ -56,4 +56,14 @@ div.artifacts {
       }
     }
   }
+
+  .more-downloads-from-field {
+    .mat-select {
+      width: 0;
+    }
+
+    .mat-form-field-infix {
+      width: 0;
+    }
+  }
 }

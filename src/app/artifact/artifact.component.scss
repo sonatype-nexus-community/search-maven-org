@@ -82,4 +82,28 @@ div.artifact {
       }
     }
   }
+
+  .artifact-title {
+    padding-top: 16px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .artifact-actions {
+    color: mat-color($primary);
+    padding-top: 16px;
+  }
+
+  @include deep {
+    .more-versions-from-field {
+      .mat-select {
+
+        .mat-select-value {
+          color: mat-color($primary);
+          font-size: 18px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
 }

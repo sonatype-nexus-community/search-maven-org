@@ -51,7 +51,17 @@
     "purlSpec": "PURL",
     "scalaSbt": "Scala SBT",
     "leiningen": "Leiningen",
-    "copy": "Copy"
+    "copy": "Copy",
+    "allVersions": "All versions",
+    "downloads" : "Downloads",
+    "browse" : "Browse",
+    "related": {
+      "search": {
+        "result": {
+          "unavailable": "Unable to find related versions and downloads"
+        }
+      }
+    }
   },
   "footer": {
     "tm": {

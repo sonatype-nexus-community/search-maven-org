@@ -76,9 +76,23 @@
           {{'search.header.download' | translate}}
         </mat-header-cell>
         <mat-cell *matCellDef="let row" class="ellipsis" fxHide.lt-sm>
-          <span *ngFor="let dl of row.downloadLinks">
-            <a target="_blank" href="{{ dl.link}}">{{ dl.name | slice:1}}</a>
+
+          <span>
+            <a target="_blank" href="{{ row.downloadLinks[0].link}}">{{ row.downloadLinks[0].name }}</a>
           </span>
+
+          <mat-form-field class="input-no-underline more-downloads-from-field"
+                          [floatLabel]="'never'"
+                          *ngIf="row.downloadLinks.length > 1">
+
+            <mat-select>
+              <mat-option *ngFor="let dl of row.downloadLinks.slice(1)" [value]="dl.name">
+                <a target="_blank" href="{{ dl.link}}">{{ dl.name }}</a>
+              </mat-option>
+            </mat-select>
+
+          </mat-form-field>
+
         </mat-cell>
       </ng-container>
 

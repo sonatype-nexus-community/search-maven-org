@@ -20,6 +20,8 @@ import { environment } from "../../environments/environment";
 import { Observable } from "rxjs/Observable";
 import { SearchResult } from "./api/search-result";
 import { Doc } from "./api/doc";
+import { BehaviorSubject } from "rxjs/BehaviorSubject";
+import { Subject } from "rxjs/Subject";
 
 @Injectable()
 export class SearchService {
@@ -27,10 +29,10 @@ export class SearchService {
   constructor(private httpClient: HttpClient) {
   }
 
-  search(q: string, start: number = 0): Observable<SearchResult> {
+  search(q: string, start: number = 0, rows: number = 10): Observable<SearchResult> {
     return this
       .httpClient
-      .get<SearchResult>(`${environment.search.endpoint}?q=${q}&start=${start}`)
+      .get<SearchResult>(`${environment.search.endpoint}?q=${q}&start=${start}&rows=${rows}`)
       .map((searchResult:SearchResult) => {
         searchResult.response.docs.forEach((doc:Doc) => {
           this.addDownloadLinks(doc);
@@ -39,15 +41,38 @@ export class SearchService {
       });
   }
 
+  count(q: string): Observable<number> {
+    return this
+      .httpClient
+      .get<SearchResult>(`${environment.search.endpoint}?q=${q}&start=0&rows=0`)
+      .map((searchResult: SearchResult) => {
+        return searchResult.response.numFound;
+      });
+  }
+
+  all(q: string): Observable<SearchResult> {
+    let observer: Subject<SearchResult> = new Subject<SearchResult>();
+
+    this.count(q).subscribe(
+      count => this.search(q, 0, count).subscribe(
+        searchResult => observer.next(searchResult),
+        error => observer.error(error)),
+      error => observer.error(error));
+
+    return observer;
+  }
+
   private addDownloadLinks(doc:Doc) {
     if(doc.ec) {
       doc.downloadLinks = [];
       doc.ec.forEach((extension: string) => {
         doc.downloadLinks.push({
-          name: extension,
+          name: extension.slice(1),
           link: this.downloadLink(doc, extension)
         });
       });
+
+      doc.downloadLinks.sort((c1, c2) => c1.name.localeCompare(c2.name))
     }
   }
 
