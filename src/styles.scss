@@ -39,6 +39,10 @@ a, a:visited, a:hover {
   color: mat-color($primary);
   text-decoration: none;
   cursor: pointer;
+
+  &.default-anchor {
+    color: inherit;
+  }
 }
 
 .button[md-button], .button[md-raised-button] {

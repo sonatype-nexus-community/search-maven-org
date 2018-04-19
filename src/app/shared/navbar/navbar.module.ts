@@ -16,7 +16,7 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule, MatMenuModule } from "@angular/material";
+import { MatButtonModule, MatIconModule, MatMenuModule } from "@angular/material";
 import { RouterModule } from "@angular/router";
 import { NavbarComponent } from "./navbar.component";
 import { createTranslateModule } from "../translate/translate";
@@ -31,6 +31,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     RouterModule,
     CommonModule,
     SearchModule,
+    MatIconModule,
     createTranslateModule()
   ],
   exports: [NavbarComponent],
