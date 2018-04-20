@@ -27,10 +27,23 @@
     overflow-x: hidden;
     padding: 0 15px;
 
-    //turn off flex, currently solely used for the dependency snippets, as flex isn't necessary
-    //and the column flex layout of the single item is hosing IE up
-    &.no-flex {
+    &.snippet {
+      //turn off flex, currently solely used for the dependency snippets, as flex isn't necessary
+      //and the column flex layout of the single item is hosing IE up
       flex: 0 1 auto;
+
+      @include deep {
+        .mat-form-field-wrapper {
+          //dump the padding, since it will now be used in the text area below
+          padding-bottom: 0em;
+        }
+      }
+
+      //add padding that was removed from the above .mat-form-field-wrapper
+      //this will give more space for the scrollbar
+      textarea {
+        padding-bottom: 15px;
+      }
     }
 
     .template-value {
