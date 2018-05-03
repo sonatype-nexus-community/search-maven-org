@@ -23,7 +23,7 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/observable/fromEvent';
 import { NotificationService } from "../shared/notifications/notification.service";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { FormControl } from "@angular/forms";
 import { SearchDoc } from "./api/search-doc";
@@ -41,20 +41,20 @@ export class SearchComponent implements OnInit {
 
   stateCtrl: FormControl;
 
-  @Input()
-  startQuery: string;
-
   query: string;
 
   constructor(private searchService: SearchService,
               private router: Router,
+              private route: ActivatedRoute,
               private notificationService: NotificationService) {
   }
 
   ngOnInit() {
     this.stateCtrl = new FormControl();
     this.stateCtrl.valueChanges.subscribe(s => this.search(s));
-    this.stateCtrl.setValue(this.startQuery);
+    this.route.queryParams.subscribe(params => {
+      this.stateCtrl.setValue(params['q']);
+    })
   }
 
   navigate() {
