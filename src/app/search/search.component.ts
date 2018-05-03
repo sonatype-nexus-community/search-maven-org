@@ -70,7 +70,7 @@ export class SearchComponent implements OnInit {
   }
 
   private search(query: string) {
-    this.query = query;
+    this.query = this.parseOnGrouping(query);
 
     if (this.query) {
       this.searchService
@@ -81,6 +81,36 @@ export class SearchComponent implements OnInit {
     } else {
       this.clearSearchResults();
     }
+  }
+
+  private parseOnGrouping(query: string): string {
+    let groups: string[] = [];
+
+    if (query) {
+      query = query.trim();
+
+      if (!(query.startsWith('g:') || query.startsWith('G:') ||
+        query.startsWith('a:') || query.startsWith('A:'))) {
+
+        groups = query.split(':').map((value) => {
+          return value.trim();
+        });
+      }
+    }
+
+    if (groups.length >= 2) {
+      if (groups[0].length) {
+        query = 'g:' + groups[0];
+
+        if (groups[1].length) {
+          query += ' AND a:' + groups[1];
+        }
+      } else if (groups[1].length) {
+        query = 'a:' + groups[1];
+      }
+    }
+
+    return query;
   }
 
   private searchSuggestion(suggestion: SearchSuggestion) {
@@ -98,7 +128,7 @@ export class SearchComponent implements OnInit {
   private handleSearchResults(searchResult: SearchResult) {
     if (searchResult.response.docs.length) {
       this.searchDocs.next(searchResult.response.docs);
-    } else if (searchResult.spellcheck.suggestion) {
+    } else if (searchResult.spellcheck && searchResult.spellcheck.suggestion) {
       this.searchSuggestion(searchResult.spellcheck.suggestion);
     } else {
       this.clearSearchResults();
