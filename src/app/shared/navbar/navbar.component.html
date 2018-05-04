@@ -25,7 +25,7 @@
         fill="#fff"></path>
     </svg>
   </a>
-  <app-search class="navbar-search" ngClass.lt-md="full-width">
+  <app-search *ngIf="showSearch" class="navbar-search" ngClass.lt-md="full-width">
   </app-search>
   <div fxFlex></div>
   <!--<button mat-button
