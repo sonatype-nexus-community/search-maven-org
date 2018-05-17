@@ -30,7 +30,7 @@ export const SMO_ROUTES: Routes = [
     component: StatsComponent
   },
   {
-    path: 'artifact/:group/:artifact/:version/:packaging',
+    path: 'artifact/:group/:artifact/:version/:classifier',
     component: ArtifactComponent
   },
   {
