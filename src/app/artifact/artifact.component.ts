@@ -31,7 +31,7 @@ export class ArtifactComponent implements OnInit {
   group: string;
   artifact: string;
   version: string;
-  classifier: string;
+  packaging: string;
   pom: string;
   searchDocs: SearchDoc[];
   downloadLinks: { name: string, link: string }[];
@@ -47,7 +47,7 @@ export class ArtifactComponent implements OnInit {
       this.group = params['group'];
       this.artifact = params['artifact'];
       this.version = params['version'];
-      this.classifier = params['classifier'];
+      this.packaging = params['packaging'];
 
       this.artifactService.remoteContent(this.remoteRepositoryLink()).subscribe(content => {
         this.pom = content;
@@ -66,8 +66,13 @@ export class ArtifactComponent implements OnInit {
     return `[![Maven Central](https://img.shields.io/maven-central/v/${g}/${a}.svg?label=Maven%20Central)](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22${g}%22%20a%3A%22${a}%22)`
   }
 
-  apacheMavenTemplate(g: string, a: string, v: string): string {
-    return `<dependency>\n  <groupId>${g}</groupId>\n  <artifactId>${a}</artifactId>\n  <version>${v}</version>\n</dependency>`;
+  apacheMavenTemplate(g: string, a: string, v: string, p: string): string {
+    if (p == 'jar') {
+      return `<dependency>\n  <groupId>${g}</groupId>\n  <artifactId>${a}</artifactId>\n  <version>${v}</version>\n</dependency>`;
+    }
+    else {
+      return `<dependency>\n  <groupId>${g}</groupId>\n  <artifactId>${a}</artifactId>\n  <version>${v}</version>\n  <type>${p}</type>\n</dependency>`;
+    }
   }
 
   apacheBuildrTemplate(g: string, a: string, v: string): string {
