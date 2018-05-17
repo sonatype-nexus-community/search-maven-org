@@ -31,7 +31,7 @@ export class ArtifactComponent implements OnInit {
   group: string;
   artifact: string;
   version: string;
-  classifier: string;
+  packaging: string;
   pom: string;
   searchDocs: SearchDoc[];
   downloadLinks: { name: string, link: string }[];
@@ -47,7 +47,7 @@ export class ArtifactComponent implements OnInit {
       this.group = params['group'];
       this.artifact = params['artifact'];
       this.version = params['version'];
-      this.classifier = params['classifier'];
+      this.packaging = params['packaging'];
 
       this.artifactService.remoteContent(this.remoteRepositoryLink()).subscribe(content => {
         this.pom = content;
