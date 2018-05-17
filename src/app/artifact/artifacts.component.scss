@@ -17,53 +17,51 @@
 
 div.artifacts {
 
+  @include smo-gt-sm() {
+    width: 50%;
+    margin: 0 auto;
+  }
+
   .search-result {
     animation: slide-up .3s ease-out;
 
     .mat-table {
       overflow: auto;
-    }
 
-    .mat-header-row {
-
-      .mat-header-cell {
-        font-size: 14px;
-        text-transform: uppercase;
-      }
-    }
-
-    .mat-cell {
-      padding-right: 15px;
-    }
-
-    .versions-links {
-      @include smo-flex-layout();
-
-      .latest-version-link {
-        width: 50%;
+      .mat-column-componentInfo {
+        flex: 90%;
 
         @media (max-width: 720px) {
-          width: 25%;
+          flex: 80%;
         }
       }
 
-      .all-versions-link {
-        width: 50%;
+      .mat-row {
+        cursor: pointer;
+        min-height: 110px;
+        font-size: 18px;
+        font-weight: bold;
 
-        @media (max-width: 720px) {
-          width: 75%;
+        .mat-cell {
+          padding-right: 15px;
+          font-size: 18px;
+
+          a.float-left {
+            float: left;
+          }
+
+          &:focus {
+            outline: none !important;
+            outline: 0 !important;
+          }
+
+          .latest-version-updated, .all-versions {
+            font-size: 14px;
+            font-weight: normal;
+          }
         }
       }
-    }
-  }
 
-  .more-downloads-from-field {
-    .mat-select {
-      width: 0;
-    }
-
-    .mat-form-field-infix {
-      width: 0;
     }
   }
 }

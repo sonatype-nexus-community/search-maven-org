@@ -63,6 +63,10 @@
       }
     }
   },
+  "artifacts": {
+    "allVersions": "All versions",
+    "latestVersion" : "v"
+  },
   "footer": {
     "tm": {
       "comment1": "Apache and Apache Maven are trademarks of the",
