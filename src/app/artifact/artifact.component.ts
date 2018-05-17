@@ -67,7 +67,12 @@ export class ArtifactComponent implements OnInit {
   }
 
   apacheMavenTemplate(g: string, a: string, v: string, p: string): string {
-    return `<dependency>\n  <groupId>${g}</groupId>\n  <artifactId>${a}</artifactId>\n  <version>${v}</version>\n  <type>${p}</type>\n</dependency>`;
+    if (p == 'jar') {
+      return `<dependency>\n  <groupId>${g}</groupId>\n  <artifactId>${a}</artifactId>\n  <version>${v}</version>\n</dependency>`;
+    }
+    else {
+      return `<dependency>\n  <groupId>${g}</groupId>\n  <artifactId>${a}</artifactId>\n  <version>${v}</version>\n  <type>${p}</type>\n</dependency>`;
+    }
   }
 
   apacheBuildrTemplate(g: string, a: string, v: string): string {
