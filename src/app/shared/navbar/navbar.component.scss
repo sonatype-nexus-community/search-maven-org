@@ -36,6 +36,7 @@ app-navbar {
   background: linear-gradient(to right, $smo-blue, $smo-purple);
   padding: 7px 16px;
   color: $smo-white;
+  max-height: 52px;
 
   > .mat-button {
     &:last-child {
@@ -43,21 +44,51 @@ app-navbar {
     }
   }
 
-  .logo {
-    max-width: 300px;
+  .logo-home-link {
+    z-index: 1;
+
+    .hide-full-logo {
+
+      @include smo-lt(1240px) {
+        display: none;
+      }
+
+    }
+
+    .small-logo {
+      display: none;
+
+      &.show-small-logo {
+        @include smo-lt(1240px) {
+          display: inherit;
+        }
+
+        @include smo-lt(340px) {
+          display: none;
+        }
+      }
+    }
   }
 
   @include deep {
 
     .navbar-search {
 
-      &.full-width {
+      @include smo-flex();
+
+      @include smo-gt-sm() {
+        left: 0;
+        position: fixed;
         width: 100%;
       }
 
-      @include smo-flex();
-
       div.search {
+
+        @include smo-gt-sm() {
+          flex: inherit;
+          width: 50%;
+          margin: 0 auto;
+        }
 
         .search-form {
           padding-top: 0;

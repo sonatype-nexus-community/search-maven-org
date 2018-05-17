@@ -29,10 +29,7 @@ import { NotificationService } from "../shared/notifications/notification.servic
 export class ArtifactsComponent implements OnInit {
 
   displayedColumns = [
-    'groupId',
-    'artifactId',
-    'latestVersion',
-    'updated',
+    'componentInfo',
     'download'
   ];
 

@@ -44,3 +44,27 @@
 
   @include smo-flex-layout();
 }
+
+@mixin smo-gt-sm() {
+  @media screen and (min-width: 960px) {
+      @content
+  }
+}
+
+@mixin smo-lt-md() {
+  @media screen and (max-width: 959px){
+    @content
+  }
+}
+
+@mixin smo-lt($size) {
+  @media screen and (max-width: $size){
+    @content
+  }
+}
+
+@mixin smo-gt($size) {
+  @media screen and (min-width: $size) {
+    @content
+  }
+}
