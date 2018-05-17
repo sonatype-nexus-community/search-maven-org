@@ -20,9 +20,9 @@
 
   <div fxLayout="row">
 
-    <div class="artifact-title">{{ group + ':' + artifact }}:</div>
+    <div class="artifact-title ellipsis" fxHide fxShow.gt-xs>{{ group + ':' + artifact }}:</div>
 
-    <mat-form-field class="more-versions-from-field">
+    <mat-form-field class="more-versions-from-field" fxHide fxShow.gt-xs>
 
       <mat-select [(value)]="version">
         <mat-option *ngFor="let doc of searchDocs" [value]="doc.v">
@@ -56,9 +56,9 @@
 
   </div>
 
-  <div class="artifact-details" fxLayout="row" fxLayout.lt-sm="column">
+  <div class="artifact-details" fxLayout="row" fxLayout.lt-md="column">
 
-    <div class="pom-dependency-information-column" fxFlex="65" fxFlex.lt-sm="50">
+    <div class="pom-dependency-information-column" fxFlex="65">
 
       <app-pom-dependency-information headerText="{{ group }}:{{ artifact }}"
                                   subText="{{ version }}"
@@ -71,7 +71,7 @@
 
     </div>
 
-    <div class="artifact-dependency-information-column" fxFlex="35" fxFlex.lt-sm="50">
+    <div class="artifact-dependency-information-column" fxFlex="35">
 
       <app-dependency-information headerText="artifact.apacheMaven"
                                   subText="maven.apache.org"

@@ -14,8 +14,7 @@
  limitations under the License.
 */
 
-@import '../../../assets/styles/mixins.scss';
-@import '../../../assets/styles/smo-theme';
+@import '../../../styles';
 
 @mixin avatar-img($url) {
   background-image: url('/assets/images/' + $url);
@@ -23,9 +22,17 @@
 
 .mat-smo-dependency-information-card {
 
+  @include smo-lt-md() {
+    padding: 0.5rem;
+  }
+
   .mat-card-content {
     overflow-x: hidden;
     padding: 0 15px;
+
+    @include smo-lt-md() {
+      padding: 0;
+    }
 
     &.snippet {
       //turn off flex, currently solely used for the dependency snippets, as flex isn't necessary

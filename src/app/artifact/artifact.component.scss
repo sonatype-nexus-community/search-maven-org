@@ -64,7 +64,9 @@ div.artifact {
   }
 
   .artifact-dependency-information-column {
-    overflow-x: auto;
+    @include smo-gt-sm() {
+      overflow-x: auto;
+    }
   }
 
   .artifact-details {
