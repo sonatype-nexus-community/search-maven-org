@@ -19,8 +19,8 @@ import { CommonModule } from '@angular/common';
 import { SearchComponent } from './search.component';
 import {
   MatAutocompleteModule,
-  MatButtonModule,
-  MatFormFieldModule, MatIconModule, MatInputModule, MatPaginatorModule,
+  MatButtonModule, MatCardModule, MatDialogModule,
+  MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatPaginatorModule,
   MatTableModule
 } from "@angular/material";
 import { SearchService } from "./search.service";
@@ -30,6 +30,7 @@ import { createTranslateModule } from "../shared/translate/translate";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AdvancedSearchComponent } from './advanced-search.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { AdvancedSearchExampleDialogComponent } from './advanced-search-example-dialog.component';
 
 @NgModule({
   imports: [
@@ -43,6 +44,9 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatPaginatorModule,
     MatButtonModule,
     MatAutocompleteModule,
+    MatDialogModule,
+    MatListModule,
+    MatCardModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
@@ -51,8 +55,9 @@ import { FlexLayoutModule } from "@angular/flex-layout";
   providers: [
     SearchService
   ],
-  exports: [SearchComponent],
-  declarations: [SearchComponent, AdvancedSearchComponent]
+  exports: [SearchComponent, AdvancedSearchComponent],
+  entryComponents :[AdvancedSearchExampleDialogComponent],
+  declarations: [SearchComponent, AdvancedSearchComponent, AdvancedSearchExampleDialogComponent]
 })
 export class SearchModule {
 }

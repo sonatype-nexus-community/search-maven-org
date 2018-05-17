@@ -15,17 +15,24 @@
  */
 
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from "@angular/material";
+import { AdvancedSearchExampleDialogComponent } from "./advanced-search-example-dialog.component";
 
 @Component({
   selector: 'app-advanced-search',
-  templateUrl: './advanced-search.component.html',
-  styleUrls: ['./advanced-search.component.scss']
+  templateUrl: './advanced-search.component.html'
 })
 export class AdvancedSearchComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialog: MatDialog) {
+  }
 
   ngOnInit() {
   }
 
+  openAdvancedExamplesDialog(): void {
+    this.dialog.open(AdvancedSearchExampleDialogComponent, {
+      width: '450px'
+    });
+  }
 }

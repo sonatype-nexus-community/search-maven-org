@@ -22,9 +22,29 @@
       "latestVersion": "Latest Version",
       "updated": "Updated",
       "download": "Download"
+    },
+    "advanced": {
+      "title": "Advanced Search",
+      "example": {
+        "dialog": {
+          "title": "Advanced Search Options",
+          "searchByCoordinates": "By Coordinates",
+          "searchByClasses": "By Classes",
+          "searchByChecksums": "By Checksums",
+          "searchByCoordinatesCombinations": "You can also search in combinations, using the \"and\" keyword:",
+          "group": "Group",
+          "artifact": "Artifact",
+          "version": "Version",
+          "packaging": "Packaging",
+          "classifier": "Classifier",
+          "className": "Class name",
+          "sha1": "SHA-1",
+          "closeDialogText": "Ok"
+        }
+      }
     }
   },
-  "stats" : {
+  "stats": {
     "title": "Statistics for the Central Repository",
     "status": "Status",
     "optimal": "Systems is running optimal",
@@ -39,7 +59,7 @@
     "projectModel": "Project Model",
     "artifactId": "Artifact ID",
     "groupId": "Group ID",
-    "latestVersion" : "Version",
+    "latestVersion": "Version",
     "dependencyInformation": "Dependency Information",
     "apacheMaven": "Apache Maven",
     "apacheBuildr": "Apache Buildr",
@@ -53,8 +73,8 @@
     "leiningen": "Leiningen",
     "copy": "Copy",
     "allVersions": "All versions",
-    "downloads" : "Downloads",
-    "browse" : "Browse",
+    "downloads": "Downloads",
+    "browse": "Browse",
     "related": {
       "search": {
         "result": {
@@ -65,7 +85,7 @@
   },
   "artifacts": {
     "allVersions": "All versions",
-    "latestVersion" : "v"
+    "latestVersion": "v"
   },
   "footer": {
     "tm": {

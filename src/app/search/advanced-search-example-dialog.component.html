@@ -1,0 +1,91 @@
+<!--
+ Copyright 2018-present Sonatype, Inc.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<h1 mat-dialog-title>
+  {{ 'search.advanced.example.dialog.title' | translate}}
+</h1>
+
+<div mat-dialog-content>
+
+  <mat-card class="mat-smo-default-card">
+
+    <mat-card-content fxLayout="column">
+      <h3>{{ 'search.advanced.example.dialog.searchByCoordinates' | translate }}</h3>
+      <div fxLayout>
+        <div fxFlex="40">{{ 'search.advanced.example.dialog.group' | translate }}:</div>
+        <div fxFlex class="code">g:junit</div>
+      </div>
+      <div fxLayout>
+        <div fxFlex="40">{{ 'search.advanced.example.dialog.artifact' | translate }}:</div>
+        <div fxFlex class="code">a:junit</div>
+      </div>
+      <div fxLayout>
+        <div fxFlex="40">{{ 'search.advanced.example.dialog.version' | translate }}:</div>
+        <div fxFlex class="code">v:4.11</div>
+      </div>
+      <div fxLayout>
+        <div fxFlex="40">{{ 'search.advanced.example.dialog.packaging' | translate }}:</div>
+        <div fxFlex class="code">
+          p:jar<br/>
+          p:war
+        </div>
+      </div>
+      <div fxLayout>
+        <div fxFlex="40">{{ 'search.advanced.example.dialog.classifier' | translate }}:</div>
+        <div fxFlex class="code">
+          l:sources<br/>
+          l:javadocs
+        </div>
+      </div>
+
+      <p>
+        {{ 'search.advanced.example.dialog.searchByCoordinatesCombinations' | translate }}
+        <span class="code">g:junit and v:4.11</span>
+      </p>
+    </mat-card-content>
+
+  </mat-card>
+
+  <mat-card class="mat-smo-default-card">
+
+    <mat-card-content fxLayout="column">
+      <h3>{{ 'search.advanced.example.dialog.searchByClasses' | translate }}</h3>
+      <div fxLayout>
+        <div fxFlex="40">{{ 'search.advanced.example.dialog.className' | translate }}</div>
+        <div fxFlex class="code">c:JUnit4</div>
+      </div>
+    </mat-card-content>
+
+  </mat-card>
+
+
+  <mat-card class="mat-smo-default-card">
+    <mat-card-content fxLayout="column">
+      <h3>{{ 'search.advanced.example.dialog.searchByChecksums' | translate }}</h3>
+      <div fxLayout>
+        <div fxFlex="40">{{ 'search.advanced.example.dialog.sha1' | translate }}</div>
+        <div fxFlex class="code">1:2973d150c0dc1fefe998f834810d68f278ea58ec</div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close] cdkFocusInitial>
+    {{ 'search.advanced.example.dialog.closeDialogText' | translate }}
+  </button>
+</div>

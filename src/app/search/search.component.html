@@ -39,19 +39,21 @@
             <div class="option-title">{{'search.header.artifactId' | translate}}</div>
             <div class="option-value">{{ doc.a }}</div>
           </mat-option>
-          <mat-option [routerLink]="['/artifact', doc.g, doc.a, doc.latestVersion, doc.p]">
+          <mat-option [routerLink]="['/artifact', doc.g, doc.a, (doc.latestVersion || doc.v), doc.p]">
             <div class="option-title">{{'search.header.latestVersion' | translate}}</div>
-            <div class="option-value">{{ doc.latestVersion }}</div>
+            <div class="option-value">{{ doc.latestVersion || doc.v }}</div>
           </mat-option>
         </div>
       </mat-autocomplete>
 
       <mat-icon *ngIf="query?.length > 0"
                 matSuffix color="primary"
-                (click)="clearQuery()">close</mat-icon>
+                (click)="clearQuery()">close
+      </mat-icon>
 
       <mat-icon matSuffix color="primary"
-                (click)="navigate()">search</mat-icon>
+                (click)="navigate()">search
+      </mat-icon>
 
     </mat-form-field>
 

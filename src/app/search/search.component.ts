@@ -84,33 +84,56 @@ export class SearchComponent implements OnInit {
   }
 
   private parseOnGrouping(query: string): string {
-    let groups: string[] = [];
 
     if (query) {
+      // do cleaning
       query = query.trim();
+      query = query.replace(/ and /gi, w => w.toUpperCase());
 
-      if (!(query.startsWith('g:') || query.startsWith('G:') ||
-        query.startsWith('a:') || query.startsWith('A:'))) {
-
-        groups = query.split(':').map((value) => {
-          return value.trim();
-        });
+      // Is it a manual search by identifier of Group, Artifact, Version, Packaging, Classifier, Class name or SHA-1
+      if (query.length >= 2 && query.charAt(0).match(/[gavplc1]/i) && query.charAt(1) == ':') {
+        return query;
       }
-    }
 
-    if (groups.length >= 2) {
-      if (groups[0].length) {
-        query = 'g:' + groups[0];
+      // is it a automatic search for SHA1
+      let groupBySpace: string[] = query.split(' ');
+      if (groupBySpace.length == 1 && groupBySpace[0].match(/^[0-9a-f]{40}$/i)) {
+        return '1:' + groupBySpace[0].trim() + '';
+      }
 
-        if (groups[1].length) {
-          query += ' AND a:' + groups[1];
+      // is it a automatic search for GAV
+      let groupBySemiColon: string[] = query.split(':').map((value) => value.trim());
+      if (groupBySemiColon.length >= 2) {
+        console.log("doing auto");
+
+        if (groupBySemiColon[0].length) {
+          query = 'g:' + groupBySemiColon[0];
+
+          if (groupBySemiColon.length >= 2 && groupBySemiColon[1].length) {
+            query += ' AND a:' + groupBySemiColon[1];
+          }
+
+          if (groupBySemiColon.length >= 3 && groupBySemiColon[2].length) {
+            query += ' AND v:' + groupBySemiColon[2];
+          }
+
+          return query;
         }
-      } else if (groups[1].length) {
-        query = 'a:' + groups[1];
       }
     }
 
+    // we found nothing special, search the universe.
     return query;
+  }
+
+  private handleSearchResults(searchResult: SearchResult) {
+    if (searchResult.response.docs.length) {
+      this.searchDocs.next(searchResult.response.docs);
+    } else if (searchResult.spellcheck && searchResult.spellcheck.suggestion) {
+      this.searchSuggestion(searchResult.spellcheck.suggestion);
+    } else {
+      this.clearSearchResults();
+    }
   }
 
   private searchSuggestion(suggestion: SearchSuggestion) {
@@ -125,26 +148,16 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  private handleSearchResults(searchResult: SearchResult) {
-    if (searchResult.response.docs.length) {
-      this.searchDocs.next(searchResult.response.docs);
-    } else if (searchResult.spellcheck && searchResult.spellcheck.suggestion) {
-      this.searchSuggestion(searchResult.spellcheck.suggestion);
-    } else {
-      this.clearSearchResults();
-    }
-  }
-
   private clearSearchResults() {
     this.searchDocs.next([]);
   }
 
   private handleError(error) {
-
     // For "know" exceptions, don't notify users
     if (error.status == 400 &&
       (error.error.includes('org.apache.lucene.queryParser.ParseException') ||
-      error.error.includes('400, msg: missing query string'))) {
+      error.error.includes('400, msg: missing query string') ||
+      error.error.includes('Solr returned 400, msg:'))) {
       return;
     } else if (error.status == 500 && (error.statusText.includes('IllegalArgumentException'))) {
       return;

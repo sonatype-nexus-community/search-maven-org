@@ -33,14 +33,18 @@ export class SearchService {
     return this
       .httpClient
       .get<SearchResult>(`${environment.search.endpoint}?q=${q}&start=${start}&rows=${rows}`)
-      .map((searchResult:SearchResult) => {
-        searchResult.response.docs.forEach((doc:Doc) => {
+      .map((searchResult: SearchResult) => {
+        searchResult.response.docs.forEach((doc: Doc) => {
           this.addDownloadLinks(doc);
         });
 
-        if(searchResult.spellcheck &&
+        if (searchResult.spellcheck &&
           searchResult.spellcheck.suggestions.length >= 2) {
-          searchResult.spellcheck.suggestions.sort((c1, c2) => c1.localeCompare(c2));
+
+          searchResult.spellcheck.suggestions.sort((c1, c2) => {
+            return (typeof c1.localeCompare === 'function') ? c1.localeCompare(c2) : 0;
+          });
+
           searchResult.spellcheck = new SearchSpellcheck(searchResult.spellcheck.suggestions);
         }
 
@@ -69,8 +73,8 @@ export class SearchService {
     return observer;
   }
 
-  private addDownloadLinks(doc:Doc) {
-    if(doc.ec) {
+  private addDownloadLinks(doc: Doc) {
+    if (doc.ec) {
       doc.downloadLinks = [];
       doc.ec.forEach((extension: string) => {
         doc.downloadLinks.push({
