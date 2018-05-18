@@ -31,6 +31,7 @@ import { ArtifactModule } from './artifact/artifact.module';
 import { NotificationsModule } from "./shared/notifications/notifications.module";
 import { HomeModule } from "./home/home.module";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { RouterStateModule } from "./shared/router-state/router-state.module";
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     RouterModule.forRoot(SMO_ROUTES),
     BrowserAnimationsModule,
     createTranslateModule(),
+    RouterStateModule,
     NavbarModule,
     FooterModule,
     NotificationsModule,

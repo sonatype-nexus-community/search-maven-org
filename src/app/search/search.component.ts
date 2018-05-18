@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { SearchService } from "./search.service";
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
@@ -29,13 +29,15 @@ import { FormControl } from "@angular/forms";
 import { SearchDoc } from "./api/search-doc";
 import { SearchSuggestion } from "./api/search-suggestion";
 import { SearchResult } from "./api/search-result";
+import { RouterStateParamsService } from "../shared/router-state/router-state-params.service";
+import { Subscription } from "rxjs/Subscription";
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, OnDestroy {
 
   searchDocs: BehaviorSubject<SearchDoc[]> = new BehaviorSubject<SearchDoc[]>([]);
 
@@ -43,18 +45,32 @@ export class SearchComponent implements OnInit {
 
   query: string;
 
+  private routerStateParamsSubscription: Subscription;
+
   constructor(private searchService: SearchService,
               private router: Router,
               private route: ActivatedRoute,
-              private notificationService: NotificationService) {
+              private notificationService: NotificationService,
+              private routerStateParamsService: RouterStateParamsService) {
   }
 
   ngOnInit() {
     this.stateCtrl = new FormControl();
     this.stateCtrl.valueChanges.subscribe(s => this.search(s));
+
     this.route.queryParams.subscribe(params => {
       this.stateCtrl.setValue(params['q']);
-    })
+    });
+
+    this.routerStateParamsSubscription = this.routerStateParamsService.params().subscribe(params => {
+      if (params['group'] && params['artifact'] && params['version']) {
+        this.stateCtrl.setValue([params['group'], params['artifact'], params['version']].join(':'));
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this.routerStateParamsSubscription.unsubscribe();
   }
 
   navigate() {
@@ -104,7 +120,6 @@ export class SearchComponent implements OnInit {
       // is it a automatic search for GAV
       let groupBySemiColon: string[] = query.split(':').map((value) => value.trim());
       if (groupBySemiColon.length >= 2) {
-        console.log("doing auto");
 
         if (groupBySemiColon[0].length) {
           query = 'g:' + groupBySemiColon[0];

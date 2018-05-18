@@ -14,25 +14,31 @@
  * limitations under the License.
  */
 
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { RouterStateParamsService } from "../router-state/router-state-params.service";
+import { Subscription } from "rxjs/Subscription";
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
 
   showSearch: boolean;
 
-  constructor(private route: ActivatedRoute) {
+  private routerStateDataSubscription: Subscription;
+
+  constructor(private routerStateParamsService: RouterStateParamsService) {
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.showSearch = !!params['q'];
+    this.routerStateDataSubscription = this.routerStateParamsService.data().subscribe(data => {
+      this.showSearch = !!data['showNavSearchBar'];
     });
   }
 
+  ngOnDestroy(): void {
+    this.routerStateDataSubscription.unsubscribe();
+  }
 }
