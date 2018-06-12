@@ -89,7 +89,7 @@ We currently follow the [Angular.io style guide](https://angular.io/guide/styleg
 
 #### Data
 
-Using this externally, you'll need to wire up to `http://search.maven.org/solrsearch/select` similar to how we do in Production. You can see these settings in `environment.prod.ts`. 
+Using this externally, you'll need to wire up to `http://search.maven.org/solrsearch/select` similar to how we do in Production. You can see these settings in [`environment.prod.ts`](https://github.com/sonatype-nexus-community/search-maven-org/blob/master/src/environments/environment.prod.ts).
 
 You'll likely need to use a plugin to modify CORS headers as this will produce a cross domain request, there are quite a few plugins out there. For Chrome you can use [this one](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi).
 
