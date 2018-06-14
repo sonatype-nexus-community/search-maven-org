@@ -15,7 +15,7 @@
  */
 
 import { Injectable } from '@angular/core';
-import { Observable } from "rxjs/Observable";
+import { Observable } from "rxjs";
 import { Stat } from "./api/stat";
 import { environment } from "../../environments/environment";
 import { HttpClient } from "@angular/common/http";

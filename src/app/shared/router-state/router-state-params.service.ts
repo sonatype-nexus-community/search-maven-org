@@ -18,7 +18,7 @@ import { Injectable } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 import 'rxjs/Rx';
-import { Subject } from "rxjs/Subject";
+import { Subject } from "rxjs";
 
 /**
  * Created to solve the issue around components not part of the Router Outlet having access to the route information

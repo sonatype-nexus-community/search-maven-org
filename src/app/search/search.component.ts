@@ -16,21 +16,20 @@
 
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { SearchService } from "./search.service";
-import 'rxjs/add/operator/startWith';
-import 'rxjs/add/observable/merge';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/observable/fromEvent';
+
+
+
+
+
+
 import { NotificationService } from "../shared/notifications/notification.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { BehaviorSubject } from "rxjs/BehaviorSubject";
+import { BehaviorSubject ,  Subscription } from "rxjs";
 import { FormControl } from "@angular/forms";
 import { SearchDoc } from "./api/search-doc";
 import { SearchSuggestion } from "./api/search-suggestion";
 import { SearchResult } from "./api/search-result";
 import { RouterStateParamsService } from "../shared/router-state/router-state-params.service";
-import { Subscription } from "rxjs/Subscription";
 
 @Component({
   selector: 'app-search',

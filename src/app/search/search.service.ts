@@ -17,10 +17,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
-import { Observable } from "rxjs/Observable";
+import { Observable ,  Subject } from "rxjs";
 import { SearchResult } from "./api/search-result";
 import { Doc } from "./api/doc";
-import { Subject } from "rxjs/Subject";
 import { SearchSpellcheck } from "./api/search-spellcheck";
 
 @Injectable()
