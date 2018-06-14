@@ -97,5 +97,5 @@ You'll likely need to use a plugin to modify CORS headers as this will produce a
 
 Looking to contribute to our code but need some help? There's a few ways to get information:
 
-* Chat with us on [Gitter](https://gitter.im/sonatype/nexus-developers)
+* Chat with us on [Gitter](https://gitter.im/sonatype-nexus-community/search-maven-org)
 * Connect with us on [Twitter](https://twitter.com/sonatypeDev)
