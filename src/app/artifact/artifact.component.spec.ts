@@ -32,7 +32,6 @@ describe('ArtifactComponent', () => {
   let a = "artifact";
   let g = "group.something.etc";
   let v = "1.0.0";
-  let p = "jar";
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -71,7 +70,7 @@ describe('ArtifactComponent', () => {
     component.group = g;
     component.artifact = a;
     component.version = v;
-    component.packaging = 'jar';
+    component.classifier = 'jar';
     fixture.detectChanges();
   });
 
@@ -86,7 +85,7 @@ describe('ArtifactComponent', () => {
       <artifactId>${a}</artifactId>
       <version>${v}</version>
     </dependency>`;
-      let result = component.apacheMavenTemplate(g, a, v, p)
+      let result = component.apacheMavenTemplate(g, a, v)
       expect(result.replace(/\s\s+/g, ' ')).toBe(expected.replace(/\s\s+/g, ' '));
     });
   });
