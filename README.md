@@ -39,7 +39,7 @@ It's important to note, as part of understanding this project, how and why it wa
   * NPM - package manager that is supported by Nexus Repository
     * You can use Yarn if you'd like
   * SASS - currently one of the best CSS precompilers
-  * Angular Material 5 - Easy setup of a simple UI look and feel
+  * Angular Material 6 - Easy setup of a simple UI look and feel
     * We followed the [Quick start guide from Angular](https://angular.io/guide/quickstart)
 
 ## Installation
