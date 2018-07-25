@@ -36,7 +36,7 @@ app-navbar {
   background: linear-gradient(to right, $smo-blue, $smo-purple);
   padding: 7px 16px;
   color: $smo-white;
-  max-height: 52px;
+  max-height: 49px;
 
   > .mat-button {
     &:last-child {
@@ -46,26 +46,13 @@ app-navbar {
 
   .logo-home-link {
     z-index: 1;
+    margin-top: 5px;
 
-    .hide-full-logo {
+    .logo-big {
+      height: 25px;
 
-      @include smo-lt(1240px) {
+      @include smo-lt(410px) {
         display: none;
-      }
-
-    }
-
-    .small-logo {
-      display: none;
-
-      &.show-small-logo {
-        @include smo-lt(1240px) {
-          display: inherit;
-        }
-
-        @include smo-lt(340px) {
-          display: none;
-        }
       }
     }
   }
