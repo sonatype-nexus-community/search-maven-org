@@ -52,11 +52,17 @@ app-navbar {
     z-index: 1;
     margin-top: 5px;
 
+    @include smo-lt(410px) {
+      max-width: 300px;
+      overflow: hidden;
+    }
+
     .logo-big {
       height: 25px;
 
       @include smo-lt(410px) {
-        display: none;
+        display: block;
+        margin-right: -97px;
       }
     }
   }
