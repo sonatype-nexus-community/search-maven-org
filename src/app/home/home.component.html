@@ -21,7 +21,21 @@
   <app-search class="home-search">
   </app-search>
 
-  <app-advanced-search></app-advanced-search>
+  <div>
+
+    <app-advanced-search></app-advanced-search>
+
+    <span>|</span>
+
+    <a href="{{ smoClassicLookUrl }}"
+       matTooltip="{{ 'search.classic.tooltip' | translate }}"
+       target="_blank"
+       class="classic-search-link">
+      {{ 'search.classic.title' | translate }}
+      <mat-icon>open_in_new</mat-icon>
+    </a>
+
+  </div>
 
   <div class="home-sub-text">
     <h1>From the community for the community</h1>

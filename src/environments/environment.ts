@@ -36,5 +36,6 @@ export const environment = {
     }
   },
   smoBaseUrl: 'http://localhost:8080/central/remotecontent?filepath=',
-  repositoryBaseUrl: 'http://repo1.maven.org/maven2'
+  repositoryBaseUrl: 'http://repo1.maven.org/maven2',
+  smoClassicLookUrl: 'https://search.maven.org'
 };

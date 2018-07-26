@@ -15,6 +15,7 @@
  */
 
 import { Component, OnInit } from '@angular/core';
+import { environment } from "../../environments/environment";
 
 @Component({
   selector: 'app-home',
@@ -23,9 +24,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  smoClassicLookUrl: string
+
   constructor() { }
 
   ngOnInit() {
+    this.smoClassicLookUrl = environment.smoClassicLookUrl;
   }
 
 }

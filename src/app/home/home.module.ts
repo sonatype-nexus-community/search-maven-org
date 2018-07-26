@@ -19,12 +19,17 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { SearchModule } from "../search/search.module";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { createTranslateModule } from "../shared/translate/translate";
+import { MatIconModule, MatTooltipModule } from "@angular/material";
 
 @NgModule({
   imports: [
     FlexLayoutModule,
     CommonModule,
-    SearchModule
+    SearchModule,
+    MatTooltipModule,
+    MatIconModule,
+    createTranslateModule()
   ],
   exports: [HomeComponent],
   declarations: [HomeComponent]
