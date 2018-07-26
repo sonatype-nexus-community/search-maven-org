@@ -40,6 +40,7 @@ export class ArtifactComponent implements OnInit {
   downloadLinks: { name: string, link: string }[];
   vulnerabilities: Vulnerability[];
   componentReport: ComponentReport;
+  showVulnerabilitySpinner: boolean;
 
   constructor(private route: ActivatedRoute,
               private artifactService: ArtifactService,
@@ -146,8 +147,15 @@ export class ArtifactComponent implements OnInit {
   }
 
   private initOnVulnerabilities() {
+    this.showVulnerabilitySpinner = true;
+
     this.vulnerabilitiesService.get(this.group, this.artifact, this.version).subscribe(componentReport => {
       this.componentReport = componentReport;
+      this.showVulnerabilitySpinner = false;
+    }, error => {
+      setTimeout(() => {
+        this.showVulnerabilitySpinner = false;
+      }, 1000);
     });
   }
 }
