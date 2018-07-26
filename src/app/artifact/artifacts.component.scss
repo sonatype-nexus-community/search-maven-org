@@ -24,6 +24,7 @@ div.artifacts {
 
   .search-result {
     animation: slide-up .3s ease-out;
+    margin-bottom: 55px !important;
 
     .mat-table {
       overflow: auto;
@@ -63,6 +64,19 @@ div.artifacts {
         }
       }
 
+    }
+  }
+
+  @include deep() {
+    .mat-paginator {
+      position: fixed;
+      width: 100%;
+      bottom: 42px;
+
+      @include smo-gt-sm() {
+        width: 50%;
+        bottom: 45px;
+      }
     }
   }
 }
