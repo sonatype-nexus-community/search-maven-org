@@ -14,22 +14,14 @@
  * limitations under the License.
  */
 
-export const environment = {
-  production: true,
-  search: {
-    endpoint : 'https://search.maven.org/solrsearch/select'
-  },
-  stats: {
-    endpoint : 'https://search.maven.org/quickstats'
-  },
-  ossindex: {
-    maven: {
-      endpoint: 'https://ossindex.net/api/v3/component-report/maven:'
-    },
-    resource: {
-      endpoint: 'https://ossindex.net/resource/package'
-    }
-  },
-  smoBaseUrl: 'https://search.maven.org/remotecontent?filepath=',
-  repositoryBaseUrl: 'https://repo1.maven.org/maven2'
-};
+import { Vulnerability } from "./vulnerability";
+
+export class ComponentReport {
+  coordinates: string;
+  reference: string;
+  vulnerabilities: Vulnerability[];
+  moderateCount: number;
+  severeCount: number;
+  criticalCount: number;
+  unknownCount: number;
+}

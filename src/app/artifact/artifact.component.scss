@@ -85,6 +85,12 @@ div.artifact {
     }
   }
 
+  .artifact-info {
+    @include smo-gt-sm() {
+      justify-content: space-between;
+    }
+  }
+
   .artifact-title {
     padding-top: 16px;
     font-size: 18px;
@@ -105,6 +111,55 @@ div.artifact {
           font-size: 18px;
           font-weight: bold;
         }
+      }
+    }
+  }
+
+  .artifact-vulnerabilities {
+    margin-right: 5px;
+
+    .vulnerability-spinner, .vulnerability-chip, .vulnerability-prefix {
+      padding-top: 0;
+    }
+
+    .vulnerability-chip {
+      margin-left: 2px;
+    }
+
+    .vulnerability-prefix {
+      padding-top: 0;
+      font-size: 14px;
+      font-weight: lighter;
+
+      @include smo-gt-sm() {
+        text-align: right;
+      }
+    }
+
+    .vulnerability-link {
+      border-radius: 10px;
+      font-weight: lighter;
+      font-size: 11px;
+      line-height: 20px;
+
+      &.critical {
+        background-color: #bc012f;
+        color: $smo-white;
+      }
+
+      &.severe {
+        background-color: #f4861d;
+        color: $smo-white;
+      }
+
+      &.moderate {
+        background-color: #f5c648;
+        color: $smo-white;
+      }
+
+      &.unknown {
+        background-color: $smo-muted-color;
+        color: $smo-white;
       }
     }
   }

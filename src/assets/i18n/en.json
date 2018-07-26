@@ -75,6 +75,11 @@
     "allVersions": "All versions",
     "downloads": "Downloads",
     "browse": "Browse",
+    "vulnerabilities": "OSS Index Vulnerabilities",
+    "criticalVulnerability": "Critical",
+    "severeVulnerability": "Severe",
+    "moderateVulnerability": "Moderate",
+    "unknownVulnerability": "Unknown",
     "related": {
       "search": {
         "result": {

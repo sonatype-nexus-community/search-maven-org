@@ -21,6 +21,9 @@ import { ArtifactService } from "./artifact.service";
 import { SearchService } from "../search/search.service";
 import { SearchDoc } from "../search/api/search-doc";
 import { NotificationService } from "../shared/notifications/notification.service";
+import { VulnerabilitiesService } from "../vulnerabilities/vulnerabilities.service";
+import { Vulnerability } from "../vulnerabilities/api/vulnerability";
+import { ComponentReport } from "../vulnerabilities/api/component-report";
 
 @Component({
   selector: 'app-artifact',
@@ -35,10 +38,13 @@ export class ArtifactComponent implements OnInit {
   pom: string;
   searchDocs: SearchDoc[];
   downloadLinks: { name: string, link: string }[];
+  vulnerabilities: Vulnerability[];
+  componentReport: ComponentReport;
 
   constructor(private route: ActivatedRoute,
               private artifactService: ArtifactService,
               private searchService: SearchService,
+              private vulnerabilitiesService: VulnerabilitiesService,
               private notificationService: NotificationService) {
   }
 
@@ -54,12 +60,17 @@ export class ArtifactComponent implements OnInit {
       });
 
       this.initOnRelatedArtifacts();
+      this.initOnVulnerabilities();
     });
   }
 
   repositoryLink(g: string, a: string, v: string): string {
     let groupSlash = g.replace(/\.+/g, '/');
     return `${environment.repositoryBaseUrl}/${groupSlash}/${a}/${v}/`;
+  }
+
+  ossVulnerabilitiesResourceLink(): string {
+    return this.componentReport.reference;
   }
 
   mavenCentralBadge(g: string, a: string, v: string): string {
@@ -100,7 +111,7 @@ export class ArtifactComponent implements OnInit {
   }
 
   gradleKotlinDslTemplate(g: string, a: string, v: string): string {
-  return `compile(group = "${g}", name = "${a}", version = "${v}")`;
+    return `compile(group = "${g}", name = "${a}", version = "${v}")`;
   }
 
   purlTemplate(g: string, a: string, v: string): string {
@@ -129,8 +140,14 @@ export class ArtifactComponent implements OnInit {
       return value.v == this.version
     });
 
-    if(currentVersionSearchDocs.length) {
+    if (currentVersionSearchDocs.length) {
       this.downloadLinks = currentVersionSearchDocs[0].downloadLinks;
     }
+  }
+
+  private initOnVulnerabilities() {
+    this.vulnerabilitiesService.get(this.group, this.artifact, this.version).subscribe(componentReport => {
+      this.componentReport = componentReport;
+    });
   }
 }

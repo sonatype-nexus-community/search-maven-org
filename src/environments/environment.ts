@@ -22,10 +22,18 @@
 export const environment = {
   production: false,
   search: {
-    endpoint : 'http://localhost:8080/central/solrsearch/select'
+    endpoint: 'http://localhost:8080/central/solrsearch/select'
   },
   stats: {
-    endpoint : 'http://localhost:8080/central/quickstats'
+    endpoint: 'http://localhost:8080/central/quickstats'
+  },
+  ossindex: {
+    maven: {
+      endpoint: 'https://ossindex.net/api/v3/component-report/maven:'
+    },
+    resource: {
+      endpoint: 'https://ossindex.net/resource/package'
+    }
   },
   smoBaseUrl: 'http://localhost:8080/central/remotecontent?filepath=',
   repositoryBaseUrl: 'http://repo1.maven.org/maven2'

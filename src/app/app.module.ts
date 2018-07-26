@@ -32,6 +32,7 @@ import { NotificationsModule } from "./shared/notifications/notifications.module
 import { HomeModule } from "./home/home.module";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { RouterStateModule } from "./shared/router-state/router-state.module";
+import { VulnerabilitiesModule } from "./vulnerabilities/vulnerabilities.module";
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { RouterStateModule } from "./shared/router-state/router-state.module";
     NotificationsModule,
     HomeModule,
     SearchModule,
+    VulnerabilitiesModule,
     StatsModule,
     ArtifactModule
   ],

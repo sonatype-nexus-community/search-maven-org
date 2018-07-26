@@ -46,6 +46,12 @@
 }
 
 @mixin smo-gt-sm() {
+  @media screen and (min-width: 600px) {
+    @content
+  }
+}
+
+@mixin smo-gt-sm() {
   @media screen and (min-width: 960px) {
       @content
   }

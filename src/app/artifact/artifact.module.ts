@@ -20,7 +20,7 @@ import { ArtifactComponent } from './artifact.component';
 import { ClipboardModule } from 'ngx-clipboard';
 import {
   MatInputModule, MatButtonModule, MatCardModule, MatIconModule, MatToolbarModule, MatTableModule, MatPaginatorModule,
-  MatSelectModule, MatMenuModule
+  MatSelectModule, MatMenuModule, MatChipsModule, MatProgressSpinnerModule
 } from '@angular/material';
 import { createTranslateModule } from "../shared/translate/translate";
 import { DependencyInformationComponent } from './dependency-information/dependency-information.component';
@@ -46,6 +46,8 @@ import { PomDependencyInformationComponent } from "./dependency-information/pom-
     MatPaginatorModule,
     MatSelectModule,
     MatMenuModule,
+    MatChipsModule,
+    MatProgressSpinnerModule,
     RouterModule,
     createTranslateModule()
   ],

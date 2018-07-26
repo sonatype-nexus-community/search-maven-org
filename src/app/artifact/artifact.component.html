@@ -18,21 +18,89 @@
 
 <div class="artifact" fxLayout="column" fxFill>
 
-  <div fxLayout="row">
+  <div fxLayout="column" fxLayout.gt-sm="row" fxFlex.lt-md="24">
 
-    <div class="artifact-title ellipsis" fxHide fxShow.gt-xs>{{ group + ':' + artifact }}:</div>
+    <div class="artifact-info" fxLayout="column" fxFlex="100" fxLayout.gt-sm="row" fxFlex.gt-sm="65">
 
-    <mat-form-field class="more-versions-from-field" fxHide fxShow.gt-xs>
+      <div fxLayout="column" fxLayout.gt-sm="row" fxFlex.gt-sm="60">
 
-      <mat-select [(value)]="version">
-        <mat-option *ngFor="let doc of searchDocs" [value]="doc.v">
-          <a [routerLink]="['/artifact', doc.g, doc.a, doc.v, doc.p]">{{ doc.v }}</a>
-        </mat-option>
-      </mat-select>
+        <div class="artifact-title ellipsis">{{ group + ':' + artifact }}:</div>
 
-    </mat-form-field>
+        <mat-form-field class="more-versions-from-field">
 
-    <div fxFlex></div>
+          <mat-select [(value)]="version">
+            <mat-option *ngFor="let doc of searchDocs" [value]="doc.v">
+              <a [routerLink]="['/artifact', doc.g, doc.a, doc.v, doc.p]">{{ doc.v }}</a>
+            </mat-option>
+          </mat-select>
+
+        </mat-form-field>
+
+      </div>
+
+      <div class="vulnerability-spinner" *ngIf="!componentReport">
+        <mat-spinner diameter="35"></mat-spinner>
+      </div>
+
+      <div class="artifact-vulnerabilities" fxLayout="column" *ngIf="componentReport">
+
+        <div class="vulnerability-prefix" *ngIf="componentReport.vulnerabilities.length > 0">
+          {{ 'artifact.vulnerabilities' | translate}}
+        </div>
+
+        <div fxLayout="row">
+
+          <div class="vulnerability-chip"
+               *ngIf="componentReport.criticalCount > 0">
+            <a href="{{ ossVulnerabilitiesResourceLink() }}"
+               target="_blank"
+               mat-raised-button
+               class="vulnerability-link critical">
+              {{ componentReport.criticalCount }} {{ 'artifact.criticalVulnerability' | translate}}
+            </a>
+          </div>
+
+          <div class="vulnerability-chip"
+               *ngIf="componentReport.severeCount > 0">
+            <a href="{{ ossVulnerabilitiesResourceLink() }}"
+               target="_blank"
+               color="warn"
+               mat-raised-button
+               class="vulnerability-link severe">
+              {{ componentReport.severeCount }} {{ 'artifact.severeVulnerability' | translate}}
+            </a>
+          </div>
+
+          <div class="vulnerability-chip"
+               *ngIf="componentReport.moderateCount > 0">
+            <a href="{{ ossVulnerabilitiesResourceLink() }}"
+               target="_blank"
+               color="warn"
+               mat-raised-button
+               class="vulnerability-link moderate">
+              {{ componentReport.moderateCount }} {{ 'artifact.moderateVulnerability' | translate}}
+            </a>
+          </div>
+
+          <div class="vulnerability-chip"
+               *ngIf="componentReport.unknownCount > 0">
+            <a href="{{ ossVulnerabilitiesResourceLink() }}"
+               target="_blank"
+               color="warn"
+               mat-raised-button
+               class="vulnerability-link unknown">
+              {{ componentReport.unknownCount }} {{ 'artifact.unknownVulnerability' | translate}}
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div fxFlex fxHide fxShow.gt-sm></div>
 
     <div class="artifact-actions" fxHide fxShow.gt-sm>
 
@@ -61,12 +129,12 @@
     <div class="pom-dependency-information-column" fxFlex="65">
 
       <app-pom-dependency-information headerText="{{ group }}:{{ artifact }}"
-                                  subText="{{ version }}"
-                                  image="xml"
-                                  value="{{ pom }}"
-                                  *ngIf="pom"
-                                  fxLayout="row"
-                                  class="pom-dependency-information">
+                                      subText="{{ version }}"
+                                      image="xml"
+                                      value="{{ pom }}"
+                                      *ngIf="pom"
+                                      fxLayout="row"
+                                      class="pom-dependency-information">
       </app-pom-dependency-information>
 
     </div>
