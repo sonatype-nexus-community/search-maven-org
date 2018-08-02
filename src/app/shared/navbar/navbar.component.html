@@ -55,6 +55,14 @@
     {{ 'navbar.stats' | translate }}
   </button>
   <a mat-button
+          class="button default-anchor"
+          href="https://www.sonatype.com/about-sonatype"
+          target="_blank"
+          aria-label="Who is Sonatype?"
+          fxHide.lt-md>
+    <span>{{ 'navbar.whoIsSonatype' | translate }}</span>
+  </a>
+  <a mat-button
      target="_blank"
      class="button default-anchor github-mat-button"
      aria-label="Github"
