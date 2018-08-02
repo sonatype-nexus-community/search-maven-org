@@ -24,10 +24,10 @@ export const environment = {
   },
   ossindex: {
     maven: {
-      endpoint: 'https://ossindex.net/api/v3/component-report/maven:'
+      endpoint: 'https://ossindex.sonatype.org/api/v3/component-report/maven:'
     },
     resource: {
-      endpoint: 'https://ossindex.net/resource/package'
+      endpoint: 'https://ossindex.sonatype.org/resource/package'
     }
   },
   smoBaseUrl: 'https://search.maven.org/remotecontent?filepath=',
