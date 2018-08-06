@@ -27,6 +27,7 @@ import { SMO_ROUTES } from "./routes";
 import { SearchModule } from "./search/search.module";
 import { FooterModule } from "./shared/footer/footer.module";
 import { StatsModule } from "./stats/stats.module";
+import { ResourcesModule } from "./resources/resources.module";
 import { ArtifactModule } from './artifact/artifact.module';
 import { NotificationsModule } from "./shared/notifications/notifications.module";
 import { HomeModule } from "./home/home.module";
@@ -53,7 +54,8 @@ import { VulnerabilitiesModule } from "./vulnerabilities/vulnerabilities.module"
     SearchModule,
     VulnerabilitiesModule,
     StatsModule,
-    ArtifactModule
+    ArtifactModule,
+    ResourcesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

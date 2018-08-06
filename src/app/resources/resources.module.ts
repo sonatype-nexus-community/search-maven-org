@@ -13,20 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import { NgModule } from '@angular/core';
+import { NgModule } from "@angular/core";
 import { CommonModule } from '@angular/common';
-import { RouterModule } from "@angular/router";
-import { FooterComponent } from './footer.component';
-import { createTranslateModule } from "../translate/translate";
+import { ResourcesComponent } from './resources.component';
+
+import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    createTranslateModule()
-  ],
-  exports: [FooterComponent],
-  declarations: [FooterComponent]
+    imports: [
+        CommonModule, 
+        NgxTwitterTimelineModule.forRoot()
+    ],
+    exports: [ResourcesComponent],
+    declarations: [ResourcesComponent]
 })
-export class FooterModule { }
+export class ResourcesModule { }

@@ -98,6 +98,14 @@
     "latestVersion": "v"
   },
   "footer": {
+    "maven": {
+      "resources": "Apache Maven Resources"
+    },
+    "etc": {
+      "about": "About Sonatype",
+      "privacy": "Privacy Policy",
+      "terms": "Terms Of Service"
+    },
     "tm": {
       "comment1": "Apache and Apache Maven are trademarks of the",
       "comment2": "The Central Repository is a service mark of Sonatype, Inc",

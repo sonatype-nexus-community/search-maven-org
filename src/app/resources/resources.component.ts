@@ -13,20 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { Component, OnInit } from '@angular/core';
 
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from "@angular/router";
-import { FooterComponent } from './footer.component';
-import { createTranslateModule } from "../translate/translate";
-
-@NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    createTranslateModule()
-  ],
-  exports: [FooterComponent],
-  declarations: [FooterComponent]
+@Component({
+  selector: 'app-resources',
+  templateUrl: './resources.component.html',
+  styleUrls: ['./resources.component.scss']
 })
-export class FooterModule { }
+export class ResourcesComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}

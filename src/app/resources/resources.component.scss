@@ -13,21 +13,3 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-@import '../../../assets/styles/mixins.scss';
-
-@include deep {
-  app-footer {
-    height: 100px;
-
-    .footer {
-      .tm-comment {
-        font-size: 10px;
-        text-align: center;
-      }
-      .links {
-        font-size: 14px;
-        text-align: center;
-      }
-    }
-  }
-}
