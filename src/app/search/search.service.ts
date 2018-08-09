@@ -28,7 +28,7 @@ export class SearchService {
   constructor(private httpClient: HttpClient) {
   }
 
-  search(q: string, start: number = 0, rows: number = 10): Observable<SearchResult> {
+  search(q: string, start: number = 0, rows: number = 20): Observable<SearchResult> {
     return this
       .httpClient
       .get<SearchResult>(`${environment.search.endpoint}?q=${q}&start=${start}&rows=${rows}`)
