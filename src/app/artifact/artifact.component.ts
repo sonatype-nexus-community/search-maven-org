@@ -92,7 +92,7 @@ export class ArtifactComponent implements OnInit {
   }
 
   leiningenTemplate(g: string, a: string, v: string): string {
-    return `[${g}}/${a} "${v}"]`;
+    return `[${g}/${a} "${v}"]`;
   }
 
   gradleGrailsTemplate(g: string, a: string, v: string): string {
