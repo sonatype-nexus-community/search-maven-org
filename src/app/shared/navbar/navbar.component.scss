@@ -60,16 +60,27 @@ app-navbar {
     .logo-big {
       height: 25px;
 
-      @include smo-lt(410px) {
-        display: block;
-        margin-right: -97px;
+      &.cut-logo-lt-sm {
+        @include smo-lt(410px) {
+          display: block;
+          margin-right: -97px;
+        }
       }
     }
   }
 
   @include deep {
 
+    .navbar-menu {
+      .mat-icon {
+        height: 31px;
+        width: 31px;
+      }
+    }
+
     .navbar-search {
+
+      width: 200px;
 
       @include smo-flex();
 
@@ -123,5 +134,58 @@ app-navbar {
         }
       }
     }
+  }
+}
+
+.navbar-menu-hidden {
+  display: none;
+
+  &.show-gt-sm {
+    @include smo-gt-sm() {
+      display: inherit;
+    }
+  }
+
+  &.show-gt-md {
+    @include smo-gt-md() {
+      display: inherit;
+    }
+  }
+
+  &.show-gt-lg {
+    @include smo-gt-lg() {
+      display: inherit;
+    }
+  }
+
+  &.show-gt-sm {
+    @include smo-gt-sm() {
+      display: inherit;
+    }
+  }
+
+  &.show-lt-sm {
+    @include smo-lt-sm() {
+      display: inherit;
+    }
+  }
+
+  &.show-lt-md {
+    @include smo-lt-md() {
+      display: inherit;
+    }
+  }
+
+  &.show-lt-lg {
+    @include smo-lt-lg() {
+      display: inherit;
+    }
+  }
+}
+
+.github-menu-item {
+  img {
+    margin-right: 24px;
+    margin-bottom: -4px;
   }
 }

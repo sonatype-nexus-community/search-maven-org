@@ -11,7 +11,8 @@
     "advanced": "Advanced Search",
     "browse": "Browse",
     "stats": "Quick Stats",
-    "whoIsSonatype": "Who is Sonatype?"
+    "whoIsSonatype": "Who is Sonatype?",
+    "github": "Github"
   },
   "search": {
     "result": {

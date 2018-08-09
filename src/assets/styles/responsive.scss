@@ -51,14 +51,32 @@
   }
 }
 
-@mixin smo-gt-sm() {
+@mixin smo-gt-md() {
   @media screen and (min-width: 960px) {
       @content
   }
 }
 
+@mixin smo-gt-lg() {
+  @media screen and (min-width: 1280px) {
+    @content
+  }
+}
+
+@mixin smo-lt-sm() {
+  @media screen and (max-width: 599px){
+    @content
+  }
+}
+
 @mixin smo-lt-md() {
   @media screen and (max-width: 959px){
+    @content
+  }
+}
+
+@mixin smo-lt-lg() {
+  @media screen and (max-width: 1279px){
     @content
   }
 }
