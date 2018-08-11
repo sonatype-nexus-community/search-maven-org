@@ -23,6 +23,7 @@
 
       <input matInput
              placeholder="Search"
+             [autofocus]="!query || query.length == 0"
              [matAutocomplete]="auto"
              [formControl]="stateCtrl"
              (keyup.enter)="navigate()"
