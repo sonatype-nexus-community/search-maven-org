@@ -18,13 +18,15 @@
 
 <div class="artifact" fxLayout="column" fxFill>
 
-  <div fxLayout="column" fxLayout.gt-sm="row" fxFlex.lt-md="24">
+  <div fxLayout="column" fxLayout.gt-sm="row" fxFlex.lt-md="135px">
 
     <div class="artifact-info" fxLayout="column" fxFlex="100" fxLayout.gt-sm="row" fxFlex.gt-sm="65">
 
-      <div fxLayout="column" fxLayout.gt-sm="row" fxFlex.gt-sm="60">
+      <div fxLayout="column" fxFlex="100" fxLayout.gt-sm="row">
 
-        <div class="artifact-title ellipsis">{{ group + ':' + artifact }}:</div>
+        <div class="artifact-title">
+          <span class="ellipsis">{{ group + ':' + artifact }}:</span>
+        </div>
 
         <mat-form-field class="more-versions-from-field">
 
@@ -44,7 +46,7 @@
 
       <div class="artifact-vulnerabilities" fxLayout="column" *ngIf="componentReport">
 
-        <div class="vulnerability-prefix" *ngIf="componentReport.vulnerabilities.length > 0">
+        <div class="vulnerability-prefix" *ngIf="componentReport?.vulnerabilities.length > 0">
           {{ 'artifact.vulnerabilities' | translate}}
         </div>
 
@@ -124,7 +126,10 @@
 
   </div>
 
-  <div class="artifact-details" fxLayout="row" fxLayout.lt-md="column">
+  <div class="artifact-details"
+       fxLayout="row"
+       fxLayout.lt-md="column"
+       [ngClass]="{'vulnerabilities-spacer': componentReport?.vulnerabilities.length > 0 }">
 
     <div class="pom-dependency-information-column" fxFlex="65">
 

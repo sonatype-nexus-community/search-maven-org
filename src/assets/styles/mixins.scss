@@ -47,6 +47,12 @@
   white-space: nowrap;
 }
 
+.ellipsis-rlt {
+  @extend .ellipsis;
+
+  direction: rtl;
+}
+
 .muted {
   color: $smo-muted-color;
 }

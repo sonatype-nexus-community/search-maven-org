@@ -74,9 +74,16 @@ div.artifact {
 
     @include smo-flex-100();
 
+    &.vulnerabilities-spacer {
+      @include smo-lt-md() {
+        margin-top: 15px;
+      }
+    }
+
     .mat-card {
       margin: 5px;
     }
+
 
     @include deep {
       .mat-smo-dependency-information-card {
@@ -86,15 +93,20 @@ div.artifact {
   }
 
   .artifact-info {
+
     @include smo-gt-sm() {
       justify-content: space-between;
     }
   }
 
   .artifact-title {
-    padding-top: 16px;
     font-size: 18px;
     font-weight: bold;
+    align-items: center;
+    min-height: 18px;
+    padding-right: 5px;
+
+    @include smo-flex-layout()
   }
 
   .artifact-actions {
@@ -131,7 +143,7 @@ div.artifact {
       font-size: 14px;
       font-weight: lighter;
 
-      @include smo-gt-sm() {
+      @include smo-gt-md() {
         text-align: right;
       }
     }
