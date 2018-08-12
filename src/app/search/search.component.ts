@@ -14,14 +14,8 @@
  * limitations under the License.
  */
 
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { SearchService } from "./search.service";
-
-
-
-
-
-
 import { NotificationService } from "../shared/notifications/notification.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BehaviorSubject ,  Subscription } from "rxjs";
@@ -43,6 +37,12 @@ export class SearchComponent implements OnInit, OnDestroy {
   stateCtrl: FormControl;
 
   query: string;
+
+  @Input('focus')
+  focus: boolean;
+
+  @ViewChild('searchInput')
+  searchInput: ElementRef;
 
   private routerStateParamsSubscription: Subscription;
 
@@ -66,6 +66,12 @@ export class SearchComponent implements OnInit, OnDestroy {
         this.stateCtrl.setValue([params['group'], params['artifact'], params['version']].join(':'));
       }
     });
+
+    if (this.focus) {
+      setTimeout(() => {
+        this.searchInput.nativeElement.focus();
+      });
+    }
   }
 
   ngOnDestroy() {
