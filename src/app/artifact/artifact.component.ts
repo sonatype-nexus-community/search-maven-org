@@ -15,7 +15,7 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from "../../environments/environment";
 import { ArtifactService } from "./artifact.service";
 import { SearchService } from "../search/search.service";
@@ -43,6 +43,7 @@ export class ArtifactComponent implements OnInit {
   showVulnerabilitySpinner: boolean;
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private artifactService: ArtifactService,
               private searchService: SearchService,
               private vulnerabilitiesService: VulnerabilitiesService,
@@ -53,16 +54,32 @@ export class ArtifactComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.group = params['group'];
       this.artifact = params['artifact'];
-      this.version = params['version'];
       this.packaging = params['packaging'];
+      this.version = params['version'];
 
-      this.artifactService.remoteContent(this.remoteRepositoryLink()).subscribe(content => {
-        this.pom = content;
-      });
-
-      this.initOnRelatedArtifacts();
-      this.initOnVulnerabilities();
+      if (this.version) {
+        this.initDefault()
+      } else {
+        this.initByFindingLatestVersion();
+      }
     });
+  }
+
+  initDefault() {
+    this.initOnRelatedArtifacts();
+    this.initOnVulnerabilities();
+    this.artifactService.remoteContent(this.remoteRepositoryLink()).subscribe(content => {
+      this.pom = content;
+    });
+  }
+
+  initByFindingLatestVersion() {
+    let query: string = `g:${this.group} AND a:${this.artifact}&core=gav`;
+
+    this.searchService.all(query).subscribe(searchResult => {
+        this.router.navigate(['artifact', this.group, this.artifact, searchResult.response.docs[0].v, searchResult.response.docs[0].p])
+      },
+      error => this.notificationService.notifySystem('artifact.related.search.result.unavailable'));
   }
 
   repositoryLink(g: string, a: string, v: string): string {

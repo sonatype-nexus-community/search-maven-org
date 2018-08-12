@@ -31,6 +31,13 @@ export const SMO_ROUTES: Routes = [
     component: StatsComponent
   },
   {
+    path: 'artifact/:group/:artifact',
+    component: ArtifactComponent,
+    data: {
+      showNavSearchBar: true
+    }
+  },
+  {
     path: 'artifact/:group/:artifact/:version/:packaging',
     component: ArtifactComponent,
     data: {
