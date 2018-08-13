@@ -48,7 +48,7 @@ export class ArtifactsComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource = new SearchDataSource(this.searchService, this.paginator);
-    this.dataSource.qSubject.subscribe(s => s, error => this.notificationService.notifySystemUnavailable());
+    this.dataSource.qSubject.subscribe(s => s, error => this.handleError(error));
 
     this.route.queryParams.subscribe(params => {
       this.q = params['q'];
@@ -62,5 +62,19 @@ export class ArtifactsComponent implements OnInit {
 
   search(query: string) {
     this.dataSource.qSubject.next(query)
+  }
+
+  private handleError(error) {
+    // For "know" exceptions, don't notify users
+    if (error.status == 400 &&
+      (error.error.includes('org.apache.lucene.queryParser.ParseException') ||
+      error.error.includes('400, msg: missing query string') ||
+      error.error.includes('Solr returned 400, msg:'))) {
+      return;
+    } else if (error.status == 500 && (error.statusText.includes('IllegalArgumentException'))) {
+      return;
+    }
+
+    this.notificationService.notifySystemUnavailable();
   }
 }
