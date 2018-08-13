@@ -81,9 +81,9 @@ export class SearchDataSource extends DataSource<SearchDoc> {
 
   private getData() {
     let start = this.paginator.pageIndex * this.paginator.pageSize;
-    let q: string = this.q;
+    let q: string = this.q.trim();
 
-    if (this.isValid(q)) {
+    if (q) {
       if (q.length > 2) {
         q = this.getSearchString(q);
       }
@@ -101,23 +101,6 @@ export class SearchDataSource extends DataSource<SearchDoc> {
     } else {
       this.clearData();
       this.hasSearched = false;
-    }
-  }
-
-  // LOL
-  private isValid(query: string): boolean {
-    if (query) {
-      if (query.includes(' ')) {
-        if (query.includes(' AND a:') && (!query.endsWith(':') && !query.endsWith(' '))) {
-          return true;
-        } else {
-          return false;
-        }
-      } else {
-        return true;
-      }
-    } else {
-      return false;
     }
   }
 
