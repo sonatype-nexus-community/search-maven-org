@@ -45,6 +45,12 @@
   @include smo-flex-layout();
 }
 
+@mixin smo-flex-layout-row() {
+  flex-direction: row;
+
+  @include smo-flex-layout();
+}
+
 @mixin smo-gt-sm() {
   @media screen and (min-width: 600px) {
     @content

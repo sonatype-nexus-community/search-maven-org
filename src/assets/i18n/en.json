@@ -95,8 +95,18 @@
     }
   },
   "artifacts": {
-    "allVersions": "All versions",
-    "latestVersion": "v"
+    "allVersions": "Search for all versions for this Artifact",
+    "allGroups": "Search for all artifacts with this Group ID",
+    "allArtifacts": "Search for all artifacts with this Artifact ID",
+    "latestVersion": "v",
+    "gt-99" : "99+",
+    "header": {
+      "artifactId": "Artifact ID",
+      "groupId": "Group ID",
+      "latestVersion": "Latest Version",
+      "updated": "Updated",
+      "download": "Download"
+    }
   },
   "footer": {
     "maven": {

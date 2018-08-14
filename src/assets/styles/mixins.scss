@@ -47,9 +47,8 @@
   white-space: nowrap;
 }
 
-.ellipsis-rlt {
+.ellipsis-rtl {
   @extend .ellipsis;
-
   direction: rtl;
 }
 
