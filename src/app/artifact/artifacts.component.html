@@ -81,7 +81,7 @@
               (click)="$event.stopPropagation()">
               {{ (row.v && !row.latestVersion ? row.v :row.latestVersion) }}
             </a>
-            <span> | </span>
+            <span *ngIf="row.versionCount"> | </span>
             <a
               *ngIf="row.versionCount"
               [routerLink]="['/search']" [queryParams]="{q: 'g:' + row.g + ' AND a:' + row.a, core: 'gav'}"
