@@ -116,6 +116,11 @@ export class SearchComponent implements OnInit, OnDestroy {
         return query;
       }
 
+      // This should cover 'fc:' queries
+      if (query.length >= 3 && query.substr(0, 2).match(/[fc]/i) && query.charAt(2) == ':') {
+        return query;
+      }
+
       // is it a automatic search for SHA1
       let groupBySpace: string[] = query.split(' ');
       if (groupBySpace.length == 1 && groupBySpace[0].match(/^[0-9a-f]{40}$/i)) {
