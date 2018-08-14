@@ -133,7 +133,7 @@ export class ArtifactComponent implements OnInit {
   }
 
   purlTemplate(g: string, a: string, v: string): string {
-    return `maven:${g}/${a}@${v}`;
+    return `pkg:maven/${g}/${a}@${v}`;
   }
 
   remoteRepositoryLink(): string {
