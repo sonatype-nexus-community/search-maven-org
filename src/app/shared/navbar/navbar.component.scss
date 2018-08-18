@@ -17,175 +17,172 @@
 @import '../../../assets/styles/responsive';
 @import '../../../assets/styles/smo-theme';
 
+$smo-nav-link-color: rgba(255, 255, 255, 0.699);
+$smo-nav-sub-bg-color: #efefef;
+$smo-nav-sub-border-color: #e0e0e0;
+
 app-navbar {
   z-index: 1;
-}
-
-.navbar-link {
-  text-decoration: inherit;
-  flex: 1;
+  background: linear-gradient(to right, $smo-blue, $smo-purple);
 }
 
 .navbar {
-  box-shadow: 0 3px 0 -2px rgba(0, 0, 0, 0.2), 0 2px 0 0 rgba(0, 0, 0, 0.14), 0 1px 0 0 rgba(0, 0, 0, 0.12);
-  display: flex;
-  padding: 0 3px;
-}
+  min-height: 3.25rem;
+  position: relative;
+  z-index: 30;
 
-.navbar-header {
-  background: linear-gradient(to right, $smo-blue, $smo-purple);
-  padding: 7px 16px;
-  color: $smo-white;
-  max-height: 49px;
+  > .container {
+    align-items: stretch;
+    margin: 0 auto;
+    min-height: 3.25rem;
+    position: relative;
+    width: 100%;
 
-  > .mat-button {
-    &:last-child {
-      margin-left: auto;
-    }
-  }
+    @include smo-flex-layout();
 
-  .github-mat-button img {
-    margin: 5px;
-  }
-
-  .logo-home-link {
-    z-index: 1;
-    margin-top: 5px;
-
-    @include smo-lt(410px) {
-      max-width: 300px;
-      overflow: hidden;
+    @include smo-lt-md() {
+      display: block;
     }
 
-    .logo-big {
-      height: 25px;
+    @include smo-gt-md() {
+      max-width: 960px;
+      width: 960px;
+    }
 
-      &.cut-logo-lt-sm {
-        @include smo-lt(410px) {
-          display: block;
-          margin-right: -97px;
+    @include smo-gt-lg() {
+      max-width: 1152px;
+      width: 1152px;
+    }
+
+    @include smo-gt-lg() {
+      max-width: 1152px;
+      width: 1152px;
+    }
+
+    @include smo-gt(1472px) {
+      max-width: 1344px;
+      width: 1344px;
+    }
+
+    .navbar-brand {
+      align-items: stretch;
+      flex-shrink: 0;
+      min-height: 3.25rem;
+      width: 100%;
+
+      @include smo-flex-layout();
+
+      @include smo-gt-md() {
+        margin-left: -1rem;
+      }
+
+      .navbar-item {
+        align-items: center;
+        display: flex;
+        flex-grow: 0;
+        flex-shrink: 0;
+        line-height: 1.5;
+        padding: 0.5rem 0.75rem;
+        position: relative;
+
+        @include smo-lt-md() {
+          align-items: center;
+          display: flex;
+        }
+
+        ~ a {
+          color: $smo-nav-link-color;
+        }
+
+        &.navbar-nav-link {
+          @include smo-lt-sm() {
+            display: none;
+          }
+        }
+
+        &.navbar-title {
+          font-size: 1.3em;
+          font-weight: lighter;
+          color: #fff;
+          padding-left: 16px;
+          padding-right: 16px;
+          margin-top: -4px;
+          background-color: transparent;
+
+          &::before {
+            content: "|";
+            position: absolute;
+            left: -3px;
+            font-size: 1.7em;
+            color: $smo-border-color-2;
+            margin-top: -3px;
+            padding-right: 5px;
+          }
+
+          @include smo-lt-sm() {
+            display: none;
+          }
         }
       }
+
     }
   }
+}
+
+.sub-nav {
+  background: $smo-nav-sub-bg-color;
+  border-bottom: 1px solid $smo-nav-sub-border-color;
+  height: 46px;
 
   @include deep {
 
-    .navbar-menu {
-      .mat-icon {
-        height: 31px;
-        width: 31px;
-      }
-    }
-
     .navbar-search {
 
-      width: 200px;
-
-      @include smo-flex();
-
-      @include smo-gt-sm() {
-        left: 0;
-        position: fixed;
-        width: 100%;
-      }
-
-      div.search {
-
-        @include smo-gt-sm() {
-          flex: inherit;
-          width: 50%;
+      .search {
+        @include smo-gt-lg() {
           margin: 0 auto;
+          width: 70%;
+        }
+      }
+
+      .search-form {
+        background-color: transparent;
+        border-radius: 5px;
+        color: black;
+        padding-top: 0;
+
+        & > * {
+          width: 100% !important;
         }
 
-        .search-form {
-          padding-top: 0;
-          background: white;
-          border-radius: 5px;
-          color: black;
+        .mat-form-field {
+          background-color: $smo-white;
+          border: 1px solid $smo-nav-sub-border-color;
+          border-radius: 4px;
+          margin: .3rem .8rem;
+          padding: 0 0.5rem;
 
-          > * {
-            width: 100% !important;
+          @include smo-gt-lg() {
+            margin: 0.4rem -0.3rem 0px -0.3rem;
+          }
 
-            @media (max-width: 720px) {
-              width: 100% !important;
+          .mat-form-field-wrapper {
+            padding-bottom: 0;
+
+            .mat-form-field-underline {
+              display: none;
+            }
+
+            .mat-form-field-suffix {
+              top: 0.3rem;
             }
           }
 
-          .mat-form-field {
-            padding: 0 10px;
-
-            .mat-form-field-wrapper {
-              padding-bottom: 0;
-
-              .mat-form-field-infix {
-                border-top: none;
-
-                .mat-form-field-label {
-                  display: none;
-                }
-              }
-
-              .mat-form-field-underline {
-                bottom: 0.25em;
-              }
-            }
+          .mat-form-field-infix {
+            border-top: 0;
           }
         }
       }
     }
-  }
-}
-
-.navbar-menu-hidden {
-  display: none;
-
-  &.show-gt-sm {
-    @include smo-gt-sm() {
-      display: inherit;
-    }
-  }
-
-  &.show-gt-md {
-    @include smo-gt-md() {
-      display: inherit;
-    }
-  }
-
-  &.show-gt-lg {
-    @include smo-gt-lg() {
-      display: inherit;
-    }
-  }
-
-  &.show-gt-sm {
-    @include smo-gt-sm() {
-      display: inherit;
-    }
-  }
-
-  &.show-lt-sm {
-    @include smo-lt-sm() {
-      display: inherit;
-    }
-  }
-
-  &.show-lt-md {
-    @include smo-lt-md() {
-      display: inherit;
-    }
-  }
-
-  &.show-lt-lg {
-    @include smo-lt-lg() {
-      display: inherit;
-    }
-  }
-}
-
-.github-menu-item {
-  img {
-    margin-right: 24px;
-    margin-bottom: -4px;
   }
 }

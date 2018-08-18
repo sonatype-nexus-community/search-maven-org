@@ -41,6 +41,9 @@ export class SearchComponent implements OnInit, OnDestroy {
   @Input('focus')
   focus: boolean;
 
+  @Input('floatLabel')
+  floatLabel: String;
+
   @ViewChild('searchInput')
   searchInput: ElementRef;
 

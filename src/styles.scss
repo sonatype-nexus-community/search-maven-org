@@ -19,30 +19,44 @@
 @import './assets/styles/smo-typography';
 @import './app/app.component';
 
-html, body {
+html {
+  box-sizing: border-box;
+  font-size: $smo-font-size;
+  min-width: 320px;
   overflow: hidden;
+  text-rendering: optimizeLegibility;
+  text-size-adjust: 100%;
+
   -ms-overflow-style: -ms-autohiding-scrollbar;
+  -webkit-font-smoothing: antialiased;
 
   @include smo-full-size();
 }
 
 body {
-  box-sizing: border-box;
   color: $smo-text-color;
   font-family: $smo-font-family;
-  font-size: $smo-font-size;
+  font-weight: $smo-font-weight;
+  font-size: 1rem;
   line-height: $smo-line-height;
+
   margin: 0;
+
+  @include smo-full-size();
 }
 
 a, a:visited, a:hover {
-  color: mat-color($primary);
+  color: $smo-link-color;
   text-decoration: none;
   cursor: pointer;
 
   &.default-anchor {
     color: inherit;
   }
+}
+
+a:hover {
+  color: $smo-link-hover;
 }
 
 .button[md-button], .button[md-raised-button] {
