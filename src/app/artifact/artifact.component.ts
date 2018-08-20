@@ -92,7 +92,7 @@ export class ArtifactComponent implements OnInit {
   }
 
   mavenCentralBadge(g: string, a: string, v: string): string {
-    return `[![Maven Central](https://img.shields.io/maven-central/v/${g}/${a}.svg?label=Maven%20Central)](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22${g}%22%20a%3A%22${a}%22)`
+    return `[![Maven Central](https://img.shields.io/maven-central/v/${g}/${a}.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22${g}%22%20AND%20a:%22${a}%22)`
   }
 
   apacheMavenTemplate(g: string, a: string, v: string, p: string): string {
