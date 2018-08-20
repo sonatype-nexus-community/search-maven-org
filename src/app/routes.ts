@@ -21,10 +21,12 @@ import { ArtifactsComponent } from "./artifact/artifacts.component";
 import { ResourcesComponent } from './resources/resources.component';
 import { HomeComponent } from "./home/home.component";
 import { AdvancedSearchComponent } from "./search/advanced-search.component";
+import { ClassicUrlGuard } from "./shared/classic/classic-url.guard";
 
 export const SMO_ROUTES: Routes = [
   {
     path: '',
+    canActivate: [ClassicUrlGuard],
     component: HomeComponent
   }, {
     path: 'stats',

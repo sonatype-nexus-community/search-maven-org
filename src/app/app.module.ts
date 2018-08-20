@@ -34,6 +34,7 @@ import { HomeModule } from "./home/home.module";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { RouterStateModule } from "./shared/router-state/router-state.module";
 import { VulnerabilitiesModule } from "./vulnerabilities/vulnerabilities.module";
+import { ClassicModule } from "./shared/classic/classic.module";
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { VulnerabilitiesModule } from "./vulnerabilities/vulnerabilities.module"
     VulnerabilitiesModule,
     StatsModule,
     ArtifactModule,
-    ResourcesModule
+    ResourcesModule,
+    ClassicModule
   ],
   providers: [],
   bootstrap: [AppComponent]
