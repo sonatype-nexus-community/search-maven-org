@@ -29,6 +29,8 @@ import { NotificationsModule } from "./shared/notifications/notifications.module
 import { HomeModule } from "./home/home.module";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { RouterStateModule } from "./shared/router-state/router-state.module";
+import { VulnerabilitiesModule } from "./vulnerabilities/vulnerabilities.module";
+import { ClassicModule } from "./shared/classic/classic.module";
 import { environment } from "../environments/environment";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { ClipboardModule } from "ngx-clipboard";
@@ -52,6 +54,8 @@ import { MatProgressSpinnerModule } from "@angular/material";
     NotificationsModule,
     HomeModule,
     SearchModule,
+    VulnerabilitiesModule,
+    ClassicModule,
     MatProgressSpinnerModule,
     createTranslateModule(),
   ],
