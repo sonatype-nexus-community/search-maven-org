@@ -26,6 +26,7 @@ import { SearchDoc } from "./search-doc";
 import { MatPaginator } from "@angular/material";
 import { SearchService } from "../search.service";
 import { SearchResult } from "./search-result";
+import { SearchSuggestion } from "./search-suggestion";
 
 export class SearchDataSource extends DataSource<SearchDoc> {
 
@@ -93,7 +94,7 @@ export class SearchDataSource extends DataSource<SearchDoc> {
         this.totalCount = searchResult.response.numFound;
         return searchResult;
       }).subscribe(
-        (searchResult: SearchResult) => this.subject.next(searchResult.response.docs),
+        (searchResult: SearchResult) => this.handleSearchResults(searchResult),
         (error: any) => {
           this.qSubject.error(error);
           this.clearData();
@@ -101,6 +102,26 @@ export class SearchDataSource extends DataSource<SearchDoc> {
     } else {
       this.clearData();
       this.hasSearched = false;
+    }
+  }
+
+  private handleSearchResults(searchResult: SearchResult) {
+    if (searchResult.response.docs.length) {
+      this.subject.next(searchResult.response.docs);
+    } else if (searchResult.spellcheck && searchResult.spellcheck.suggestion) {
+      this.searchSuggestion(searchResult.spellcheck.suggestion);
+    } else {
+      this.clearData();
+    }
+  }
+
+  private searchSuggestion(suggestion: SearchSuggestion) {
+    if (suggestion.suggestionResponse) {
+      this.searchService
+        .search(suggestion.suggestionResponse.suggestion[0], 0)
+        .subscribe(
+          searchResult => this.subject.next(searchResult.response.docs),
+          error => this.qSubject.error(error));
     }
   }
 

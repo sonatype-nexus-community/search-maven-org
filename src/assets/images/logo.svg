@@ -1,0 +1,15 @@
+<svg width="224" height="48" xmlns="http://www.w3.org/2000/svg">
+ <title>LOGO</title>
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="50" width="226" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g id="Layer_2">
+   <g id="Layer_1-2"/>
+  </g>
+  <text stroke="#000" transform="matrix(1.6734204673471145,0,0,1.2107521635608975,-71.18186863203391,-4.486051946621925) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_1" y="32" x="74" stroke-width="0" fill="#ffffff">LOGO</text>
+ </g>
+</svg>

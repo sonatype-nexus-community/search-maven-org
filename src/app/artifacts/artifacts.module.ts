@@ -16,32 +16,47 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StatsComponent } from './stats.component';
 import {
-  createTranslateModule
-} from "../shared/translate/translate";
-import { StatsService } from "./stats.service";
-import { MatCardModule, MatIconModule } from "@angular/material";
+  MatInputModule,
+  MatButtonModule,
+  MatIconModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatMenuModule,
+  MatProgressSpinnerModule,
+  MatTooltipModule
+} from '@angular/material';
+import { createTranslateModule } from "../shared/translate/translate";
+import { ArtifactsComponent } from "./artifacts.component";
 import { RouterModule } from "@angular/router";
-import { NotificationsModule } from "../shared/notifications/notifications.module";
+import { FlexLayoutModule } from "@angular/flex-layout";
 import { HttpClient } from '@angular/common/http';
 
 @NgModule({
   imports: [
+    FlexLayoutModule,
+    CommonModule,
+    MatTableModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatMenuModule,
+    MatProgressSpinnerModule,
+    MatTooltipModule,
     RouterModule.forChild([{
       path: '',
-      component: StatsComponent
+      component: ArtifactsComponent,
+      data: {
+        showNavSearchBar: true
+      }
     }]),
-    CommonModule,
-    MatCardModule,
-    MatIconModule,
-    NotificationsModule,
     createTranslateModule()
   ],
-  providers : [
-    StatsService
-  ],
-  exports: [StatsComponent],
-  declarations: [StatsComponent]
+  providers: [],
+  declarations: [
+    ArtifactsComponent
+  ]
 })
-export class StatsModule { }
+export class ArtifactsModule {
+}

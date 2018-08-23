@@ -22,8 +22,10 @@
     max-width: 600px; // not bigger then bg image
 
     div.search {
-      .search-form > * {
-        width: 100% !important;
+      .search-form {
+        > * {
+          width: 100% !important;
+        }
       }
     }
   }

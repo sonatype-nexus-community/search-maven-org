@@ -20,11 +20,19 @@ import { SearchService } from "../search/search.service";
 import { SearchDataSource } from "../search/api/search-data-source";
 import { MatPaginator } from "@angular/material";
 import { NotificationService } from "../shared/notifications/notification.service";
+import { TranslateService } from "@ngx-translate/core";
+import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-artifacts',
   templateUrl: './artifacts.component.html',
-  styleUrls: ['./artifacts.component.scss']
+  styleUrls: ['./artifacts.component.scss'],
+  animations: [trigger('slideUp', [
+    transition('void => *', [
+      style({opacity: 0}),
+      animate(500)
+    ]),
+  ])]
 })
 export class ArtifactsComponent implements OnInit {
 
@@ -46,7 +54,10 @@ export class ArtifactsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private searchService: SearchService,
-              private notificationService: NotificationService) {
+              private notificationService: NotificationService,
+              private translate: TranslateService) {
+    translate.setDefaultLang('artifacts-en');
+    translate.use('artifacts-en');
   }
 
   ngOnInit() {

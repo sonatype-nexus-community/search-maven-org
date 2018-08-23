@@ -16,7 +16,7 @@
 
 -->
 
-<div class="artifacts">
+<div class="artifacts" [@slideUp]>
 
   <div class="search-result">
 
@@ -57,7 +57,7 @@
               <span class="title" fxHide.gt-xs>G: </span>
               <a [routerLink]="['/search']" [queryParams]="{q: 'g:' + row.g}"
                  (click)="$event.stopPropagation()"
-                 matTooltip="{{ 'artifacts.allGroups' | translate }}">{{ row.g }}</a>
+                 matTooltip="{{ 'artifacts.searchAllGroups' | translate }}">{{ row.g }}</a>
             </div>
           </td>
         </ng-container>
@@ -86,8 +86,8 @@
               *ngIf="row.versionCount"
               [routerLink]="['/search']" [queryParams]="{q: 'g:' + row.g + ' AND a:' + row.a, core: 'gav'}"
               (click)="$event.stopPropagation()"
-              matTooltip="{{ 'artifacts.allVersions' | translate }}">
-              <span fxHide.gt-xs>{{ 'artifact.allVersions' | translate }}</span>
+              matTooltip="{{ 'artifacts.searchAllVersions' | translate }}">
+              <span fxHide.gt-xs>{{ 'artifacts.allVersions' | translate }}</span>
               ({{ row.versionCount > 99 ? ('artifacts.gt-99' | translate) : row.versionCount}})
             </a>
 

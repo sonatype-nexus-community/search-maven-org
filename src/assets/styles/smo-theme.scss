@@ -17,32 +17,66 @@
 @import '~@angular/material/theming';
 
 // Individual colours
-
 $smo-white: #fff;
-$smo-blue: #4776e6;
-$smo-purple: #8e54e9;
-$smo-text-color: #333;
+$smo-blue: #336699;
+$smo-purple: #885195;
+$smo-text-color: #4a4a4a;
 $smo-muted-color: #999;
 $smo-border-color:  rgba(10, 10, 10, 0.1);
 $smo-border-color-2:  #eee;
+$smo-link-color: #3572b0;
+$smo-link-hover: #363636;
 
 // Theme Pallets
 
 $smo-primary: (
-  50 : #e7eef6,
-  100 : #c2d5e7,
-  200 : #9ab9d8,
-  300 : #729cc8,
-  400 : #5387bc,
-  500 : #3572b0,
-  600 : #306aa9,
-  700 : #285fa0,
-  800 : #225597,
-  900 : #164287,
-  A100 : #bdd4ff,
-  A200 : #8ab3ff,
-  A400 : #5792ff,
-  A700 : #3d82ff,
+  50 : #e7edf3,
+  100 : #c2d1e0,
+  200 : #99b3cc,
+  300 : #7094b8,
+  400 : #527da8,
+  500 : #336699,
+  600 : #2e5e91,
+  700 : #275386,
+  800 : #20497c,
+  900 : #14386b,
+  A100 : #a2c5ff,
+  A200 : #6fa5ff,
+  A400 : #3c84ff,
+  A700 : #2374ff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  )
+);
+
+$smo-accent: (
+  50 : #f1eaf2,
+  100 : #dbcbdf,
+  200 : #c4a8ca,
+  300 : #ac85b5,
+  400 : #9a6ba5,
+  500 : #885195,
+  600 : #804a8d,
+  700 : #754082,
+  800 : #6b3778,
+  900 : #582767,
+  A100 : #ebacff,
+  A200 : #de79ff,
+  A400 : #d246ff,
+  A700 : #cc2cff,
   contrast: (
     50 : #000000,
     100 : #000000,
@@ -58,39 +92,6 @@ $smo-primary: (
     A200 : #000000,
     A400 : #000000,
     A700 : #ffffff,
-  )
-);
-
-$smo-accent: (
-  50 : #f1eafc,
-  100 : #ddccf8,
-  200 : #c7aaf4,
-  300 : #b087f0,
-  400 : #9f6eec,
-  500 : #8e54e9,
-  600 : #864de6,
-  700 : #7b43e3,
-  800 : #713adf,
-  900 : #5f29d9,
-  A100 : #ffffff,
-  A200 : #ece5ff,
-  A400 : #c7b2ff,
-  A700 : #b598ff,
-  contrast: (
-    50 : #000000,
-    100 : #000000,
-    200 : #000000,
-    300 : #000000,
-    400 : #000000,
-    500 : #ffffff,
-    600 : #ffffff,
-    700 : #ffffff,
-    800 : #ffffff,
-    900 : #ffffff,
-    A100 : #000000,
-    A200 : #000000,
-    A400 : #000000,
-    A700 : #000000,
   )
 );
 

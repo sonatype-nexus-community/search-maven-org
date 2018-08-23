@@ -19,17 +19,20 @@ import { CommonModule } from '@angular/common';
 import { ArtifactComponent } from './artifact.component';
 import { ClipboardModule } from 'ngx-clipboard';
 import {
-  MatInputModule, MatButtonModule, MatCardModule, MatIconModule, MatToolbarModule, MatTableModule, MatPaginatorModule,
-  MatSelectModule, MatMenuModule, MatChipsModule, MatProgressSpinnerModule, MatTooltipModule
+  MatInputModule, MatButtonModule, MatCardModule, MatIconModule, MatToolbarModule, MatPaginatorModule,
+  MatSelectModule, MatMenuModule, MatProgressSpinnerModule
 } from '@angular/material';
-import { createTranslateModule } from "../shared/translate/translate";
+import {
+  createTranslateModule
+} from "../shared/translate/translate";
 import { DependencyInformationComponent } from './dependency-information/dependency-information.component';
 import { ArtifactService } from "./artifact.service";
 import { FormsModule } from "@angular/forms";
-import { ArtifactsComponent } from "./artifacts.component";
 import { RouterModule } from "@angular/router";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { PomDependencyInformationComponent } from "./dependency-information/pom-dependency-information.component";
+import { HttpClient } from '@angular/common/http';
+import { VulnerabilitiesModule } from "../vulnerabilities/vulnerabilities.module";
 
 @NgModule({
   imports: [
@@ -37,7 +40,6 @@ import { PomDependencyInformationComponent } from "./dependency-information/pom-
     CommonModule,
     ClipboardModule,
     FormsModule,
-    MatTableModule,
     MatInputModule,
     MatButtonModule,
     MatCardModule,
@@ -46,18 +48,29 @@ import { PomDependencyInformationComponent } from "./dependency-information/pom-
     MatPaginatorModule,
     MatSelectModule,
     MatMenuModule,
-    MatChipsModule,
     MatProgressSpinnerModule,
-    MatTooltipModule,
-    RouterModule,
+    VulnerabilitiesModule,
+    RouterModule.forChild([{
+      path: ':group/:artifact',
+      component: ArtifactComponent,
+      data: {
+        showNavSearchBar: true
+      }
+    }, {
+      path: ':group/:artifact/:version/:packaging',
+      component: ArtifactComponent,
+      data: {
+        showNavSearchBar: true
+      }
+    }]),
     createTranslateModule()
   ],
   providers: [ArtifactService],
   declarations: [
-    ArtifactsComponent,
     ArtifactComponent,
     DependencyInformationComponent,
     PomDependencyInformationComponent
   ]
 })
 export class ArtifactModule { }
+

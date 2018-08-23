@@ -17,10 +17,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotificationService } from "./notification.service";
+import { MatSnackBarModule } from "@angular/material";
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MatSnackBarModule
   ],
   providers: [NotificationService]
 })

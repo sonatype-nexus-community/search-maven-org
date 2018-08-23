@@ -19,6 +19,11 @@
 <div fxLayout="column" fxFill>
   <app-navbar></app-navbar>
   <router-outlet></router-outlet>
+  <div [hidden]="!loading" class="loader">
+    <div>
+      <mat-spinner diameter="35"></mat-spinner>
+    </div>
+  </div>
   <app-footer></app-footer>
 </div>
 

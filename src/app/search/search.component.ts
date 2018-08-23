@@ -41,8 +41,13 @@ export class SearchComponent implements OnInit, OnDestroy {
   @Input('focus')
   focus: boolean;
 
+  @Input('floatLabel')
+  floatLabel: String;
+
   @ViewChild('searchInput')
   searchInput: ElementRef;
+
+  private searchValueSetByRequestParam: boolean;
 
   private routerStateParamsSubscription: Subscription;
 
@@ -58,11 +63,13 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.stateCtrl.valueChanges.subscribe(s => this.search(s));
 
     this.route.queryParams.subscribe(params => {
+      this.searchValueSetByRequestParam = true;
       this.stateCtrl.setValue(params['q']);
     });
 
     this.routerStateParamsSubscription = this.routerStateParamsService.params().subscribe(params => {
       if (params['group'] && params['artifact'] && params['version']) {
+        this.searchValueSetByRequestParam = true;
         this.stateCtrl.setValue([params['group'], params['artifact'], params['version']].join(':'));
       }
     });
@@ -92,6 +99,12 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   private search(query: string) {
     this.query = this.parseOnGrouping(query);
+
+    // we already did a search, no need to anther one
+    if (this.searchValueSetByRequestParam) {
+      this.searchValueSetByRequestParam = false;
+      return;
+    }
 
     if (this.query) {
       this.searchService
