@@ -22,13 +22,27 @@ app-root {
 
   @include smo-fill();
 
-  router-outlet + * {
+  router-outlet + *, .loader {
     overflow-y: auto;
 
     @include smo-flex-100();
 
     > * {
       padding: 8px 16px;
+    }
+  }
+
+  .loader {
+    flex: 1 0 calc(100% + -193px); // exclude footer
+    align-items: center;
+    align-self: center;
+
+    @include smo-gt-sm() {
+      flex: 1 0 calc(100% + -172px);
+    }
+
+    &:not([hidden]) {
+      display: flex;
     }
   }
 }

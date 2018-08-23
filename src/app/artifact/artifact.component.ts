@@ -24,11 +24,19 @@ import { NotificationService } from "../shared/notifications/notification.servic
 import { VulnerabilitiesService } from "../vulnerabilities/vulnerabilities.service";
 import { Vulnerability } from "../vulnerabilities/api/vulnerability";
 import { ComponentReport } from "../vulnerabilities/api/component-report";
+import { TranslateService } from "@ngx-translate/core";
+import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-artifact',
   templateUrl: './artifact.component.html',
-  styleUrls: ['./artifact.component.scss']
+  styleUrls: ['./artifact.component.scss'],
+  animations: [trigger('slideUp', [
+    transition('void => *', [
+      style({opacity: 0}),
+      animate(700)
+    ]),
+  ])]
 })
 export class ArtifactComponent implements OnInit {
   group: string;
@@ -47,7 +55,10 @@ export class ArtifactComponent implements OnInit {
               private artifactService: ArtifactService,
               private searchService: SearchService,
               private vulnerabilitiesService: VulnerabilitiesService,
-              private notificationService: NotificationService) {
+              private notificationService: NotificationService,
+              private translate: TranslateService) {
+    translate.setDefaultLang('artifact-en');
+    translate.use('artifact-en');
   }
 
   ngOnInit() {

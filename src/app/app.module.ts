@@ -16,7 +16,6 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { createTranslateModule } from "./shared/translate/translate";
 import { AppComponent } from './app.component';
 import { HttpClientModule } from "@angular/common/http";
@@ -26,39 +25,39 @@ import { RouterModule } from "@angular/router";
 import { SMO_ROUTES } from "./routes";
 import { SearchModule } from "./search/search.module";
 import { FooterModule } from "./shared/footer/footer.module";
-import { StatsModule } from "./stats/stats.module";
-import { ResourcesModule } from "./resources/resources.module";
-import { ArtifactModule } from './artifact/artifact.module';
 import { NotificationsModule } from "./shared/notifications/notifications.module";
 import { HomeModule } from "./home/home.module";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { RouterStateModule } from "./shared/router-state/router-state.module";
-import { VulnerabilitiesModule } from "./vulnerabilities/vulnerabilities.module";
+import { environment } from "../environments/environment";
+import { ServiceWorkerModule } from "@angular/service-worker";
+import { ClipboardModule } from "ngx-clipboard";
+import { MatProgressSpinnerModule } from "@angular/material";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+    RouterModule.forRoot(SMO_ROUTES),
     BrowserModule,
     FlexLayoutModule,
     HttpClientModule,
-    RouterModule.forRoot(SMO_ROUTES),
+    ClipboardModule,
     BrowserAnimationsModule,
-    createTranslateModule(),
     RouterStateModule,
     NavbarModule,
     FooterModule,
     NotificationsModule,
     HomeModule,
     SearchModule,
-    VulnerabilitiesModule,
-    StatsModule,
-    ArtifactModule,
-    ResourcesModule
+    MatProgressSpinnerModule,
+    createTranslateModule(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [RouterModule]
 })
 export class AppModule {
 }

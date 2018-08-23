@@ -18,6 +18,7 @@ import { Component, OnInit } from '@angular/core';
 import { StatsService } from "./stats.service";
 import { Stat } from "./api/stat";
 import { NotificationService } from "../shared/notifications/notification.service";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: 'app-stats',
@@ -29,7 +30,10 @@ export class StatsComponent implements OnInit {
   stat: Stat;
 
   constructor(private statsService: StatsService,
-              private notificationService: NotificationService) {
+              private notificationService: NotificationService,
+              private translate: TranslateService) {
+    translate.setDefaultLang('stats-en');
+    translate.use('stats-en');
   }
 
   ngOnInit() {

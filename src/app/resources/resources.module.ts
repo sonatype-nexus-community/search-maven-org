@@ -18,10 +18,15 @@ import { CommonModule } from '@angular/common';
 import { ResourcesComponent } from './resources.component';
 
 import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
+import { RouterModule } from "@angular/router";
 
 @NgModule({
     imports: [
-        CommonModule, 
+      RouterModule.forChild([{
+        path: '',
+        component: ResourcesComponent
+      }]),
+      CommonModule,
         NgxTwitterTimelineModule.forRoot()
     ],
     exports: [ResourcesComponent],

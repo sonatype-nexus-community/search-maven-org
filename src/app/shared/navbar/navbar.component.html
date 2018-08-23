@@ -52,9 +52,10 @@
 
 </nav>
 
-<div class="sub-nav" [hidden]="!showSearch">
+<div class="sub-nav">
   <app-search class="navbar-search"
               ngClass.lt-md="full-width"
-              floatLabel="never">
+              floatLabel="never"
+              [hidden]="!showSearch">
   </app-search>
 </div>

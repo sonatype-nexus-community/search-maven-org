@@ -130,13 +130,20 @@ app-navbar {
 }
 
 .sub-nav {
-  background: $smo-nav-sub-bg-color;
-  border-bottom: 1px solid $smo-nav-sub-border-color;
   height: 46px;
+  background: $smo-white;
 
   @include deep {
 
     .navbar-search {
+      &:not([hidden]) {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      background: $smo-nav-sub-bg-color;
+      border-bottom: 1px solid $smo-nav-sub-border-color;
 
       .search {
         @include smo-gt-lg() {
