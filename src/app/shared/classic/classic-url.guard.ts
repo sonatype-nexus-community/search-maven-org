@@ -68,8 +68,8 @@ export class ClassicUrlGuard implements CanActivate {
     // if we only have groupId, artifactId, version we will default to jar packaging
     if(pathParams.length == 3) {
       pathParams.push('jar')
-    } else if (pathParams.length == 4 && (!pathParams[4] || !pathParams[4].trim().length)) {
-      pathParams[4] = 'jar'
+    } else if (pathParams.length == 4 && (!pathParams[3] || !pathParams[3].trim().length)) {
+      pathParams[3] = 'jar'
     }
 
     return pathParams.join('/');
