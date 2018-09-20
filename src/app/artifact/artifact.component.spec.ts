@@ -15,52 +15,82 @@
  */
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CommonModule, APP_BASE_HREF } from '@angular/common';
 import { ArtifactComponent } from './artifact.component';
-import { ActivatedRoute, Data } from '@angular/router';
-import { MatInputModule, MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
+import { MatInputModule, MatCardModule, MatIconModule, MatSelectModule, MatProgressSpinnerModule, MatSnackBarModule, MatButtonModule, MatMenuModule } from '@angular/material';
 import { createTranslateModule } from "../shared/translate/translate";
 import { ClipboardModule } from 'ngx-clipboard';
 import { SearchService } from '../search/search.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
+import { ArtifactService } from './artifact.service';
+import { VulnerabilitiesService } from '../vulnerabilities/vulnerabilities.service';
+import { NotificationService } from '../shared/notifications/notification.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Component } from '@angular/core';
+import { Input } from '@angular/core';
+import { DependencyInformationComponent } from "./dependency-information/dependency-information.component";
+import { PomDependencyInformationComponent } from "./dependency-information/pom-dependency-information.component";
+import { RouterModule } from "@angular/router";
 
 describe('ArtifactComponent', () => {
   let component: ArtifactComponent;
   let fixture: ComponentFixture<ArtifactComponent>;
+
   let a = "artifact";
   let g = "group.something.etc";
   let v = "1.0.0";
-  let p = "jar";
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        CommonModule,
+        HttpClientModule,
         MatInputModule,
         MatButtonModule,
         MatCardModule,
         MatIconModule,
+        MatSelectModule,
+        RouterTestingModule,
+        MatProgressSpinnerModule,
+        MatSnackBarModule,
+        MatMenuModule,
+        FormsModule,
         ClipboardModule,
+        BrowserAnimationsModule,
+        RouterModule.forRoot([]),
+        RouterModule.forChild([{
+          path: ':group/:artifact',
+          component: ArtifactComponent,
+          data: {
+            showNavSearchBar: true
+          }
+        }, {
+          path: ':group/:artifact/:version/:packaging',
+          component: ArtifactComponent,
+          data: {
+            showNavSearchBar: true
+          }
+        }]),
         createTranslateModule(),
-        HttpClientModule
       ],
       providers: [
-        HttpClient,
-        SearchService,
         {
-          provide: ActivatedRoute,
-          useValue: {
-            params: Observable.of({
-              group: this.g,
-              artifact: this.a,
-              version: this.v,
-              classifier: 'jar'
-            })
-          }
-        }
+          provide: APP_BASE_HREF,
+          useValue: '/'
+        },
+        SearchService,
+        ArtifactService,
+        VulnerabilitiesService,
+        NotificationService
       ],
-      declarations: [ ArtifactComponent ]
+      declarations: [
+        ArtifactComponent,
+        DependencyInformationComponent,
+        PomDependencyInformationComponent
+      ]
     })
       .compileComponents();
   }));
@@ -68,26 +98,13 @@ describe('ArtifactComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ArtifactComponent);
     component = fixture.componentInstance;
-    component.group = g;
-    component.artifact = a;
-    component.version = v;
-    component.packaging = 'jar';
-    fixture.detectChanges();
   });
 
-  describe('when doing fun utility things', () => {
-    it('should create a valid repository link given proper values', () => {
-      expect(component.repositoryLink(g, a, v)).toEqual("http://repo1.maven.org/maven2/group/something/etc/artifact/1.0.0/");
-    });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 
-    it('should create a valid Apache Maven Template', () => {
-      let expected = `<dependency>
-      <groupId>${g}</groupId>
-      <artifactId>${a}</artifactId>
-      <version>${v}</version>
-    </dependency>`;
-      let result = component.apacheMavenTemplate(g, a, v, p)
-      expect(result.replace(/\s\s+/g, ' ')).toBe(expected.replace(/\s\s+/g, ' '));
-    });
+  it('should create a valid repository link given proper values', () => {
+    expect(component.repositoryLink(g, a, v)).toEqual("http://repo1.maven.org/maven2/group/something/etc/artifact/1.0.0/");
   });
 });

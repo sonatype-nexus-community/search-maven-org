@@ -17,10 +17,12 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { VulnerabilitiesService } from './vulnerabilities.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('VulnerabilitiesService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientModule],
       providers: [VulnerabilitiesService]
     });
   });

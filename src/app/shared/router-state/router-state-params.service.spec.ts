@@ -17,10 +17,12 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { RouterStateParamsService } from './router-state-params.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('RouterStateParamsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       providers: [RouterStateParamsService]
     });
   });

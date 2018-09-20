@@ -102,51 +102,6 @@ export class ArtifactComponent implements OnInit {
     return this.componentReport.reference;
   }
 
-  mavenCentralBadge(g: string, a: string, v: string): string {
-    return `[![Maven Central](https://img.shields.io/maven-central/v/${g}/${a}.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22${g}%22%20AND%20a:%22${a}%22)`
-  }
-
-  apacheMavenTemplate(g: string, a: string, v: string, p: string): string {
-    if (p == 'jar') {
-      return `<dependency>\n  <groupId>${g}</groupId>\n  <artifactId>${a}</artifactId>\n  <version>${v}</version>\n</dependency>`;
-    }
-    else {
-      return `<dependency>\n  <groupId>${g}</groupId>\n  <artifactId>${a}</artifactId>\n  <version>${v}</version>\n  <type>${p}</type>\n</dependency>`;
-    }
-  }
-
-  apacheBuildrTemplate(g: string, a: string, v: string): string {
-    return `'${g}:${a}:jar:${v}'`;
-  }
-
-  apacheIvyTemplate(g: string, a: string, v: string): string {
-    return `<dependency org="${g}" name="${a}" rev="${v}" />`;
-  }
-
-  groovyGrapeTemplate(g: string, a: string, v: string): string {
-    return `@Grapes(\n  @Grab(group='${g}', module='${a}', version='${v}')\n)`;
-  }
-
-  scalaSbtTemplate(g: string, a: string, v: string): string {
-    return `libraryDependencies += "${g}" % "${a}" % "${v}"`;
-  }
-
-  leiningenTemplate(g: string, a: string, v: string): string {
-    return `[${g}/${a} "${v}"]`;
-  }
-
-  gradleGrailsTemplate(g: string, a: string, v: string): string {
-    return `compile '${g}:${a}:${v}'`;
-  }
-
-  gradleKotlinDslTemplate(g: string, a: string, v: string): string {
-    return `compile(group = "${g}", name = "${a}", version = "${v}")`;
-  }
-
-  purlTemplate(g: string, a: string, v: string): string {
-    return `pkg:maven/${g}/${a}@${v}`;
-  }
-
   remoteRepositoryLink(): string {
     let groupSlash = this.group.replace(/\.+/g, '/');
     return `${groupSlash}/${this.artifact}/${this.version}/${this.artifact}-${this.version}.pom`;

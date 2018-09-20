@@ -24,6 +24,9 @@ import { DependencyInformationComponent } from "./dependency-information.compone
 })
 export class PomDependencyInformationComponent extends DependencyInformationComponent {
 
+  @Input()
+  value: string;
+
   constructor() {
     super();
   }

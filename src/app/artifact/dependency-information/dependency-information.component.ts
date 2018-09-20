@@ -15,6 +15,7 @@
  */
 
 import { Component, Input, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-dependency-information',
@@ -33,14 +34,112 @@ export class DependencyInformationComponent implements OnInit {
   subTextUrl: string;
 
   @Input()
-  value: string;
+  image: string;
 
   @Input()
-  image: string;
+  g: string;
+
+  @Input()
+  a: string;
+
+  @Input()
+  v: string;
+
+  @Input()
+  p: string;
+
+  @Input()
+  type: string;
+
+  templateValue: string;
 
   constructor() { }
 
   ngOnInit() {
+    this.templateValue = this.provideTemplateOnValue(this.type);
   }
 
+  provideTemplateOnValue(type: string): string {
+    switch(type) {
+      case "maven": {
+        return this.apacheMavenTemplate(this.g, this.a, this.v, this.p);
+      }
+      case "maven-badge": {
+        return this.mavenCentralBadge(this.g, this.a, this.v)
+      }
+      case "apachebuilder": {
+        return this.apacheBuildrTemplate(this.g, this.a, this.v);
+      }
+      case "gradle": {
+        return this.gradleGrailsTemplate(this.g, this.a, this.v);
+      }
+      case "kotlin": {
+        return this.gradleKotlinDslTemplate(this.g, this.a, this.v);
+      }
+      case "sbt": {
+        return this.scalaSbtTemplate(this.g, this.a, this.v);
+      }
+      case "groovygrape": {
+        return this.groovyGrapeTemplate(this.g, this.a, this.v);
+      }
+      case "leiningen": {
+        return this.leiningenTemplate(this.g, this.a, this.v);
+      }
+      case "ivy": {
+        return this.apacheIvyTemplate(this.g, this.a, this.v);
+      }
+      case "purl": {
+        return this.purlTemplate(this.g, this.a, this.v);
+      }
+      default: {
+        this.templateValue =  "";
+        break;
+      }
+    }
+  }
+
+  mavenCentralBadge(g: string, a: string, v: string): string {
+    return `[![Maven Central](https://img.shields.io/maven-central/v/${g}/${a}.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22${g}%22%20AND%20a:%22${a}%22)`
+  }
+
+  apacheMavenTemplate(g: string, a: string, v: string, p: string): string {
+    if (p == 'jar') {
+      return `<dependency>\n  <groupId>${g}</groupId>\n  <artifactId>${a}</artifactId>\n  <version>${v}</version>\n</dependency>`;
+    }
+    else {
+      return `<dependency>\n  <groupId>${g}</groupId>\n  <artifactId>${a}</artifactId>\n  <version>${v}</version>\n  <type>${p}</type>\n</dependency>`;
+    }
+  }
+
+  apacheBuildrTemplate(g: string, a: string, v: string): string {
+    return `'${g}:${a}:jar:${v}'`;
+  }
+
+  apacheIvyTemplate(g: string, a: string, v: string): string {
+    return `<dependency org="${g}" name="${a}" rev="${v}" />`;
+  }
+
+  groovyGrapeTemplate(g: string, a: string, v: string): string {
+    return `@Grapes(\n  @Grab(group='${g}', module='${a}', version='${v}')\n)`;
+  }
+
+  scalaSbtTemplate(g: string, a: string, v: string): string {
+    return `libraryDependencies += "${g}" % "${a}" % "${v}"`;
+  }
+
+  leiningenTemplate(g: string, a: string, v: string): string {
+    return `[${g}/${a} "${v}"]`;
+  }
+
+  gradleGrailsTemplate(g: string, a: string, v: string): string {
+    return `compile '${g}:${a}:${v}'`;
+  }
+
+  gradleKotlinDslTemplate(g: string, a: string, v: string): string {
+    return `compile(group = "${g}", name = "${a}", version = "${v}")`;
+  }
+
+  purlTemplate(g: string, a: string, v: string): string {
+    return `pkg:maven/${g}/${a}@${v}`;
+  }
 }

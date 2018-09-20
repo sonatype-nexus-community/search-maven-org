@@ -16,6 +16,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ResourcesComponent } from './resources.component';
+import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
 
 describe('ResourcesComponent', () => {
   let component: ResourcesComponent;
@@ -23,6 +24,7 @@ describe('ResourcesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [NgxTwitterTimelineModule],
       declarations: [ ResourcesComponent ]
     })
     .compileComponents();

@@ -133,88 +133,119 @@
 
     <div class="pom-dependency-information-column" fxFlex="65">
 
-      <app-pom-dependency-information headerText="{{ group }}:{{ artifact }}"
+      <!--<app-pom-dependency-information headerText="{{ group }}:{{ artifact }}"
                                       subText="{{ version }}"
                                       image="xml"
                                       value="{{ pom }}"
                                       *ngIf="pom"
                                       fxLayout="row"
                                       class="pom-dependency-information">
-      </app-pom-dependency-information>
+      </app-pom-dependency-information>-->
 
     </div>
 
     <div class="artifact-dependency-information-column" fxFlex="35">
 
-      <app-dependency-information headerText="artifact.apacheMaven"
+      <!--<app-dependency-information headerText="artifact.apacheMaven"
                                   subText="maven.apache.org"
                                   subTextUrl="https://maven.apache.org"
                                   image="mvn"
-                                  value="{{apacheMavenTemplate(group, artifact, version, packaging)}}">
+                                  type="maven"
+                                  g="{{group}}"
+                                  a="{{artifact}}"
+                                  v="{{version}}"
+                                  p="{{packaging}}">
       </app-dependency-information>
 
       <app-dependency-information headerText="artifact.gradle"
                                   subText="gradle.org"
                                   subTextUrl="https://gradle.org"
                                   image="gradle"
-                                  value="{{gradleGrailsTemplate(group, artifact, version)}}">
+                                  type="gradle"
+                                  g="{{group}}"
+                                  a="{{artifact}}"
+                                  v="{{version}}">
       </app-dependency-information>
 
       <app-dependency-information headerText="artifact.gradleKotlinDsl"
                                   subText="github.com/gradle/kotlin-dsl"
                                   subTextUrl="https://github.com/gradle/kotlin-dsl"
                                   image="kotlin"
-                                  value="{{gradleKotlinDslTemplate(group, artifact, version)}}">
+                                  type="kotlin"
+                                  g="{{group}}"
+                                  a="{{artifact}}"
+                                  v="{{version}}">
       </app-dependency-information>
 
       <app-dependency-information headerText="artifact.scalaSbt"
                                   subText="scala-sbt.org"
                                   subTextUrl="https://www.scala-sbt.org"
                                   image="scala"
-                                  value="{{scalaSbtTemplate(group, artifact, version)}}">
+                                  type="sbt"
+                                  g="{{group}}"
+                                  a="{{artifact}}"
+                                  v="{{version}}">
       </app-dependency-information>
 
       <app-dependency-information headerText="artifact.apacheIvy"
                                   subText="ant.apache.org/ivy/"
                                   subTextUrl="https://ant.apache.org/ivy/"
                                   image="ivy"
-                                  value="{{apacheIvyTemplate(group, artifact, version)}}">
+                                  type="ivy"
+                                  g="{{group}}"
+                                  a="{{artifact}}"
+                                  v="{{version}}">
       </app-dependency-information>
 
       <app-dependency-information headerText="artifact.groovyGrape"
                                   subText="groovy-lang.org/grape.html"
                                   subTextUrl="http://groovy-lang.org/grape.html"
                                   image="groovy"
-                                  value="{{groovyGrapeTemplate(group, artifact, version)}}">
+                                  type="groovygrape"
+                                  g="{{group}}"
+                                  a="{{artifact}}"
+                                  v="{{version}}">
       </app-dependency-information>
 
       <app-dependency-information headerText="artifact.leiningen"
                                   subText="leiningen.org"
                                   subTextUrl="https://leiningen.org"
                                   image="leiningen"
-                                  value="{{leiningenTemplate(group, artifact, version)}}">
+                                  type="leiningen"
+                                  g="{{group}}"
+                                  a="{{artifact}}"
+                                  v="{{version}}">
       </app-dependency-information>
 
       <app-dependency-information headerText="artifact.apacheBuildr"
                                   subText="buildr.apache.org"
                                   subTextUrl="https://buildr.apache.org/"
                                   image="buildr"
-                                  value="{{apacheBuildrTemplate(group, artifact, version)}}">
+                                  type="apachebuilder"
+                                  g="{{group}}"
+                                  a="{{artifact}}"
+                                  v="{{version}}">
       </app-dependency-information>
 
       <app-dependency-information headerText="artifact.mavenCentral"
                                   subText="search.maven.org"
                                   subTextUrl="https://search.maven.org"
                                   image="badge"
-                                  value="{{mavenCentralBadge(group, artifact, version)}}">
+                                  type="maven-badge"
+                                  g="{{group}}"
+                                  a="{{artifact}}"
+                                  v="{{version}}">
       </app-dependency-information>
 
       <app-dependency-information headerText="artifact.purlSpec"
                                   subText="github.com/package-url/purl-spec"
                                   subTextUrl="https://github.com/package-url/purl-spec"
                                   image=""
-                                  value="{{purlTemplate(group, artifact, version)}}">
-      </app-dependency-information>
+                                  type="purl"
+                                  g="{{group}}"
+                                  a="{{artifact}}"
+                                  v="{{version}}">
+      </app-dependency-information>-->
 
     </div>
 

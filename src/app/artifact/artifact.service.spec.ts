@@ -17,10 +17,12 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { ArtifactService } from './artifact.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('ArtifactService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientModule],
       providers: [ArtifactService]
     });
   });

@@ -17,6 +17,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StatsComponent } from './stats.component';
+import { createTranslateModule } from '../shared/translate/translate';
+import { MatIconModule, MatCardModule, MatSnackBarModule } from '@angular/material';
+import { StatsService } from './stats.service';
+import { HttpClientModule } from '@angular/common/http';
+import { NotificationService } from '../shared/notifications/notification.service';
 
 describe('StatsComponent', () => {
   let component: StatsComponent;
@@ -24,6 +29,8 @@ describe('StatsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [createTranslateModule(), MatIconModule, MatCardModule, MatSnackBarModule, HttpClientModule],
+      providers: [StatsService, NotificationService],
       declarations: [ StatsComponent ]
     })
     .compileComponents();
