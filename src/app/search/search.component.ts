@@ -123,7 +123,7 @@ export class SearchComponent implements OnInit, OnDestroy {
       // do cleaning
       query = query.trim();
       query = query.replace(/ and /gi, w => w.toUpperCase());
-      query = query.replace(/&&/gi, 'AND');
+      query = query.replace(/ && /gi, ' AND ');
 
       // Is it a manual search by identifier of Group, Artifact, Version, Packaging, Classifier, Class name or SHA-1
       if (query.length >= 2 && query.charAt(0).match(/[gavplc1]/i) && query.charAt(1) == ':') {

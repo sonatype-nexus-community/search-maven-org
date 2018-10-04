@@ -126,9 +126,11 @@ export class SearchDataSource extends DataSource<SearchDoc> {
   }
 
   private getSearchString(q: string): string {
-    let query: string;
+    let query: string = q;
 
-    query = q.split(' ').join('+');
+    query = query.replace(/ and /gi, w => w.toUpperCase());
+    query = query.replace(/ && /gi, ' AND ');
+    query = query.split(' ').join('+');
 
     return query;
   }
