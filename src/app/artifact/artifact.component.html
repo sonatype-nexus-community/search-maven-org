@@ -118,9 +118,10 @@
         <mat-icon>file_download</mat-icon>
       </button>
       <mat-menu #menuDownloads="matMenu">
-        <button mat-menu-item *ngFor="let dl of downloadLinks">
-          <a target="_blank" href="{{ dl.link }}">{{ dl.name }}</a>
-        </button>
+          <a *ngFor="let dl of downloadLinks"
+             mat-menu-item 
+             target="_blank" 
+             href="{{ dl.link }}" >{{ dl.name }}</a>
       </mat-menu>
     </div>
 
