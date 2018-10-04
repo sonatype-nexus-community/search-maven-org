@@ -97,7 +97,7 @@
         <ng-container matColumnDef="updated">
           <td mat-cell *matCellDef="let row" fxShow.xs="true" fxShow.sm="false" fxShow="true">
             <span class="title" fxHide.gt-xs>{{ 'artifacts.header.updated' | translate }}: </span>
-            {{ row.timestamp | date : format : timezone }}
+            {{ row.timestamp | date : 'dd-MMM-yyyy' : timezone }}
           </td>
         </ng-container>
 
