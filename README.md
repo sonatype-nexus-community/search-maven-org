@@ -59,6 +59,10 @@ It's important to note, as part of understanding this project, how and why it wa
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+#### Development server via Docker
+
+Run `ng build --watch -c local` to start the build to `dist/`. Run `./run-local.sh`. Nav to `http://localhost` to access the application. The app will automatically reload if you change any of the source files.
+
 #### Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
