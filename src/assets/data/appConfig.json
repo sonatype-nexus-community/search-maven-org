@@ -1,9 +1,9 @@
 {
     "search": {
-      "endpoint" : "https://localhost:8080/solrsearch/select"
+      "endpoint" : "http://localhost:8080/central/solrsearch/select"
     },
     "stats": {
-      "endpoint" : "https://localhost:8080/quickstats"
+      "endpoint" : "http://localhost:8080/central/quickstats"
     },
     "ossindex": {
       "maven": {
@@ -13,7 +13,7 @@
         "endpoint": "https://ossindex.sonatype.org/resource/package"
       }
     },
-    "smoBaseUrl": "https://localhost:8080/remotecontent?filepath=",
+    "smoBaseUrl": "http://localhost:8080/central/remotecontent?filepath=",
     "repositoryBaseUrl": "https://repo1.maven.org/maven2",
     "smoClassicLookUrl": "https://search.maven.org/classic"
 }
