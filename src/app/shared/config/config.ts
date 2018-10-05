@@ -13,6 +13,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export const environment = {
-    production: false
-};
+
+export interface Config {  
+    production: string;
+    search: Search;
+    stats: Stats;
+    ossindex: Ossindex;
+    smoBaseUrl: string;
+    repositoryBaseUrl: string;
+    smoClassicLookUrl: string;
+}
+
+interface Search {
+    endpoint: string;
+}
+
+interface Stats {
+    endpoint: string;
+}
+
+interface Maven {
+    endpoint: string;
+}
+
+interface Ossindex {
+    maven: Maven;
+    resource: Resource;
+}
+
+interface Resource {
+    endpoint: string;
+}

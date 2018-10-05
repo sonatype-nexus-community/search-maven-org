@@ -18,12 +18,18 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { ArtifactService } from './artifact.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AppConfigService } from '../shared/config/app-config.service';
+import { MockConfigService } from '../shared/config/app-config-mock.service';
 
 describe('ArtifactService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule],
-      providers: [ArtifactService]
+      providers: [ArtifactService,         
+      {
+        provide: AppConfigService,
+        useClass: MockConfigService
+      }]
     });
   });
 

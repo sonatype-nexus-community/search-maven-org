@@ -16,22 +16,23 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { environment } from "../../environments/environment";
 import { Observable ,  Subject } from "rxjs";
 import { SearchResult } from "./api/search-result";
 import { Doc } from "./api/doc";
 import { SearchSpellcheck } from "./api/search-spellcheck";
+import { AppConfigService } from '../shared/config/app-config.service';
 
 @Injectable()
 export class SearchService {
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient,
+              private appConfigService: AppConfigService) {
   }
 
   search(q: string, start: number = 0, rows: number = 20): Observable<SearchResult> {
     return this
       .httpClient
-      .get<SearchResult>(`${environment.search.endpoint}?q=${q}&start=${start}&rows=${rows}`)
+      .get<SearchResult>(`${this.appConfigService.getConfig().search.endpoint}?q=${q}&start=${start}&rows=${rows}`)
       .map((searchResult: SearchResult) => {
         searchResult.response.docs.forEach((doc: Doc) => {
           this.addDownloadLinks(doc);
@@ -54,7 +55,7 @@ export class SearchService {
   count(q: string): Observable<number> {
     return this
       .httpClient
-      .get<SearchResult>(`${environment.search.endpoint}?q=${q}&start=0&rows=0`)
+      .get<SearchResult>(`${this.appConfigService.getConfig().search.endpoint}?q=${q}&start=0&rows=0`)
       .map((searchResult: SearchResult) => {
         return searchResult.response.numFound;
       });
@@ -92,7 +93,7 @@ export class SearchService {
   }
 
   private getDownloadLink(doc: Doc, version: string, extension: string, groupSlash: string): string {
-    return `${environment.smoBaseUrl}${groupSlash}/${doc.a}/${version}/${doc.a}-${version}${extension}`;
+    return `${this.appConfigService.getConfig().smoBaseUrl}${groupSlash}/${doc.a}/${version}/${doc.a}-${version}${extension}`;
   }
 
 }

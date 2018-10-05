@@ -17,19 +17,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
-import { environment } from "../../environments/environment";
 import { ComponentReport } from "./api/component-report";
+import { AppConfigService } from '../shared/config/app-config.service';
 
 @Injectable()
 export class VulnerabilitiesService {
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient,
+              private appConfigService: AppConfigService) {
   }
 
   get(group: string, artifact: string, version: string): Observable<ComponentReport> {
     return this
       .httpClient
-      .get<ComponentReport>(`${environment.ossindex.maven.endpoint}/${group}/${artifact}@${version}`)
+      .get<ComponentReport>(`${this.appConfigService.getConfig().ossindex.maven.endpoint}/${group}/${artifact}@${version}`)
       .map(componentReport => {
         // simple reset of numbers
         componentReport.moderateCount = 0;

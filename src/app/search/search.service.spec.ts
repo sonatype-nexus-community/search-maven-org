@@ -19,6 +19,8 @@ import { TestBed, inject } from '@angular/core/testing';
 import { SearchService } from './search.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpClient } from '@angular/common/http';
+import { AppConfigService } from '../shared/config/app-config.service';
+import { MockConfigService } from '../shared/config/app-config-mock.service';
 
 describe('SearchService', () => {
   beforeEach(() => {
@@ -26,7 +28,11 @@ describe('SearchService', () => {
       providers: [SearchService,{
         provide: HttpClient,
         useValue: HttpClientTestingModule
-      } ]
+      },
+      {
+        provide: AppConfigService,
+        useClass: MockConfigService
+      }]
     });
   });
 

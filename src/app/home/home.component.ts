@@ -15,7 +15,7 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { environment } from "../../environments/environment";
+import { AppConfigService } from '../shared/config/app-config.service';
 
 @Component({
   selector: 'app-home',
@@ -26,10 +26,10 @@ export class HomeComponent implements OnInit {
 
   smoClassicLookUrl: string
 
-  constructor() { }
+  constructor(private appConfigService: AppConfigService) { }
 
   ngOnInit() {
-    this.smoClassicLookUrl = environment.smoClassicLookUrl;
+    this.smoClassicLookUrl = this.appConfigService.getConfig().smoClassicLookUrl;
   }
 
 }

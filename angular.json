@@ -40,6 +40,10 @@
               "serviceWorker": true,
               "fileReplacements": [
                 {
+                  "replace": "src/assets/data/appConfig.json",
+                  "with": "src/assets/data/appConfig-prod.json"
+                },
+                {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
                 }

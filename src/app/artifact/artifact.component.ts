@@ -16,7 +16,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { environment } from "../../environments/environment";
+import { AppConfigService } from "../shared/config/app-config.service";
 import { ArtifactService } from "./artifact.service";
 import { SearchService } from "../search/search.service";
 import { SearchDoc } from "../search/api/search-doc";
@@ -56,6 +56,7 @@ export class ArtifactComponent implements OnInit {
               private searchService: SearchService,
               private vulnerabilitiesService: VulnerabilitiesService,
               private notificationService: NotificationService,
+              private appConfigService: AppConfigService,
               private translate: TranslateService) {
     translate.setDefaultLang('artifact-en');
     translate.use('artifact-en');
@@ -95,7 +96,7 @@ export class ArtifactComponent implements OnInit {
 
   repositoryLink(g: string, a: string, v: string): string {
     let groupSlash = g.replace(/\.+/g, '/');
-    return `${environment.repositoryBaseUrl}/${groupSlash}/${a}/${v}/`;
+    return `${this.appConfigService.getConfig().repositoryBaseUrl}/${groupSlash}/${a}/${v}/`;
   }
 
   ossVulnerabilitiesResourceLink(): string {

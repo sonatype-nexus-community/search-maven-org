@@ -22,6 +22,8 @@ import { MatIconModule, MatCardModule, MatSnackBarModule } from '@angular/materi
 import { StatsService } from './stats.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NotificationService } from '../shared/notifications/notification.service';
+import { AppConfigService } from '../shared/config/app-config.service';
+import { MockConfigService } from '../shared/config/app-config-mock.service';
 
 describe('StatsComponent', () => {
   let component: StatsComponent;
@@ -30,7 +32,14 @@ describe('StatsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [createTranslateModule(), MatIconModule, MatCardModule, MatSnackBarModule, HttpClientModule],
-      providers: [StatsService, NotificationService],
+      providers: [
+        StatsService, 
+        NotificationService,
+        {
+          provide: AppConfigService,
+          useClass: MockConfigService
+        }
+      ],
       declarations: [ StatsComponent ]
     })
     .compileComponents();

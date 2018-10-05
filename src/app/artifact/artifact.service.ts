@@ -17,18 +17,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { environment } from "../../environments/environment";
+import { AppConfigService } from '../shared/config/app-config.service';
 
 @Injectable()
 export class ArtifactService {
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient,
+              private appConfigService: AppConfigService) {
   }
 
   remoteContent(path: string): Observable<string> {
     return this
       .httpClient
-      .get(`${environment.smoBaseUrl}${path}`, {responseType: 'text'});
+      .get(`${this.appConfigService.getConfig().smoBaseUrl}${path}`, {responseType: 'text'});
   }
 
 }

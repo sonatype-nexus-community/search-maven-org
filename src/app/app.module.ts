@@ -15,7 +15,7 @@
  */
 
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { createTranslateModule } from "./shared/translate/translate";
 import { AppComponent } from './app.component';
 import { HttpClientModule } from "@angular/common/http";
@@ -31,10 +31,17 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { RouterStateModule } from "./shared/router-state/router-state.module";
 import { VulnerabilitiesModule } from "./vulnerabilities/vulnerabilities.module";
 import { ClassicModule } from "./shared/classic/classic.module";
-import { environment } from "../environments/environment";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { ClipboardModule } from "ngx-clipboard";
 import { MatProgressSpinnerModule } from "@angular/material";
+import { AppConfigService } from './shared/config/app-config.service';
+import { environment } from '../environments/environment';
+
+const appInitializerFn = (appConfig: AppConfigService) => {
+  return () => {
+    return appConfig.loadAppConfig();
+  }
+}
 
 @NgModule({
   declarations: [
@@ -59,9 +66,15 @@ import { MatProgressSpinnerModule } from "@angular/material";
     MatProgressSpinnerModule,
     createTranslateModule(),
   ],
-  providers: [],
+  providers: [AppConfigService, {
+    provide: APP_INITIALIZER,
+    useFactory: appInitializerFn,
+    multi: true,
+    deps: [AppConfigService]
+  }],
   bootstrap: [AppComponent],
   exports: [RouterModule]
 })
+
 export class AppModule {
 }

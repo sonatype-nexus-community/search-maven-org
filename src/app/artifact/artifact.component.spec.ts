@@ -34,6 +34,9 @@ import { Input } from '@angular/core';
 import { DependencyInformationComponent } from "./dependency-information/dependency-information.component";
 import { PomDependencyInformationComponent } from "./dependency-information/pom-dependency-information.component";
 import { RouterModule } from "@angular/router";
+import { AppConfigService } from '../shared/config/app-config.service';
+import { Config } from '../shared/config/config';
+import { MockConfigService } from '../shared/config/app-config-mock.service';
 
 describe('ArtifactComponent', () => {
   let component: ArtifactComponent;
@@ -84,7 +87,11 @@ describe('ArtifactComponent', () => {
         SearchService,
         ArtifactService,
         VulnerabilitiesService,
-        NotificationService
+        NotificationService,
+        {
+          provide: AppConfigService,
+          useClass: MockConfigService
+        }
       ],
       declarations: [
         ArtifactComponent,

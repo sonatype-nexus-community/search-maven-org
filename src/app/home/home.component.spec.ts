@@ -22,6 +22,8 @@ import { Component } from '@angular/core';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { createTranslateModule } from '../shared/translate/translate';
 import { HttpClientModule } from '@angular/common/http';
+import { AppConfigService } from '../shared/config/app-config.service';
+import { MockConfigService } from '../shared/config/app-config-mock.service';
 
 describe('HomeComponent', () => {
   @Component({selector: 'app-search', template: ''})
@@ -34,6 +36,12 @@ describe('HomeComponent', () => {
     TestBed.configureTestingModule({
       imports: [createTranslateModule(), HttpClientModule],
       declarations: [ HomeComponent, SearchModuleStub ],
+      providers: [
+        {
+          provide: AppConfigService,
+          useClass: MockConfigService
+        }
+      ],
       schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();

@@ -13,24 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 export const environment = {
-  production: true,
-  search: {
-    endpoint : 'https://search.maven.org/solrsearch/select'
-  },
-  stats: {
-    endpoint : 'https://search.maven.org/quickstats'
-  },
-  ossindex: {
-    maven: {
-      endpoint: 'https://ossindex.sonatype.org/api/v3/component-report/maven:'
-    },
-    resource: {
-      endpoint: 'https://ossindex.sonatype.org/resource/package'
-    }
-  },
-  smoBaseUrl: 'https://search.maven.org/remotecontent?filepath=',
-  repositoryBaseUrl: 'https://repo1.maven.org/maven2',
-  smoClassicLookUrl: 'https://search.maven.org/classic'
+    production: true
 };

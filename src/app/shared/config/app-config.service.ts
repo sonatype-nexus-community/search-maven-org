@@ -15,19 +15,27 @@
  */
 
 import { Injectable } from '@angular/core';
-import { Observable } from "rxjs";
-import { Stat } from "./api/stat";
 import { HttpClient } from '@angular/common/http';
-import { AppConfigService } from '../shared/config/app-config.service';
+import { Config } from './config';
 
-@Injectable()
-export class StatsService {
+@Injectable({
+    providedIn: 'root'
+})
+export class AppConfigService {
+    private appConfig: Config;
+    private appConfigPath: string = '/assets/data/appConfig.json';
 
-  constructor(private httpClient: HttpClient,
-              private appConfigService: AppConfigService) {
-  }
+    constructor(private http: HttpClient) { }
 
-  stats(): Observable<Stat> {
-    return this.httpClient.get<Stat>(`${this.appConfigService.getConfig().stats.endpoint}`);
-  }
+    loadAppConfig() {
+        return this.http.get(this.appConfigPath)
+            .toPromise()
+            .then(data => {
+                this.appConfig = <Config>data;
+            });
+    }
+
+    getConfig(): Config {
+        return this.appConfig;
+    }
 }

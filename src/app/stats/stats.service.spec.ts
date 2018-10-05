@@ -18,12 +18,25 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { StatsService } from './stats.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AppConfigService } from '../shared/config/app-config.service';
+import { MockConfigService } from '../shared/config/app-config-mock.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClient } from '@angular/common/http';
 
 describe('StatsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule],
-      providers: [StatsService]
+      providers: [
+        StatsService,
+        {
+          provide: HttpClient,
+          useValue: HttpClientTestingModule
+        },
+        {
+          provide: AppConfigService,
+          useClass: MockConfigService
+        }
+      ]
     });
   });
 

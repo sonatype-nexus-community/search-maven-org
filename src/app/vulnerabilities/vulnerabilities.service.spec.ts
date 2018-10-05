@@ -15,15 +15,22 @@
  */
 
 import { TestBed, inject } from '@angular/core/testing';
-
 import { VulnerabilitiesService } from './vulnerabilities.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AppConfigService } from '../shared/config/app-config.service';
+import { MockConfigService } from '../shared/config/app-config-mock.service';
 
 describe('VulnerabilitiesService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule],
-      providers: [VulnerabilitiesService]
+      providers: [
+        VulnerabilitiesService,
+        {
+          provide: AppConfigService,
+          useClass: MockConfigService
+        }
+      ]
     });
   });
 
