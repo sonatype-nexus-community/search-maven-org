@@ -68,7 +68,7 @@
               <span class="title" fxHide.gt-xs>A: </span>
               <a [routerLink]="['/search']" [queryParams]="{q: 'a:' + row.a}"
                  (click)="$event.stopPropagation()"
-                 matTooltip="{{ 'artifacts.allArtifacts' | translate }}">{{ row.a }}</a>
+                 matTooltip="{{ 'artifacts.searchAllArtifacts' | translate }}">{{ row.a }}</a>
             </div>
           </td>
         </ng-container>
