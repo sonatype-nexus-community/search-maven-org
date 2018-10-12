@@ -136,7 +136,7 @@ export class DependencyInformationComponent implements OnInit {
   }
 
   gradleKotlinDslTemplate(g: string, a: string, v: string): string {
-    return `compile(group = "${g}", name = "${a}", version = "${v}")`;
+    return `compile("${g}:${a}:${v}")`;
   }
 
   purlTemplate(g: string, a: string, v: string): string {
