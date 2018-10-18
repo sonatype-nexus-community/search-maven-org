@@ -60,6 +60,10 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.local.ts"
+                },
+                {
+                  "replace": "src/assets/data/appConfig.json",
+                  "with": "src/assets/data/appConfig-local-proxy.json"
                 }
               ]
             }

@@ -1,0 +1,20 @@
+{
+    "search": {
+      "endpoint" : "/api/search/solrsearch/select"
+    },
+    "stats": {
+      "endpoint" : "/api/search/quickstats"
+    },
+    "ossindex": {
+      "maven": {
+        "endpoint": "/api/ossindex/api/v3/component-report/maven:"
+      },
+      "resource": {
+        "endpoint": "/api/ossindex/resource/package"
+      }
+    },
+    "smoBaseUrl": "/api/search/remotecontent?filepath=",
+    "repositoryBaseUrl": "https://repo1.maven.org/maven2",
+    "smoClassicLookUrl": "/api/search/classic"
+  }
+  

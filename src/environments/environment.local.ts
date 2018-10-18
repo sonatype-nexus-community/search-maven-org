@@ -34,4 +34,3 @@ export const environment = {
     repositoryBaseUrl: 'https://repo1.maven.org/maven2',
     smoClassicLookUrl: '/api/search/classic'
   };
-  
