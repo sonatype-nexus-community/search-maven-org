@@ -59,6 +59,10 @@ export class DependencyInformationComponent implements OnInit {
     this.templateValue = this.provideTemplateOnValue(this.type);
   }
 
+  ngOnChanges() {
+    this.templateValue = this.provideTemplateOnValue(this.type);
+  }
+
   provideTemplateOnValue(type: string): string {
     switch(type) {
       case "maven": {
