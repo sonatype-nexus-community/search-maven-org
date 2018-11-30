@@ -132,11 +132,11 @@ export class DependencyInformationComponent implements OnInit {
   }
 
   gradleGrailsTemplate(g: string, a: string, v: string): string {
-    return `compile '${g}:${a}:${v}'`;
+    return `implementation '${g}:${a}:${v}'`;
   }
 
   gradleKotlinDslTemplate(g: string, a: string, v: string): string {
-    return `compile(group = "${g}", name = "${a}", version = "${v}")`;
+    return `implementation("${g}:${a}:${v}")`;
   }
 
   purlTemplate(g: string, a: string, v: string): string {
