@@ -36,13 +36,13 @@
           <div class="ellipsis">{{ 'stats.modifiedDate' | translate }}</div>
           <div class="ellipsis">{{ 'stats.gav' | translate }}</div>
           <div class="ellipsis">{{ 'stats.ga' | translate }}</div>
-          <div class="ellipsis">{{ 'stats.repoSize' | translate }}</div>
+          <div class="ellipsis" *ngIf="stat?.repoSize > 0">{{ 'stats.repoSize' | translate }}</div>
         </div>
         <div class="value-column">
           <div>{{ stat?.dateModified }}</div>
           <div>{{ stat?.gavNumber }}</div>
           <div>{{ stat?.gaNumber }}</div>
-          <div>{{ stat?.repoSize }} {{ 'stats.repoSizeUnit' | translate}}</div>
+          <div *ngIf="stat?.repoSize > 0">{{ stat?.repoSize }} {{ 'stats.repoSizeUnit' | translate}}</div>
         </div>
       </div>
     </mat-card-content>
