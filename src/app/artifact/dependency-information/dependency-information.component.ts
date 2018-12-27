@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-import { Component, Input, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-dependency-information',
   templateUrl: './dependency-information.component.html',
   styleUrls: ['./dependency-information.component.scss']
 })
-export class DependencyInformationComponent implements OnInit {
+export class DependencyInformationComponent implements OnChanges {
 
   @Input()
   headerText: string;
@@ -55,8 +54,10 @@ export class DependencyInformationComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-    this.templateValue = this.provideTemplateOnValue(this.type);
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.v && changes.v.currentValue) {
+      this.templateValue = this.provideTemplateOnValue(this.type);
+    }
   }
 
   provideTemplateOnValue(type: string): string {
@@ -132,7 +133,7 @@ export class DependencyInformationComponent implements OnInit {
   }
 
   gradleGrailsTemplate(g: string, a: string, v: string): string {
-    return `compile '${g}:${a}:${v}'`;
+    return `implementation '${g}:${a}:${v}'`;
   }
 
   gradleKotlinDslTemplate(g: string, a: string, v: string): string {
