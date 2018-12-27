@@ -87,6 +87,45 @@ div.artifacts {
         @include smo-gt-md() {
           width: 200px;
         }
+
+        .latest-version {
+          @include smo-flex-layout();
+
+          @include smo-gt-sm() {
+            display: block;
+          }
+
+          .title {
+            margin-top: 3px;
+          }
+
+          .version-row {
+            @include smo-flex-layout-column();
+
+            @include smo-gt-sm() {
+              @include smo-flex-layout-row();
+            }
+
+            .latest {
+              @extend .ellipsis-rtl;
+
+              @include smo-gt-sm() {
+                @include smo-flex();
+              }
+            }
+
+            .all {
+
+              @include smo-gt-sm() {
+                @include smo-flex();
+                text-align: right;
+                margin-left: 10px;
+                margin-right: 10%;
+              }
+            }
+          }
+        }
+
       }
 
       .mat-column-updated {
@@ -106,7 +145,7 @@ div.artifacts {
         &.table-condensed {
           .mat-row {
             border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-            height: 115px;
+            height: 125px;
           }
 
           .mat-cell {
