@@ -137,7 +137,7 @@ export class DependencyInformationComponent implements OnChanges {
   }
 
   gradleKotlinDslTemplate(g: string, a: string, v: string): string {
-    return `implementation("${g}:${a}:${v}")`;
+    return `compile("${g}:${a}:${v}")`;
   }
 
   purlTemplate(g: string, a: string, v: string): string {
