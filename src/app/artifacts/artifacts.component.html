@@ -82,7 +82,7 @@
                 <div class="latest">
                   <a
                     [routerLink]="['/artifact', row.g, row.a, (row.v && !row.latestVersion ? row.v :row.latestVersion), row.p]"
-                    (click)="$event.stopPropagation()">
+                    (click)="$event.stopPropagation()">&lrm;
                     {{ (row.v && !row.latestVersion ? row.v :row.latestVersion) }}
                   </a>
                 </div>
