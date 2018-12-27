@@ -87,7 +87,7 @@ describe('DependencyInformationComponent', () => {
   });
 
   it('should create a valid Gradle Groovy template', () => {
-    let expected = `compile '${g}:${a}:${v}'`;
+    let expected = `implementation '${g}:${a}:${v}'`;
     let result = component.provideTemplateOnValue("gradle");
     expect(result).toBe(expected);
   });
