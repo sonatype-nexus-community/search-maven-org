@@ -82,12 +82,26 @@ div.search {
           @include smo-flex-layout();
 
           .option-title-value {
-            border-bottom: 1px solid #ddd;
+            border-bottom: 2px solid #ddd;
             width: 15%;
             font-size: 16px;
             font-weight: 100;
 
+            @include smo-flex-layout();
             @include smo-flex();
+
+            .group-title-value {
+              @include smo-flex();
+            }
+
+            .updated-title-value {
+              font-size: 13px;
+
+              .title {
+                color: #a4a7ae;
+                padding: 0 5px;
+              }
+            }
           }
 
           .option-title {

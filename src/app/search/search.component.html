@@ -33,7 +33,13 @@
           <mat-option [routerLink]="['/search']"
                       [queryParams]="{q: 'g:' + doc.g}" [value]="'g:' + doc.g"
                       class="mat-option-title-value">
-            <div class="option-title-value">{{ doc.g}}</div>
+            <div class="option-title-value">
+              <div class="group-title-value ellipsis-rtl">{{ doc.g }}</div>
+              <div class="updated-title-value" fxHide fxShow.gt-xs="true">
+                <span class="title">{{'search.header.updated' | translate}}</span>
+                <span class="value">{{ doc.timestamp | date : 'dd-MMM-yyyy' : timezone }}</span>
+              </div>
+            </div>
           </mat-option>
           <mat-option [routerLink]="['/search']" [queryParams]="{q: 'a:' + doc.a}" [value]="'a:' + doc.a">
             <div class="option-title">{{'search.header.artifactId' | translate}}</div>
