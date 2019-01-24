@@ -45,6 +45,9 @@ export class DependencyInformationComponent implements OnChanges {
   v: string;
 
   @Input()
+  s: string;
+
+  @Input()
   p: string;
 
   @Input()
@@ -55,7 +58,13 @@ export class DependencyInformationComponent implements OnChanges {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges) {
+    // versions get changed by user selection
     if (changes.v && changes.v.currentValue) {
+      this.templateValue = this.provideTemplateOnValue(this.type);
+    }
+
+    // sha1 is async retrieved, there for checking for changes
+    if(changes.s && changes.s.currentValue) {
       this.templateValue = this.provideTemplateOnValue(this.type);
     }
   }
@@ -91,6 +100,9 @@ export class DependencyInformationComponent implements OnChanges {
       }
       case "purl": {
         return this.purlTemplate(this.g, this.a, this.v);
+      }
+      case "bazel": {
+        return this.bazelTemplate(this.g, this.a, this.v, this.s ? this.s : 'calculating...');
       }
       default: {
         this.templateValue =  "";
@@ -142,5 +154,9 @@ export class DependencyInformationComponent implements OnChanges {
 
   purlTemplate(g: string, a: string, v: string): string {
     return `pkg:maven/${g}/${a}@${v}`;
+  }
+
+  bazelTemplate(g: string, a: string, v: string, s:string): string {
+    return `maven_jar(\n    name = "${a}",\n    artifact = "${g}:${a}:${v}",\n    sha1 = "${s}",\n)`;
   }
 }

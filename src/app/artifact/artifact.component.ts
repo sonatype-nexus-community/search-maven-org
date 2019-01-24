@@ -44,6 +44,7 @@ export class ArtifactComponent implements OnInit {
   version: string;
   packaging: string;
   pom: string;
+  sha1: string;
   searchDocs: SearchDoc[];
   downloadLinks: { name: string, link: string }[];
   vulnerabilities: Vulnerability[];
@@ -80,8 +81,13 @@ export class ArtifactComponent implements OnInit {
   initDefault() {
     this.initOnRelatedArtifacts();
     this.initOnVulnerabilities();
-    this.artifactService.remoteContent(this.remoteRepositoryLink()).subscribe(content => {
+    this.artifactService.remoteContent(this.remoteRepositoryPomLink()).subscribe(content => {
       this.pom = content;
+    });
+
+    this.artifactService.remoteContent(this.remoteRepositoryJarSha1Link()).subscribe(content => {
+      // some sha1 files have path names in them after a space, this way we remove the path part.
+      this.sha1 = content ? content.split(' ')[0] : '';
     });
   }
 
@@ -103,9 +109,17 @@ export class ArtifactComponent implements OnInit {
     return this.componentReport.reference;
   }
 
+  remoteRepositoryJarSha1Link(): string {
+    return this.remoteRepositoryLink() + '.jar.sha1';
+  }
+
+  remoteRepositoryPomLink(): string {
+    return this.remoteRepositoryLink() + '.pom';
+  }
+
   remoteRepositoryLink(): string {
     let groupSlash = this.group.replace(/\.+/g, '/');
-    return `${groupSlash}/${this.artifact}/${this.version}/${this.artifact}-${this.version}.pom`;
+    return `${groupSlash}/${this.artifact}/${this.version}/${this.artifact}-${this.version}`;
   }
 
   private initOnRelatedArtifacts() {

@@ -16,6 +16,7 @@
     "purlSpec": "PURL",
     "scalaSbt": "Scala SBT",
     "leiningen": "Leiningen",
+    "bazel": "Bazel",
     "copy": "Copy",
     "allVersions": "All versions",
     "downloads": "Downloads",

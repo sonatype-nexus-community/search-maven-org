@@ -114,6 +114,11 @@
       @include avatar-img('kotlin.png');
     }
 
+    &.img-bazel {
+      @include avatar-img('bazel.png');
+      background-position-x: center;
+    }
+
     &.img-purl {
       @include avatar-img('purl.png');
     }
