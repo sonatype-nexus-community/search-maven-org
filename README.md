@@ -21,6 +21,7 @@
 [![Join the chat at https://gitter.im/sonatype/nexus-developers](https://badges.gitter.im/sonatype/nexus-developers.svg)](https://gitter.im/sonatype-nexus-community/search-maven-org?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Table of Contents
+
 * [Prerequisites](#prerequisites)
 * [Installation](#installation)
 * [Development](#development)
@@ -43,6 +44,7 @@ It's important to note, as part of understanding this project, how and why it wa
     * We followed the [Quick start guide from Angular](https://angular.io/guide/quickstart)
 
 ## Installation
+
 * NPM
   * install npm from https://nodejs.org/en/
   * install the latest angular cli with `npm install -g @angular/cli@latest`
@@ -58,6 +60,10 @@ It's important to note, as part of understanding this project, how and why it wa
 #### Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+#### Development server via Docker
+
+Run `ng build --watch -c local` to start the build to `dist/`. Run `./run-local.sh`. Nav to `http://localhost` to access the application. The app will automatically reload if you change any of the source files.
 
 #### Code scaffolding
 
