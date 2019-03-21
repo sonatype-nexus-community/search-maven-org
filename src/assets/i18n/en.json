@@ -13,7 +13,8 @@
     "stats": "Quick Stats",
     "whoIsSonatype": "Who is Sonatype?",
     "github": "GitHub",
-    "theCentralRepository": "The Central Repository"
+    "theCentralRepository": "The Central Repository",
+    "centralSecurity": "Report A Vulnerability"
   },
   "search": {
     "result": {
