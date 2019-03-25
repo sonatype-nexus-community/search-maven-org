@@ -93,7 +93,7 @@ describe('DependencyInformationComponent', () => {
   });
 
   it('should create a valid Gradle Kotlin DSL template', () => {
-    let expected = `compile("${g}:${a}:${v}")`;
+    let expected = `implementation("${g}:${a}:${v}")`;
     let result = component.provideTemplateOnValue("kotlin");
     expect(result).toBe(expected);
   });
