@@ -13,7 +13,6 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-
 @import '../../../styles';
 
 @mixin avatar-img($url) {
@@ -108,6 +107,8 @@
 
     &.img-gradle {
       @include avatar-img('gradle.png');
+      background-position-x: -13px;
+      background-position-y: -1px;
     }
 
     &.img-kotlin {
