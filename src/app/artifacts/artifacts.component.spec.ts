@@ -17,12 +17,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule, APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import {
-  MatButtonModule,
-  MatIconModule, MatInputModule,
-  MatMenuModule, MatPaginatorModule, MatProgressSpinnerModule, MatSnackBarModule, MatTableModule,
-  MatTooltipModule
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { ArtifactsComponent } from './artifacts.component';
 import { createTranslateModule } from "../shared/translate/translate";
 import { RouterModule } from "@angular/router";

@@ -44,7 +44,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   @Input('floatLabel')
   floatLabel: String;
 
-  @ViewChild('searchInput')
+  @ViewChild('searchInput', { static: true })
   searchInput: ElementRef;
 
   private searchValueSetByRequestParam: boolean;
@@ -176,7 +176,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   private searchSuggestion(suggestion: SearchSuggestion) {
-    if (suggestion.suggestionResponse) {
+    if (suggestion.suggestionResponse && suggestion.suggestionResponse.suggestion) {
       this.searchService
         .search(suggestion.suggestionResponse.suggestion[0], 0)
         .subscribe(

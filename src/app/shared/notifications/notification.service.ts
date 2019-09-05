@@ -16,7 +16,7 @@
 
 import { Injectable } from '@angular/core';
 import { TranslateService } from "@ngx-translate/core";
-import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from "@angular/material";
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from "@angular/material/snack-bar";
 
 @Injectable()
 export class NotificationService {

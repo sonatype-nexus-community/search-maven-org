@@ -82,7 +82,9 @@ export class ArtifactComponent implements OnInit {
     this.initOnRelatedArtifacts();
     this.initOnVulnerabilities();
     this.artifactService.remoteContent(this.remoteRepositoryPomLink()).subscribe(content => {
-      this.pom = content;
+      setTimeout(() => {
+        this.pom = content;
+      }, 1000);
     });
 
     this.artifactService.remoteContent(this.remoteRepositoryJarSha1Link()).subscribe(content => {

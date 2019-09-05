@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+
+import {map, filter} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
@@ -48,10 +50,10 @@ export class RouterStateParamsService {
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router) {
-    this.router.events
-      .filter(event => event instanceof NavigationEnd)
-      .map(_ => this.router.routerState.root)
-      .map(route => this.initializeOnRoute(route))
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      map(_ => this.router.routerState.root),
+      map(route => this.initializeOnRoute(route)),)
       .subscribe(routes => this.initializeOnData(routes));
   }
 

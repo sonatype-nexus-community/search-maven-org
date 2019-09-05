@@ -18,7 +18,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { SearchService } from "../search/search.service";
 import { SearchDataSource } from "../search/api/search-data-source";
-import { MatPaginator } from "@angular/material";
+import { MatPaginator } from "@angular/material/paginator";
 import { NotificationService } from "../shared/notifications/notification.service";
 import { TranslateService } from "@ngx-translate/core";
 import { trigger, style, animate, transition } from '@angular/animations';
@@ -46,7 +46,7 @@ export class ArtifactsComponent implements OnInit {
 
   dataSource: SearchDataSource;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   private q: string;
 

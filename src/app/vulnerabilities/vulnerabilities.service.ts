@@ -14,9 +14,11 @@
  * limitations under the License.
  */
 
+
+import {map} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs/Observable";
+import { Observable } from "rxjs";
 import { ComponentReport } from "./api/component-report";
 import { AppConfigService } from '../shared/config/app-config.service';
 
@@ -30,8 +32,8 @@ export class VulnerabilitiesService {
   get(group: string, artifact: string, version: string): Observable<ComponentReport> {
     return this
       .httpClient
-      .get<ComponentReport>(`${this.appConfigService.getConfig().ossindex.maven.endpoint}/${group}/${artifact}@${version}`)
-      .map(componentReport => {
+      .get<ComponentReport>(`${this.appConfigService.getConfig().ossindex.maven.endpoint}/${group}/${artifact}@${version}`).pipe(
+      map(componentReport => {
         // simple reset of numbers
         componentReport.moderateCount = 0;
         componentReport.severeCount = 0;
@@ -51,6 +53,6 @@ export class VulnerabilitiesService {
         });
 
         return componentReport;
-      });
+      }));
   }
 }

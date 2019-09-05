@@ -33,7 +33,7 @@ import { VulnerabilitiesModule } from "./vulnerabilities/vulnerabilities.module"
 import { ClassicModule } from "./shared/classic/classic.module";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { ClipboardModule } from "ngx-clipboard";
-import { MatProgressSpinnerModule } from "@angular/material";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { AppConfigService } from './shared/config/app-config.service';
 import { environment } from '../environments/environment';
 

@@ -18,7 +18,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DependencyInformationComponent } from './dependency-information.component';
 import { createTranslateModule } from '../../shared/translate/translate';
-import { MatCardModule, MatIconModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { ClipboardModule } from 'ngx-clipboard';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';

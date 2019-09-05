@@ -18,7 +18,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StatsComponent } from './stats.component';
 import { createTranslateModule } from '../shared/translate/translate';
-import { MatIconModule, MatCardModule, MatSnackBarModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { StatsService } from './stats.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NotificationService } from '../shared/notifications/notification.service';
