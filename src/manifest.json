@@ -6,7 +6,7 @@
   "icons": [
     {
       "src": "assets/images/app_home_icon.png",
-      "sizes": "512x512",
+      "sizes": "1025x1025",
       "type": "image/png"
     }
   ],
