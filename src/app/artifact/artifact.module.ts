@@ -39,6 +39,7 @@ import { PomDependencyInformationComponent } from "./dependency-information/pom-
 import { VulnerabilitiesModule } from "../vulnerabilities/vulnerabilities.module";
 import { ArtifactsComponent } from '../artifacts/artifacts.component';
 import { ArtifactsModule } from '../artifacts/artifacts.module';
+import { DependencyLinksComponent } from './dependency-links/dependency-links.component';
 
 @NgModule({
   imports: [
@@ -76,7 +77,8 @@ import { ArtifactsModule } from '../artifacts/artifacts.module';
   declarations: [
     ArtifactComponent,
     DependencyInformationComponent,
-    PomDependencyInformationComponent
+    PomDependencyInformationComponent,
+    DependencyLinksComponent
   ]
 })
 export class ArtifactModule { }

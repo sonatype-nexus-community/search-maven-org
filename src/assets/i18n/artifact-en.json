@@ -1,5 +1,6 @@
 {
   "artifact": {
+    "dependencies:": "Dependencies:",
     "projectInformation": "Project Information",
     "projectModel": "Project Model",
     "artifactId": "Artifact ID",
