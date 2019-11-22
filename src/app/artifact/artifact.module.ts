@@ -36,11 +36,13 @@ import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { PomDependencyInformationComponent } from "./dependency-information/pom-dependency-information.component";
-import { HttpClient } from '@angular/common/http';
 import { VulnerabilitiesModule } from "../vulnerabilities/vulnerabilities.module";
+import { ArtifactsComponent } from '../artifacts/artifacts.component';
+import { ArtifactsModule } from '../artifacts/artifacts.module';
 
 @NgModule({
   imports: [
+    ArtifactsModule,
     FlexLayoutModule,
     CommonModule,
     ClipboardModule,
@@ -57,7 +59,7 @@ import { VulnerabilitiesModule } from "../vulnerabilities/vulnerabilities.module
     VulnerabilitiesModule,
     RouterModule.forChild([{
       path: ':group/:artifact',
-      component: ArtifactComponent,
+      component: ArtifactsComponent,
       data: {
         showNavSearchBar: true
       }

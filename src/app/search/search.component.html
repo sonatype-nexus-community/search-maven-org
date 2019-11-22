@@ -41,7 +41,7 @@
               </div>
             </div>
           </mat-option>
-          <mat-option [routerLink]="['/search']" [queryParams]="{q: 'a:' + doc.a}" [value]="'a:' + doc.a">
+          <mat-option [routerLink]="['/artifact', doc.g, doc.a]">
             <div class="option-title">{{'search.header.artifactId' | translate}}</div>
             <div class="option-value">{{ doc.a }}</div>
           </mat-option>

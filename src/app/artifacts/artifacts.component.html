@@ -18,6 +18,21 @@
 
 <div class="artifacts" [@slideUp]>
 
+  <div class="artifacts-info" *ngIf="header">
+    <div class="artifacts-title">
+      <span class="ellipsis">{{ header }}</span>
+    </div>
+
+    <div class="artifacts-actions" fxHide fxShow.gt-sm>
+      <a target="_blank"
+         href="{{ repositoryLink }}"
+         mat-button>
+        <span>{{ 'artifacts.browse' | translate }} </span>
+        <mat-icon>folder</mat-icon>
+      </a>
+    </div>
+  </div>
+
   <div class="search-result">
 
     <table mat-table #table [dataSource]="dataSource" class="full-table table-condensed">
@@ -31,7 +46,9 @@
       </ng-container>
 
       <ng-container matColumnDef="latestVersion">
-        <th mat-header-cell *matHeaderCellDef> {{ 'artifacts.header.latestVersion' | translate }}</th>
+        <th mat-header-cell *matHeaderCellDef>
+          {{ (q ? 'artifacts.header.latestVersion' : 'artifacts.header.version') | translate }}
+        </th>
       </ng-container>
 
       <ng-container matColumnDef="updated">
@@ -92,9 +109,9 @@
 
                   <a
                     *ngIf="row.versionCount"
-                    [routerLink]="['/search']" [queryParams]="{q: 'g:' + row.g + ' AND a:' + row.a, core: 'gav'}"
+                    [routerLink]="['/artifact', row.g, row.a]"
                     (click)="$event.stopPropagation()"
-                    matTooltip="{{ 'artifacts.searchAllVersions' | translate }}"
+                    matTooltip="{{ 'artifacts.showAllVersions' | translate }}"
                     style="">
                     <span fxHide.gt-xs>{{ 'artifacts.allVersions' | translate }}</span>
                     ({{ row.versionCount > 99 ? ('artifacts.gt-99' | translate) : row.versionCount}})

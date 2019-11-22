@@ -68,9 +68,13 @@ export class SearchComponent implements OnInit, OnDestroy {
     });
 
     this.routerStateParamsSubscription = this.routerStateParamsService.params().subscribe(params => {
-      if (params['group'] && params['artifact'] && params['version']) {
+      if (params['group'] && params['artifact']) {
         this.searchValueSetByRequestParam = true;
-        this.stateCtrl.setValue([params['group'], params['artifact'], params['version']].join(':'));
+        if (params['version']) {
+          this.stateCtrl.setValue([params['group'], params['artifact'], params['version']].join(':'));
+        } else {
+          this.stateCtrl.setValue([params['group'], params['artifact']].join(':'));
+        }
       }
     });
 

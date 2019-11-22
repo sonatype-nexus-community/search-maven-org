@@ -22,6 +22,7 @@ import { MatPaginator } from "@angular/material/paginator";
 import { NotificationService } from "../shared/notifications/notification.service";
 import { TranslateService } from "@ngx-translate/core";
 import { trigger, style, animate, transition } from '@angular/animations';
+import { AppConfigService } from '../shared/config/app-config.service';
 
 @Component({
   selector: 'app-artifacts',
@@ -36,15 +37,10 @@ import { trigger, style, animate, transition } from '@angular/animations';
 })
 export class ArtifactsComponent implements OnInit {
 
-  displayedColumns = [
-    'groupId',
-    'artifactId',
-    'latestVersion',
-    'updated',
-    'download'
-  ];
-
+  displayedColumns = [];
   dataSource: SearchDataSource;
+  header: string;
+  repositoryLink: string;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
@@ -55,6 +51,7 @@ export class ArtifactsComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private searchService: SearchService,
               private notificationService: NotificationService,
+              private appConfigService: AppConfigService,
               private translate: TranslateService) {
     translate.setDefaultLang('artifacts-en');
     translate.use('artifacts-en');
@@ -64,28 +61,53 @@ export class ArtifactsComponent implements OnInit {
     this.dataSource = new SearchDataSource(this.searchService, this.paginator);
     this.dataSource.qSubject.subscribe(s => s, error => this.handleError(error));
 
+    // For searches, e.g. /search?q=something
     this.route.queryParams.subscribe(params => {
       this.q = params['q'];
       this.core = params['core'];
 
       if (this.q) {
         this.search(this.q + (this.core ? '&core=' + this.core : ''));
+        this.displayedColumns = [
+          'groupId',
+          'artifactId',
+          'latestVersion',
+          'updated',
+          'download'
+        ];
+      }
+    });
+
+    // For group/artifact paths, e.g. /artifact/groupId/artifactId
+    this.route.params.subscribe(params => {
+      const group = params['group'];
+      const artifact = params['artifact'];
+
+      if (group && artifact) {
+        this.search(`g:${group} AND a:${artifact}&core=gav`);
+        this.header = `${group}:${artifact}`;
+        this.repositoryLink = `${this.appConfigService.getConfig().repositoryBaseUrl}/${group.replace(/\.+/g, '/')}/${artifact}/`;
+        this.displayedColumns = [
+          'latestVersion',
+          'updated',
+          'download'
+        ];
       }
     });
   }
 
   search(query: string) {
-    this.dataSource.qSubject.next(query)
+    this.dataSource.qSubject.next(query);
   }
 
   private handleError(error) {
     // For "know" exceptions, don't notify users
-    if (error.status == 400 &&
+    if (error.status === 400 &&
       (error.error.includes('org.apache.lucene.queryParser.ParseException') ||
       error.error.includes('400, msg: missing query string') ||
       error.error.includes('Solr returned 400, msg:'))) {
       return;
-    } else if (error.status == 500 && (error.statusText.includes('IllegalArgumentException'))) {
+    } else if (error.status === 500 && (error.statusText.includes('IllegalArgumentException'))) {
       return;
     }
 

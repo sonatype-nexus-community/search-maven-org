@@ -19,11 +19,33 @@ div.artifacts {
   height: 95%;
 
   @include smo-flex();
-  @include smo-flex-layout();
+  @include smo-flex-layout-column();
 
   @include smo-gt-lg() {
     margin: 0 auto;
     width: 70%;
+  }
+
+  .artifacts-info {
+    @include smo-flex-layout();
+    @include smo-gt-sm() {
+      justify-content: space-between;
+    }
+
+    .artifacts-title {
+      font-size: 18px;
+      font-weight: bold;
+      align-items: center;
+      min-height: 18px;
+      padding-right: 5px;
+
+      @include smo-flex-layout()
+    }
+
+    .artifacts-actions {
+      color: mat-color($primary);
+      padding-top: 16px;
+    }
   }
 
   .search-result {
