@@ -37,6 +37,7 @@ import { RouterModule } from "@angular/router";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { PomDependencyInformationComponent } from "./dependency-information/pom-dependency-information.component";
 import { VulnerabilitiesModule } from "../vulnerabilities/vulnerabilities.module";
+import { Title } from '@angular/platform-browser';
 import { ArtifactsComponent } from '../artifacts/artifacts.component';
 import { ArtifactsModule } from '../artifacts/artifacts.module';
 import { DependencyLinksComponent } from './dependency-links/dependency-links.component';
@@ -73,7 +74,7 @@ import { DependencyLinksComponent } from './dependency-links/dependency-links.co
     }]),
     createTranslateModule()
   ],
-  providers: [ArtifactService],
+  providers: [ArtifactService, Title],
   declarations: [
     ArtifactComponent,
     DependencyInformationComponent,

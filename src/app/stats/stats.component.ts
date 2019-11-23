@@ -19,6 +19,7 @@ import { StatsService } from "./stats.service";
 import { Stat } from "./api/stat";
 import { NotificationService } from "../shared/notifications/notification.service";
 import { TranslateService } from "@ngx-translate/core";
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-stats',
@@ -31,6 +32,8 @@ export class StatsComponent implements OnInit {
 
   constructor(private statsService: StatsService,
               private notificationService: NotificationService,
+              private titleService: Title,
+              private metaService: Meta,
               private translate: TranslateService) {
     translate.setDefaultLang('stats-en');
     translate.use('stats-en');
@@ -40,6 +43,16 @@ export class StatsComponent implements OnInit {
     this.statsService.stats().subscribe(
       (stat: Stat) => this.stat = stat,
       error => this.notificationService.notifySystemUnavailable());
+
+    this.translate.get('stats.htmlTitle').subscribe(title => {
+      this.titleService.setTitle( title );
+      this.metaService.updateTag({ name: 'og:title', content: title});
+    });
+
+    this.translate.get('stats.htmlDescription').subscribe(description => {
+      this.metaService.updateTag({ name: 'description', content: description});
+      this.metaService.updateTag({ name: 'og:description', content: description});
+    });
   }
 
 }

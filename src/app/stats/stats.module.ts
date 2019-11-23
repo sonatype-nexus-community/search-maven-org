@@ -26,6 +26,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { RouterModule } from "@angular/router";
 import { NotificationsModule } from "../shared/notifications/notifications.module";
 import { HttpClient } from '@angular/common/http';
+import { Title } from '@angular/platform-browser';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { HttpClient } from '@angular/common/http';
     createTranslateModule()
   ],
   providers : [
-    StatsService
+    StatsService,
+    Title
   ],
   exports: [StatsComponent],
   declarations: [StatsComponent]

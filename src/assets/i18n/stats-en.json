@@ -1,5 +1,7 @@
 {
   "stats": {
+    "htmlTitle": "Stats – Central Repository for Maven, Gradle, Kotlin, Scala and more",
+    "htmlDescription": "Statistics for the official Central Repository for Maven, Gradle, Kotlin, Scala and more",
     "title": "Statistics for the Central Repository",
     "status": "Status",
     "optimal": "Systems is running optimal",

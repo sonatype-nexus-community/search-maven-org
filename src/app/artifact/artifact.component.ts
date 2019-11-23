@@ -26,6 +26,7 @@ import { Vulnerability } from "../vulnerabilities/api/vulnerability";
 import { ComponentReport } from "../vulnerabilities/api/component-report";
 import { TranslateService } from "@ngx-translate/core";
 import { trigger, style, animate, transition } from '@angular/animations';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-artifact',
@@ -58,6 +59,8 @@ export class ArtifactComponent implements OnInit {
               private vulnerabilitiesService: VulnerabilitiesService,
               private notificationService: NotificationService,
               private appConfigService: AppConfigService,
+              private titleService: Title,
+              private metaService: Meta,
               private translate: TranslateService) {
     translate.setDefaultLang('artifact-en');
     translate.use('artifact-en');
@@ -69,6 +72,24 @@ export class ArtifactComponent implements OnInit {
       this.artifact = params['artifact'];
       this.packaging = params['packaging'];
       this.version = params['version'];
+
+      this.translate.get('artifact.htmlTitle', {
+        group: this.group,
+        artifact: this.artifact,
+        version: this.version
+      }).subscribe(title => {
+        this.titleService.setTitle( title );
+        this.metaService.updateTag({ name: 'og:title', content: title});
+      });
+
+      this.translate.get('artifact.htmlDescription', {
+        group: this.group,
+        artifact: this.artifact,
+        version: this.version
+      }).subscribe(description => {
+        this.metaService.updateTag({ name: 'description', content: description});
+        this.metaService.updateTag({ name: 'og:description', content: description});
+      });
 
       if (this.version) {
         this.initDefault()

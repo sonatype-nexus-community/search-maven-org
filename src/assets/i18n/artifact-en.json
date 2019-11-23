@@ -1,5 +1,7 @@
 {
   "artifact": {
+    "htmlTitle": "{{group}} : {{artifact}} : {{version}} – Central Repository for Maven, Gradle, Kotlin, Scala and more",
+    "htmlDescription": "Find binaries and documentation for {{group}}:{{artifact}}:{{version}} in the official Central Repository for Maven, Gradle, Kotlin, Scala and more",
     "dependencies:": "Dependencies:",
     "projectInformation": "Project Information",
     "projectModel": "Project Model",
