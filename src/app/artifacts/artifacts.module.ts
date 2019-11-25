@@ -28,12 +28,14 @@ import { createTranslateModule } from "../shared/translate/translate";
 import { ArtifactsComponent } from "./artifacts.component";
 import { RouterModule } from "@angular/router";
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { HttpClient } from '@angular/common/http';
+import { AnchorModule } from "../shared/anchor/anchor.module";
+import { ArtifactsDescriptionComponent } from './artifacts-description/artifacts-description.component';
 
 @NgModule({
   imports: [
     FlexLayoutModule,
     CommonModule,
+    AnchorModule,
     MatTableModule,
     MatInputModule,
     MatButtonModule,
@@ -53,7 +55,8 @@ import { HttpClient } from '@angular/common/http';
   ],
   providers: [],
   declarations: [
-    ArtifactsComponent
+    ArtifactsComponent,
+    ArtifactsDescriptionComponent
   ]
 })
 export class ArtifactsModule {

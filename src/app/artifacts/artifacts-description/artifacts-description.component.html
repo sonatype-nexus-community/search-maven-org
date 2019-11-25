@@ -1,0 +1,94 @@
+<!--
+
+ Copyright 2018-present Sonatype, Inc.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+-->
+
+<div class="artifacts-description" *ngIf="parsedPom">
+  <h2 class="name" *ngIf="parsedPom.name">{{ parsedPom.name }}</h2>
+  <div class="description" *ngIf="parsedPom.description">{{ parsedPom.description }}</div>
+  <!-- TODO: vulnerabilities -->
+  <table>
+    <tr *ngIf="parsedPom.licenses.length > 0">
+      <th scope="row">{{'artifacts.licenses' | translate}}</th>
+      <td>
+        <ul>
+          <li *ngFor="let license of parsedPom.licenses">
+            <app-anchor url="{{license.url}}" text="{{license.name}}"></app-anchor>
+        </ul>
+      </td>
+    </tr>
+    <tr *ngIf="parsedPom.url">
+      <th scope="row">{{'artifacts.homePage' | translate}}</th>
+      <td><a href="{{parsedPom.url}}">{{parsedPom.url}}</a></td>
+    </tr>
+    <tr *ngIf="parsedPom.scmUrl">
+      <th scope="row">{{'artifacts.sourceCode' | translate}}</th>
+      <td><a href="{{parsedPom.scmUrl}}">{{parsedPom.scmUrl}}</a></td>
+    </tr>
+    <tr *ngIf="parsedPom.organizationName || parsedPom.organizationUrl">
+      <th scope="row">{{'artifacts.organization' | translate}}</th>
+      <td>
+        <app-anchor url="{{parsedPom.organizationUrl}}" text="{{parsedPom.organizationName}}"></app-anchor>
+      </td>
+    </tr>
+    <tr *ngIf="parsedPom.developers.length > 0">
+      <th scope="row">{{'artifacts.developers' | translate}}</th>
+      <td>
+        <ul>
+          <li *ngFor="let dev of parsedPom.developers">
+            <app-anchor *ngIf="dev.url || dev.name" url="{{dev.url}}" text="{{dev.name}}"></app-anchor>
+            <!-- DON'T REFORMAT below to avoid space before comma -->
+            <ng-template [ngIf]="dev.email">
+              &lt;<a href="{{'mailto:' + dev.email}}">{{dev.email}}</a>&gt;</ng-template><ng-template
+            [ngIf]="dev.organization || dev.organizationUrl">,
+              <app-anchor url="{{dev.organizationUrl}}" text="{{dev.organization}}"></app-anchor>
+            </ng-template>
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr *ngIf="parsedPom.contributors.length > 0">
+      <th scope="row">{{'artifacts.contributors' | translate}}</th>
+      <td>
+        <ul>
+          <li *ngFor="let dev of parsedPom.developers">
+            <app-anchor *ngIf="dev.url || dev.name" url="{{dev.url}}" text="{{dev.name}}"></app-anchor>
+            <!-- DON'T REFORMAT below to avoid space before comma -->
+            <ng-template [ngIf]="dev.email">
+              &lt;<a href="{{'mailto:' + dev.email}}">{{dev.email}}</a>&gt;</ng-template><ng-template
+            [ngIf]="dev.organization || dev.organizationUrl">,
+            <app-anchor url="{{dev.organizationUrl}}" text="{{dev.organization}}"></app-anchor>
+          </ng-template>
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr *ngIf="parsedPom.mailingLists.length > 0">
+      <th scope="row">{{'artifacts.mailingLists' | translate}}</th>
+      <td>
+        <ul>
+          <li *ngFor="let list of parsedPom.mailingLists">
+            <app-anchor url="{{list.archiveUrl}}" text="{{list.name}}"></app-anchor>
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr *ngIf="parsedPom.inceptionYear">
+      <th scope="row">{{'artifacts.inceptionYear' | translate}}</th>
+      <td>{{parsedPom.inceptionYear}}</td>
+    </tr>
+  </table>
+</div>

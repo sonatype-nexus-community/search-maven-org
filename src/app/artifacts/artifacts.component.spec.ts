@@ -31,8 +31,10 @@ import { createTranslateModule } from "../shared/translate/translate";
 import { RouterModule } from "@angular/router";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { SearchService } from "../search/search.service";
+import { AnchorModule } from "../shared/anchor/anchor.module";
 import { NotificationService } from "../shared/notifications/notification.service";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ArtifactsDescriptionComponent } from "./artifacts-description/artifacts-description.component";
 
 
 describe('ArtifactsComponent', () => {
@@ -42,6 +44,7 @@ describe('ArtifactsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        AnchorModule,
         FlexLayoutModule,
         BrowserAnimationsModule,
         CommonModule,
@@ -65,7 +68,7 @@ describe('ArtifactsComponent', () => {
         }]),
         createTranslateModule()
       ],
-      declarations: [ArtifactsComponent],
+      declarations: [ArtifactsComponent, ArtifactsDescriptionComponent],
       providers: [
         {
           provide: APP_BASE_HREF,

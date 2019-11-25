@@ -36,6 +36,7 @@ import { ClipboardModule } from "ngx-clipboard";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { AppConfigService } from './shared/config/app-config.service';
 import { environment } from '../environments/environment';
+import { AnchorModule } from "./shared/anchor/anchor.module";
 
 const appInitializerFn = (appConfig: AppConfigService) => {
   return () => {
@@ -58,6 +59,7 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     RouterStateModule,
     NavbarModule,
     FooterModule,
+    AnchorModule,
     NotificationsModule,
     HomeModule,
     SearchModule,

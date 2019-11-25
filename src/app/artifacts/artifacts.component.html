@@ -17,11 +17,12 @@
 -->
 
 <div class="artifacts" [@slideUp]>
+  <!-- TODO: http://schema.org/docs/gs.html -->
 
-  <div class="artifacts-info" *ngIf="header">
-    <div class="artifacts-title">
-      <span class="ellipsis">{{ header }}</span>
-    </div>
+  <div class="artifacts-info" *ngIf="group && artifact">
+    <h1 class="artifacts-title">
+      <span class="ellipsis">{{ group + ':' + artifact }}</span>
+    </h1>
 
     <div class="artifacts-actions" fxHide fxShow.gt-sm>
       <a target="_blank"
@@ -33,132 +34,108 @@
     </div>
   </div>
 
-  <div class="search-result">
+  <app-artifacts-description *ngIf="group && artifact"
+                             [group]="group"
+                             [artifact]="artifact">
+  </app-artifacts-description>
 
-    <table mat-table #table [dataSource]="dataSource" class="full-table table-condensed">
+  <table mat-table #table [dataSource]="dataSource" class="full-table table-condensed">
+    <ng-container matColumnDef="groupId">
+      <th mat-header-cell *matHeaderCellDef> {{ 'artifacts.header.groupId' | translate }}</th>
+      <td mat-cell *matCellDef="let row">
+        <div ngClass.gt-xs="ellipsis-rtl">
+          <span class="title" fxHide.gt-xs>G:&nbsp;</span>
+          <a [routerLink]="['/search']" [queryParams]="{q: 'g:' + row.g}"
+             (click)="$event.stopPropagation()"
+             matTooltip="{{ 'artifacts.searchAllGroups' | translate }}">{{ row.g }}</a>
+        </div>
+      </td>
+    </ng-container>
 
-      <ng-container matColumnDef="groupId">
-        <th mat-header-cell *matHeaderCellDef> {{ 'artifacts.header.groupId' | translate }}</th>
-      </ng-container>
+    <ng-container matColumnDef="artifactId">
+      <th mat-header-cell *matHeaderCellDef> {{ 'artifacts.header.artifactId' | translate }}</th>
+      <td mat-cell *matCellDef="let row">
+        <div ngClass.gt-xs="ellipsis-rtl">
+          <span class="title" fxHide.gt-xs>A:&nbsp;</span>
+          <a [routerLink]="['/search']" [queryParams]="{q: 'a:' + row.a}"
+             (click)="$event.stopPropagation()"
+             matTooltip="{{ 'artifacts.searchAllArtifacts' | translate }}">{{ row.a }}</a>
+        </div>
+      </td>
+    </ng-container>
 
-      <ng-container matColumnDef="artifactId">
-        <th mat-header-cell *matHeaderCellDef> {{ 'artifacts.header.artifactId' | translate }}</th>
-      </ng-container>
+    <ng-container matColumnDef="latestVersion">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ (q ? 'artifacts.header.latestVersion' : 'artifacts.header.version') | translate }}
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <div class="latest-version">
+          <span class="title" fxHide.gt-xs>V:&nbsp;</span>
+          <div class="version-row">
 
-      <ng-container matColumnDef="latestVersion">
-        <th mat-header-cell *matHeaderCellDef>
-          {{ (q ? 'artifacts.header.latestVersion' : 'artifacts.header.version') | translate }}
-        </th>
-      </ng-container>
-
-      <ng-container matColumnDef="updated">
-        <th mat-header-cell *matHeaderCellDef fxShow.xs="true" fxShow.sm="false" fxShow="true">
-          {{ 'artifacts.header.updated' | translate }}
-        </th>
-      </ng-container>
-
-      <ng-container matColumnDef="download">
-        <th mat-header-cell *matHeaderCellDef fxHide.lt-sm> {{ 'artifacts.header.download' | translate }}</th>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns" fxHide.lt-sm></tr>
-    </table>
-
-    <div class="table-scroll-container">
-
-      <table mat-table #table [dataSource]="dataSource" class="full-table table-condensed">
-
-        <ng-container matColumnDef="groupId">
-          <td mat-cell *matCellDef="let row">
-            <div ngClass.gt-xs="ellipsis-rtl">
-              <span class="title" fxHide.gt-xs>G:&nbsp;</span>
-              <a [routerLink]="['/search']" [queryParams]="{q: 'g:' + row.g}"
-                 (click)="$event.stopPropagation()"
-                 matTooltip="{{ 'artifacts.searchAllGroups' | translate }}">{{ row.g }}</a>
-            </div>
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="artifactId">
-          <td mat-cell *matCellDef="let row">
-            <div ngClass.gt-xs="ellipsis-rtl">
-              <span class="title" fxHide.gt-xs>A:&nbsp;</span>
-              <a [routerLink]="['/search']" [queryParams]="{q: 'a:' + row.a}"
-                 (click)="$event.stopPropagation()"
-                 matTooltip="{{ 'artifacts.searchAllArtifacts' | translate }}">{{ row.a }}</a>
-            </div>
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="latestVersion">
-          <td mat-cell *matCellDef="let row">
-            <div class="latest-version">
-              <span class="title" fxHide.gt-xs>V:&nbsp;</span>
-              <div class="version-row">
-
-                <div class="latest">
-                  <a
-                    [routerLink]="['/artifact', row.g, row.a, (row.v && !row.latestVersion ? row.v :row.latestVersion), row.p]"
-                    title="&lrm; {{ (row.v && !row.latestVersion ? row.v :row.latestVersion) }}"
-                    (click)="$event.stopPropagation()">&lrm;
-                    {{ (row.v && !row.latestVersion ? row.v :row.latestVersion) }}
-                  </a>
-                </div>
-
-                <div class="all">
-
-                  <a
-                    *ngIf="row.versionCount"
-                    [routerLink]="['/artifact', row.g, row.a]"
-                    (click)="$event.stopPropagation()"
-                    matTooltip="{{ 'artifacts.showAllVersions' | translate }}"
-                    style="">
-                    <span fxHide.gt-xs>{{ 'artifacts.allVersions' | translate }}</span>
-                    ({{ row.versionCount > 99 ? ('artifacts.gt-99' | translate) : row.versionCount}})
-                  </a>
-
-                </div>
-
-              </div>
-            </div>
-
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="updated">
-          <td mat-cell *matCellDef="let row" fxShow.xs="true" fxShow.sm="false" fxShow="true">
-            <span class="title" fxHide.gt-xs>{{ 'artifacts.header.updated' | translate }}: </span>
-            {{ row.timestamp | date : 'dd-MMM-yyyy' : timezone }}
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="download">
-          <td mat-cell *matCellDef="let row" fxHide.lt-sm>
-            <mat-menu #downloadMenu="matMenu" [overlapTrigger]="false">
-              <a *ngFor="let dl of row.downloadLinks" target="_blank" href="{{dl.link}}">
-                <button mat-menu-item>{{dl.name}}</button>
+            <div class="latest">
+              <a
+                [routerLink]="['/artifact', row.g, row.a, (row.v && !row.latestVersion ? row.v :row.latestVersion), row.p]"
+                title="&lrm; {{ (row.v && !row.latestVersion ? row.v :row.latestVersion) }}"
+                (click)="$event.stopPropagation()">&lrm;
+                {{ (row.v && !row.latestVersion ? row.v :row.latestVersion) }}
               </a>
-            </mat-menu>
-            <button mat-icon-button [matMenuTriggerFor]="downloadMenu"
-                    (click)="$event.stopPropagation()">
-              <mat-icon>file_download</mat-icon>
-            </button>
-          </td>
-        </ng-container>
+            </div>
 
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-            [routerLink]="['/artifact', row.g, row.a, (row.v && !row.latestVersion ? row.v :row.latestVersion), row.p]"></tr>
+            <div class="all">
 
-      </table>
+              <a
+                *ngIf="row.versionCount"
+                [routerLink]="['/artifact', row.g, row.a]"
+                (click)="$event.stopPropagation()"
+                matTooltip="{{ 'artifacts.showAllVersions' | translate }}"
+                style="">
+                <span fxHide.gt-xs>{{ 'artifacts.allVersions' | translate }}</span>
+                ({{ row.versionCount > 99 ? ('artifacts.gt-99' | translate) : row.versionCount}})
+              </a>
 
-    </div>
+            </div>
 
-    <mat-paginator #paginator
-                   [length]="dataSource.totalCount"
-                   [pageIndex]="0"
-                   [pageSize]="20">
-    </mat-paginator>
+          </div>
+        </div>
 
-  </div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="updated">
+      <th mat-header-cell *matHeaderCellDef fxShow.xs="true" fxShow.sm="false" fxShow="true">
+        {{ 'artifacts.header.updated' | translate }}
+      </th>
+      <td mat-cell *matCellDef="let row" fxShow.xs="true" fxShow.sm="false" fxShow="true">
+        <span class="title" fxHide.gt-xs>{{ 'artifacts.header.updated' | translate }}: </span>
+        {{ row.timestamp | date : 'dd-MMM-yyyy' : timezone }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="download">
+      <th mat-header-cell *matHeaderCellDef fxHide.lt-sm> {{ 'artifacts.header.download' | translate }}</th>
+      <td mat-cell *matCellDef="let row" fxHide.lt-sm>
+        <mat-menu #downloadMenu="matMenu" [overlapTrigger]="false">
+          <a *ngFor="let dl of row.downloadLinks" target="_blank" href="{{dl.link}}">
+            <button mat-menu-item>{{dl.name}}</button>
+          </a>
+        </mat-menu>
+        <button mat-icon-button [matMenuTriggerFor]="downloadMenu"
+                (click)="$event.stopPropagation()">
+          <mat-icon>file_download</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" fxHide.lt-sm></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+        [routerLink]="['/artifact', row.g, row.a, (row.v && !row.latestVersion ? row.v :row.latestVersion), row.p]"></tr>
+  </table>
+
+  <mat-paginator #paginator
+                 [length]="dataSource.totalCount"
+                 [pageIndex]="0"
+                 [pageSize]="20">
+  </mat-paginator>
 
 </div>

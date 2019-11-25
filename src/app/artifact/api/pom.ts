@@ -110,9 +110,9 @@ export class Pom {
           node.childNodes.forEach(subnode => {
             if (subnode.nodeType === Node.ELEMENT_NODE) {
               if (subnode.nodeName === 'name') {
-                pom.organizationName = node.textContent;
+                pom.organizationName = subnode.textContent;
               } else if (subnode.nodeName === 'url') {
-                pom.organizationUrl = node.textContent;
+                pom.organizationUrl = subnode.textContent;
               }
             }
           });

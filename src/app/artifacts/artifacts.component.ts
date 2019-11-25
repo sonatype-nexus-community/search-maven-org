@@ -39,7 +39,8 @@ export class ArtifactsComponent implements OnInit {
 
   displayedColumns = [];
   dataSource: SearchDataSource;
-  header: string;
+  group: string;
+  artifact: string;
   repositoryLink: string;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -85,13 +86,10 @@ export class ArtifactsComponent implements OnInit {
 
       if (group && artifact) {
         this.search(`g:${group} AND a:${artifact}&core=gav`);
-        this.header = `${group}:${artifact}`;
+        this.group = group;
+        this.artifact = artifact;
         this.repositoryLink = `${this.appConfigService.getConfig().repositoryBaseUrl}/${group.replace(/\.+/g, '/')}/${artifact}/`;
-        this.displayedColumns = [
-          'latestVersion',
-          'updated',
-          'download'
-        ];
+        this.displayedColumns = ['latestVersion', 'updated'];
       }
     });
   }
