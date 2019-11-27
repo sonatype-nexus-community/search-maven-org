@@ -19,7 +19,8 @@
             "assets": [
               "src/assets",
               "src/favicon.ico",
-              "src/manifest.json"
+              "src/manifest.json",
+              {"glob": "**/*", "input": "src/sitemap", "output": "/"}
             ],
             "styles": [
               "src/styles.scss"
@@ -89,7 +90,8 @@
             "assets": [
               "src/assets",
               "src/favicon.ico",
-              "src/manifest.json"
+              "src/manifest.json",
+              {"glob": "**/*", "input": "src/sitemap", "output": "/"}
             ]
           }
         },
