@@ -25,7 +25,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { createTranslateModule } from "../shared/translate/translate";
 import { ClipboardModule } from 'ngx-clipboard';
 import { SearchService } from '../search/search.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -81,7 +80,6 @@ describe('ArtifactComponent', () => {
             showNavSearchBar: true
           }
         }]),
-        createTranslateModule(),
       ],
       providers: [
         {

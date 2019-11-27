@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdvancedSearchExampleDialogComponent } from './advanced-search-example-dialog.component';
-import { createTranslateModule } from '../shared/translate/translate';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
@@ -12,7 +11,7 @@ describe('AdvancedSearchExampleDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [createTranslateModule(), MatCardModule, MatDialogModule, HttpClientModule],
+      imports: [MatCardModule, MatDialogModule, HttpClientModule],
       providers: [{provide: MatDialogRef, useValue: {}}],
       declarations: [ AdvancedSearchExampleDialogComponent ]
     })

@@ -18,13 +18,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from "@angular/router";
 import { FooterComponent } from './footer.component';
-import { createTranslateModule } from "../translate/translate";
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    createTranslateModule()
   ],
   exports: [FooterComponent],
   declarations: [FooterComponent]

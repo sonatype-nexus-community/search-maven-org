@@ -28,7 +28,7 @@
       <a target="_blank"
          href="{{ repositoryLink }}"
          mat-button>
-        <span>{{ 'artifacts.browse' | translate }} </span>
+        <span i18n>Browse </span>
         <mat-icon>folder</mat-icon>
       </a>
     </div>
@@ -41,32 +41,33 @@
 
   <table mat-table #table [dataSource]="dataSource" class="full-table table-condensed">
     <ng-container matColumnDef="groupId">
-      <th mat-header-cell *matHeaderCellDef> {{ 'artifacts.header.groupId' | translate }}</th>
+      <th mat-header-cell *matHeaderCellDef i18n>Group ID</th>
       <td mat-cell *matCellDef="let row">
         <div ngClass.gt-xs="ellipsis-rtl">
           <span class="title" fxHide.gt-xs>G:&nbsp;</span>
           <a [routerLink]="['/search']" [queryParams]="{q: 'g:' + row.g}"
              (click)="$event.stopPropagation()"
-             matTooltip="{{ 'artifacts.searchAllGroups' | translate }}">{{ row.g }}</a>
+             i18n-matTooltip matTooltip="Search for all artifacts with this Group ID">{{ row.g }}</a>
         </div>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="artifactId">
-      <th mat-header-cell *matHeaderCellDef> {{ 'artifacts.header.artifactId' | translate }}</th>
+      <th mat-header-cell *matHeaderCellDef i18n>Artifact ID</th>
       <td mat-cell *matCellDef="let row">
         <div ngClass.gt-xs="ellipsis-rtl">
           <span class="title" fxHide.gt-xs>A:&nbsp;</span>
           <a [routerLink]="['/search']" [queryParams]="{q: 'a:' + row.a}"
              (click)="$event.stopPropagation()"
-             matTooltip="{{ 'artifacts.searchAllArtifacts' | translate }}">{{ row.a }}</a>
+             i18n-matTooltip matTooltip="Search for all artifacts with this Artifact ID">{{ row.a }}</a>
         </div>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="latestVersion">
       <th mat-header-cell *matHeaderCellDef>
-        {{ (q ? 'artifacts.header.latestVersion' : 'artifacts.header.version') | translate }}
+        <ng-container *ngIf="q; else elseVersion" i18n>Latest Version</ng-container>
+        <ng-template #elseVersion i18n>Version</ng-template>
       </th>
       <td mat-cell *matCellDef="let row">
         <div class="latest-version">
@@ -88,10 +89,10 @@
                 *ngIf="row.versionCount"
                 [routerLink]="['/artifact', row.g, row.a]"
                 (click)="$event.stopPropagation()"
-                matTooltip="{{ 'artifacts.showAllVersions' | translate }}"
+                i18n-matTooltip matTooltip="Show all versions of this Group ID and Artifact ID"
                 style="">
-                <span fxHide.gt-xs>{{ 'artifacts.allVersions' | translate }}</span>
-                ({{ row.versionCount > 99 ? ('artifacts.gt-99' | translate) : row.versionCount}})
+                <span fxHide.gt-xs i18n>All versions</span>
+                (<ng-container *ngIf="row.versionCount > 99; else elseCount" i18n>99+</ng-container><ng-template #elseCount>{{row.versionCount}}</ng-template>)
               </a>
 
             </div>
@@ -103,17 +104,17 @@
     </ng-container>
 
     <ng-container matColumnDef="updated">
-      <th mat-header-cell *matHeaderCellDef fxShow.xs="true" fxShow.sm="false" fxShow="true">
-        {{ 'artifacts.header.updated' | translate }}
+      <th mat-header-cell *matHeaderCellDef fxShow.xs="true" fxShow.sm="false" fxShow="true" i18n>
+        Updated
       </th>
       <td mat-cell *matCellDef="let row" fxShow.xs="true" fxShow.sm="false" fxShow="true">
-        <span class="title" fxHide.gt-xs>{{ 'artifacts.header.updated' | translate }}: </span>
+        <span class="title" fxHide.gt-xs><ng-container i18n>Updated</ng-container>:</span>
         {{ row.timestamp | date : 'dd-MMM-yyyy' : timezone }}
       </td>
     </ng-container>
 
     <ng-container matColumnDef="download">
-      <th mat-header-cell *matHeaderCellDef fxHide.lt-sm> {{ 'artifacts.header.download' | translate }}</th>
+      <th mat-header-cell *matHeaderCellDef fxHide.lt-sm i18n> Download</th>
       <td mat-cell *matCellDef="let row" fxHide.lt-sm>
         <mat-menu #downloadMenu="matMenu" [overlapTrigger]="false">
           <a *ngFor="let dl of row.downloadLinks" target="_blank" href="{{dl.link}}">

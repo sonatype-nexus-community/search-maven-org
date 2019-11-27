@@ -16,7 +16,6 @@
 
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
-import { createTranslateModule } from "./shared/translate/translate";
 import { AppComponent } from './app.component';
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -42,7 +41,7 @@ const appInitializerFn = (appConfig: AppConfigService) => {
   return () => {
     return appConfig.loadAppConfig();
   }
-}
+};
 
 @NgModule({
   declarations: [
@@ -66,7 +65,6 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     VulnerabilitiesModule,
     ClassicModule,
     MatProgressSpinnerModule,
-    createTranslateModule(),
   ],
   providers: [Title, AppConfigService, {
     provide: APP_INITIALIZER,

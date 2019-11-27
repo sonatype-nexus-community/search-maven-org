@@ -17,15 +17,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StatsComponent } from './stats.component';
-import {
-  createTranslateModule
-} from "../shared/translate/translate";
 import { StatsService } from "./stats.service";
 import { MatCardModule } from "@angular/material/card";
 import { MatIconModule } from "@angular/material/icon";
 import { RouterModule } from "@angular/router";
 import { NotificationsModule } from "../shared/notifications/notifications.module";
-import { HttpClient } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
 
 @NgModule({
@@ -38,7 +34,6 @@ import { Title } from '@angular/platform-browser';
     MatCardModule,
     MatIconModule,
     NotificationsModule,
-    createTranslateModule()
   ],
   providers : [
     StatsService,

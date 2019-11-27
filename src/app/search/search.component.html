@@ -36,17 +36,17 @@
             <div class="option-title-value">
               <div class="group-title-value ellipsis-rtl">{{ doc.g }}</div>
               <div class="updated-title-value" fxHide fxShow.gt-xs="true">
-                <span class="title">{{'search.header.updated' | translate}}</span>
+                <span class="title" i18n>Updated</span>
                 <span class="value">{{ doc.timestamp | date : 'dd-MMM-yyyy' : timezone }}</span>
               </div>
             </div>
           </mat-option>
           <mat-option [routerLink]="['/artifact', doc.g, doc.a]">
-            <div class="option-title">{{'search.header.artifactId' | translate}}</div>
+            <div class="option-title" i18n>Artifact ID</div>
             <div class="option-value">{{ doc.a }}</div>
           </mat-option>
           <mat-option [routerLink]="['/artifact', doc.g, doc.a, (doc.latestVersion || doc.v), doc.p]">
-            <div class="option-title">{{'search.header.latestVersion' | translate}}</div>
+            <div class="option-title" i18n>Latest Version</div>
             <div class="option-value">{{ doc.latestVersion || doc.v }}</div>
           </mat-option>
         </div>

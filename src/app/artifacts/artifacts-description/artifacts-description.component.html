@@ -22,7 +22,7 @@
   <!-- TODO: vulnerabilities -->
   <table>
     <tr *ngIf="parsedPom.licenses.length > 0">
-      <th scope="row">{{'artifacts.licenses' | translate}}</th>
+      <th scope="row" i18n>Licenses</th>
       <td>
         <ul>
           <li *ngFor="let license of parsedPom.licenses">
@@ -31,21 +31,21 @@
       </td>
     </tr>
     <tr *ngIf="parsedPom.url">
-      <th scope="row">{{'artifacts.homePage' | translate}}</th>
+      <th scope="row" i18n>Home page</th>
       <td><a href="{{parsedPom.url}}">{{parsedPom.url}}</a></td>
     </tr>
     <tr *ngIf="parsedPom.scmUrl">
-      <th scope="row">{{'artifacts.sourceCode' | translate}}</th>
+      <th scope="row" i18n>Source code</th>
       <td><a href="{{parsedPom.scmUrl}}">{{parsedPom.scmUrl}}</a></td>
     </tr>
     <tr *ngIf="parsedPom.organizationName || parsedPom.organizationUrl">
-      <th scope="row">{{'artifacts.organization' | translate}}</th>
+      <th scope="row" i18n="@@Organization">Organization</th>
       <td>
         <app-anchor url="{{parsedPom.organizationUrl}}" text="{{parsedPom.organizationName}}"></app-anchor>
       </td>
     </tr>
     <tr *ngIf="parsedPom.developers.length > 0">
-      <th scope="row">{{'artifacts.developers' | translate}}</th>
+      <th scope="row" i18n>Developers</th>
       <td>
         <ul>
           <li *ngFor="let dev of parsedPom.developers">
@@ -61,7 +61,7 @@
       </td>
     </tr>
     <tr *ngIf="parsedPom.contributors.length > 0">
-      <th scope="row">{{'artifacts.contributors' | translate}}</th>
+      <th scope="row" i18n>Contributors</th>
       <td>
         <ul>
           <li *ngFor="let dev of parsedPom.developers">
@@ -77,7 +77,7 @@
       </td>
     </tr>
     <tr *ngIf="parsedPom.mailingLists.length > 0">
-      <th scope="row">{{'artifacts.mailingLists' | translate}}</th>
+      <th scope="row" i18n>Mailing lists</th>
       <td>
         <ul>
           <li *ngFor="let list of parsedPom.mailingLists">
@@ -87,7 +87,7 @@
       </td>
     </tr>
     <tr *ngIf="parsedPom.inceptionYear">
-      <th scope="row">{{'artifacts.inceptionYear' | translate}}</th>
+      <th scope="row" i18n>Inception year</th>
       <td>{{parsedPom.inceptionYear}}</td>
     </tr>
   </table>

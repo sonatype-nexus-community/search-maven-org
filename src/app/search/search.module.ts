@@ -30,7 +30,6 @@ import { MatTableModule } from "@angular/material/table";
 import { SearchService } from "./search.service";
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from '@angular/router';
-import { createTranslateModule } from "../shared/translate/translate";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AdvancedSearchComponent } from './advanced-search.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
@@ -54,7 +53,6 @@ import { AdvancedSearchExampleDialogComponent } from './advanced-search-example-
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    createTranslateModule()
   ],
   providers: [
     SearchService

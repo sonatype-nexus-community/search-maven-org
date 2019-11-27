@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { StatsService } from "./stats.service";
 import { Stat } from "./api/stat";
 import { NotificationService } from "../shared/notifications/notification.service";
-import { TranslateService } from "@ngx-translate/core";
 import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
@@ -27,16 +26,16 @@ import { Meta, Title } from '@angular/platform-browser';
   styleUrls: ['./stats.component.scss']
 })
 export class StatsComponent implements OnInit {
+  // i18n workaround: all translated strings must be in HTML
+  @ViewChild('metaTitle', {static: true}) titleSpan: ElementRef;
+  @ViewChild('metaDescription', {static: true}) descriptionSpan: ElementRef;
 
   stat: Stat;
 
   constructor(private statsService: StatsService,
               private notificationService: NotificationService,
               private titleService: Title,
-              private metaService: Meta,
-              private translate: TranslateService) {
-    translate.setDefaultLang('stats-en');
-    translate.use('stats-en');
+              private metaService: Meta) {
   }
 
   ngOnInit() {
@@ -44,15 +43,12 @@ export class StatsComponent implements OnInit {
       (stat: Stat) => this.stat = stat,
       error => this.notificationService.notifySystemUnavailable());
 
-    this.translate.get('stats.htmlTitle').subscribe(title => {
-      this.titleService.setTitle( title );
-      this.metaService.updateTag({ name: 'og:title', content: title});
-    });
-
-    this.translate.get('stats.htmlDescription').subscribe(description => {
-      this.metaService.updateTag({ name: 'description', content: description});
-      this.metaService.updateTag({ name: 'og:description', content: description});
-    });
+    const title = this.titleSpan.nativeElement.textContent;
+    const description = this.descriptionSpan.nativeElement.textContent;
+    this.titleService.setTitle( title );
+    this.metaService.updateTag({ name: 'og:title', content: title});
+    this.metaService.updateTag({ name: 'description', content: description});
+    this.metaService.updateTag({ name: 'og:description', content: description});
   }
 
 }

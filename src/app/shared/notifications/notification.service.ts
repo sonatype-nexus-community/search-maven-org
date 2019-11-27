@@ -15,21 +15,20 @@
  */
 
 import { Injectable } from '@angular/core';
-import { TranslateService } from "@ngx-translate/core";
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from "@angular/material/snack-bar";
 
+// TODO: refactor this logic, strings should be in templates so that they can be internationalized
 @Injectable()
 export class NotificationService {
 
-  constructor(private snackBar: MatSnackBar,
-              private translateService: TranslateService) {
+  constructor(private snackBar: MatSnackBar) {
   }
 
   notifySystemUnavailable() {
     let horizontalPosition: MatSnackBarHorizontalPosition = 'end';
     let verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-    this.snackBar.open(this.translateService.instant('smo.unavailable'), '', {
+    this.snackBar.open('Systems appears unavailable', '', {
       duration: 3000,
       horizontalPosition: horizontalPosition,
       verticalPosition: verticalPosition
@@ -40,7 +39,7 @@ export class NotificationService {
     let horizontalPosition: MatSnackBarHorizontalPosition = 'end';
     let verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-    this.snackBar.open(this.translateService.instant(message), '', {
+    this.snackBar.open(message, '', {
       duration: 3000,
       horizontalPosition: horizontalPosition,
       verticalPosition: verticalPosition

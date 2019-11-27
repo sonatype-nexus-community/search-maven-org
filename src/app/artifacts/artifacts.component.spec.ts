@@ -27,7 +27,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ArtifactsComponent } from './artifacts.component';
-import { createTranslateModule } from "../shared/translate/translate";
 import { RouterModule } from "@angular/router";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { SearchService } from "../search/search.service";
@@ -66,7 +65,6 @@ describe('ArtifactsComponent', () => {
             showNavSearchBar: true
           }
         }]),
-        createTranslateModule()
       ],
       declarations: [ArtifactsComponent, ArtifactsDescriptionComponent],
       providers: [

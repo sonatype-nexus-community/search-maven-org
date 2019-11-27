@@ -18,7 +18,7 @@
 
 <mat-card *ngIf="parsedPom.dependencies.length > 0"
           class="mat-elevation-z mat-smo-default-card mat-smo-dependency-information-card">
-  {{ 'artifact.dependencies:' | translate }}
+  <ng-container i18n>Dependencies:</ng-container>
   <ul>
     <li *ngFor="let dep of parsedPom.dependencies">
       <a [routerLink]="['/artifact', dep.groupId, dep.artifactId]">{{dep.groupId}}:{{dep.artifactId}}</a>

@@ -24,7 +24,6 @@ import { NotificationService } from "../shared/notifications/notification.servic
 import { VulnerabilitiesService } from "../vulnerabilities/vulnerabilities.service";
 import { Vulnerability } from "../vulnerabilities/api/vulnerability";
 import { ComponentReport } from "../vulnerabilities/api/component-report";
-import { TranslateService } from "@ngx-translate/core";
 import { trigger, style, animate, transition } from '@angular/animations';
 import { Meta, Title } from '@angular/platform-browser';
 
@@ -60,10 +59,7 @@ export class ArtifactComponent implements OnInit {
               private notificationService: NotificationService,
               private appConfigService: AppConfigService,
               private titleService: Title,
-              private metaService: Meta,
-              private translate: TranslateService) {
-    translate.setDefaultLang('artifact-en');
-    translate.use('artifact-en');
+              private metaService: Meta) {
   }
 
   ngOnInit() {
@@ -73,23 +69,7 @@ export class ArtifactComponent implements OnInit {
       this.packaging = params['packaging'];
       this.version = params['version'];
 
-      this.translate.get('artifact.htmlTitle', {
-        group: this.group,
-        artifact: this.artifact,
-        version: this.version
-      }).subscribe(title => {
-        this.titleService.setTitle( title );
-        this.metaService.updateTag({ name: 'og:title', content: title});
-      });
-
-      this.translate.get('artifact.htmlDescription', {
-        group: this.group,
-        artifact: this.artifact,
-        version: this.version
-      }).subscribe(description => {
-        this.metaService.updateTag({ name: 'description', content: description});
-        this.metaService.updateTag({ name: 'og:description', content: description});
-      });
+      // TODO: set title and description
 
       if (this.version) {
         this.initDefault()
@@ -120,7 +100,7 @@ export class ArtifactComponent implements OnInit {
     this.searchService.all(query).subscribe(searchResult => {
         this.router.navigate(['artifact', this.group, this.artifact, searchResult.response.docs[0].v, searchResult.response.docs[0].p])
       },
-      error => this.notificationService.notifySystem('artifact.related.search.result.unavailable'));
+      error => this.notificationService.notifySystem('Unable to find related versions and downloads'));
   }
 
   repositoryLink(g: string, a: string, v: string): string {
@@ -152,7 +132,7 @@ export class ArtifactComponent implements OnInit {
       .all(query)
       .subscribe(
         searchResult => this.initRelatedArtifacts(searchResult.response.docs),
-        error => this.notificationService.notifySystem('artifact.related.search.result.unavailable'));
+        error => this.notificationService.notifySystem('Unable to find related versions and downloads'));
   }
 
   private initRelatedArtifacts(searchDocs: SearchDoc[]) {

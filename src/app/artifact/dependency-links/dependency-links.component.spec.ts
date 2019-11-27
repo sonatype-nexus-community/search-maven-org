@@ -19,7 +19,6 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import { HttpClientModule } from "@angular/common/http";
 import { MatCardModule } from "@angular/material";
 import { RouterModule } from "@angular/router";
-import { createTranslateModule } from "../../shared/translate/translate";
 import { DependencyLinksComponent } from './dependency-links.component';
 import { Pom } from "../api/pom";
 
@@ -33,7 +32,6 @@ describe('DependencyLinksComponent', () => {
       imports: [
         HttpClientModule,
         MatCardModule,
-        createTranslateModule(),
         RouterModule.forChild([{path: ':group/:artifact', data: {showNavSearchBar: true}}]),
       ]
     })

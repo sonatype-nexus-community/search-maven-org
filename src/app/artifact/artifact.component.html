@@ -46,8 +46,8 @@
 
       <div class="artifact-vulnerabilities" fxLayout="column" *ngIf="componentReport">
 
-        <div class="vulnerability-prefix" *ngIf="componentReport?.vulnerabilities.length > 0">
-          {{ 'artifact.vulnerabilities' | translate}}
+        <div class="vulnerability-prefix" *ngIf="componentReport?.vulnerabilities.length > 0" i18n>
+          OSS Index Vulnerabilities
         </div>
 
         <div fxLayout="row">
@@ -57,8 +57,9 @@
             <a href="{{ ossVulnerabilitiesResourceLink() }}"
                target="_blank"
                mat-raised-button
-               class="vulnerability-link critical">
-              {{ componentReport.criticalCount }} {{ 'artifact.criticalVulnerability' | translate}}
+               class="vulnerability-link critical"
+               i18n>
+              {{ componentReport.criticalCount }} Critical
             </a>
           </div>
 
@@ -68,8 +69,9 @@
                target="_blank"
                color="warn"
                mat-raised-button
-               class="vulnerability-link severe">
-              {{ componentReport.severeCount }} {{ 'artifact.severeVulnerability' | translate}}
+               class="vulnerability-link severe"
+               i18n>
+              {{ componentReport.severeCount }} Severe
             </a>
           </div>
 
@@ -79,8 +81,9 @@
                target="_blank"
                color="warn"
                mat-raised-button
-               class="vulnerability-link moderate">
-              {{ componentReport.moderateCount }} {{ 'artifact.moderateVulnerability' | translate}}
+               class="vulnerability-link moderate"
+               i18n>
+              {{ componentReport.moderateCount }} Moderate
             </a>
           </div>
 
@@ -90,8 +93,9 @@
                target="_blank"
                color="warn"
                mat-raised-button
-               class="vulnerability-link unknown">
-              {{ componentReport.unknownCount }} {{ 'artifact.unknownVulnerability' | translate}}
+               class="vulnerability-link unknown"
+               i18n>
+              {{ componentReport.unknownCount }} Unknown
             </a>
 
           </div>
@@ -109,12 +113,12 @@
       <a target="_blank"
          href="{{ repositoryLink(group, artifact, version) }}"
          mat-button>
-        <span>{{ 'artifact.browse' | translate }}</span>
+        <span i18n>Browse </span>
         <mat-icon>folder</mat-icon>
       </a>
 
       <button mat-button [matMenuTriggerFor]="menuDownloads">
-        <span>{{ 'artifact.downloads' | translate }}</span>
+        <span i18n>Downloads </span>
         <mat-icon>file_download</mat-icon>
       </button>
       <mat-menu #menuDownloads="matMenu">
@@ -147,7 +151,7 @@
 
     <div class="artifact-dependency-information-column" fxFlex="35">
 
-      <app-dependency-information headerText="artifact.apacheMaven"
+      <app-dependency-information i18n-headerText headerText="Apache Maven"
                                   subText="maven.apache.org"
                                   subTextUrl="https://maven.apache.org"
                                   image="mvn"
@@ -158,7 +162,7 @@
                                   p="{{packaging}}">
       </app-dependency-information>
 
-      <app-dependency-information headerText="artifact.gradle"
+      <app-dependency-information i18n-headerText headerText="Gradle Groovy DSL"
                                   subText="gradle.org"
                                   subTextUrl="https://gradle.org"
                                   image="gradle"
@@ -168,7 +172,7 @@
                                   v="{{version}}">
       </app-dependency-information>
 
-      <app-dependency-information headerText="artifact.gradleKotlinDsl"
+      <app-dependency-information i18n-headerText headerText="Gradle Kotlin DSL"
                                   subText="github.com/gradle/kotlin-dsl"
                                   subTextUrl="https://github.com/gradle/kotlin-dsl"
                                   image="kotlin"
@@ -178,7 +182,7 @@
                                   v="{{version}}">
       </app-dependency-information>
 
-      <app-dependency-information headerText="artifact.scalaSbt"
+      <app-dependency-information i18n-headerText headerText="Scala SBT"
                                   subText="scala-sbt.org"
                                   subTextUrl="https://www.scala-sbt.org"
                                   image="scala"
@@ -188,7 +192,7 @@
                                   v="{{version}}">
       </app-dependency-information>
 
-      <app-dependency-information headerText="artifact.apacheIvy"
+      <app-dependency-information i18n-headerText headerText="Apache Ivy"
                                   subText="ant.apache.org/ivy/"
                                   subTextUrl="https://ant.apache.org/ivy/"
                                   image="ivy"
@@ -198,7 +202,7 @@
                                   v="{{version}}">
       </app-dependency-information>
 
-      <app-dependency-information headerText="artifact.groovyGrape"
+      <app-dependency-information i18n-headerText headerText="Groovy Grape"
                                   subText="groovy-lang.org/grape.html"
                                   subTextUrl="http://groovy-lang.org/grape.html"
                                   image="groovy"
@@ -208,7 +212,7 @@
                                   v="{{version}}">
       </app-dependency-information>
 
-      <app-dependency-information headerText="artifact.leiningen"
+      <app-dependency-information i18n-headerText headerText="Leiningen"
                                   subText="leiningen.org"
                                   subTextUrl="https://leiningen.org"
                                   image="leiningen"
@@ -218,7 +222,7 @@
                                   v="{{version}}">
       </app-dependency-information>
 
-      <app-dependency-information headerText="artifact.apacheBuildr"
+      <app-dependency-information i18n-headerText headerText="Apache Buildr"
                                   subText="buildr.apache.org"
                                   subTextUrl="https://buildr.apache.org/"
                                   image="buildr"
@@ -228,7 +232,7 @@
                                   v="{{version}}">
       </app-dependency-information>
 
-      <app-dependency-information headerText="artifact.mavenCentral"
+      <app-dependency-information i18n-headerText headerText="Maven Central Badge"
                                   subText="search.maven.org"
                                   subTextUrl="https://search.maven.org"
                                   image="badge"
@@ -238,7 +242,7 @@
                                   v="{{version}}">
       </app-dependency-information>
 
-      <app-dependency-information headerText="artifact.purlSpec"
+      <app-dependency-information i18n-headerText headerText="PURL"
                                   subText="github.com/package-url/purl-spec"
                                   subTextUrl="https://github.com/package-url/purl-spec"
                                   image=""
@@ -248,7 +252,7 @@
                                   v="{{version}}">
       </app-dependency-information>
 
-      <app-dependency-information headerText="artifact.bazel"
+      <app-dependency-information i18n-headerText headerText="Bazel"
                                   subText="bazel.build"
                                   subTextUrl="https://www.bazel.build"
                                   image="bazel"

@@ -18,13 +18,12 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { NotificationService } from './notification.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { createTranslateModule } from '../translate/translate';
 import { HttpClientModule } from '@angular/common/http';
 
 describe('NotificationService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [MatSnackBarModule, createTranslateModule(), HttpClientModule],
+      imports: [MatSnackBarModule, HttpClientModule],
       providers: [NotificationService]
     });
   });

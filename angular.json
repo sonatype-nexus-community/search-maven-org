@@ -44,6 +44,14 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ]
+            },
+            "en": {
+              "aot": true,
+              "outputPath": "dist/en",
+              "i18nFile": "src/locale/messages.en.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "en",
+              "i18nMissingTranslation": "ignore"
             }
           }
         },
@@ -55,6 +63,9 @@
           "configurations": {
             "production": {
               "browserTarget": "search-maven-org:build:production"
+            },
+            "en": {
+              "browserTarget": "search-maven-org:build:en"
             }
           }
         },

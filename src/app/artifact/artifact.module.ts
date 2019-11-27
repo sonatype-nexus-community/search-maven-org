@@ -27,9 +27,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import {
-  createTranslateModule
-} from "../shared/translate/translate";
 import { DependencyInformationComponent } from './dependency-information/dependency-information.component';
 import { ArtifactService } from "./artifact.service";
 import { FormsModule } from "@angular/forms";
@@ -72,7 +69,6 @@ import { DependencyLinksComponent } from './dependency-links/dependency-links.co
         showNavSearchBar: true
       }
     }]),
-    createTranslateModule()
   ],
   providers: [ArtifactService, Title],
   declarations: [

@@ -20,7 +20,6 @@ import { SearchService } from "../search/search.service";
 import { SearchDataSource } from "../search/api/search-data-source";
 import { MatPaginator } from "@angular/material/paginator";
 import { NotificationService } from "../shared/notifications/notification.service";
-import { TranslateService } from "@ngx-translate/core";
 import { trigger, style, animate, transition } from '@angular/animations';
 import { AppConfigService } from '../shared/config/app-config.service';
 
@@ -52,10 +51,7 @@ export class ArtifactsComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private searchService: SearchService,
               private notificationService: NotificationService,
-              private appConfigService: AppConfigService,
-              private translate: TranslateService) {
-    translate.setDefaultLang('artifacts-en');
-    translate.use('artifacts-en');
+              private appConfigService: AppConfigService) {
   }
 
   ngOnInit() {

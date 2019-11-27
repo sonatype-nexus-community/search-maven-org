@@ -15,10 +15,7 @@
  */
 
 import { Component, isDevMode } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
-import { TranslateService } from "@ngx-translate/core";
 import { Router, NavigationEnd, NavigationStart, NavigationCancel, NavigationError } from '@angular/router';
-import { trigger, state, style, animate, transition, group } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -29,13 +26,7 @@ export class AppComponent {
 
   loading: boolean;
 
-  constructor(private router: Router,
-              translate: TranslateService,
-              private titleService: Title,
-              private metaService: Meta) {
-    translate.setDefaultLang('en');
-    translate.use('en');
-
+  constructor(private router: Router) {
     this.subscribeToLoading();
 
     if (isDevMode()) {

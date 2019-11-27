@@ -17,24 +17,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
-import { SearchModule } from '../search/search.module';
 import { Component } from '@angular/core';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { createTranslateModule } from '../shared/translate/translate';
 import { HttpClientModule } from '@angular/common/http';
 import { AppConfigService } from '../shared/config/app-config.service';
 import { MockConfigService } from '../shared/config/app-config-mock.service';
 
 describe('HomeComponent', () => {
   @Component({selector: 'app-search', template: ''})
-  class SearchModuleStub {};
+  class SearchModuleStub {}
 
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [createTranslateModule(), HttpClientModule],
+      imports: [HttpClientModule],
       declarations: [ HomeComponent, SearchModuleStub ],
       providers: [
         {

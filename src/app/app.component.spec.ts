@@ -14,11 +14,9 @@
  * limitations under the License.
  */
 
-import { TestBed, async, inject } from '@angular/core/testing';
+import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from "@angular/common/http";
-import { TranslateService } from "@ngx-translate/core";
-import { createTranslateModule } from "./shared/translate/translate";
 import { NavbarModule } from "./shared/navbar/navbar.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule } from "@angular/router";
@@ -37,7 +35,6 @@ describe('AppComponent', () => {
         HttpClientModule,
         RouterModule.forRoot([]),
         BrowserAnimationsModule,
-        createTranslateModule(),
         NavbarModule
       ],
       providers: [{
