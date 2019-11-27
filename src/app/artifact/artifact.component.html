@@ -263,8 +263,7 @@
                                   s="{{sha1}}">
       </app-dependency-information>
 
-      <app-dependency-links pom="{{pom}}"
-                            *ngIf="pom">
+      <app-dependency-links [parsedPom]="parsedPom">
       </app-dependency-links>
     </div>
 

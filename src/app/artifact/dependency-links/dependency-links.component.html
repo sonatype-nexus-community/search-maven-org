@@ -16,7 +16,7 @@
 
 -->
 
-<mat-card *ngIf="parsedPom.dependencies.length > 0"
+<mat-card *ngIf="parsedPom && parsedPom.dependencies && (parsedPom.dependencies.length > 0)"
           class="mat-elevation-z mat-smo-default-card mat-smo-dependency-information-card">
   <ng-container i18n>Dependencies:</ng-container>
   <ul>

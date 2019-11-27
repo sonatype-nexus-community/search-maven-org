@@ -17,6 +17,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppConfigService } from "../shared/config/app-config.service";
+import { Pom } from "./api/pom";
 import { ArtifactService } from "./artifact.service";
 import { SearchService } from "../search/search.service";
 import { SearchDoc } from "../search/api/search-doc";
@@ -44,6 +45,7 @@ export class ArtifactComponent implements OnInit {
   version: string;
   packaging: string;
   pom: string;
+  parsedPom: Pom;
   sha1: string;
   searchDocs: SearchDoc[];
   downloadLinks: { name: string, link: string }[];
@@ -69,8 +71,6 @@ export class ArtifactComponent implements OnInit {
       this.packaging = params['packaging'];
       this.version = params['version'];
 
-      // TODO: set title and description
-
       if (this.version) {
         this.initDefault()
       } else {
@@ -85,6 +85,16 @@ export class ArtifactComponent implements OnInit {
     this.artifactService.remoteContent(this.remoteRepositoryPomLink()).subscribe(content => {
       setTimeout(() => {
         this.pom = content;
+        this.parsedPom = Pom.parse(this.pom);
+        this.parsedPom.dependencies = [...this.parsedPom.dependencies];
+        if (this.parsedPom.name) {
+          this.titleService.setTitle(this.parsedPom.name.trim());
+          this.metaService.updateTag({ name: 'og:title', content: this.parsedPom.name.trim()});
+        }
+        if (this.parsedPom.description) {
+          this.metaService.updateTag({ name: 'description', content: this.parsedPom.description.trim()});
+          this.metaService.updateTag({ name: 'og:description', content: this.parsedPom.description.trim()});
+        }
       }, 1000);
     });
 

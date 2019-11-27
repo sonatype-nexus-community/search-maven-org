@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Pom } from "../api/pom";
 
 /**
@@ -25,18 +25,9 @@ import { Pom } from "../api/pom";
   templateUrl: './dependency-links.component.html',
   styleUrls: ['./dependency-links.component.scss']
 })
-export class DependencyLinksComponent implements OnChanges {
+export class DependencyLinksComponent {
   @Input()
-  pom: string;
-
-  @Output()
   parsedPom: Pom;
 
   constructor() { }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.pom.previousValue !== changes.pom.currentValue) {
-      this.parsedPom = Pom.parse(this.pom);
-    }
-  }
 }
