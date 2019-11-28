@@ -1,1 +1,1 @@
-sitemap: https://search.maven.org/sitemap_index.xml
+sitemap: https://search.maven.org/sitemap-index.xml
