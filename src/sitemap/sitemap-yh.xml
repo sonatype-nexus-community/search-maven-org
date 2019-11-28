@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/io.github.wuda0112/yhan-code-generator-core</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/io.github.wuda0112/yhan-code-generator</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/io.github.wuda0112/yhan-code-generator-lang</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/io.github.wuda0112/yhan-code-generator-ddl-parser-mysql</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/io.github.wuda0112/yhan-base</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/io.github.wuda0112/yhan-commons-util</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/io.github.wuda0112/yhan-commons-lang</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/io.github.wuda0112/yhan-spring-integration-util</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/io.github.wuda0112/yhan-spring-boot-based-parent</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.youhaosuda/yhsd-sdk-java</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.youhaosuda/yhsd-api-java</loc>
+  </url>
+</urlset>

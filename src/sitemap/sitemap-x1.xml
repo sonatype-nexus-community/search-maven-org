@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/com.imsweb/x12-parser</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.apifocal.health/x12</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.yarsquidy/x12-parser</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.micheldalal/x10</loc>
+  </url>
+</urlset>

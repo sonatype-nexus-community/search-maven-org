@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/com.oracle.bedrock.coherence/12.2.1.4</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.oracle.bedrock.coherence/12.2.1</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.oracle.bedrock.coherence/12.1.3</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.oracle.bedrock.coherence/12.1.2</loc>
+  </url>
+</urlset>

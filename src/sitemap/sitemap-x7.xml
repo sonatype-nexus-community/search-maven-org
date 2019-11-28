@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/io.xream.x7/x7-reyc</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/io.xream.x7/x7-repository</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/io.xream.x7/x7-config</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/io.xream.x7/x7-parent</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/io.xream.x7/x7-core</loc>
+  </url>
+</urlset>

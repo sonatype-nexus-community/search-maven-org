@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/org.webjars.npm/a2-in-memory-web-api</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.jzkit/a2j</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/net.sf.a2j/a2j</loc>
+  </url>
+</urlset>

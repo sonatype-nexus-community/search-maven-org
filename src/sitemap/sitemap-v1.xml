@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/io.coinapi.websocket/v1</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/io.coinapi.rest/v1</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.google.cloud.trace.v1/v1</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.github.japgolly.fork.google-cloud-trace.v1/v1</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.google.cloud.trace/v1</loc>
+  </url>
+</urlset>

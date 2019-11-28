@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/no.nav.tjenestespesifikasjoner/tjenestespesifikasjoner</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.jboss.resteasy/tjws</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/de.jungblut.ml/tjungblut-online-ml</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/de.jungblut.math/tjungblut-math</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.jvnet.ogc/tjs</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.jvnet.ogc/tjs-v_1_0</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/tjdo/tjdo</loc>
+  </url>
+</urlset>

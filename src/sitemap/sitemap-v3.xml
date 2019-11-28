@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/org.apache.portals.pluto.demo/v3-annotated-demo-portlet</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.apache.portals.pluto.demo/v3-demo-portlet</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.8kdata.mongowp.api.safe.library/v3m0</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.glassfish.docs/v3-docs</loc>
+  </url>
+</urlset>

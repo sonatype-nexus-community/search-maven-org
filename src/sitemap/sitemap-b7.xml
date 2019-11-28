@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/org.wso2.ei.b7a/b7a-jms-connector</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.webjars.bowergithub.balint777/b7-gallery</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.webjars.bowergithub.balint777/b7-carousel</loc>
+  </url>
+</urlset>

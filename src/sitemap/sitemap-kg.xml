@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/fr.inria.corese/kgram</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.litote/kgenerator</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.kgrid/kgrid-play</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/fr.inria.corese/kggui-neo4j</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/fr.inria.wimmics/kggui</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/fr.inria.wimmics/kgenv</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/fr.inria.wimmics/kgram</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/fr.inria.wimmics/kgdqp</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/fr.inria.wimmics/kgimport</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/fr.inria.wimmics/kgengine</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/fr.inria.wimmics/kgtool</loc>
+  </url>
+</urlset>

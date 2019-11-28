@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/org.deeplearning4j/gym-java-client</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.gyftedstore.core/gyfted-utilities</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.gyftedstore.core/gyfted-web-integration</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.gyftedstore.core/gyfted-firebase-integration</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.gyftedstore.core/gyfted-integration-parent</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.github.gyntools/gyntools-rest</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.github.gyntools/gyntools-test</loc>
+  </url>
+</urlset>

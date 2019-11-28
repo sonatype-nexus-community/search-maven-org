@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/top.liyf/yfutil-all</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/top.liyf/yfutil-http</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/top.liyf/yfutil-core</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/top.liyf/yfutil-parent</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/top.liyf/yfutil</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.ogce/yfilter</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.codehaus.yfaces/yfaces-core</loc>
+  </url>
+</urlset>

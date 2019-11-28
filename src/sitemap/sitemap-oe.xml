@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/net.exogeni.orca.handlers.network/oess</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.openehr.java-libs/oet-parser</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.renci.node-agent2/oess-plugin</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.github.kyriosdata.adapter/oe-seed</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.sciformation.oelib/oelib</loc>
+  </url>
+</urlset>

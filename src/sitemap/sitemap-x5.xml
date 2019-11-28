@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/com.microsoft.azure.sdk.iot.provisioning.security/x509-provider-preview</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.xellitix.commons/x509</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.microsoft.azure.sdk.iot.provisioning.security/x509-provider</loc>
+  </url>
+  <url>
+    <loc>
+      https://search.maven.org/artifact/org.wso2.carbon.extension.identity.x509certificate/x509certificate-validation-feature
+    </loc>
+  </url>
+</urlset>

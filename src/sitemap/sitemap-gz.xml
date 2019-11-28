@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/net.lecousin.compression/gzip</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.webjars.npm/gzip-size</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.cldellow/gzip</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/io.scalajs.npm/gzip-uncompressed-size_sjs0.6_2.12</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/io.scalajs.npm/gzip-uncompressed-size_sjs0.6_2.11</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.gridkit.gzrand/gzrand</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/kr.pe.kwonnam.spymemcached-extra-transcoders/gzip-compress-transcoder</loc>
+  </url>
+</urlset>

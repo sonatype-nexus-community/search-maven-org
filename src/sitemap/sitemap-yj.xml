@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/com.github.937447974/yjcocoa</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.nitayjoffe.thirdparty.yourkit-api/yjp-controller-api-redist</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.facebook.thirdparty.yourkit-api/yjp-controller-api-redist</loc>
+  </url>
+</urlset>

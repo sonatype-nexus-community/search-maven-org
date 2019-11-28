@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/com.sap.cloud.sdk.s4hana/s4hana-connectivity</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.sap.cloud.sdk.s4hana/s4hana-api-parent</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.sap.cloud.sdk.s4hana/s4hana-parent</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.sap.cloud.sdk.s4hana/s4hana-api-odata</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.sap.cloud.sdk.s4hana/s4hana-core</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.sap.cloud.sdk.s4hana/s4hana-api-messaging</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.sap.cloud.sdk.s4hana/s4hana-all</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.sap.cloud.s4hana/s4hana-parent</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.sap.cloud.s4hana.plugins/s4sdk-maven-plugin</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.sap.cloud.s4hana/s4hana-all</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.ontotext.s4/s4-client</loc>
+  </url>
+</urlset>

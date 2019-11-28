@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/net.sf.oqt.test/oqt-maven-plugin-sample</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/net.sf.oqt.test/oqt-maven-plugin-it</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/net.sf.oqt.test/oqt-maven-plugin-it-model</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/net.sf.oqt.test/oqt-maven-plugin-test</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/net.sf.oqt/oqt-maven-plugin</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/net.sf.oqt/oqt-maven-plugin-parent</loc>
+  </url>
+</urlset>
