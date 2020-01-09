@@ -40,12 +40,11 @@ export class Pom {
    * Parses pom.xml, doesn't validate anything.
    */
   // TODO: querySelectorAll() would be nicer than iterating all childNodes
-  // TODO: unit test
   static parse(xmlString: string): Pom {
     const pom = new Pom();
     try {
       const xmlDocument = new DOMParser().parseFromString(xmlString, 'text/xml');
-      const root = xmlDocument.firstChild;
+      const root = xmlDocument.firstElementChild;
       root.childNodes.forEach(node => {
         if (node.nodeType !== Node.ELEMENT_NODE) {
           // attribute or empty space, ignore
@@ -94,9 +93,9 @@ export class Pom {
                     license.name = subsubnode.textContent;
                   } else if ((subsubnode.nodeName === 'url') && !subsubnode.textContent.startsWith('$')) {
                     license.url = subsubnode.textContent;
-                  } else if ((subnode.nodeName === 'distribution') && !subsubnode.textContent.startsWith('$')) {
+                  } else if ((subsubnode.nodeName === 'distribution') && !subsubnode.textContent.startsWith('$')) {
                     license.distribution = subsubnode.textContent;
-                  } else if ((subnode.nodeName === 'comments') && !subsubnode.textContent.startsWith('$')) {
+                  } else if ((subsubnode.nodeName === 'comments') && !subsubnode.textContent.startsWith('$')) {
                     license.comments = subsubnode.textContent;
                   }
                 }
@@ -191,7 +190,7 @@ export class Pom {
         dev.timezone = subnode.textContent;
       } else if (subnode.nodeName === 'roles') {
         subnode.childNodes.forEach(subsubnode => {
-          if ((subnode.nodeType === Node.ELEMENT_NODE) && (subnode.nodeName === 'role')) {
+          if ((subsubnode.nodeType === Node.ELEMENT_NODE) && (subsubnode.nodeName === 'role')) {
             dev.roles.push(subsubnode.textContent);
           }
         });
