@@ -18,6 +18,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { SearchService } from '../../search/search.service';
 import { ArtifactService } from '../../artifact/artifact.service';
 import { Pom } from '../../artifact/api/pom';
+import { Meta } from '@angular/platform-browser';
 
 /**
  * Shows some details extracted from pom.xml of latest version.
@@ -35,7 +36,9 @@ export class ArtifactsDescriptionComponent implements OnInit {
   parsedPom: Pom;
 
   constructor(private searchService: SearchService,
-              private artifactService: ArtifactService) { }
+              private artifactService: ArtifactService,
+              private metaService: Meta) {
+  }
 
   ngOnInit() {
     const query = `g:${this.group} AND a:${this.artifact}&core=gav`;
@@ -43,6 +46,8 @@ export class ArtifactsDescriptionComponent implements OnInit {
       const firstVersion = searchResult.response.docs[0].v;
       this.artifactService.remoteContent(this.remoteRepositoryPomLink(firstVersion)).subscribe(content => {
         this.parsedPom = Pom.parse(content);
+
+        this.initOnParsedPom();
       });
     }, error => {});
   }
@@ -52,4 +57,16 @@ export class ArtifactsDescriptionComponent implements OnInit {
     return `${gSlash}/${this.artifact}/${version}/${this.artifact}-${version}.pom`;
   }
 
+  private initOnParsedPom() {
+    let description = this.parsedPom.getSeoDescription({
+      groupId: this.group,
+      artifactId: this.artifact,
+      version: ''
+    });
+
+    if (description) {
+      this.metaService.updateTag({ name: 'description', content: description });
+      this.metaService.updateTag({ name: 'og:description', content: description });
+    }
+  }
 }

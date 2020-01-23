@@ -199,6 +199,42 @@ export class Pom {
     return (dev.id || dev.name || dev.email || dev.organization || dev.organizationUrl || dev.timezone ||
       (dev.roles.length > 0)) ? dev : undefined;
   }
+
+  /**
+   * From a Parsed POM create a pretty description.
+   *
+   * @param pom - Pom
+   * @param gav - GroupID, ArtifactID and version
+   */
+  getSeoDescription(gav?: {
+    groupId: string,
+    artifactId: string,
+    version: string
+  }) {
+    let description = '';
+
+    this.dependencies = [...this.dependencies];
+
+    if (this.name) {
+      let name = this.name
+        .trim()
+        .replace('${project.groupId}', gav.groupId)
+        .replace('${project.artifactId}', gav.artifactId)
+        .replace('${project.version}', gav.version);
+
+      description += name;
+    }
+
+    if (this.name && this.description) {
+      description += ' - ';
+    }
+
+    if (this.description) {
+      description += this.description.trim();
+    }
+
+    return description;
+  }
 }
 
 /**

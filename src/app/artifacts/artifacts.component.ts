@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { SearchService } from "../search/search.service";
 import { SearchDataSource } from "../search/api/search-data-source";
@@ -22,6 +22,7 @@ import { MatPaginator } from "@angular/material/paginator";
 import { NotificationService } from "../shared/notifications/notification.service";
 import { trigger, style, animate, transition } from '@angular/animations';
 import { AppConfigService } from '../shared/config/app-config.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-artifacts',
@@ -34,13 +35,15 @@ import { AppConfigService } from '../shared/config/app-config.service';
     ]),
   ])]
 })
-export class ArtifactsComponent implements OnInit {
+export class ArtifactsComponent implements OnInit, OnDestroy {
 
   displayedColumns = [];
   dataSource: SearchDataSource;
   group: string;
   artifact: string;
   repositoryLink: string;
+
+  defaultPageTitle: string;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
@@ -51,10 +54,13 @@ export class ArtifactsComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private searchService: SearchService,
               private notificationService: NotificationService,
-              private appConfigService: AppConfigService) {
+              private appConfigService: AppConfigService,
+              private titleService: Title,
+              private metaService: Meta) {
   }
 
   ngOnInit() {
+    this.defaultPageTitle = this.metaService.getTag('name=pageTitle').content;
     this.dataSource = new SearchDataSource(this.searchService, this.paginator);
     this.dataSource.qSubject.subscribe(s => s, error => this.handleError(error));
 
@@ -86,8 +92,21 @@ export class ArtifactsComponent implements OnInit {
         this.artifact = artifact;
         this.repositoryLink = `${this.appConfigService.getConfig().repositoryBaseUrl}/${group.replace(/\.+/g, '/')}/${artifact}/`;
         this.displayedColumns = ['latestVersion', 'updated'];
+        this.initPageTitle();
       }
+
     });
+  }
+
+  ngOnDestroy(): void {
+    this.titleService.setTitle(this.defaultPageTitle);
+  }
+
+  initPageTitle() {
+    const title = `${this.group} : ${this.artifact} - ${this.defaultPageTitle}`;
+
+    this.titleService.setTitle(title);
+    this.metaService.updateTag({ name: 'og:title', content: title });
   }
 
   search(query: string) {

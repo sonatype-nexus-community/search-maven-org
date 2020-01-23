@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppConfigService } from "../shared/config/app-config.service";
 import { Pom } from "./api/pom";
@@ -39,7 +39,7 @@ import { Meta, Title } from '@angular/platform-browser';
     ]),
   ])]
 })
-export class ArtifactComponent implements OnInit {
+export class ArtifactComponent implements OnInit, OnDestroy {
   group: string;
   artifact: string;
   version: string;
@@ -53,6 +53,8 @@ export class ArtifactComponent implements OnInit {
   componentReport: ComponentReport;
   showVulnerabilitySpinner: boolean;
 
+  defaultPageTitle: string;
+
   constructor(private route: ActivatedRoute,
               private router: Router,
               private artifactService: ArtifactService,
@@ -65,6 +67,7 @@ export class ArtifactComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.defaultPageTitle = this.metaService.getTag('name=pageTitle').content;
     this.route.params.subscribe(params => {
       this.group = params['group'];
       this.artifact = params['artifact'];
@@ -76,26 +79,28 @@ export class ArtifactComponent implements OnInit {
       } else {
         this.initByFindingLatestVersion();
       }
+
+      this.initPageTitle();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.titleService.setTitle(this.defaultPageTitle);
+  }
+
+  initPageTitle() {
+    let title = `${this.group} : ${this.artifact} : ${this.version} - ${this.defaultPageTitle}`;
+
+    this.titleService.setTitle(title);
+    this.metaService.updateTag({ name: 'og:title', content: title });
   }
 
   initDefault() {
     this.initOnRelatedArtifacts();
     this.initOnVulnerabilities();
     this.artifactService.remoteContent(this.remoteRepositoryPomLink()).subscribe(content => {
-      setTimeout(() => {
-        this.pom = content;
-        this.parsedPom = Pom.parse(this.pom);
-        this.parsedPom.dependencies = [...this.parsedPom.dependencies];
-        if (this.parsedPom.name) {
-          this.titleService.setTitle(this.parsedPom.name.trim());
-          this.metaService.updateTag({ name: 'og:title', content: this.parsedPom.name.trim()});
-        }
-        if (this.parsedPom.description) {
-          this.metaService.updateTag({ name: 'description', content: this.parsedPom.description.trim()});
-          this.metaService.updateTag({ name: 'og:description', content: this.parsedPom.description.trim()});
-        }
-      }, 1000);
+      this.parsedPom = Pom.parse(this.pom = content);
+      this.initOnParsedPom();
     });
 
     this.artifactService.remoteContent(this.remoteRepositoryJarSha1Link()).subscribe(content => {
@@ -168,5 +173,18 @@ export class ArtifactComponent implements OnInit {
         this.showVulnerabilitySpinner = false;
       }, 1000);
     });
+  }
+
+  private initOnParsedPom() {
+    let description = this.parsedPom.getSeoDescription({
+      groupId: this.group,
+      artifactId: this.artifact,
+      version: this.version
+    });
+
+    if (description) {
+      this.metaService.updateTag({ name: 'description', content: description });
+      this.metaService.updateTag({ name: 'og:description', content: description });
+    }
   }
 }
