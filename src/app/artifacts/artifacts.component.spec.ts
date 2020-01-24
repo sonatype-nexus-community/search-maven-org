@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { CommonModule, APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
@@ -34,6 +34,8 @@ import { AnchorModule } from "../shared/anchor/anchor.module";
 import { NotificationService } from "../shared/notifications/notification.service";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ArtifactsDescriptionComponent } from "./artifacts-description/artifacts-description.component";
+import { Meta, Title } from '@angular/platform-browser';
+import { Injectable } from '@angular/core';
 
 
 describe('ArtifactsComponent', () => {
@@ -73,13 +75,25 @@ describe('ArtifactsComponent', () => {
           useValue: '/'
         },
         SearchService,
-        NotificationService
+        NotificationService,
+        {
+          provide: Meta,
+          useClass: MockMeta
+        }
       ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
+    inject([Meta, Title], (meta: Meta, title: Title) => {
+      meta.addTag({
+        name: 'pageTitle',
+        property: 'pageTitle',
+        content: 'bob'
+      });
+    });
+
     fixture = TestBed.createComponent(ArtifactsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -89,3 +103,13 @@ describe('ArtifactsComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+@Injectable()
+class MockMeta {
+  getTag(attrSelector: string) {
+    return {
+      content: 'A default page title',
+      name: 'pageTitle'
+    };
+  }
+}
