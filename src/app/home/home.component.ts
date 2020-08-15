@@ -24,7 +24,7 @@ import { AppConfigService } from '../shared/config/app-config.service';
 })
 export class HomeComponent implements OnInit {
 
-  smoClassicLookUrl: string
+  smoClassicLookUrl: string;
 
   constructor(private appConfigService: AppConfigService) { }
 

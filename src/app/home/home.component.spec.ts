@@ -54,4 +54,8 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should set the SMO classic look URL from the AppConfig', () => {
+    expect(component.smoClassicLookUrl).toEqual('http://test.search.maven.org/test');
+  });
 });
