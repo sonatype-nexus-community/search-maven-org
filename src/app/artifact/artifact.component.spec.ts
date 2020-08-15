@@ -17,11 +17,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule, APP_BASE_HREF } from '@angular/common';
 import { ArtifactComponent } from './artifact.component';
-import { MatInputModule, MatCardModule, MatIconModule, MatSelectModule, MatProgressSpinnerModule, MatSnackBarModule, MatButtonModule, MatMenuModule } from '@angular/material';
-import { createTranslateModule } from "../shared/translate/translate";
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ClipboardModule } from 'ngx-clipboard';
 import { SearchService } from '../search/search.service';
-import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule } from '@angular/forms';
@@ -29,14 +34,12 @@ import { ArtifactService } from './artifact.service';
 import { VulnerabilitiesService } from '../vulnerabilities/vulnerabilities.service';
 import { NotificationService } from '../shared/notifications/notification.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Component } from '@angular/core';
-import { Input } from '@angular/core';
 import { DependencyInformationComponent } from "./dependency-information/dependency-information.component";
 import { PomDependencyInformationComponent } from "./dependency-information/pom-dependency-information.component";
 import { RouterModule } from "@angular/router";
 import { AppConfigService } from '../shared/config/app-config.service';
-import { Config } from '../shared/config/config';
 import { MockConfigService } from '../shared/config/app-config-mock.service';
+import { DependencyLinksComponent } from "./dependency-links/dependency-links.component";
 
 describe('ArtifactComponent', () => {
   let component: ArtifactComponent;
@@ -77,7 +80,6 @@ describe('ArtifactComponent', () => {
             showNavSearchBar: true
           }
         }]),
-        createTranslateModule(),
       ],
       providers: [
         {
@@ -96,7 +98,8 @@ describe('ArtifactComponent', () => {
       declarations: [
         ArtifactComponent,
         DependencyInformationComponent,
-        PomDependencyInformationComponent
+        PomDependencyInformationComponent,
+        DependencyLinksComponent
       ]
     })
       .compileComponents();

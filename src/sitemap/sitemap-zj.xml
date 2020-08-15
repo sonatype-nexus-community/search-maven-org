@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/com.flipkart.zjsonpatch/zjsonpatch</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/me.silloy/zjtools</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.github.jzhi001/zjc-cp-redis</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.github.jzhi001/zjc-rabbit</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/io.fabric8/zjsonpatch</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.zalando/zjsonpatch</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.zalando.zjsonpatch/zjsonpatch</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.github.vkovalchuk/zjsonpatch</loc>
+  </url>
+</urlset>

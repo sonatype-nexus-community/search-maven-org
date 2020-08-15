@@ -14,8 +14,11 @@
  * limitations under the License.
  */
 
+
+import {merge as observableMerge,  Observable ,  BehaviorSubject } from 'rxjs';
+
+import {map} from 'rxjs/operators';
 import { DataSource } from '@angular/cdk/collections';
-import { Observable ,  BehaviorSubject } from 'rxjs';
 
 
 
@@ -23,7 +26,7 @@ import { Observable ,  BehaviorSubject } from 'rxjs';
 
 
 import { SearchDoc } from "./search-doc";
-import { MatPaginator } from "@angular/material";
+import { MatPaginator } from "@angular/material/paginator";
 import { SearchService } from "../search.service";
 import { SearchResult } from "./search-result";
 import { SearchSuggestion } from "./search-suggestion";
@@ -55,7 +58,7 @@ export class SearchDataSource extends DataSource<SearchDoc> {
 
     this.subject = new BehaviorSubject<SearchDoc[]>([]);
 
-    Observable.merge(...displayedChanges).subscribe(() => {
+    observableMerge(...displayedChanges).subscribe(() => {
       this.getData();
     });
 
@@ -69,7 +72,7 @@ export class SearchDataSource extends DataSource<SearchDoc> {
       this.getData();
     }
 
-    return Observable.merge(this.subject);
+    return observableMerge(this.subject);
   }
 
   disconnect() {
@@ -90,10 +93,10 @@ export class SearchDataSource extends DataSource<SearchDoc> {
       }
       this.hasSearched = true;
 
-      this.searchService.search(q, start).map(searchResult => {
+      this.searchService.search(q, start).pipe(map(searchResult => {
         this.totalCount = searchResult.response.numFound;
         return searchResult;
-      }).subscribe(
+      })).subscribe(
         (searchResult: SearchResult) => this.handleSearchResults(searchResult),
         (error: any) => {
           this.qSubject.error(error);

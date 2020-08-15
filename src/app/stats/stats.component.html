@@ -16,9 +16,14 @@
 
 -->
 
+<span style="display: none" #metaTitle i18n>Stats – Central Repository for Maven, Gradle, Kotlin, Scala and more</span>
+<span style="display: none" #metaDescription i18n>
+  Statistics for the official Central Repository for Maven, Gradle, Kotlin, Scala and more
+</span>;
+
 <div class="stats">
 
-  <h3 class="ellipsis">{{ 'stats.title' | translate}}</h3>
+  <h3 class="ellipsis" i18n>Statistics for the Central Repository</h3>
 
   <mat-card class="mat-smo-default-card stats-card" *ngIf="stat">
 
@@ -26,23 +31,23 @@
       <div mat-card-avatar class="stats-header-image">
         <mat-icon>check_circle</mat-icon>
       </div>
-      <mat-card-title>{{ 'stats.status' | translate }}</mat-card-title>
-      <mat-card-subtitle>{{ 'stats.optimal' | translate }}</mat-card-subtitle>
+      <mat-card-title i18n>Status</mat-card-title>
+      <mat-card-subtitle i18n>Systems is running optimal</mat-card-subtitle>
     </mat-card-header>
 
     <mat-card-content>
       <div class="label-value-table">
         <div class="label-column">
-          <div class="ellipsis">{{ 'stats.modifiedDate' | translate }}</div>
-          <div class="ellipsis">{{ 'stats.gav' | translate }}</div>
-          <div class="ellipsis">{{ 'stats.ga' | translate }}</div>
-          <div class="ellipsis" *ngIf="stat?.repoSize > 0">{{ 'stats.repoSize' | translate }}</div>
+          <div class="ellipsis" i18n>Date index last refreshed</div>
+          <div class="ellipsis" i18n>Total number of artifacts indexed (GAV)</div>
+          <div class="ellipsis" i18n>Total number of unique artifacts indexed (GA)</div>
+          <div class="ellipsis" *ngIf="stat?.repoSize > 0">Current size of repository on disk</div>
         </div>
         <div class="value-column">
           <div>{{ stat?.dateModified }}</div>
           <div>{{ stat?.gavNumber }}</div>
           <div>{{ stat?.gaNumber }}</div>
-          <div *ngIf="stat?.repoSize > 0">{{ stat?.repoSize }} {{ 'stats.repoSizeUnit' | translate}}</div>
+          <div *ngIf="stat?.repoSize > 0">{{ stat?.repoSize }} <ng-container i18n>MB</ng-container></div>
         </div>
       </div>
     </mat-card-content>
@@ -55,8 +60,8 @@
       <div mat-card-avatar class="stats-header-image warning">
         <mat-icon>warning</mat-icon>
       </div>
-      <mat-card-title>{{ 'stats.status' | translate }}</mat-card-title>
-      <mat-card-subtitle>{{ 'smo.unavailable' | translate }}</mat-card-subtitle>
+      <mat-card-title i18n>Status</mat-card-title>
+      <mat-card-subtitle i18n>Systems appears unavailable</mat-card-subtitle>
     </mat-card-header>
 
   </mat-card>

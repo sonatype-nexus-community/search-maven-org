@@ -16,7 +16,6 @@
 
 import { Routes } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
-import { AdvancedSearchComponent } from "./search/advanced-search.component";
 import { ClassicUrlGuard } from "./shared/classic/classic-url.guard";
 
 export const SMO_ROUTES: Routes = [
@@ -26,19 +25,19 @@ export const SMO_ROUTES: Routes = [
     component: HomeComponent
   }, {
     path: 'stats',
-    loadChildren: 'app/stats/stats.module#StatsModule'
+    loadChildren: () => import('./stats/stats.module').then(m => m.StatsModule)
   },
   {
     path: 'artifact',
-    loadChildren: 'app/artifact/artifact.module#ArtifactModule',
+    loadChildren: () => import('./artifact/artifact.module').then(m => m.ArtifactModule)
   },
   {
     path: 'search',
-    loadChildren: 'app/artifacts/artifacts.module#ArtifactsModule'
+    loadChildren: () => import('./artifacts/artifacts.module').then(m => m.ArtifactsModule)
   },
   {
     path: 'resources',
-    loadChildren: 'app/resources/resources.module#ResourcesModule',
+    loadChildren: () => import('./resources/resources.module').then(m => m.ResourcesModule)
   },
   {
     path: '**',

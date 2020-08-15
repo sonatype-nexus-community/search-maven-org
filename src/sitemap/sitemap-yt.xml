@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/com.github.javawebers/yt-mybatis</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.github.javawebers/yt-web</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/no.nav.tjenestespesifikasjoner/ytelseskontrakt-v3-tjenestespesifikasjon</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.yitongmed/yt-common</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.github.javawebers/yt-commons</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.github.limiaogithub/yt_mybatis</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.github.limiaogithub/yt_excel</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.github.limiaogithub/yt_base</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.fenbi/ytk-learn</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.fenbi.mp4j/ytk-mp4j</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.robertoestivill.ytsclient/ytsclient</loc>
+  </url>
+</urlset>

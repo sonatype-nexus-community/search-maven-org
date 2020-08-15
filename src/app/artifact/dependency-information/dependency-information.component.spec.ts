@@ -17,8 +17,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DependencyInformationComponent } from './dependency-information.component';
-import { createTranslateModule } from '../../shared/translate/translate';
-import { MatCardModule, MatIconModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { ClipboardModule } from 'ngx-clipboard';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -30,11 +32,10 @@ describe('DependencyInformationComponent', () => {
   let a = "artifact";
   let g = "group.something.etc";
   let v = "1.0.0";
-  let p = "jar";
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [createTranslateModule(),
+      imports: [
         BrowserAnimationsModule,
         MatCardModule,
         MatIconModule,
@@ -93,7 +94,7 @@ describe('DependencyInformationComponent', () => {
   });
 
   it('should create a valid Gradle Kotlin DSL template', () => {
-    let expected = `compile("${g}:${a}:${v}")`;
+    let expected = `implementation("${g}:${a}:${v}")`;
     let result = component.provideTemplateOnValue("kotlin");
     expect(result).toBe(expected);
   });

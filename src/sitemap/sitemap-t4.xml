@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/com.tactix4/t4openerp-connector_2.11</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.tactix4/t4openerp-connector_2.10</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.tactix4/t4xmlrpc_2.11</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.tactix4/t4xmlrpc_2.10</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/mx.bigdata.t4j/t4j-rawstream</loc>
+  </url>
+</urlset>

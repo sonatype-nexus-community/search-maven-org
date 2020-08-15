@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/org.technbolts.tzatziki/tzatziki-web</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.technbolts.tzatziki/tzatziki-samples</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.technbolts.tzatziki/tzatziki-pdf</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.technbolts.tzatziki/tzatziki-xls</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.technbolts.tzatziki/tzatziki-core</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.technbolts.tzatziki/tzatziki</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.github.sljjyy/tzapi4android</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.github.sljjyy/tzapi4android-debug</loc>
+  </url>
+</urlset>

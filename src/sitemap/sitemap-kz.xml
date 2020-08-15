@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/de.ppi.oss/kzulip</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/de.ppi/kzulip</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.soywiz/kzlib-js</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.soywiz/kzlib-common</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.soywiz/kzlib</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.soywiz/kzlib-root</loc>
+  </url>
+</urlset>

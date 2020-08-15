@@ -27,7 +27,7 @@ import { RouterModule } from "@angular/router";
         component: ResourcesComponent
       }]),
       CommonModule,
-        NgxTwitterTimelineModule.forRoot()
+      NgxTwitterTimelineModule
     ],
     exports: [ResourcesComponent],
     declarations: [ResourcesComponent]

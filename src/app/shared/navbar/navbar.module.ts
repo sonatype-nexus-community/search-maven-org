@@ -16,10 +16,11 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule, MatIconModule, MatMenuModule } from "@angular/material";
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
+import { MatMenuModule } from "@angular/material/menu";
 import { RouterModule } from "@angular/router";
 import { NavbarComponent } from "./navbar.component";
-import { createTranslateModule } from "../translate/translate";
 import { SearchModule } from "../../search/search.module";
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -32,7 +33,6 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     CommonModule,
     SearchModule,
     MatIconModule,
-    createTranslateModule()
   ],
   exports: [NavbarComponent],
   declarations: [NavbarComponent]

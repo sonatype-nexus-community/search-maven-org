@@ -28,12 +28,12 @@
 
 ## Prerequisites
 
-You will need node setup, preferably something fresh. At least one of us uses `nvm` to manage node, for SASS you'll want a version newer than 6.0.0 I believe.
+You will need node setup, preferably something fresh. At least one of us uses `nvm` to manage node, for Angular you'll need a version higher than 10.9.0
 
 It's important to note, as part of understanding this project, how and why it was intially setup.
 
 * Technology choices
-  * Angular 6 - Really low start up cost to learn and to implement
+  * Angular 8 - Really low start up cost to learn and to implement
   * Angular CLI - Command Line tool for super easy creation of Angular components
   * Typescript - Easy language for most of our developers to jump on
   * NPM - package manager that is supported by Nexus Repository

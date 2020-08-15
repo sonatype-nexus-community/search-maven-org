@@ -30,8 +30,4 @@ export class PomDependencyInformationComponent extends DependencyInformationComp
   constructor() {
     super();
   }
-
-  ngOnInit() {
-  }
-
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/com.manorrock.oyena/oyena-rest</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.manorrock.oyena/oyena-action</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.manorrock.oyena/oyena-cdi</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.manorrock.oyena/oyena-quill</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.manorrock.oyena/oyena-html5</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.manorrock.oyena/oyena-borderpane</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.manorrock.oyena/oyena-action-test-webapp</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.webjars.bower/oyb-kindeditor</loc>
+  </url>
+</urlset>

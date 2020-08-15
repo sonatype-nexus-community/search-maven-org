@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/com.rockerhieu/rv-adapter-states</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.rockerhieu/rv-adapter</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/mt.edu.um.cs.rv/rv-parent</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.rockerhieu/rv-adapter-endless</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.github.captain-miao/rv-utils-databinding</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.webjars.bower/rvc</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.webjars.bower/rv</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.rockerhieu/rvadapter</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.github.android-s14/rve</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.webjars/rv-jquery-fontsize</loc>
+  </url>
+</urlset>

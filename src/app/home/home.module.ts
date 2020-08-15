@@ -19,8 +19,8 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { SearchModule } from "../search/search.module";
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { createTranslateModule } from "../shared/translate/translate";
-import { MatIconModule, MatTooltipModule } from "@angular/material";
+import { MatIconModule } from "@angular/material/icon";
+import { MatTooltipModule } from "@angular/material/tooltip";
 
 @NgModule({
   imports: [
@@ -29,7 +29,6 @@ import { MatIconModule, MatTooltipModule } from "@angular/material";
     SearchModule,
     MatTooltipModule,
     MatIconModule,
-    createTranslateModule()
   ],
   exports: [HomeComponent],
   declarations: [HomeComponent]

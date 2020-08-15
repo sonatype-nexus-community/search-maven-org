@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/org.webjars.npm/n3</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.webjars.npm/n3-charts</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.webjars.bower/n3-line-chart</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.webjars.bower/n3-charts.line-chart</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.webjars.bower/n3-charts.pie-chart</loc>
+  </url>
+</urlset>

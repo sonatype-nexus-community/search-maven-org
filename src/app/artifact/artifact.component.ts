@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppConfigService } from "../shared/config/app-config.service";
+import { Pom } from "./api/pom";
 import { ArtifactService } from "./artifact.service";
 import { SearchService } from "../search/search.service";
 import { SearchDoc } from "../search/api/search-doc";
@@ -24,8 +25,8 @@ import { NotificationService } from "../shared/notifications/notification.servic
 import { VulnerabilitiesService } from "../vulnerabilities/vulnerabilities.service";
 import { Vulnerability } from "../vulnerabilities/api/vulnerability";
 import { ComponentReport } from "../vulnerabilities/api/component-report";
-import { TranslateService } from "@ngx-translate/core";
 import { trigger, style, animate, transition } from '@angular/animations';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-artifact',
@@ -38,18 +39,21 @@ import { trigger, style, animate, transition } from '@angular/animations';
     ]),
   ])]
 })
-export class ArtifactComponent implements OnInit {
+export class ArtifactComponent implements OnInit, OnDestroy {
   group: string;
   artifact: string;
   version: string;
   packaging: string;
   pom: string;
+  parsedPom: Pom;
   sha1: string;
   searchDocs: SearchDoc[];
   downloadLinks: { name: string, link: string }[];
   vulnerabilities: Vulnerability[];
   componentReport: ComponentReport;
   showVulnerabilitySpinner: boolean;
+
+  defaultPageTitle: string;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -58,12 +62,12 @@ export class ArtifactComponent implements OnInit {
               private vulnerabilitiesService: VulnerabilitiesService,
               private notificationService: NotificationService,
               private appConfigService: AppConfigService,
-              private translate: TranslateService) {
-    translate.setDefaultLang('artifact-en');
-    translate.use('artifact-en');
+              private titleService: Title,
+              private metaService: Meta) {
   }
 
   ngOnInit() {
+    this.defaultPageTitle = this.metaService.getTag('name=pageTitle').content;
     this.route.params.subscribe(params => {
       this.group = params['group'];
       this.artifact = params['artifact'];
@@ -75,14 +79,28 @@ export class ArtifactComponent implements OnInit {
       } else {
         this.initByFindingLatestVersion();
       }
+
+      this.initPageTitle();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.titleService.setTitle(this.defaultPageTitle);
+  }
+
+  initPageTitle() {
+    let title = `${this.group} : ${this.artifact} : ${this.version} - ${this.defaultPageTitle}`;
+
+    this.titleService.setTitle(title);
+    this.metaService.updateTag({ name: 'og:title', content: title });
   }
 
   initDefault() {
     this.initOnRelatedArtifacts();
     this.initOnVulnerabilities();
     this.artifactService.remoteContent(this.remoteRepositoryPomLink()).subscribe(content => {
-      this.pom = content;
+      this.parsedPom = Pom.parse(this.pom = content);
+      this.initOnParsedPom();
     });
 
     this.artifactService.remoteContent(this.remoteRepositoryJarSha1Link()).subscribe(content => {
@@ -97,7 +115,7 @@ export class ArtifactComponent implements OnInit {
     this.searchService.all(query).subscribe(searchResult => {
         this.router.navigate(['artifact', this.group, this.artifact, searchResult.response.docs[0].v, searchResult.response.docs[0].p])
       },
-      error => this.notificationService.notifySystem('artifact.related.search.result.unavailable'));
+      error => this.notificationService.notifySystem('Unable to find related versions and downloads'));
   }
 
   repositoryLink(g: string, a: string, v: string): string {
@@ -129,7 +147,7 @@ export class ArtifactComponent implements OnInit {
       .all(query)
       .subscribe(
         searchResult => this.initRelatedArtifacts(searchResult.response.docs),
-        error => this.notificationService.notifySystem('artifact.related.search.result.unavailable'));
+        error => this.notificationService.notifySystem('Unable to find related versions and downloads'));
   }
 
   private initRelatedArtifacts(searchDocs: SearchDoc[]) {
@@ -155,5 +173,18 @@ export class ArtifactComponent implements OnInit {
         this.showVulnerabilitySpinner = false;
       }, 1000);
     });
+  }
+
+  private initOnParsedPom() {
+    let description = this.parsedPom.getSeoDescription({
+      groupId: this.group,
+      artifactId: this.artifact,
+      version: this.version
+    });
+
+    if (description) {
+      this.metaService.updateTag({ name: 'description', content: description });
+      this.metaService.updateTag({ name: 'og:description', content: description });
+    }
   }
 }

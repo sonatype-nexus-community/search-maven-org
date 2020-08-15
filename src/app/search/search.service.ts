@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+
+import {map} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable ,  Subject } from "rxjs";
@@ -32,8 +34,8 @@ export class SearchService {
   search(q: string, start: number = 0, rows: number = 20): Observable<SearchResult> {
     return this
       .httpClient
-      .get<SearchResult>(`${this.appConfigService.getConfig().search.endpoint}?q=${q}&start=${start}&rows=${rows}`)
-      .map((searchResult: SearchResult) => {
+      .get<SearchResult>(`${this.appConfigService.getConfig().search.endpoint}?q=${q}&start=${start}&rows=${rows}`).pipe(
+      map((searchResult: SearchResult) => {
         searchResult.response.docs.forEach((doc: Doc) => {
           this.addDownloadLinks(doc);
         });
@@ -49,16 +51,16 @@ export class SearchService {
         }
 
         return searchResult;
-      });
+      }));
   }
 
   count(q: string): Observable<number> {
     return this
       .httpClient
-      .get<SearchResult>(`${this.appConfigService.getConfig().search.endpoint}?q=${q}&start=0&rows=0`)
-      .map((searchResult: SearchResult) => {
+      .get<SearchResult>(`${this.appConfigService.getConfig().search.endpoint}?q=${q}&start=0&rows=0`).pipe(
+      map((searchResult: SearchResult) => {
         return searchResult.response.numFound;
-      });
+      }));
   }
 
   all(q: string): Observable<SearchResult> {

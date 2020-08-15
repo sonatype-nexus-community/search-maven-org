@@ -18,24 +18,30 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ArtifactComponent } from './artifact.component';
 import { ClipboardModule } from 'ngx-clipboard';
-import {
-  MatInputModule, MatButtonModule, MatCardModule, MatIconModule, MatToolbarModule, MatPaginatorModule,
-  MatSelectModule, MatMenuModule, MatProgressSpinnerModule
-} from '@angular/material';
-import {
-  createTranslateModule
-} from "../shared/translate/translate";
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { DependencyInformationComponent } from './dependency-information/dependency-information.component';
 import { ArtifactService } from "./artifact.service";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { PomDependencyInformationComponent } from "./dependency-information/pom-dependency-information.component";
-import { HttpClient } from '@angular/common/http';
 import { VulnerabilitiesModule } from "../vulnerabilities/vulnerabilities.module";
+import { Title } from '@angular/platform-browser';
+import { ArtifactsComponent } from '../artifacts/artifacts.component';
+import { ArtifactsModule } from '../artifacts/artifacts.module';
+import { DependencyLinksComponent } from './dependency-links/dependency-links.component';
 
 @NgModule({
   imports: [
+    ArtifactsModule,
     FlexLayoutModule,
     CommonModule,
     ClipboardModule,
@@ -52,7 +58,7 @@ import { VulnerabilitiesModule } from "../vulnerabilities/vulnerabilities.module
     VulnerabilitiesModule,
     RouterModule.forChild([{
       path: ':group/:artifact',
-      component: ArtifactComponent,
+      component: ArtifactsComponent,
       data: {
         showNavSearchBar: true
       }
@@ -63,13 +69,13 @@ import { VulnerabilitiesModule } from "../vulnerabilities/vulnerabilities.module
         showNavSearchBar: true
       }
     }]),
-    createTranslateModule()
   ],
-  providers: [ArtifactService],
+  providers: [ArtifactService, Title],
   declarations: [
     ArtifactComponent,
     DependencyInformationComponent,
-    PomDependencyInformationComponent
+    PomDependencyInformationComponent,
+    DependencyLinksComponent
   ]
 })
 export class ArtifactModule { }

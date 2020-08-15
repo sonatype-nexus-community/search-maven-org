@@ -19,7 +19,8 @@
             "assets": [
               "src/assets",
               "src/favicon.ico",
-              "src/manifest.json"
+              "src/manifest.json",
+              {"glob": "**/*", "input": "src/sitemap", "output": "/"}
             ],
             "styles": [
               "src/styles.scss"
@@ -44,6 +45,14 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ]
+            },
+            "en": {
+              "aot": true,
+              "outputPath": "dist/en",
+              "i18nFile": "src/locale/messages.en.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "en",
+              "i18nMissingTranslation": "ignore"
             }
           }
         },
@@ -55,6 +64,9 @@
           "configurations": {
             "production": {
               "browserTarget": "search-maven-org:build:production"
+            },
+            "en": {
+              "browserTarget": "search-maven-org:build:en"
             }
           }
         },
@@ -78,7 +90,8 @@
             "assets": [
               "src/assets",
               "src/favicon.ico",
-              "src/manifest.json"
+              "src/manifest.json",
+              {"glob": "**/*", "input": "src/sitemap", "output": "/"}
             ]
           }
         },

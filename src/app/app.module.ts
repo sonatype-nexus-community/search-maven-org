@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
-import { createTranslateModule } from "./shared/translate/translate";
 import { AppComponent } from './app.component';
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -33,15 +32,16 @@ import { VulnerabilitiesModule } from "./vulnerabilities/vulnerabilities.module"
 import { ClassicModule } from "./shared/classic/classic.module";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { ClipboardModule } from "ngx-clipboard";
-import { MatProgressSpinnerModule } from "@angular/material";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { AppConfigService } from './shared/config/app-config.service';
 import { environment } from '../environments/environment';
+import { AnchorModule } from "./shared/anchor/anchor.module";
 
 const appInitializerFn = (appConfig: AppConfigService) => {
   return () => {
     return appConfig.loadAppConfig();
   }
-}
+};
 
 @NgModule({
   declarations: [
@@ -58,15 +58,15 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     RouterStateModule,
     NavbarModule,
     FooterModule,
+    AnchorModule,
     NotificationsModule,
     HomeModule,
     SearchModule,
     VulnerabilitiesModule,
     ClassicModule,
     MatProgressSpinnerModule,
-    createTranslateModule(),
   ],
-  providers: [AppConfigService, {
+  providers: [Title, AppConfigService, {
     provide: APP_INITIALIZER,
     useFactory: appInitializerFn,
     multi: true,

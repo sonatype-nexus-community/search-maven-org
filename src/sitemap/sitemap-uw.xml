@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/org.webjars.npm/uws</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/edu.wisc.my.apps/uw-frame</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.umtone/uw-task</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.umtone/uw-dm</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/io.skullabs.uworkers/uworkers-integration-tests</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/io.skullabs.uworkers/uworkers</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/io.skullabs.uworkers/uworkers-parent</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/io.skullabs.uworkers/uworkers-processor</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/edu.wisc.umark/uw-ui-toolkit</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/edu.uw.cs.lil/uwtime-standalone</loc>
+  </url>
+</urlset>

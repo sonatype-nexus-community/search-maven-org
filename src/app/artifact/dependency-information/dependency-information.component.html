@@ -21,13 +21,13 @@
   <mat-card-header>
     <div mat-card-avatar class="mat-card-avatar img-{{ image }}">
     </div>
-    <mat-card-title>{{ headerText | translate }}</mat-card-title>
+    <mat-card-title>{{ headerText }}</mat-card-title>
     <mat-card-subtitle>
-      <span *ngIf="!subTextUrl">{{ subText | translate }}</span>
+      <span *ngIf="!subTextUrl">{{ subText }}</span>
       <a target="_blank"
          href="{{ subTextUrl }}"
          *ngIf="subTextUrl">
-        {{ subText | translate }}
+        {{ subText }}
       </a>
     </mat-card-subtitle>
 

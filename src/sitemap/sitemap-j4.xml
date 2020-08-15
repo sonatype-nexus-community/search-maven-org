@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/io.github.astonbitecode/j4rs</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.cerner.ccl.comm/j4ccl-ssh</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.cerner.ccl.comm/j4ccl</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/de.javatux/j4cups</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.urbantower/j4s</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.j4j/j4j</loc>
+  </url>
+</urlset>

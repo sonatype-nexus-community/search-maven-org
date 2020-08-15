@@ -23,18 +23,27 @@
 
       <a class="navbar-item" routerLink="/">
 
-        <img src="assets/images/logo.svg" />
+        <img src="assets/images/logo.svg?v=1" class="navbar-logo" />
 
       </a>
 
-      <a class="navbar-item navbar-title" routerLink="/"> {{ 'navbar.theCentralRepository' | translate }} </a>
+      <a class="navbar-item navbar-title" routerLink="/" i18n>The Central Repository</a>
 
-      <a class="navbar-item navbar-nav-link" routerLink="stats"> {{ 'navbar.stats' | translate }} </a>
+      <a class="navbar-item navbar-nav-link" routerLink="stats" i18n>Quick Stats</a>
 
       <a class="navbar-item navbar-nav-link"
          href="https://www.sonatype.com/about-sonatype"
-         target="_blank">
-        {{ 'navbar.whoIsSonatype' | translate }}
+         target="_blank"
+         i18n>
+        Who is Sonatype?
+      </a>
+
+      <!-- TODO: fix capitalization, follow https://developers.google.com/style/capitalization -->
+      <a class="navbar-item navbar-nav-link"
+        href="https://www.sonatype.com/central-security-project" 
+        target="_blank"
+         i18n>
+        Report A Vulnerability
       </a>
 
       <div class="flex-spacer"></div>
@@ -42,8 +51,8 @@
       <a class="navbar-item navbar-nav-link"
          target="_blank"
          href="https://github.com/sonatype-nexus-community/search-maven-org/">
-        <img src="/assets/images/github-menu-item.svg"/>&nbsp;
-        {{ 'navbar.github' | translate }}
+        <img src="/assets/images/github-menu-item.svg?v=1" class="navbar-github-logo"/>&nbsp;
+        <ng-container i18n>GitHub</ng-container>
       </a>
 
     </div>

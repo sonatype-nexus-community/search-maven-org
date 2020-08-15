@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/fr.univ-valenciennes/bzip2</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.itadaki/bzip2</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.noctarius.bz2java/bz2java</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.cloudhoist/bzr</loc>
+  </url>
+</urlset>

@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { SearchService } from "../search/search.service";
 import { SearchDataSource } from "../search/api/search-data-source";
-import { MatPaginator } from "@angular/material";
+import { MatPaginator } from "@angular/material/paginator";
 import { NotificationService } from "../shared/notifications/notification.service";
-import { TranslateService } from "@ngx-translate/core";
 import { trigger, style, animate, transition } from '@angular/animations';
+import { AppConfigService } from '../shared/config/app-config.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-artifacts',
@@ -34,19 +35,17 @@ import { trigger, style, animate, transition } from '@angular/animations';
     ]),
   ])]
 })
-export class ArtifactsComponent implements OnInit {
+export class ArtifactsComponent implements OnInit, OnDestroy {
 
-  displayedColumns = [
-    'groupId',
-    'artifactId',
-    'latestVersion',
-    'updated',
-    'download'
-  ];
-
+  displayedColumns = [];
   dataSource: SearchDataSource;
+  group: string;
+  artifact: string;
+  repositoryLink: string;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  defaultPageTitle: string;
+
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   private q: string;
 
@@ -55,37 +54,73 @@ export class ArtifactsComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private searchService: SearchService,
               private notificationService: NotificationService,
-              private translate: TranslateService) {
-    translate.setDefaultLang('artifacts-en');
-    translate.use('artifacts-en');
+              private appConfigService: AppConfigService,
+              private titleService: Title,
+              private metaService: Meta) {
   }
 
   ngOnInit() {
+    this.defaultPageTitle = this.metaService.getTag('name=pageTitle').content;
     this.dataSource = new SearchDataSource(this.searchService, this.paginator);
     this.dataSource.qSubject.subscribe(s => s, error => this.handleError(error));
 
+    // For searches, e.g. /search?q=something
     this.route.queryParams.subscribe(params => {
       this.q = params['q'];
       this.core = params['core'];
 
       if (this.q) {
         this.search(this.q + (this.core ? '&core=' + this.core : ''));
+        this.displayedColumns = [
+          'groupId',
+          'artifactId',
+          'latestVersion',
+          'updated',
+          'download'
+        ];
       }
+    });
+
+    // For group/artifact paths, e.g. /artifact/groupId/artifactId
+    this.route.params.subscribe(params => {
+      const group = params['group'];
+      const artifact = params['artifact'];
+
+      if (group && artifact) {
+        this.search(`g:${group} AND a:${artifact}&core=gav`);
+        this.group = group;
+        this.artifact = artifact;
+        this.repositoryLink = `${this.appConfigService.getConfig().repositoryBaseUrl}/${group.replace(/\.+/g, '/')}/${artifact}/`;
+        this.displayedColumns = ['latestVersion', 'updated'];
+        this.initPageTitle();
+      }
+
     });
   }
 
+  ngOnDestroy(): void {
+    this.titleService.setTitle(this.defaultPageTitle);
+  }
+
+  initPageTitle() {
+    const title = `${this.group} : ${this.artifact} - ${this.defaultPageTitle}`;
+
+    this.titleService.setTitle(title);
+    this.metaService.updateTag({ name: 'og:title', content: title });
+  }
+
   search(query: string) {
-    this.dataSource.qSubject.next(query)
+    this.dataSource.qSubject.next(query);
   }
 
   private handleError(error) {
     // For "know" exceptions, don't notify users
-    if (error.status == 400 &&
+    if (error.status === 400 &&
       (error.error.includes('org.apache.lucene.queryParser.ParseException') ||
       error.error.includes('400, msg: missing query string') ||
       error.error.includes('Solr returned 400, msg:'))) {
       return;
-    } else if (error.status == 500 && (error.statusText.includes('IllegalArgumentException'))) {
+    } else if (error.status === 500 && (error.statusText.includes('IllegalArgumentException'))) {
       return;
     }
 

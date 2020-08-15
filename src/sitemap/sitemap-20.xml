@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/io.ipsq/2048-scalajs-facade_sjs0.6_2.11</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/io.ipsq/2048-scalajs-facade_sjs0.6_2.10</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.razie/20widgets_2.9.1</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.razie/20widgets-swing_2.9.1</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.razie/20widgets-swing_2.9.0-1</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.razie/20widgets_2.9.0-1</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.razie/20widgets-swing_2.8.1</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.razie/20widgets_2.8.1</loc>
+  </url>
+</urlset>

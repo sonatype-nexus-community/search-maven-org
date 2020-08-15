@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/com.b3dgs/b3dgs-parent</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.b3dgs/b3dgs-buildtools</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/br.com.thiagomoreira.b3/b34j</loc>
+  </url>
+</urlset>

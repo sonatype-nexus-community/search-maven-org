@@ -14,22 +14,28 @@
  * limitations under the License.
  */
 
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { CommonModule, APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import {
-  MatButtonModule,
-  MatIconModule, MatInputModule,
-  MatMenuModule, MatPaginatorModule, MatProgressSpinnerModule, MatSnackBarModule, MatTableModule,
-  MatTooltipModule
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { ArtifactsComponent } from './artifacts.component';
-import { createTranslateModule } from "../shared/translate/translate";
 import { RouterModule } from "@angular/router";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { SearchService } from "../search/search.service";
+import { AnchorModule } from "../shared/anchor/anchor.module";
 import { NotificationService } from "../shared/notifications/notification.service";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ArtifactsDescriptionComponent } from "./artifacts-description/artifacts-description.component";
+import { Meta, Title } from '@angular/platform-browser';
+import { Injectable } from '@angular/core';
 
 
 describe('ArtifactsComponent', () => {
@@ -39,6 +45,7 @@ describe('ArtifactsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        AnchorModule,
         FlexLayoutModule,
         BrowserAnimationsModule,
         CommonModule,
@@ -60,22 +67,33 @@ describe('ArtifactsComponent', () => {
             showNavSearchBar: true
           }
         }]),
-        createTranslateModule()
       ],
-      declarations: [ArtifactsComponent],
+      declarations: [ArtifactsComponent, ArtifactsDescriptionComponent],
       providers: [
         {
           provide: APP_BASE_HREF,
           useValue: '/'
         },
         SearchService,
-        NotificationService
+        NotificationService,
+        {
+          provide: Meta,
+          useClass: MockMeta
+        }
       ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
+    inject([Meta, Title], (meta: Meta, title: Title) => {
+      meta.addTag({
+        name: 'pageTitle',
+        property: 'pageTitle',
+        content: 'bob'
+      });
+    });
+
     fixture = TestBed.createComponent(ArtifactsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -85,3 +103,13 @@ describe('ArtifactsComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+@Injectable()
+class MockMeta {
+  getTag(attrSelector: string) {
+    return {
+      content: 'A default page title',
+      name: 'pageTitle'
+    };
+  }
+}

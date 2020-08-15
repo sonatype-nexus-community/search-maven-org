@@ -16,26 +16,25 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  MatInputModule,
-  MatButtonModule,
-  MatIconModule,
-  MatTableModule,
-  MatPaginatorModule,
-  MatMenuModule,
-  MatProgressSpinnerModule,
-  MatTooltipModule
-} from '@angular/material';
-import { createTranslateModule } from "../shared/translate/translate";
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { ArtifactsComponent } from "./artifacts.component";
 import { RouterModule } from "@angular/router";
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { HttpClient } from '@angular/common/http';
+import { AnchorModule } from "../shared/anchor/anchor.module";
+import { ArtifactsDescriptionComponent } from './artifacts-description/artifacts-description.component';
 
 @NgModule({
   imports: [
     FlexLayoutModule,
     CommonModule,
+    AnchorModule,
     MatTableModule,
     MatInputModule,
     MatButtonModule,
@@ -51,11 +50,11 @@ import { HttpClient } from '@angular/common/http';
         showNavSearchBar: true
       }
     }]),
-    createTranslateModule()
   ],
   providers: [],
   declarations: [
-    ArtifactsComponent
+    ArtifactsComponent,
+    ArtifactsDescriptionComponent
   ]
 })
 export class ArtifactsModule {

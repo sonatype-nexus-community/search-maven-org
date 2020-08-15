@@ -17,8 +17,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdvancedSearchComponent } from './advanced-search.component';
-import { createTranslateModule } from '../shared/translate/translate';
-import { MatDialogModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 
 describe('AdvancedSearchComponent', () => {
@@ -27,7 +26,7 @@ describe('AdvancedSearchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [createTranslateModule(), MatDialogModule, HttpClientModule],
+      imports: [MatDialogModule, HttpClientModule],
       declarations: [ AdvancedSearchComponent ]
     })
     .compileComponents();

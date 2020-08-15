@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/com.github.pms1.e3/e3-maven-plugin</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.github.pms1.e3/e3-launcher</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.tozny.e3db/e3db-client-plain</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.tozny.e3db/e3db-client-android</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/net.sf.sociaal/e3patient</loc>
+  </url>
+</urlset>

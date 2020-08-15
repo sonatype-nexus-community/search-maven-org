@@ -18,20 +18,12 @@
 
 <footer class="footer">
   <p class="links">
-    <a routerLink="/resources">
-      {{ 'footer.maven.resources' | translate }}
-    </a> | 
-    <a href="https://www.sonatype.com/about-sonatype" target="_blank">
-      {{ 'footer.etc.about' | translate }}
-    </a> | 
-    <a href="https://www.sonatype.com/privacy-policy.html" target="_blank">
-      {{ 'footer.etc.privacy' | translate }}
-    </a> | 
-    <a href="https://repo1.maven.org/terms.html" target="_blank">
-      {{ 'footer.etc.terms' | translate }}
-    </a>
+    <a routerLink="/resources" i18n>Apache Maven Resources</a> |
+    <a href="https://www.sonatype.com/about-sonatype" target="_blank" i18n>About Sonatype</a> |
+    <a href="https://www.sonatype.com/privacy-policy.html" target="_blank" i18n>Privacy Policy</a> |
+    <a href="https://repo1.maven.org/terms.html" target="_blank" i18n>Terms Of Service</a>
   </p>
-  <p class="tm-comment muted">
-    {{ 'footer.tm.copyright' | translate}}
+  <p class="tm-comment muted" i18n>
+    Copyright ©2017-present Sonatype, Inc.
   </p>
 </footer>

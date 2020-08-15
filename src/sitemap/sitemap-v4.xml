@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/com.harium.hci/v4l2-ctl</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.github.sarxos/v4l4j</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.boofcv/v4l4j</loc>
+  </url>
+</urlset>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/com.nimbusds/c2id-server-sdk</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/io.cucumber/c21e</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.nimbusds/c2id-server-jwkset-gen</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.nimbusds/c2id-server-property-source</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.nimbusds/c2id-server-ldap-schemas</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.corp2world/c2w-java-client-log4j2</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.corp2world/c2w-java-client-log4j</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.corp2world/c2w-java-client-core</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.corp2world/c2w-java-client</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.whispercomm.c2dm4j/c2dm4j</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.codeslap/c2dm-library</loc>
+  </url>
+</urlset>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/org.caiguoqing/uyuni-demo</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.caiguoqing/uyuni-common</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.caiguoqing/uyuni-monitor</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.caiguoqing/uyuni-anotation</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.caiguoqing/uyuni-registry</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.caiguoqing/uyuni-rpc</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.caiguoqing/uyuni-config</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.caiguoqing/uyuni</loc>
+  </url>
+</urlset>

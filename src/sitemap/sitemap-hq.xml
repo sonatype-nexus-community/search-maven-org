@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://search.maven.org/artifact/com.relaximus/hql-builder</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/org.keijack/hql-generator</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.gitee.duannamei/hql.query</loc>
+  </url>
+  <url>
+    <loc>https://search.maven.org/artifact/com.github.dargiri/hql-criteria-api</loc>
+  </url>
+</urlset>
