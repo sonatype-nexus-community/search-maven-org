@@ -20,26 +20,27 @@ import { Injectable } from "@angular/core";
 @Injectable()
 export class MockConfigService {
     private appConfig: Config;
-  
+
     constructor() {
       this.appConfig = {
-        repositoryBaseUrl: 'http://repo1.maven.org/maven2', 
+        repositoryBaseUrl: 'http://repo1.maven.org/maven2',
         production: "false",
         search: { endpoint: "" },
         stats: { endpoint: "" },
-        ossindex: {  
-          maven: { 
+        ossindex: {
+          maven: {
             endpoint: ""
           },
           resource: {
             endpoint: ""
-          }  
+          }
         },
         smoBaseUrl: "",
-        smoClassicLookUrl: ""
+        smoClassicLookUrl: "",
+        smoAPIGuideUrl: ""
       };
     }
-  
+
     getConfig() {
       return this.appConfig;
     }

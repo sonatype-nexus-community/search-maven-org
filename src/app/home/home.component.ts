@@ -25,11 +25,13 @@ import { AppConfigService } from '../shared/config/app-config.service';
 export class HomeComponent implements OnInit {
 
   smoClassicLookUrl: string
+  smoAPIGuideUrl: string
 
   constructor(private appConfigService: AppConfigService) { }
 
   ngOnInit() {
     this.smoClassicLookUrl = this.appConfigService.getConfig().smoClassicLookUrl;
+    this.smoAPIGuideUrl = this.appConfigService.getConfig().smoAPIGuideUrl;
   }
 
 }

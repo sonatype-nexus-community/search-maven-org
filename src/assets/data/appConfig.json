@@ -15,5 +15,6 @@
     },
     "smoBaseUrl": "http://localhost:8080/central/remotecontent?filepath=",
     "repositoryBaseUrl": "https://repo1.maven.org/maven2",
-    "smoClassicLookUrl": "https://search.maven.org/classic"
+    "smoClassicLookUrl": "https://search.maven.org/classic",
+    "smoAPIGuideUrl": "https://search.maven.org/classic/#api"
 }

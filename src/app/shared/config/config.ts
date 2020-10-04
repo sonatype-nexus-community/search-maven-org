@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-export interface Config {  
+export interface Config {
     production: string;
     search: Search;
     stats: Stats;
@@ -22,6 +22,7 @@ export interface Config {
     smoBaseUrl: string;
     repositoryBaseUrl: string;
     smoClassicLookUrl: string;
+    smoAPIGuideUrl: string;
 }
 
 interface Search {
