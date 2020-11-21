@@ -104,6 +104,9 @@ export class DependencyInformationComponent implements OnChanges {
       case "bazel": {
         return this.bazelTemplate(this.g, this.a, this.v, this.s ? this.s : 'calculating...');
       }
+      case "jbang": {
+        return this.jbangTemplate(this.g, this.a, this.v);
+      }
       default: {
         this.templateValue =  "";
         break;
@@ -158,5 +161,9 @@ export class DependencyInformationComponent implements OnChanges {
 
   bazelTemplate(g: string, a: string, v: string, s:string): string {
     return `maven_jar(\n    name = "${a}",\n    artifact = "${g}:${a}:${v}",\n    sha1 = "${s}",\n)`;
+  }
+
+  jbangTemplate(g: string, a: string, v: string): string {
+    return `//DEPS ${g}:${a}:${v}`;
   }
 }
