@@ -35,15 +35,15 @@ It's important to note, as part of understanding this project, how and why it wa
 * Technology choices
   * Angular 8 - Really low start up cost to learn and to implement
   * Angular CLI - Command Line tool for super easy creation of Angular components
-  * Typescript - Easy language for most of our developers to jump on
-  * NPM - package manager that is supported by Nexus Repository
+  * TypeScript - Easy language for most of our developers to jump on
+  * npm - package manager that is supported by Nexus Repository
     * You can use Yarn if you'd like
   * SASS - currently one of the best CSS precompilers
   * Angular Material 6 - Easy setup of a simple UI look and feel
     * We followed the [Quick start guide from Angular](https://angular.io/guide/quickstart)
 
 ## Installation
-* NPM
+* npm
   * install npm from https://nodejs.org/en/
   * install the latest angular cli with `npm install -g @angular/cli@latest`
   * install all other dependencies with `npm install` from project root
@@ -101,4 +101,4 @@ Looking to contribute to our code but need some help? There's a few ways to get 
 
 * Chat with us on [Gitter](https://gitter.im/sonatype-nexus-community/search-maven-org)
 * Connect with us on [Twitter](https://twitter.com/sonatypeDev)
-* Log an issue here on github
+* Log an issue here on GitHub
