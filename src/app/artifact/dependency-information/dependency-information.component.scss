@@ -120,6 +120,11 @@
       background-position-x: center;
     }
 
+    &.img-jbang {
+      @include avatar-img('jbang.svg');
+      background-position-x: center;
+    }
+
     &.img-purl {
       @include avatar-img('purl.png');
     }
