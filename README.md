@@ -16,7 +16,7 @@
 
 -->
 
-# Search.Maven.Org
+# search.maven.org
 
 [![Join the chat at https://gitter.im/sonatype/nexus-developers](https://badges.gitter.im/sonatype/nexus-developers.svg)](https://gitter.im/sonatype-nexus-community/search-maven-org?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
