@@ -4,6 +4,7 @@
     "jsx": "react",
     "module": "esnext",
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "lib": [
       "dom",
       "esnext"

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019-present Sonatype, Inc.
+ * Copyright (c) 2021-present Sonatype, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,24 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import * as React from "react";
-import Header from "./Header/Header";
+import { NxNexusPageHeader } from "@sonatype/react-shared-components"
+import React from "react"
+import packageJson from '../../package.json';
 
-class SearchMavenOrgContainer extends React.Component {
-
-  render() {
-    return <React.Fragment>
-    <div className="nx-page-header">
-      <Header />
-    </div>
-    <div className="nx-page-content">
-      <div className="nx-page-main">
-      </div>
-    </div>
-  </React.Fragment>;
-  }
-
-  componentDidMount() {}
+const Header = () => {
+    return (
+      <NxNexusPageHeader 
+        productInfo={{ 
+            name: packageJson.name,
+            version: packageJson.version
+          }}
+          />
+    )
 }
 
-export default SearchMavenOrgContainer;
+export default Header;
