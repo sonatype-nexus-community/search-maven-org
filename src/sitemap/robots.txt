@@ -1,1 +1,0 @@
-sitemap: https://search.maven.org/sitemap-index.xml
