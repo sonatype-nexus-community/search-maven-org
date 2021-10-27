@@ -13,19 +13,47 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { NxNexusPageHeader } from "@sonatype/react-shared-components"
-import React from "react"
+import {
+  NxPageHeader,
+  NxButton,
+  NxFontAwesomeIcon,
+} from '@sonatype/react-shared-components';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import React from 'react';
 import packageJson from '../../package.json';
 
 const Header = () => {
-    return (
-      <NxNexusPageHeader 
-        productInfo={{ 
-            name: packageJson.name,
-            version: packageJson.version
-          }}
-          />
-    )
-}
+  const links = [
+    {
+      name: 'Stats',
+      href: '/stats',
+    },
+  ];
+
+  const gotoLink = (path: string) => {
+    window.location.href = path;
+  };
+
+  return (
+    <NxPageHeader
+      productInfo={{
+        name: packageJson.name,
+        version: packageJson.version,
+      }}
+      homeLink="/"
+      links={links}>
+      <NxButton
+        title="GitHub"
+        variant="icon-only"
+        onClick={() =>
+          gotoLink(
+            'https://github.com/sonatype-nexus-community/search-maven-org',
+          )
+        }>
+        <NxFontAwesomeIcon icon={faGithub} />
+      </NxButton>
+    </NxPageHeader>
+  );
+};
 
 export default Header;

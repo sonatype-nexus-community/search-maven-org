@@ -13,24 +13,40 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import * as React from "react";
-import Header from "./Header/Header";
+import * as React from 'react';
+import Header from './Header/Header';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Search from './Search/Search';
+import Artifact from './Artifact/Artifact';
+import Stats from './Stats/Stats';
 
 class SearchMavenOrgContainer extends React.Component {
-
   render() {
-    return <React.Fragment>
-    <div className="nx-page-header">
-      <Header />
-    </div>
-    <div className="nx-page-content">
-      <div className="nx-page-main">
-      </div>
-    </div>
-  </React.Fragment>;
+    return (
+      <React.Fragment>
+        <Router>
+          <div className="nx-page-header">
+            <Header />
+          </div>
+          <div className="nx-page-content">
+            <div className="nx-page-main">
+              <Switch>
+                <Route path="/artifact">
+                  <Artifact />
+                </Route>
+                <Route path="/stats">
+                  <Stats />
+                </Route>
+                <Route path="/">
+                  <Search />
+                </Route>
+              </Switch>
+            </div>
+          </div>
+        </Router>
+      </React.Fragment>
+    );
   }
-
-  componentDidMount() {}
 }
 
 export default SearchMavenOrgContainer;

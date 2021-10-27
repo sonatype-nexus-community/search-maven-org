@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019-present Sonatype, Inc.
+ * Copyright (c) 2021-present Sonatype, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import SearchMavenOrgContainer from './SearchMavenOrgContainer';
+import React from 'react';
+import { NxH1 } from '@sonatype/react-shared-components';
 
-ReactDOM.render(
-  <SearchMavenOrgContainer />,
-  document.getElementById('root') as HTMLElement,
-);
+const Artifact = () => {
+  return <NxH1>Artifact</NxH1>;
+};
+
+export default Artifact;

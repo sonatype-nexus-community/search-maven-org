@@ -3,6 +3,9 @@ const prod = process.env.NODE_ENV === 'production';
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  devServer: {
+    historyApiFallback: true
+  },
   mode: prod ? 'production' : 'development',
   entry: './src/index.tsx',
   output: {
