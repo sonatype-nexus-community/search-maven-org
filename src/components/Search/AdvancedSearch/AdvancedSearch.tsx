@@ -14,12 +14,7 @@
  * limitations under the License.
  */
 import React, { useState } from 'react';
-import {
-  NxButton,
-  NxCard,
-  NxH3,
-  NxModal,
-} from '@sonatype/react-shared-components';
+import { NxButton, NxH3, NxModal } from '@sonatype/react-shared-components';
 
 const AdvancedSearch = () => {
   const [showModal, setShowModal] = useState(false);
@@ -39,74 +34,60 @@ const AdvancedSearch = () => {
               <span>Advanced Search Options</span>
             </h2>
           </header>
-          <div className="nx-modal-content">
-            <NxCard.Container>
-              <NxCard>
-                <NxCard.Header>
-                  <NxH3>By Coordinates</NxH3>
-                </NxCard.Header>
-                <NxCard.Content>
-                  <dl className="nx-list nx-list--description-list">
-                    <div className="nx-list__item">
-                      <dt className="nx-list__term">Group</dt>
-                      <dd className="nx-list__description">g:junit</dd>
-                    </div>
-                    <div className="nx-list__item">
-                      <dt className="nx-list__term">Artifact</dt>
-                      <dd className="nx-list__description">a:junit</dd>
-                    </div>
-                    <div className="nx-list__item">
-                      <dt className="nx-list__term">Version</dt>
-                      <dd className="nx-list__description">v:4.11</dd>
-                    </div>
-                    <div className="nx-list__item">
-                      <dt className="nx-list__term">Packaging</dt>
-                      <dd className="nx-list__description">p:jar</dd>
-                    </div>
-                    <div className="nx-list__item">
-                      <dt className="nx-list__term">Classifier</dt>
-                      <dd className="nx-list__description">l:sources</dd>
-                    </div>
-                  </dl>
-                  You can also search in combinations, using the "and" keyword:
+          <div className="nx-modal-content" style={{ alignContent: 'center' }}>
+            <NxH3>By Coordinates</NxH3>
+            <dl className="nx-list nx-list--description-list">
+              <div className="nx-list__item">
+                <dt className="nx-list__term">Group</dt>
+                <dd className="nx-list__description nx-code">g:junit</dd>
+              </div>
+              <div className="nx-list__item">
+                <dt className="nx-list__term">Artifact</dt>
+                <dd className="nx-list__description nx-code">a:junit</dd>
+              </div>
+              <div className="nx-list__item">
+                <dt className="nx-list__term">Version</dt>
+                <dd className="nx-list__description nx-code">v:4.11</dd>
+              </div>
+              <div className="nx-list__item">
+                <dt className="nx-list__term">Packaging</dt>
+                <dd className="nx-list__description nx-code">p:jar</dd>
+              </div>
+              <div className="nx-list__item">
+                <dt className="nx-list__term">Classifier</dt>
+                <dd className="nx-list__description nx-code">l:sources</dd>
+              </div>
+              <div className="nx-list__item">
+                <dt className="nx-list__term">Combination</dt>
+                <dd className="nx-list__description nx-code">
                   g:junit and v:4.11
-                </NxCard.Content>
-              </NxCard>
-              <NxCard>
-                <NxCard.Header>
-                  <NxH3>By Classes</NxH3>
-                </NxCard.Header>
-                <NxCard.Content>
-                  <dl className="nx-list nx-list--description-list">
-                    <div className="nx-list__item">
-                      <dt className="nx-list__term">Class Name</dt>
-                      <dd className="nx-list__description">c:JUnit4</dd>
-                    </div>
-                    <div className="nx-list__item">
-                      <dt className="nx-list__term">Full Class Name</dt>
-                      <dd className="nx-list__description">
-                        fc:org.sonatype.nexus
-                      </dd>
-                    </div>
-                  </dl>
-                </NxCard.Content>
-              </NxCard>
-              <NxCard>
-                <NxCard.Header>
-                  <NxH3>By Checksums</NxH3>
-                </NxCard.Header>
-                <NxCard.Content>
-                  <dl className="nx-list nx-list--description-list">
-                    <div className="nx-list__item">
-                      <dt className="nx-list__term">SHA-1</dt>
-                      <dd className="nx-list__description">
-                        1:2973d150c0dc1fefe998f834810d68f278ea58ec
-                      </dd>
-                    </div>
-                  </dl>
-                </NxCard.Content>
-              </NxCard>
-            </NxCard.Container>
+                </dd>
+              </div>
+            </dl>
+
+            <NxH3>By Classes</NxH3>
+            <dl className="nx-list nx-list--description-list">
+              <div className="nx-list__item">
+                <dt className="nx-list__term">Class Name</dt>
+                <dd className="nx-list__description nx-code">c:JUnit4</dd>
+              </div>
+              <div className="nx-list__item">
+                <dt className="nx-list__term">Full Class Name</dt>
+                <dd className="nx-list__description nx-code">
+                  fc:org.sonatype.nexus
+                </dd>
+              </div>
+            </dl>
+
+            <NxH3>By Checksums</NxH3>
+            <dl className="nx-list nx-list--description-list">
+              <div className="nx-list__item">
+                <dt className="nx-list__term">SHA-1</dt>
+                <dd className="nx-list__description nx-code">
+                  1:2973d150c0dc1fefe998f834810d68f278ea58ec
+                </dd>
+              </div>
+            </dl>
           </div>
           <footer className="nx-footer">
             <div className="nx-btn-bar">
