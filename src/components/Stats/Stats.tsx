@@ -31,10 +31,17 @@ const Stats = () => {
   const [quickStats, setQuickStats] = useState<QuickStats | undefined>(
     undefined,
   );
+  const [checkedStats, setCheckedStats] = useState(false);
 
   useEffect(() => {
-    if (!quickStats) {
-      getStats(artifactContext);
+    if (!quickStats && !checkedStats) {
+      try {
+        getStats(artifactContext);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setCheckedStats(true);
+      }
     }
   }, []);
 
@@ -51,7 +58,7 @@ const Stats = () => {
   };
 
   const doRenderStats = (): JSX.Element | null => {
-    if (quickStats) {
+    if (quickStats && checkedStats) {
       return (
         <>
           <NxH1>Quick Stats</NxH1>
@@ -92,8 +99,10 @@ const Stats = () => {
           </NxCard.Container>
         </>
       );
+    } else if (checkedStats && !quickStats) {
+      return <NxH1>I am down!</NxH1>;
     }
-    return <NxH1>I am down!</NxH1>;
+    return null;
   };
 
   if (artifactContext) {
