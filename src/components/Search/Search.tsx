@@ -19,7 +19,7 @@ import {
   NxP,
   NxStatefulSearchDropdown,
 } from '@sonatype/react-shared-components';
-import logo from './center-image.jpeg';
+import logo from './sonatype_maven_banner.png';
 import { useArtifactContext } from '../../context/ArtifactContext';
 import { PackageURL } from 'packageurl-js';
 import { useHistory } from 'react-router-dom';
