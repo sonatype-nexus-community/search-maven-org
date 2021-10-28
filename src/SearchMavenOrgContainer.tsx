@@ -19,11 +19,23 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Search from './Search/Search';
 import Artifact from './Artifact/Artifact';
 import Stats from './Stats/Stats';
+import { ArtifactProvider } from './context/ArtifactContext';
+import { ArtifactServicesFactory } from './services/ArtifactServicesFactory';
 
-class SearchMavenOrgContainer extends React.Component {
+type SMOProps = unknown;
+
+type SMOState = unknown;
+
+class SearchMavenOrgContainer extends React.Component<SMOProps, SMOState> {
+  constructor(props: SMOProps) {
+    super(props);
+
+    this.state = {};
+  }
+
   render() {
     return (
-      <React.Fragment>
+      <ArtifactProvider artifactFactory={new ArtifactServicesFactory()}>
         <Router>
           <div className="nx-page-header">
             <Header />
@@ -44,7 +56,7 @@ class SearchMavenOrgContainer extends React.Component {
             </div>
           </div>
         </Router>
-      </React.Fragment>
+      </ArtifactProvider>
     );
   }
 }
