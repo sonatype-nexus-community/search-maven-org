@@ -25,7 +25,7 @@ import packageJson from '../../../package.json';
 const Header = () => {
   const links = [
     {
-      name: 'Stats',
+      name: 'Quick Stats',
       href: '/stats',
     },
   ];
@@ -50,7 +50,7 @@ const Header = () => {
             'https://github.com/sonatype-nexus-community/search-maven-org',
           )
         }>
-        <NxFontAwesomeIcon icon={faGithub} />
+        <NxFontAwesomeIcon icon={faGithub} size="2x"/>
       </NxButton>
     </NxPageHeader>
   );
