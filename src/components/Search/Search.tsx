@@ -23,6 +23,7 @@ import logo from './sonatype_maven_banner.png';
 import { useArtifactContext } from '../../context/ArtifactContext';
 import { PackageURL } from 'packageurl-js';
 import { useHistory } from 'react-router-dom';
+import { parseOnGrouping } from './SearchUtil';
 
 const Search = () => {
   const history = useHistory();
@@ -63,7 +64,7 @@ const Search = () => {
 
   const onSearch = async (query: string) => {
     setLoading(true);
-    await doQuery(query);
+    await doQuery(parseOnGrouping(query));
   };
 
   const onSelect = useCallback(
