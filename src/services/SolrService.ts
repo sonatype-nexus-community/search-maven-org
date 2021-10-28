@@ -16,6 +16,7 @@
 import { PackageURL } from 'packageurl-js';
 import { ArtifactListResponse } from '../model/ArtifactListResponse';
 import { QuickStats } from '../model/QuickStats';
+import { RuntimeConfig } from '../model/RuntimeConfig';
 
 interface ArtifactServiceInterface {
   fetchArtifactList: (q: string) => Promise<ArtifactListResponse>;
@@ -24,18 +25,17 @@ interface ArtifactServiceInterface {
   quickStats: () => Promise<QuickStats>;
 }
 
-const config = {
-  search: {
-    endpoint: 'https://search.maven.org/solrsearch/select',
-  },
-  quickStats: {
-    endpoint: 'https://search.maven.org/quickstats',
-  },
+const getConfig = async (): Promise<RuntimeConfig> => {
+  const resp = await fetch(`/config.json`);
+
+  return resp.json();
 };
 
 class SolrService implements ArtifactServiceInterface {
+  constructor(readonly config: RuntimeConfig) {}
+
   fetchArtifactList = async (query: string): Promise<ArtifactListResponse> => {
-    const resp = await fetch(`${config.search.endpoint}?q=${query}`);
+    const resp = await fetch(`${this.config.search.endpoint}?q=${query}`);
 
     return resp.json();
   };
@@ -51,7 +51,7 @@ class SolrService implements ArtifactServiceInterface {
   };
 
   quickStats = async (): Promise<QuickStats> => {
-    const resp = await fetch(`${config.quickStats.endpoint}`);
+    const resp = await fetch(`${this.config.quickStats.endpoint}`);
 
     return resp.json();
   };

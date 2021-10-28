@@ -1,6 +1,7 @@
 const prod = process.env.NODE_ENV === 'production';
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   devServer: {
@@ -50,6 +51,12 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'public/index.html',
+    }),
+    new CopyPlugin({
+      patterns: [
+        {from: 'public/config.json', to: './'},
+        {from: 'public/manifest.json', to: './'},
+      ]
     }),
   ],
 };

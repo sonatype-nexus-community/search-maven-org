@@ -15,12 +15,13 @@
  */
 import { SolrService, ArtifactServiceInterface } from './SolrService';
 import { PackageURL } from 'packageurl-js';
+import { RuntimeConfig } from '../model/RuntimeConfig';
 
 export class ArtifactServicesFactory {
   private client: ArtifactServiceInterface;
 
-  constructor(initialClient?: ArtifactServiceInterface) {
-    this.client = initialClient || new SolrService();
+  constructor(config: RuntimeConfig, initialClient?: ArtifactServiceInterface) {
+    this.client = initialClient || new SolrService(config);
   }
 
   async queryArtifacts(query: string) {

@@ -15,12 +15,21 @@
  */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { RuntimeConfig } from './model/RuntimeConfig';
 import SearchMavenOrgContainer from './SearchMavenOrgContainer';
 import { ArtifactServicesFactory } from './services/ArtifactServicesFactory';
 
-ReactDOM.render(
-  <SearchMavenOrgContainer
-    artifactServicesFactory={new ArtifactServicesFactory()}
-  />,
-  document.getElementById('root') as HTMLElement,
-);
+const bootUp = () => {
+  fetch('config.json').then(val => {
+    val.json().then((config: RuntimeConfig) => {
+      ReactDOM.render(
+        <SearchMavenOrgContainer
+          artifactServicesFactory={new ArtifactServicesFactory(config)}
+        />,
+        document.getElementById('root') as HTMLElement,
+      );
+    });
+  });
+};
+
+bootUp();
