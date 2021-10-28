@@ -20,6 +20,7 @@ import {
   NxStatefulSearchDropdown,
 } from '@sonatype/react-shared-components';
 import logo from './sonatype_maven_banner.png';
+import AdvancedSearch from './AdvancedSearch/AdvancedSearch';
 import { useArtifactContext } from '../../context/ArtifactContext';
 import { PackageURL } from 'packageurl-js';
 import { useHistory } from 'react-router-dom';
@@ -91,6 +92,7 @@ const Search = () => {
         onSelect={onSelect}
       />
       <NxP />
+      <AdvancedSearch />
       <h1
         style={{
           textAlign: 'center',
