@@ -34,4 +34,8 @@ export class ArtifactServicesFactory {
   async queryArtifactVersion(purl: PackageURL) {
     return this.client.fetchArtifactVersion(purl);
   }
+
+  async queryQuickStats() {
+    return this.client.quickStats();
+  }
 }
