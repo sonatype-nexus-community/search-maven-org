@@ -22,7 +22,9 @@ import Stats from './components/Stats/Stats';
 import { ArtifactProvider } from './context/ArtifactContext';
 import { ArtifactServicesFactory } from './services/ArtifactServicesFactory';
 
-type SMOProps = unknown;
+type SMOProps = {
+  artifactServicesFactory: ArtifactServicesFactory
+};
 
 type SMOState = unknown;
 
@@ -35,7 +37,7 @@ class SearchMavenOrgContainer extends React.Component<SMOProps, SMOState> {
 
   render() {
     return (
-      <ArtifactProvider artifactFactory={new ArtifactServicesFactory()}>
+      <ArtifactProvider artifactFactory={this.props.artifactServicesFactory}>
         <Router>
           <div className="nx-page-header">
             <Header />
