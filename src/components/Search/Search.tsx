@@ -87,6 +87,7 @@ const Search = () => {
       }}>
       <NxStatefulSearchDropdown
         loading={loading}
+        long
         matches={artifacts}
         onSearch={onSearch}
         onSelect={onSelect}
