@@ -15,12 +15,13 @@
  */
 import { PackageURL } from 'packageurl-js';
 import { ArtifactListResponse } from '../model/ArtifactListResponse';
+import { QuickStats } from '../model/QuickStats';
 
 interface ArtifactServiceInterface {
   fetchArtifactList: (q: string) => Promise<ArtifactListResponse>;
   fetchArtifactDetails: (p: PackageURL) => Promise<any>;
   fetchArtifactVersion: (p: PackageURL) => Promise<any>;
-  quickStats: () => Promise<any>;
+  quickStats: () => Promise<QuickStats>;
 }
 
 const config = {
@@ -28,8 +29,8 @@ const config = {
     endpoint: 'https://search.maven.org/solrsearch/select',
   },
   quickStats: {
-    endpoint: 'https://search.maven.org/quickstats'
-  }
+    endpoint: 'https://search.maven.org/quickstats',
+  },
 };
 
 class SolrService implements ArtifactServiceInterface {
@@ -49,11 +50,11 @@ class SolrService implements ArtifactServiceInterface {
     return resp.json();
   };
 
-  quickStats = async (): Promise<any> => {
+  quickStats = async (): Promise<QuickStats> => {
     const resp = await fetch(`${config.quickStats.endpoint}`);
 
     return resp.json();
-  }
+  };
 }
 
 export { SolrService, ArtifactServiceInterface };

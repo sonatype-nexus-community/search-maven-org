@@ -13,11 +13,93 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React from 'react';
-import { NxH1 } from '@sonatype/react-shared-components';
+import React, { useEffect, useState } from 'react';
+import {
+  NxCard,
+  NxFontAwesomeIcon,
+  NxH1,
+  NxH2,
+  NxH3,
+} from '@sonatype/react-shared-components';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { useArtifactContext } from '../../context/ArtifactContext';
+import { ArtifactServicesFactory } from '../../services/ArtifactServicesFactory';
+import { QuickStats } from '../../model/QuickStats';
 
 const Stats = () => {
-  return <NxH1>Stats</NxH1>;
+  const artifactContext = useArtifactContext();
+  const [quickStats, setQuickStats] = useState<QuickStats | undefined>(
+    undefined,
+  );
+
+  useEffect(() => {
+    if (!quickStats) {
+      getStats(artifactContext);
+    }
+  }, []);
+
+  const getStats = async (factory: ArtifactServicesFactory) => {
+    try {
+      const stats = await factory.queryQuickStats();
+
+      if (stats) {
+        setQuickStats(stats);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const doRenderStats = (): JSX.Element | null => {
+    if (quickStats) {
+      return (
+        <>
+          <NxH1>Quick Stats</NxH1>
+          <NxCard.Container>
+            <NxCard>
+              <NxCard.Header>
+                <NxH2>Am I up?</NxH2>
+              </NxCard.Header>
+              <NxCard.Content>
+                <NxCard.CallOut>
+                  <NxFontAwesomeIcon
+                    icon={faCheck}
+                    style={{ color: '#008000' }}
+                  />
+                </NxCard.CallOut>
+                <NxH3>Situation Peachy</NxH3>
+              </NxCard.Content>
+            </NxCard>
+            <NxCard>
+              <NxCard.Header>
+                <NxH2>Date Index Last Refreshed</NxH2>
+              </NxCard.Header>
+              <NxCard.Content>{quickStats.dateModified}</NxCard.Content>
+            </NxCard>
+            <NxCard>
+              <NxCard.Header>
+                <NxH2>Total number of artifacts indexed (GAV)</NxH2>
+              </NxCard.Header>
+              <NxCard.Content>{quickStats.gavNumber}</NxCard.Content>
+            </NxCard>
+            <NxCard>
+              <NxCard.Header>
+                <NxH2>Total number of unique artifacts indexed (GA)</NxH2>
+              </NxCard.Header>
+              <NxCard.Content>{quickStats.gaNumber}</NxCard.Content>
+            </NxCard>
+          </NxCard.Container>
+        </>
+      );
+    }
+    return null;
+  };
+
+  if (artifactContext) {
+    return doRenderStats();
+  } else {
+    return null;
+  }
 };
 
 export default Stats;
