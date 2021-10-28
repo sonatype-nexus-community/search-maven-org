@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import {
   DataItem,
   NxP,
@@ -21,8 +21,11 @@ import {
 } from '@sonatype/react-shared-components';
 import logo from './center-image.jpeg';
 import { useArtifactContext } from '../../context/ArtifactContext';
+import { PackageURL } from 'packageurl-js';
+import { useHistory } from 'react-router-dom';
 
 const Search = () => {
+  const history = useHistory();
   const artifactContext = useArtifactContext();
   const [artifacts, setArtifacts] = useState<DataItem<any>[]>([]);
   const [loading, setLoading] = useState(false);
@@ -34,7 +37,8 @@ const Search = () => {
       if (resp.response) {
         const dataItems: DataItem[] = [];
         resp.response.docs.forEach(val => {
-          dataItems.push({ displayName: val.id as string, id: val.id });
+          const purl = new PackageURL("maven", val.g, val.a, val.latestVersion, {"packaging": val.p}, undefined);
+          dataItems.push({ displayName: val.id as string, id: purl.toString() });
         });
         setArtifacts(dataItems);
         setLoading(false);
@@ -52,9 +56,12 @@ const Search = () => {
     await doQuery(query);
   };
 
-  const onSelect = ({ displayName, id }: DataItem<any>) => {
-    console.log(`Selected: ${displayName}, ${id}`);
-  };
+  const onSelect = useCallback(({ displayName, id }: DataItem<any>) => {
+    const purl = PackageURL.fromString(id);
+    if (purl.qualifiers) {
+      history.push(`/artifact/${purl.namespace}/${purl.name}/${purl.version}/${purl.qualifiers['packaging']}`);
+    }
+  }, [history]);
 
   return (
     <div
