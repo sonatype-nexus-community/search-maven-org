@@ -31,17 +31,18 @@ const Header = () => {
   ];
 
   const gotoLink = (path: string) => {
-    window.location.href = path;
+    window.open(path, '_blank');
   };
 
   return (
     <NxPageHeader
       productInfo={{
-        name: packageJson.name,
+        name: packageJson.description,
         version: packageJson.version,
       }}
       homeLink="/"
-      links={links}>
+      links={links}
+    >
       <NxButton
         title="GitHub"
         variant="icon-only"
@@ -50,7 +51,7 @@ const Header = () => {
             'https://github.com/sonatype-nexus-community/search-maven-org',
           )
         }>
-        <NxFontAwesomeIcon icon={faGithub} />
+        <NxFontAwesomeIcon icon={faGithub}/>
       </NxButton>
     </NxPageHeader>
   );

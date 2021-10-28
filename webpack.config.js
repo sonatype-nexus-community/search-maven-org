@@ -10,6 +10,7 @@ module.exports = {
   entry: './src/index.tsx',
   output: {
     path: __dirname + '/dist/',
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -37,13 +38,12 @@ module.exports = {
         use: ['@svgr/webpack', 'url-loader'],
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-          },
-        ],
-      },
+        include: /\.(png|jpe?g|svg)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'public/assets/images/[name][ext]'
+        }
+      }
     ]
   },
   devtool: prod ? undefined : 'source-map',
