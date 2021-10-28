@@ -45,8 +45,8 @@ const Search = () => {
     await doQuery(query);
   };
 
-  const onSelect = () => {
-    console.log('Selected');
+  const onSelect = ({ displayName, id }: DataItem<any>) => {
+    console.log(`Selected: ${displayName}, ${id}`);
   };
 
   return (
