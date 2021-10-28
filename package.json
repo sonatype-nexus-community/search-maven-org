@@ -4,7 +4,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "start": "webpack serve --port 3000",
-    "build": "NODE_ENV=production webpack",
+    "build": "rimraf ./dist && yarn lint && NODE_ENV=production webpack",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "private": true,
@@ -38,6 +38,7 @@
     "html-loader": "^3.0.0",
     "html-webpack-plugin": "^5.4.0",
     "prettier": "^2.4.1",
+    "rimraf": "^3.0.2",
     "sass": "^1.43.3",
     "sass-loader": "^12.2.0",
     "style-loader": "^3.3.1",
