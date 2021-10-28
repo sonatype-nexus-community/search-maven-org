@@ -50,7 +50,7 @@ const Header = () => {
             'https://github.com/sonatype-nexus-community/search-maven-org',
           )
         }>
-        <NxFontAwesomeIcon icon={faGithub} size="2x"/>
+        <NxFontAwesomeIcon icon={faGithub} size="2x" />
       </NxButton>
     </NxPageHeader>
   );

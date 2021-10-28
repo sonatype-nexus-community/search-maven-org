@@ -64,7 +64,8 @@ const Stats = () => {
                 <NxCard.CallOut>
                   <NxFontAwesomeIcon
                     icon={faCheck}
-                    style={{ color: '#008000' }} size="3x"
+                    style={{ color: '#008000' }}
+                    size="3x"
                   />
                 </NxCard.CallOut>
                 <NxH3>Situation Peachy</NxH3>
