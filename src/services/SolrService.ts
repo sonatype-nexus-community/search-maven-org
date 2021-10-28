@@ -30,23 +30,17 @@ const config = {
 
 class SolrService implements ArtifactServiceInterface {
   fetchArtifactList = async (query: string): Promise<ArtifactListResponse> => {
-    console.info(query);
-
     const resp = await fetch(`${config.search.endpoint}?q=${query}`);
 
     return resp.json();
   };
 
   fetchArtifactDetails = async (purl: PackageURL): Promise<any> => {
-    console.info(purl);
-
     const resp = await fetch('');
     return resp.json();
   };
 
   fetchArtifactVersion = async (purl: PackageURL): Promise<any> => {
-    console.info(purl);
-
     const resp = await fetch('');
     return resp.json();
   };

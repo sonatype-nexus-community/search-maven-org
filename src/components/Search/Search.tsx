@@ -28,16 +28,23 @@ const Search = () => {
   const [loading, setLoading] = useState(false);
 
   const doQuery = async (query: string) => {
-    const resp = await artifactContext.queryArtifacts(query);
+    try {
+      const resp = await artifactContext.queryArtifacts(query);
 
-    if (resp.response) {
-      const dataItems: DataItem[] = [];
-      resp.response.docs.forEach(val => {
-        dataItems.push({ displayName: val.id as string, id: val.id });
-      });
-      setArtifacts(dataItems);
+      if (resp.response) {
+        const dataItems: DataItem[] = [];
+        resp.response.docs.forEach(val => {
+          dataItems.push({ displayName: val.id as string, id: val.id });
+        });
+        setArtifacts(dataItems);
+        setLoading(false);
+      } else {
+        setLoading(false);
+        console.error(`No valid response from service`);
+      }
+    } catch (err) {
+      console.error(err);
     }
-    setLoading(false);
   };
 
   const onSearch = async (query: string) => {
