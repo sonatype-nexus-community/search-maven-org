@@ -20,7 +20,7 @@ import SearchMavenOrgContainer from './SearchMavenOrgContainer';
 import { ArtifactServicesFactory } from './services/ArtifactServicesFactory';
 
 const bootUp = () => {
-  fetch('config.json').then(val => {
+  fetch('/config.json').then(val => {
     val.json().then((config: RuntimeConfig) => {
       ReactDOM.render(
         <SearchMavenOrgContainer

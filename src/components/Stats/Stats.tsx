@@ -93,9 +93,7 @@ const Stats = () => {
         </>
       );
     }
-    return (
-      <NxH1>I am down!</NxH1>
-    )
+    return <NxH1>I am down!</NxH1>;
   };
 
   if (artifactContext) {

@@ -10,6 +10,7 @@ module.exports = {
   mode: prod ? 'production' : 'development',
   entry: './src/index.tsx',
   output: {
+    filename: '[name].[contenthash].js', 
     path: __dirname + '/dist/',
     publicPath: '/'
   },
@@ -56,6 +57,7 @@ module.exports = {
       patterns: [
         {from: 'public/config.json', to: './'},
         {from: 'public/manifest.json', to: './'},
+        {from: 'public/favicon.ico', to: './'},
       ]
     }),
   ],
