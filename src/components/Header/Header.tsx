@@ -20,7 +20,7 @@ import {
 } from '@sonatype/react-shared-components';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import React from 'react';
-import packageJson from '../../package.json';
+import packageJson from '../../../package.json';
 
 const Header = () => {
   const links = [

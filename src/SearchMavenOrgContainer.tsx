@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 import * as React from 'react';
-import Header from './Header/Header';
+import Header from './components/Header/Header';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Search from './Search/Search';
-import Artifact from './Artifact/Artifact';
-import Stats from './Stats/Stats';
+import Search from './components/Search/Search';
+import Artifact from './components/Artifact/Artifact';
+import Stats from './components/Stats/Stats';
 import { ArtifactProvider } from './context/ArtifactContext';
 import { ArtifactServicesFactory } from './services/ArtifactServicesFactory';
 

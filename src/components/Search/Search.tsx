@@ -20,7 +20,7 @@ import {
   NxStatefulSearchDropdown,
 } from '@sonatype/react-shared-components';
 import logo from './center-image.jpeg';
-import { useArtifactContext } from '../context/ArtifactContext';
+import { useArtifactContext } from '../../context/ArtifactContext';
 
 const Search = () => {
   const artifactContext = useArtifactContext();
