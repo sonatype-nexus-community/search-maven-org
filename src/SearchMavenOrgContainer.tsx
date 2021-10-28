@@ -23,7 +23,7 @@ import { ArtifactProvider } from './context/ArtifactContext';
 import { ArtifactServicesFactory } from './services/ArtifactServicesFactory';
 
 type SMOProps = {
-  artifactServicesFactory: ArtifactServicesFactory
+  artifactServicesFactory: ArtifactServicesFactory;
 };
 
 type SMOState = unknown;

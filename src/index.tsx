@@ -19,6 +19,8 @@ import SearchMavenOrgContainer from './SearchMavenOrgContainer';
 import { ArtifactServicesFactory } from './services/ArtifactServicesFactory';
 
 ReactDOM.render(
-  <SearchMavenOrgContainer artifactServicesFactory={new ArtifactServicesFactory()} />,
+  <SearchMavenOrgContainer
+    artifactServicesFactory={new ArtifactServicesFactory()}
+  />,
   document.getElementById('root') as HTMLElement,
 );
