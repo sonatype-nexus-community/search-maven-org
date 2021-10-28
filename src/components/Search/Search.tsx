@@ -37,8 +37,18 @@ const Search = () => {
       if (resp.response) {
         const dataItems: DataItem[] = [];
         resp.response.docs.forEach(val => {
-          const purl = new PackageURL("maven", val.g, val.a, val.latestVersion, {"packaging": val.p}, undefined);
-          dataItems.push({ displayName: val.id as string, id: purl.toString() });
+          const purl = new PackageURL(
+            'maven',
+            val.g,
+            val.a,
+            val.latestVersion,
+            { packaging: val.p },
+            undefined,
+          );
+          dataItems.push({
+            displayName: val.id as string,
+            id: purl.toString(),
+          });
         });
         setArtifacts(dataItems);
         setLoading(false);
@@ -56,12 +66,17 @@ const Search = () => {
     await doQuery(query);
   };
 
-  const onSelect = useCallback(({ displayName, id }: DataItem<any>) => {
-    const purl = PackageURL.fromString(id);
-    if (purl.qualifiers) {
-      history.push(`/artifact/${purl.namespace}/${purl.name}/${purl.version}/${purl.qualifiers['packaging']}`);
-    }
-  }, [history]);
+  const onSelect = useCallback(
+    ({ displayName, id }: DataItem<any>) => {
+      const purl = PackageURL.fromString(id);
+      if (purl.qualifiers) {
+        history.push(
+          `/artifact/${purl.namespace}/${purl.name}/${purl.version}/${purl.qualifiers['packaging']}`,
+        );
+      }
+    },
+    [history],
+  );
 
   return (
     <div

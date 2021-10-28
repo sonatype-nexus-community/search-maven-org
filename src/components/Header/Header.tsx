@@ -41,8 +41,7 @@ const Header = () => {
         version: packageJson.version,
       }}
       homeLink="/"
-      links={links}
-    >
+      links={links}>
       <NxButton
         title="GitHub"
         variant="icon-only"
@@ -51,7 +50,7 @@ const Header = () => {
             'https://github.com/sonatype-nexus-community/search-maven-org',
           )
         }>
-        <NxFontAwesomeIcon icon={faGithub}/>
+        <NxFontAwesomeIcon icon={faGithub} />
       </NxButton>
     </NxPageHeader>
   );

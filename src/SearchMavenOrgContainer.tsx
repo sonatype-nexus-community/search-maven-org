@@ -21,6 +21,7 @@ import Artifact from './components/Artifact/Artifact';
 import Stats from './components/Stats/Stats';
 import { ArtifactProvider } from './context/ArtifactContext';
 import { ArtifactServicesFactory } from './services/ArtifactServicesFactory';
+import { NxPageHeader, NxPageMain } from '@sonatype/react-shared-components';
 
 type SMOProps = {
   artifactServicesFactory: ArtifactServicesFactory;
@@ -39,11 +40,9 @@ class SearchMavenOrgContainer extends React.Component<SMOProps, SMOState> {
     return (
       <ArtifactProvider artifactFactory={this.props.artifactServicesFactory}>
         <Router>
-          <div className="nx-page-header">
-            <Header />
-          </div>
+          <Header />
           <div className="nx-page-content">
-            <div className="nx-page-main">
+            <NxPageMain>
               <Switch>
                 <Route path="/artifact">
                   <Artifact />
@@ -55,7 +54,7 @@ class SearchMavenOrgContainer extends React.Component<SMOProps, SMOState> {
                   <Search />
                 </Route>
               </Switch>
-            </div>
+            </NxPageMain>
           </div>
         </Router>
       </ArtifactProvider>
