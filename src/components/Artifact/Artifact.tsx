@@ -29,6 +29,8 @@ import {
   NxTile,
   NxDropdown,
   useToggle,
+  NxButton,
+  NxFontAwesomeIcon,
 } from '@sonatype/react-shared-components';
 import { useArtifactContext } from '../../context/ArtifactContext';
 import { Pom } from '../../services/PomParserService';
@@ -37,10 +39,8 @@ import {
   userInput,
 } from '@sonatype/react-shared-components/components/NxTextInput/stateHelpers';
 import { PackageURL } from 'packageurl-js';
-import {
-  ArtifactDetailsResponse,
-  Doc,
-} from '../../model/ArtifactDetailsResponse';
+import { Doc } from '../../model/ArtifactDetailsResponse';
+import { faFolder } from '@fortawesome/free-solid-svg-icons';
 
 const Artifact = () => {
   const [pom, setPom] = useState(initialState(''));
@@ -109,27 +109,38 @@ const Artifact = () => {
   if (pomParsed) {
     return (
       <>
-        <NxH1>
-          {pomParsed.name} :{' '}
-          {artifactDetails && artifactDetails.length > 0 && (
-            <NxDropdown
-              label={pomParsed.version}
-              isOpen={isOpen}
-              onToggleCollapse={onToggleCollapse}>
-              {artifactDetails.map((artifact, index) => {
-                return (
-                  <a
-                    href={`/artifact/${artifact.g}/${artifact.a}/${artifact.v}/${artifact.p}`}
-                    className="nx-dropdown-button"
-                    key={index}>
-                    {artifact.v}
-                  </a>
-                );
-              })}
-            </NxDropdown>
-          )}
-        </NxH1>
-        <NxDivider />
+        <NxTile>
+          <NxTile.Header>
+            <NxTile.HeaderTitle>
+              <NxH1>
+                {pomParsed.name} :{' '}
+                {artifactDetails && artifactDetails.length > 0 && (
+                  <NxDropdown
+                    label={pomParsed.version}
+                    isOpen={isOpen}
+                    onToggleCollapse={onToggleCollapse}>
+                    {artifactDetails.map((artifact, index) => {
+                      return (
+                        <a
+                          href={`/artifact/${artifact.g}/${artifact.a}/${artifact.v}/${artifact.p}`}
+                          className="nx-dropdown-button"
+                          key={index}>
+                          {artifact.v}
+                        </a>
+                      );
+                    })}
+                  </NxDropdown>
+                )}
+              </NxH1>
+            </NxTile.HeaderTitle>
+            <NxTile.HeaderActions>
+              <NxButton>
+                <NxFontAwesomeIcon icon={faFolder} />
+                <span>Browse</span>
+              </NxButton>
+            </NxTile.HeaderActions>
+          </NxTile.Header>
+        </NxTile>
         <NxTile>
           <NxTile.Content>
             <NxGrid.Row>
