@@ -39,4 +39,8 @@ export class ArtifactServicesFactory {
   async queryQuickStats() {
     return this.client.quickStats();
   }
+
+  async fetchRemoteContent(path: string) {
+    return this.client.fetchRemoteContent(path)
+  }
 }

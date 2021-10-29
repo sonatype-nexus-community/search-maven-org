@@ -44,7 +44,7 @@ class SearchMavenOrgContainer extends React.Component<SMOProps, SMOState> {
           <section className="nx-page-content">
             <NxPageMain>
               <Switch>
-                <Route path="/artifact">
+                <Route path="/artifact/:namespace/:name/:version/:qualifier">
                   <Artifact />
                 </Route>
                 <Route path="/stats">

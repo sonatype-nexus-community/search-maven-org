@@ -18,6 +18,7 @@ import * as ReactDOM from 'react-dom';
 import { RuntimeConfig } from './model/RuntimeConfig';
 import SearchMavenOrgContainer from './SearchMavenOrgContainer';
 import { ArtifactServicesFactory } from './services/ArtifactServicesFactory';
+import './styles/_base.scss';
 
 const bootUp = () => {
   fetch('/config.json').then(val => {
