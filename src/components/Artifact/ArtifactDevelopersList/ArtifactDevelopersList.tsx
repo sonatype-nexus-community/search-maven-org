@@ -1,4 +1,10 @@
-import { NxGrid, NxH3, NxList, NxTextLink, NxTile } from '@sonatype/react-shared-components';
+import {
+  NxGrid,
+  NxH3,
+  NxList,
+  NxTextLink,
+  NxTile,
+} from '@sonatype/react-shared-components';
 import * as React from 'react';
 import { Fragment } from 'react';
 import { PomDeveloper } from '../../../services/PomParserService';
@@ -8,7 +14,7 @@ type ArtifactDevelopersListProps = {
 };
 
 const toInitials = (s: string | undefined) => {
-  let initials = s?.match(/\b(\w)/g)?.join('');
+  const initials = s?.match(/\b(\w)/g)?.join('');
 
   if (initials) {
     switch (initials.length) {
@@ -25,7 +31,7 @@ const toInitials = (s: string | undefined) => {
   return '';
 };
 
-const stringToHslColor = (str: string | undefined, s: number = 40, l: number = 80) => {
+const stringToHslColor = (str: string | undefined, s = 40, l = 80) => {
   if (!str) {
     return 'inherit';
   }
@@ -35,47 +41,45 @@ const stringToHslColor = (str: string | undefined, s: number = 40, l: number = 8
     hash = str.charCodeAt(i) + ((hash << 5) - hash);
   }
 
-  let h = hash % 360;
+  const h = hash % 360;
   return 'hsl(' + h + ', ' + s + '%, ' + l + '%)';
-}
+};
 
 const ArtifactDevelopersList = (props: ArtifactDevelopersListProps) => {
-
   if (props.list && props.list?.length !== 0) {
-    return (<NxTile>
+    return (
+      <NxTile>
         <NxTile.Content>
           <>
             <NxH3>Developers</NxH3>
             <NxGrid.Row className="smo-avatar-grid">
-
               {props.list.map((developer, index) => {
                 return (
                   <Fragment key={index}>
                     <NxGrid.Column>
                       <NxGrid.Row className="smo-avatar-grid-row">
-
                         <NxGrid.Column>
-                          <div className="smo-avatar"
-                               style={{backgroundColor: stringToHslColor(developer.name)}}>
-                            <span className="smo-avatar-initials">{toInitials(developer.name)}</span>
+                          <div
+                            className="smo-avatar"
+                            style={{
+                              backgroundColor: stringToHslColor(developer.name),
+                            }}>
+                            <span className="smo-avatar-initials">
+                              {toInitials(developer.name)}
+                            </span>
                           </div>
                         </NxGrid.Column>
 
                         <NxGrid.Column>
-                          <div>
-                            {developer.name}
-                          </div>
+                          <div>{developer.name}</div>
                           <div>
                             <NxTextLink href={`mailto:${developer.email}`}>
                               ({developer.email})
                             </NxTextLink>
                           </div>
-
                         </NxGrid.Column>
-
                       </NxGrid.Row>
                     </NxGrid.Column>
-
                   </Fragment>
                 );
               })}

@@ -57,7 +57,7 @@ const Artifact = () => {
     };
 
   const artifactContext = useArtifactContext();
-  const {namespace, name, version, qualifier}: any = useParams();
+  const { namespace, name, version, qualifier }: any = useParams();
 
   let sha1: string;
 
@@ -129,47 +129,22 @@ const Artifact = () => {
             </NxDropdown>
           )}
         </NxH1>
-        <NxDivider/>
+        <NxDivider />
         <NxTile>
           <NxTile.Content>
             <NxGrid.Row>
-              <NxGrid.Column>
+              <NxGrid.Column className="nx-grid-col--66">
                 <NxP>{pomParsed.description}</NxP>
                 <NxDivider />
                 <NxH3>Dependencies</NxH3>
-                <NxP>{pomParsed.dependencies.map((dep) => {
-                    return `${dep.groupId}:${dep.artifactId}`
-                }).join(", ")}
+                <NxP>
+                  {pomParsed.dependencies
+                    .map(dep => {
+                      return `${dep.groupId}:${dep.artifactId}`;
+                    })
+                    .join(', ')}
                 </NxP>
                 <NxDivider />
-                {pomParsed.developers && pomParsed?.developers?.length !== 0 && (
-                  <>
-                    <NxH3>Developers</NxH3>
-                    <NxList>
-                      {pomParsed.developers.map((developer, index) => {
-                        return (
-                          <NxList.Item key={index}>
-                            {developer.name}
-                            &nbsp;
-                            <NxTextLink href={`mailto:${developer.email}`}>
-                              ({developer.email})
-                            </NxTextLink>
-                            {developer.organizationUrl &&
-                              developer.organization && (
-                                <>
-                                  ,{' '}
-                                  <NxTextLink href={developer.organizationUrl}>
-                                    {developer.organization}
-                                  </NxTextLink>
-                                </>
-                              )}
-                          </NxList.Item>
-                        );
-                      })}
-                    </NxList>
-                  </>
-                )}
-                <NxDivider/>
                 {pomParsed.mailingLists?.length !== 0 && (
                   <>
                     <NxH3>Mailing Lists</NxH3>
@@ -188,19 +163,19 @@ const Artifact = () => {
                 )}
 
                 {pomParsed.relocationGroupId &&
-                pomParsed?.relocationArtifactId && (
-                  <>
-                    <NxTextLink
-                      href={`/artifact/${pomParsed.relocationGroupId}/${pomParsed.relocationArtifactId}`}>
-                      {pomParsed.relocationGroupId}:
-                      {pomParsed.relocationArtifactId}
-                    </NxTextLink>
-                  </>
-                )}
+                  pomParsed?.relocationArtifactId && (
+                    <>
+                      <NxTextLink
+                        href={`/artifact/${pomParsed.relocationGroupId}/${pomParsed.relocationArtifactId}`}>
+                        {pomParsed.relocationGroupId}:
+                        {pomParsed.relocationArtifactId}
+                      </NxTextLink>
+                    </>
+                  )}
               </NxGrid.Column>
-              <NxGrid.Column>
+              <NxGrid.Column className="nx-grid-col--33">
                 <NxButton>
-                  <NxFontAwesomeIcon icon={faFolder}/>
+                  <NxFontAwesomeIcon icon={faFolder} />
                   <span>Browse</span>
                 </NxButton>
 
@@ -258,10 +233,7 @@ const Artifact = () => {
           </NxCard>
         </NxCard.Container>
 
-        <ArtifactDevelopersList
-          list={pomParsed.developers}
-        />
-
+        <ArtifactDevelopersList list={pomParsed.developers} />
       </>
     );
   }
