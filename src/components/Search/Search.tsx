@@ -33,33 +33,37 @@ const Search = () => {
   const [loading, setLoading] = useState(false);
 
   const doQuery = async (query: string) => {
-    try {
-      const resp = await artifactContext.queryArtifacts(query);
+    if (query !== '') {
+      try {
+        const resp = await artifactContext.queryArtifacts(query);
 
-      if (resp.response) {
-        const dataItems: DataItem[] = [];
-        resp.response.docs.forEach(val => {
-          const purl = new PackageURL(
-            'maven',
-            val.g,
-            val.a,
-            val.latestVersion,
-            { packaging: val.p },
-            undefined,
-          );
-          dataItems.push({
-            displayName: val.id as string,
-            id: purl.toString(),
+        if (resp.response) {
+          const dataItems: DataItem[] = [];
+          resp.response.docs.forEach(val => {
+            const version = val.latestVersion ? val.latestVersion : val.v;
+
+            const purl = new PackageURL(
+              'maven',
+              val.g,
+              val.a,
+              version,
+              { packaging: val.p },
+              undefined,
+            );
+            dataItems.push({
+              displayName: val.id as string,
+              id: purl.toString(),
+            });
           });
-        });
-        setArtifacts(dataItems);
-        setLoading(false);
-      } else {
-        setLoading(false);
-        console.error(`No valid response from service`);
+          setArtifacts(dataItems);
+          setLoading(false);
+        } else {
+          setLoading(false);
+          console.error(`No valid response from service`);
+        }
+      } catch (err) {
+        console.error(err);
       }
-    } catch (err) {
-      console.error(err);
     }
   };
 
@@ -69,7 +73,7 @@ const Search = () => {
   };
 
   const onSelect = useCallback(
-    ({ displayName, id }: DataItem<any>) => {
+    ({ id }: DataItem<any>) => {
       const purl = PackageURL.fromString(id);
       if (purl.qualifiers) {
         history.push(

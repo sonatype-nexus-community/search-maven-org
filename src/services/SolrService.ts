@@ -25,17 +25,17 @@ interface ArtifactServiceInterface {
   quickStats: () => Promise<QuickStats>;
 }
 
-const getConfig = async (): Promise<RuntimeConfig> => {
-  const resp = await fetch(`/config.json`);
-
-  return resp.json();
-};
-
 class SolrService implements ArtifactServiceInterface {
   constructor(readonly config: RuntimeConfig) {}
 
-  fetchArtifactList = async (query: string): Promise<ArtifactListResponse> => {
-    const resp = await fetch(`${this.config.search.endpoint}?q=${query}`);
+  fetchArtifactList = async (
+    query: string,
+    start = 0,
+    rows = 20,
+  ): Promise<ArtifactListResponse> => {
+    const resp = await fetch(
+      `${this.config.search.endpoint}?q=${query}&start=${start}&rows=${rows}`,
+    );
 
     return resp.json();
   };

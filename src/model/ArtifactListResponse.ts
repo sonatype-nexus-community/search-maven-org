@@ -28,10 +28,11 @@ export interface Response {
 export interface Doc {
   id: string;
   g: string;
-  a: any;
-  latestVersion: string;
+  a: string;
+  latestVersion?: string;
+  v?: string;
   repositoryId: any;
-  p: any;
+  p: string;
   timestamp: number;
   versionCount: number;
   text: string[];
