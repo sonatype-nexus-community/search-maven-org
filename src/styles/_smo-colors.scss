@@ -14,12 +14,7 @@
  * limitations under the License.
  */
 
-.nx-page {
-  &.smo-page {
-    min-width: var(--smo-width-page-min);
-
-    .nx-page-content {
-      padding-bottom: var(--smo-height-page-footer);
-    }
-  }
+:root {
+  --smo-swatch-white: #fff;
+  --smo-page-footer-background: var(--smo-swatch-white);
 }

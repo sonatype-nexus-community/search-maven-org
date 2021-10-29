@@ -22,6 +22,7 @@ import Stats from './components/Stats/Stats';
 import { ArtifactProvider } from './context/ArtifactContext';
 import { ArtifactServicesFactory } from './services/ArtifactServicesFactory';
 import { NxPageMain } from '@sonatype/react-shared-components';
+import Footer from './Footer/Footer';
 
 type SMOProps = {
   artifactServicesFactory: ArtifactServicesFactory;
@@ -56,6 +57,7 @@ class SearchMavenOrgContainer extends React.Component<SMOProps, SMOState> {
               </Switch>
             </NxPageMain>
           </section>
+          <Footer />
         </Router>
       </ArtifactProvider>
     );
