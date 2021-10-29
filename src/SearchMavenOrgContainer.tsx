@@ -22,7 +22,7 @@ import Stats from './components/Stats/Stats';
 import { ArtifactProvider } from './context/ArtifactContext';
 import { ArtifactServicesFactory } from './services/ArtifactServicesFactory';
 import { NxPageMain } from '@sonatype/react-shared-components';
-import Footer from './Footer/Footer';
+import Footer from './components/Footer/Footer';
 
 type SMOProps = {
   artifactServicesFactory: ArtifactServicesFactory;

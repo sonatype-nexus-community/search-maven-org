@@ -20,13 +20,19 @@ const Footer = () => {
   return (
     <footer className="smo-page-footer">
       <p className="nx-p">
-        <a href="https://www.sonatype.com/about" target="_blank">About Sonatype</a> |
-        <a href="https://www.sonatype.com/privacy-policy" target="_blank">Privacy Policy</a> |
-        <a href="https://repo1.maven.org/terms.html" target="_blank">Terms Of Service</a>
+        <a href="https://www.sonatype.com/about" target="_blank">
+          About Sonatype
+        </a>{' '}
+        |
+        <a href="https://www.sonatype.com/privacy-policy" target="_blank">
+          Privacy Policy
+        </a>{' '}
+        |
+        <a href="https://repo1.maven.org/terms.html" target="_blank">
+          Terms Of Service
+        </a>
       </p>
-      <p className="nx-p">
-        Copyright ©2017-present Sonatype, Inc.
-      </p>
+      <p className="nx-p">Copyright ©2017-present Sonatype, Inc.</p>
     </footer>
   );
 };
