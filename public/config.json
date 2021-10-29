@@ -4,5 +4,8 @@
   },
   "quickStats": {
     "endpoint": "https://search.maven.org/quickstats"
+  },
+  "smoBaseUrl": {
+    "endpoint": "https://search.maven.org"
   }
 }

@@ -16,6 +16,7 @@
 export interface RuntimeConfig {
   search: Endpoint;
   quickStats: Endpoint;
+  smoBaseUrl: Endpoint;
 }
 
 export interface Endpoint {

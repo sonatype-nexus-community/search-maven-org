@@ -41,6 +41,6 @@ export class ArtifactServicesFactory {
   }
 
   async fetchRemoteContent(path: string) {
-    return this.client.fetchRemoteContent(path)
+    return this.client.fetchRemoteContent(path);
   }
 }

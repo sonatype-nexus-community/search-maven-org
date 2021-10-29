@@ -1,22 +1,4 @@
-/*
- * Copyright 2018-present Sonatype, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/**
- * Subset of contents of a pom.xml file.
- */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 /*
  * Copyright 2018-present Sonatype, Inc.
@@ -42,18 +24,23 @@ export class Pom {
   artifactId?: string;
   version?: string;
   packaging?: string;
-  dependencies: { groupId, artifactId }[] = [];
+  dependencies: { groupId; artifactId }[] = [];
 
   name?: string;
   description?: string;
   url?: string;
   inceptionYear?: string;
-  licenses: { name?: string, url?: string, distribution?: string, comments?: string }[] = [];
+  licenses: {
+    name?: string;
+    url?: string;
+    distribution?: string;
+    comments?: string;
+  }[] = [];
   organizationName?: string;
   organizationUrl?: string;
   developers?: PomDeveloper[] = [];
   contributors: PomDeveloper[] = [];
-  mailingLists: { name?: string, archiveUrl?: string }[] = [];
+  mailingLists: { name?: string; archiveUrl?: string }[] = [];
   scmUrl?: string;
   relocationGroupId?: string;
   relocationArtifactId?: string;
@@ -65,7 +52,10 @@ export class Pom {
   static parse(xmlString: string): Pom {
     const pom = new Pom();
     try {
-      const xmlDocument = new DOMParser().parseFromString(xmlString, 'text/xml');
+      const xmlDocument = new DOMParser().parseFromString(
+        xmlString,
+        'text/xml',
+      );
       const root = xmlDocument.firstElementChild;
       root.childNodes.forEach(node => {
         if (node.nodeType !== Node.ELEMENT_NODE) {
@@ -88,7 +78,10 @@ export class Pom {
           pom.inceptionYear = node.textContent;
         } else if (node.nodeName === 'dependencies') {
           node.childNodes.forEach(subnode => {
-            if ((subnode.nodeType === Node.ELEMENT_NODE) && (subnode.nodeName === 'dependency')) {
+            if (
+              subnode.nodeType === Node.ELEMENT_NODE &&
+              subnode.nodeName === 'dependency'
+            ) {
               let groupId = '';
               let artifactId = '';
               subnode.childNodes.forEach(subsubnode => {
@@ -100,29 +93,62 @@ export class Pom {
                   }
                 }
               });
-              if (groupId && artifactId && !groupId.startsWith('$') && !artifactId.startsWith('$')) {
-                pom.dependencies.push({groupId: groupId, artifactId: artifactId});
+              if (
+                groupId &&
+                artifactId &&
+                !groupId.startsWith('$') &&
+                !artifactId.startsWith('$')
+              ) {
+                pom.dependencies.push({
+                  groupId: groupId,
+                  artifactId: artifactId,
+                });
               }
             }
           });
         } else if (node.nodeName === 'licenses') {
           node.childNodes.forEach(subnode => {
-            if ((subnode.nodeType === Node.ELEMENT_NODE) && (subnode.nodeName === 'license')) {
-              const license: { name?: string, url?: string, distribution?: string, comments?: string } = {};
+            if (
+              subnode.nodeType === Node.ELEMENT_NODE &&
+              subnode.nodeName === 'license'
+            ) {
+              const license: {
+                name?: string;
+                url?: string;
+                distribution?: string;
+                comments?: string;
+              } = {};
               subnode.childNodes.forEach(subsubnode => {
                 if (subsubnode.nodeType === Node.ELEMENT_NODE) {
-                  if ((subsubnode.nodeName === 'name') && !subsubnode.textContent.startsWith('$')) {
+                  if (
+                    subsubnode.nodeName === 'name' &&
+                    !subsubnode.textContent.startsWith('$')
+                  ) {
                     license.name = subsubnode.textContent;
-                  } else if ((subsubnode.nodeName === 'url') && !subsubnode.textContent.startsWith('$')) {
+                  } else if (
+                    subsubnode.nodeName === 'url' &&
+                    !subsubnode.textContent.startsWith('$')
+                  ) {
                     license.url = subsubnode.textContent;
-                  } else if ((subsubnode.nodeName === 'distribution') && !subsubnode.textContent.startsWith('$')) {
+                  } else if (
+                    subsubnode.nodeName === 'distribution' &&
+                    !subsubnode.textContent.startsWith('$')
+                  ) {
                     license.distribution = subsubnode.textContent;
-                  } else if ((subsubnode.nodeName === 'comments') && !subsubnode.textContent.startsWith('$')) {
+                  } else if (
+                    subsubnode.nodeName === 'comments' &&
+                    !subsubnode.textContent.startsWith('$')
+                  ) {
                     license.comments = subsubnode.textContent;
                   }
                 }
               });
-              if (license.name || license.url || license.distribution || license.comments) {
+              if (
+                license.name ||
+                license.url ||
+                license.distribution ||
+                license.comments
+              ) {
                 pom.licenses.push(license);
               }
             }
@@ -139,7 +165,10 @@ export class Pom {
           });
         } else if (node.nodeName === 'developers') {
           node.childNodes.forEach(subnode => {
-            if ((subnode.nodeType === Node.ELEMENT_NODE) && (subnode.nodeName === 'developer')) {
+            if (
+              subnode.nodeType === Node.ELEMENT_NODE &&
+              subnode.nodeName === 'developer'
+            ) {
               const developer = this.pomDeveloper(subnode);
               if (developer) {
                 pom.developers.push(developer);
@@ -148,7 +177,10 @@ export class Pom {
           });
         } else if (node.nodeName === 'contributors') {
           node.childNodes.forEach(subnode => {
-            if ((subnode.nodeType === Node.ELEMENT_NODE) && (subnode.nodeName === 'contributor')) {
+            if (
+              subnode.nodeType === Node.ELEMENT_NODE &&
+              subnode.nodeName === 'contributor'
+            ) {
               const contributor = this.pomDeveloper(subnode);
               if (contributor) {
                 pom.contributors.push(contributor);
@@ -157,7 +189,10 @@ export class Pom {
           });
         } else if (node.nodeName === 'mailingLists') {
           node.childNodes.forEach(subnode => {
-            if ((subnode.nodeType === Node.ELEMENT_NODE) && (subnode.nodeName === 'mailingList')) {
+            if (
+              subnode.nodeType === Node.ELEMENT_NODE &&
+              subnode.nodeName === 'mailingList'
+            ) {
               let name = '';
               let archiveUrl = '';
               subnode.childNodes.forEach(subsubnode => {
@@ -170,19 +205,25 @@ export class Pom {
                 }
               });
               if (name || archiveUrl) {
-                pom.mailingLists.push({name: name, archiveUrl: archiveUrl});
+                pom.mailingLists.push({ name: name, archiveUrl: archiveUrl });
               }
             }
           });
         } else if (node.nodeName === 'scm') {
           node.childNodes.forEach(subnode => {
-            if ((subnode.nodeType === Node.ELEMENT_NODE) && (subnode.nodeName === 'url')) {
+            if (
+              subnode.nodeType === Node.ELEMENT_NODE &&
+              subnode.nodeName === 'url'
+            ) {
               pom.scmUrl = subnode.textContent;
             }
           });
         } else if (node.nodeName === 'distributionManagement') {
           node.childNodes.forEach(subnode => {
-            if ((subnode.nodeType === Node.ELEMENT_NODE) && (subnode.nodeName === 'relocation')) {
+            if (
+              subnode.nodeType === Node.ELEMENT_NODE &&
+              subnode.nodeName === 'relocation'
+            ) {
               subnode.childNodes.forEach(subsubnode => {
                 if (subsubnode.nodeType === Node.ELEMENT_NODE) {
                   if (subsubnode.nodeName === 'groupId') {
@@ -230,14 +271,24 @@ export class Pom {
         dev.timezone = subnode.textContent;
       } else if (subnode.nodeName === 'roles') {
         subnode.childNodes.forEach(subsubnode => {
-          if ((subsubnode.nodeType === Node.ELEMENT_NODE) && (subsubnode.nodeName === 'role')) {
+          if (
+            subsubnode.nodeType === Node.ELEMENT_NODE &&
+            subsubnode.nodeName === 'role'
+          ) {
             dev.roles.push(subsubnode.textContent);
           }
         });
       }
     });
-    return (dev.id || dev.name || dev.email || dev.organization || dev.organizationUrl || dev.timezone ||
-      (dev.roles.length > 0)) ? dev : undefined;
+    return dev.id ||
+      dev.name ||
+      dev.email ||
+      dev.organization ||
+      dev.organizationUrl ||
+      dev.timezone ||
+      dev.roles.length > 0
+      ? dev
+      : undefined;
   }
 
   /**
@@ -265,7 +316,8 @@ export class Pom {
 
   private interpolatePomValues(value: string) {
     if (value) {
-      return value.replace('${project.groupId}', this.groupId)
+      return value
+        .replace('${project.groupId}', this.groupId)
         .replace('${project.artifactId}', this.artifactId)
         .replace('${project.version}', this.version);
     }
@@ -274,9 +326,21 @@ export class Pom {
   }
 
   nonEmpty(): boolean {
-    return !!(this.name || this.description || this.url || this.inceptionYear || this.organizationName ||
-      this.organizationUrl || this.scmUrl || this.relocationGroupId || this.relocationArtifactId ||
-      this.licenses.length || this.developers.length || this.contributors.length || this.mailingLists.length);
+    return !!(
+      this.name ||
+      this.description ||
+      this.url ||
+      this.inceptionYear ||
+      this.organizationName ||
+      this.organizationUrl ||
+      this.scmUrl ||
+      this.relocationGroupId ||
+      this.relocationArtifactId ||
+      this.licenses.length ||
+      this.developers.length ||
+      this.contributors.length ||
+      this.mailingLists.length
+    );
   }
 }
 

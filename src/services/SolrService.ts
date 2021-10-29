@@ -23,29 +23,11 @@ interface ArtifactServiceInterface {
   fetchArtifactDetails: (p: PackageURL) => Promise<any>;
   fetchArtifactVersion: (p: PackageURL) => Promise<any>;
   quickStats: () => Promise<any>;
-  fetchRemoteContent: (path: string) => Promise<any>;
+  fetchRemoteContent: (path: string) => Promise<string>;
 }
 
-const getConfig = async (): Promise<RuntimeConfig> => {
-  const resp = await fetch(`/config.json`);
-  return resp.json();
-};
-
-const config = {
-  search: {
-    endpoint: 'https://search.maven.org/solrsearch/select',
-  },
-  quickStats: {
-    endpoint: 'https://search.maven.org/quickstats'
-  },
-  smoBaseUrl: {
-    endpoint: 'https://search.maven.org'
-  }
-};
-
 class SolrService implements ArtifactServiceInterface {
-  constructor(readonly config: RuntimeConfig) {
-  }
+  constructor(readonly config: RuntimeConfig) {}
 
   fetchArtifactList = async (
     query: string,
@@ -75,8 +57,10 @@ class SolrService implements ArtifactServiceInterface {
     return resp.json();
   };
 
-  fetchRemoteContent = async (path: string): Promise<any> => {
-    const resp = await fetch(`${config.smoBaseUrl.endpoint}/remotecontent/?filepath=${path}`);
+  fetchRemoteContent = async (path: string): Promise<string> => {
+    const resp = await fetch(
+      `${this.config.smoBaseUrl.endpoint}/remotecontent/?filepath=${path}`,
+    );
     return resp.text();
   };
 }

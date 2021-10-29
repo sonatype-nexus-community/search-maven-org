@@ -20,6 +20,8 @@ import {
   NxH1,
   NxH2,
   NxH3,
+  NxLoadError,
+  useToggle,
 } from '@sonatype/react-shared-components';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { useArtifactContext } from '../../context/ArtifactContext';
@@ -39,8 +41,6 @@ const Stats = () => {
         getStats(artifactContext);
       } catch (err) {
         console.error(err);
-      } finally {
-        setCheckedStats(true);
       }
     }
   }, []);
@@ -54,6 +54,8 @@ const Stats = () => {
       }
     } catch (err) {
       console.error(err);
+    } finally {
+      setCheckedStats(true);
     }
   };
 
