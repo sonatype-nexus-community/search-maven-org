@@ -68,7 +68,7 @@ Everything is negotiable except for spaces, 2 of them to be exact :)
 
 #### Running unit tests
 
-Currently not running, help us out and get them running!
+Run `yarn test`
 
 #### Running end-to-end tests
 

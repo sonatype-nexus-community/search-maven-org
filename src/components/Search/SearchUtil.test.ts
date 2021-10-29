@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { parseOnGrouping } from "./SearchUtil";
+import { parseOnGrouping } from './SearchUtil';
 
 describe('SearchUtil.parseOnGrouping test', () => {
   test('should parse query strings appropriately', () => {
