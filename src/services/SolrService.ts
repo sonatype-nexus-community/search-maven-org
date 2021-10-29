@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 import { PackageURL } from 'packageurl-js';
+import { ArtifactDetailsResponse } from '../model/ArtifactDetailsResponse';
 import { ArtifactListResponse } from '../model/ArtifactListResponse';
 import { QuickStats } from '../model/QuickStats';
 import { RuntimeConfig } from '../model/RuntimeConfig';
 
 interface ArtifactServiceInterface {
   fetchArtifactList: (q: string) => Promise<ArtifactListResponse>;
-  fetchArtifactDetails: (p: PackageURL) => Promise<any>;
+  fetchArtifactDetails: (p: PackageURL) => Promise<ArtifactDetailsResponse>;
   fetchArtifactVersion: (p: PackageURL) => Promise<any>;
   quickStats: () => Promise<any>;
   fetchRemoteContent: (path: string) => Promise<string>;
@@ -41,8 +42,13 @@ class SolrService implements ArtifactServiceInterface {
     return resp.json();
   };
 
-  fetchArtifactDetails = async (purl: PackageURL): Promise<any> => {
-    const resp = await fetch('');
+  fetchArtifactDetails = async (
+    purl: PackageURL,
+  ): Promise<ArtifactDetailsResponse> => {
+    const resp = await fetch(
+      `${this.config.search.endpoint}?q=g:${purl.namespace} AND a:${purl.name}&core=gav`,
+    );
+
     return resp.json();
   };
 

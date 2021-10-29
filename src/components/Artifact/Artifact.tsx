@@ -27,6 +27,8 @@ import {
   NxDivider,
   NxP,
   NxTile,
+  NxDropdown,
+  useToggle,
 } from '@sonatype/react-shared-components';
 import { useArtifactContext } from '../../context/ArtifactContext';
 import { Pom } from '../../services/PomParserService';
@@ -34,10 +36,22 @@ import {
   initialState,
   userInput,
 } from '@sonatype/react-shared-components/components/NxTextInput/stateHelpers';
+import { PackageURL } from 'packageurl-js';
+import {
+  ArtifactDetailsResponse,
+  Doc,
+} from '../../model/ArtifactDetailsResponse';
 
 const Artifact = () => {
   const [pom, setPom] = useState(initialState(''));
   const [pomParsed, setPomParsed] = useState<Pom | undefined>();
+  const [artifactDetails, setArtifactDetails] = useState<Doc[] | undefined>(
+    undefined,
+  );
+  const [isOpen, onToggleCollapse] = useToggle(false),
+    onClick = () => {
+      alert('click');
+    };
 
   const artifactContext = useArtifactContext();
   const { namespace, name, version, qualifier }: any = useParams();
@@ -58,6 +72,15 @@ const Artifact = () => {
   };
 
   useEffect(() => {
+    const purl = new PackageURL(
+      'maven',
+      namespace,
+      name,
+      undefined,
+      undefined,
+      undefined,
+    );
+
     artifactContext
       .fetchRemoteContent(remoteRepositoryPomLink())
       .then(value => {
@@ -76,12 +99,35 @@ const Artifact = () => {
         // some sha1 files have path names in them after a space, this way we remove the path part.
         sha1 = value ? value.split(' ')[0] : '';
       });
+
+    artifactContext.queryArtifactDetails(purl).then(val => {
+      if (val.response && val.response.docs) {
+        setArtifactDetails(val.response.docs);
+      }
+    });
   }, [namespace, name, version, qualifier]);
   if (pomParsed) {
     return (
       <>
         <NxH1>
-          {pomParsed.name} - {pomParsed.version}
+          {pomParsed.name} :{' '}
+          {artifactDetails && artifactDetails.length > 0 && (
+            <NxDropdown
+              label={pomParsed.version}
+              isOpen={isOpen}
+              onToggleCollapse={onToggleCollapse}>
+              {artifactDetails.map((artifact, index) => {
+                return (
+                  <a
+                    href={`/artifact/${artifact.g}/${artifact.a}/${artifact.v}/${artifact.p}`}
+                    className="nx-dropdown-button"
+                    key={index}>
+                    {artifact.v}
+                  </a>
+                );
+              })}
+            </NxDropdown>
+          )}
         </NxH1>
         <NxDivider />
         <NxTile>
