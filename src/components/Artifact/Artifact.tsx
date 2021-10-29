@@ -41,6 +41,8 @@ import {
 import { PackageURL } from 'packageurl-js';
 import { Doc } from '../../model/ArtifactDetailsResponse';
 import { faFolder } from '@fortawesome/free-solid-svg-icons';
+import ArtifactDetailsList from './ArtifactDetailsList/ArtifactDetailsList';
+import ArtifactDetailsTextLink from './ArtifactDetailsTextLink/ArtifactDetailsTextLink';
 
 const Artifact = () => {
   const [pom, setPom] = useState(initialState(''));
@@ -109,38 +111,27 @@ const Artifact = () => {
   if (pomParsed) {
     return (
       <>
-        <NxTile>
-          <NxTile.Header>
-            <NxTile.HeaderTitle>
-              <NxH1>
-                {pomParsed.name} :{' '}
-                {artifactDetails && artifactDetails.length > 0 && (
-                  <NxDropdown
-                    label={pomParsed.version}
-                    isOpen={isOpen}
-                    onToggleCollapse={onToggleCollapse}>
-                    {artifactDetails.map((artifact, index) => {
-                      return (
-                        <a
-                          href={`/artifact/${artifact.g}/${artifact.a}/${artifact.v}/${artifact.p}`}
-                          className="nx-dropdown-button"
-                          key={index}>
-                          {artifact.v}
-                        </a>
-                      );
-                    })}
-                  </NxDropdown>
-                )}
-              </NxH1>
-            </NxTile.HeaderTitle>
-            <NxTile.HeaderActions>
-              <NxButton>
-                <NxFontAwesomeIcon icon={faFolder} />
-                <span>Browse</span>
-              </NxButton>
-            </NxTile.HeaderActions>
-          </NxTile.Header>
-        </NxTile>
+        <NxH1>
+          {pomParsed.name} :{' '}
+          {artifactDetails && artifactDetails.length > 0 && (
+            <NxDropdown
+              label={pomParsed.version}
+              isOpen={isOpen}
+              onToggleCollapse={onToggleCollapse}>
+              {artifactDetails.map((artifact, index) => {
+                return (
+                  <a
+                    href={`/artifact/${artifact.g}/${artifact.a}/${artifact.v}/${artifact.p}`}
+                    className="nx-dropdown-button"
+                    key={index}>
+                    {artifact.v}
+                  </a>
+                );
+              })}
+            </NxDropdown>
+          )}
+        </NxH1>
+        <NxDivider />
         <NxTile>
           <NxTile.Content>
             <NxGrid.Row>
@@ -204,49 +195,34 @@ const Artifact = () => {
                   )}
               </NxGrid.Column>
               <NxGrid.Column>
-                {pomParsed.licenses?.length && (
-                  <>
-                    <NxH3>Licenses</NxH3>
-                    <NxList>
-                      {pomParsed.licenses.map((license, index) => {
-                        return (
-                          <NxList.Item key={index}>
-                            <NxTextLink href={license.url} target="_blank">
-                              {license.name}
-                            </NxTextLink>
-                          </NxList.Item>
-                        );
-                      })}
-                    </NxList>
-                  </>
-                )}
+                <NxButton>
+                  <NxFontAwesomeIcon icon={faFolder} />
+                  <span>Browse</span>
+                </NxButton>
+
+                <ArtifactDetailsList
+                  list={pomParsed.licenses}
+                  title="Licenses"
+                  hrefKey="url"
+                  displayKey="name"
+                />
 
                 <NxH3>Links</NxH3>
-                {pomParsed.url && (
-                  <NxP>
-                    <NxTextLink href={pomParsed.url} target="_blank">
-                      Project Home page
-                    </NxTextLink>
-                  </NxP>
-                )}
 
-                {pomParsed.scmUrl && (
-                  <NxP>
-                    <NxTextLink href={pomParsed.url} target="_blank">
-                      Source code
-                    </NxTextLink>
-                  </NxP>
-                )}
+                <ArtifactDetailsTextLink
+                  title="Project Home page"
+                  href={pomParsed.url}
+                />
 
-                {pomParsed.organizationName && pomParsed.organizationUrl && (
-                  <NxP>
-                    <NxTextLink
-                      href={pomParsed.organizationUrl}
-                      target="_blank">
-                      {pomParsed.organizationName} Organization page
-                    </NxTextLink>
-                  </NxP>
-                )}
+                <ArtifactDetailsTextLink
+                  title="Source code"
+                  href={pomParsed.scmUrl}
+                />
+
+                <ArtifactDetailsTextLink
+                  title={`${pomParsed.organizationName} Organization page`}
+                  href={pomParsed.organizationUrl}
+                />
 
                 {pomParsed.inceptionYear && (
                   <>
