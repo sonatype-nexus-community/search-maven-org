@@ -138,6 +138,12 @@ const Artifact = () => {
               <NxGrid.Column>
                 <NxP>{pomParsed.description}</NxP>
                 <NxDivider />
+                <NxH3>Dependencies</NxH3>
+                <NxP>{pomParsed.dependencies.map((dep) => {
+                    return `${dep.groupId}:${dep.artifactId}`
+                }).join(", ")}
+                </NxP>
+                <NxDivider />
                 {pomParsed.developers && pomParsed?.developers?.length !== 0 && (
                   <>
                     <NxH3>Developers</NxH3>
