@@ -23,6 +23,10 @@ import {
   NxTextLink,
   NxGrid,
   NxList,
+  NxH1,
+  NxDivider,
+  NxP,
+  NxTile,
 } from '@sonatype/react-shared-components';
 import { useArtifactContext } from '../../context/ArtifactContext';
 import { Pom } from '../../services/PomParserService';
@@ -76,71 +80,19 @@ const Artifact = () => {
   if (pomParsed) {
     return (
       <>
-        <NxCard.Container className="smo-card-container smo-card-container-full-width">
-          <NxCard className="nx-card--equal">
-            <NxCard.Header>
-              <NxH3>{pomParsed.name}</NxH3>
-              <span>{pomParsed.description}</span>
-            </NxCard.Header>
-            <NxCard.Content>
-              {pomParsed.licenses?.length && (
-                <NxGrid.Row>
-                  <NxGrid.Column>Licenses</NxGrid.Column>
-                  <NxGrid.Column>
-                    <NxList>
-                      {pomParsed.licenses.map((license, index) => {
-                        return (
-                          <NxList.Item key={index}>
-                            <NxTextLink href={license.url} target="_blank">
-                              {license.name}
-                            </NxTextLink>
-                          </NxList.Item>
-                        );
-                      })}
-                    </NxList>
-                  </NxGrid.Column>
-                </NxGrid.Row>
-              )}
-
-              {pomParsed.url && (
-                <NxGrid.Row>
-                  <NxGrid.Column>Home page</NxGrid.Column>
-                  <NxGrid.Column>
-                    <NxTextLink href={pomParsed.url} target="_blank">
-                      {pomParsed.url}
-                    </NxTextLink>
-                  </NxGrid.Column>
-                </NxGrid.Row>
-              )}
-
-              {pomParsed.scmUrl && (
-                <NxGrid.Row>
-                  <NxGrid.Column>Source code</NxGrid.Column>
-                  <NxGrid.Column>
-                    <NxTextLink href={pomParsed.scmUrl} target="_blank">
-                      {pomParsed.scmUrl}
-                    </NxTextLink>
-                  </NxGrid.Column>
-                </NxGrid.Row>
-              )}
-
-              {pomParsed.organizationName && pomParsed?.organizationUrl && (
-                <NxGrid.Row>
-                  <NxGrid.Column>Organization</NxGrid.Column>
-                  <NxGrid.Column>
-                    <NxTextLink
-                      href={pomParsed.organizationUrl}
-                      target="_blank">
-                      {pomParsed.organizationName}
-                    </NxTextLink>
-                  </NxGrid.Column>
-                </NxGrid.Row>
-              )}
-
-              {pomParsed.developers && pomParsed?.developers?.length !== 0 && (
-                <NxGrid.Row>
-                  <NxGrid.Column>Developers</NxGrid.Column>
-                  <NxGrid.Column>
+        <NxH1>
+          {pomParsed.name} - {pomParsed.version}
+        </NxH1>
+        <NxDivider />
+        <NxTile>
+          <NxTile.Content>
+            <NxGrid.Row>
+              <NxGrid.Column>
+                <NxP>{pomParsed.description}</NxP>
+                <NxDivider />
+                {pomParsed.developers && pomParsed?.developers?.length !== 0 && (
+                  <>
+                    <NxH3>Developers</NxH3>
                     <NxList>
                       {pomParsed.developers.map((developer, index) => {
                         return (
@@ -163,14 +115,12 @@ const Artifact = () => {
                         );
                       })}
                     </NxList>
-                  </NxGrid.Column>
-                </NxGrid.Row>
-              )}
+                  </>
+                )}
 
-              {pomParsed.mailingLists?.length !== 0 && (
-                <NxGrid.Row>
-                  <NxGrid.Column>Mailing Lists</NxGrid.Column>
-                  <NxGrid.Column>
+                {pomParsed.mailingLists?.length !== 0 && (
+                  <>
+                    <NxH3>Mailing Lists</NxH3>
                     <NxList>
                       {pomParsed.mailingLists.map((mailingList, index) => {
                         return (
@@ -182,35 +132,75 @@ const Artifact = () => {
                         );
                       })}
                     </NxList>
-                  </NxGrid.Column>
-                </NxGrid.Row>
-              )}
+                  </>
+                )}
 
-              {pomParsed.inceptionYear && (
-                <NxGrid.Row>
-                  <NxGrid.Column>Inception year</NxGrid.Column>
-                  <NxGrid.Column>{pomParsed.inceptionYear}</NxGrid.Column>
-                </NxGrid.Row>
-              )}
+                {pomParsed.relocationGroupId &&
+                  pomParsed?.relocationArtifactId && (
+                    <>
+                      <NxTextLink
+                        href={`/artifact/${pomParsed.relocationGroupId}/${pomParsed.relocationArtifactId}`}>
+                        {pomParsed.relocationGroupId}:
+                        {pomParsed.relocationArtifactId}
+                      </NxTextLink>
+                    </>
+                  )}
+              </NxGrid.Column>
+              <NxGrid.Column>
+                {pomParsed.licenses?.length && (
+                  <>
+                    <NxH3>Licenses</NxH3>
+                    <NxList>
+                      {pomParsed.licenses.map((license, index) => {
+                        return (
+                          <NxList.Item key={index}>
+                            <NxTextLink href={license.url} target="_blank">
+                              {license.name}
+                            </NxTextLink>
+                          </NxList.Item>
+                        );
+                      })}
+                    </NxList>
+                  </>
+                )}
 
-              {pomParsed.relocationGroupId && pomParsed?.relocationArtifactId && (
-                <NxGrid.Row>
-                  <NxGrid.Column>Inception year</NxGrid.Column>
-                  <NxGrid.Column>
-                    {pomParsed.inceptionYear}
-
-                    <NxTextLink
-                      href={`/artifact/${pomParsed.relocationGroupId}/${pomParsed.relocationArtifactId}`}>
-                      {pomParsed.relocationGroupId}:
-                      {pomParsed.relocationArtifactId}
+                <NxH3>Links</NxH3>
+                {pomParsed.url && (
+                  <NxP>
+                    <NxTextLink href={pomParsed.url} target="_blank">
+                      Project Home page
                     </NxTextLink>
-                  </NxGrid.Column>
-                </NxGrid.Row>
-              )}
-            </NxCard.Content>
-          </NxCard>
-        </NxCard.Container>
+                  </NxP>
+                )}
 
+                {pomParsed.scmUrl && (
+                  <NxP>
+                    <NxTextLink href={pomParsed.url} target="_blank">
+                      Source code
+                    </NxTextLink>
+                  </NxP>
+                )}
+
+                {pomParsed.organizationName && pomParsed.organizationUrl && (
+                  <NxP>
+                    <NxTextLink
+                      href={pomParsed.organizationUrl}
+                      target="_blank">
+                      {pomParsed.organizationName} Organization page
+                    </NxTextLink>
+                  </NxP>
+                )}
+
+                {pomParsed.inceptionYear && (
+                  <>
+                    <NxH3>Inception Year</NxH3>
+                    <NxP>{pomParsed.inceptionYear}</NxP>
+                  </>
+                )}
+              </NxGrid.Column>
+            </NxGrid.Row>
+          </NxTile.Content>
+        </NxTile>
         <NxCard.Container className="smo-card-container smo-card-container-full-width">
           <NxCard className="nx-card--equal">
             <NxCard.Header>
