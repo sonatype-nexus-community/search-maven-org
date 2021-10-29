@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import {
   NxCard,
@@ -43,6 +43,7 @@ import { Doc } from '../../model/ArtifactDetailsResponse';
 import { faFolder } from '@fortawesome/free-solid-svg-icons';
 import ArtifactDetailsList from './ArtifactDetailsList/ArtifactDetailsList';
 import ArtifactDetailsTextLink from './ArtifactDetailsTextLink/ArtifactDetailsTextLink';
+import ArtifactDevelopersList from './ArtifactDevelopersList/ArtifactDevelopersList';
 
 const Artifact = () => {
   const [pom, setPom] = useState(initialState(''));
@@ -56,7 +57,7 @@ const Artifact = () => {
     };
 
   const artifactContext = useArtifactContext();
-  const { namespace, name, version, qualifier }: any = useParams();
+  const {namespace, name, version, qualifier}: any = useParams();
 
   let sha1: string;
 
@@ -88,11 +89,8 @@ const Artifact = () => {
       .then(value => {
         if (value) {
           setPom(userInput(null, value));
-
           setPomParsed(Pom.parse(value));
         }
-
-        // some sha1 files have path names in them after a space, this way we remove the path part.
       });
 
     artifactContext
@@ -131,7 +129,7 @@ const Artifact = () => {
             </NxDropdown>
           )}
         </NxH1>
-        <NxDivider />
+        <NxDivider/>
         <NxTile>
           <NxTile.Content>
             <NxGrid.Row>
@@ -171,7 +169,7 @@ const Artifact = () => {
                     </NxList>
                   </>
                 )}
-
+                <NxDivider/>
                 {pomParsed.mailingLists?.length !== 0 && (
                   <>
                     <NxH3>Mailing Lists</NxH3>
@@ -190,19 +188,19 @@ const Artifact = () => {
                 )}
 
                 {pomParsed.relocationGroupId &&
-                  pomParsed?.relocationArtifactId && (
-                    <>
-                      <NxTextLink
-                        href={`/artifact/${pomParsed.relocationGroupId}/${pomParsed.relocationArtifactId}`}>
-                        {pomParsed.relocationGroupId}:
-                        {pomParsed.relocationArtifactId}
-                      </NxTextLink>
-                    </>
-                  )}
+                pomParsed?.relocationArtifactId && (
+                  <>
+                    <NxTextLink
+                      href={`/artifact/${pomParsed.relocationGroupId}/${pomParsed.relocationArtifactId}`}>
+                      {pomParsed.relocationGroupId}:
+                      {pomParsed.relocationArtifactId}
+                    </NxTextLink>
+                  </>
+                )}
               </NxGrid.Column>
               <NxGrid.Column>
                 <NxButton>
-                  <NxFontAwesomeIcon icon={faFolder} />
+                  <NxFontAwesomeIcon icon={faFolder}/>
                   <span>Browse</span>
                 </NxButton>
 
@@ -259,6 +257,11 @@ const Artifact = () => {
             </NxCard.Content>
           </NxCard>
         </NxCard.Container>
+
+        <ArtifactDevelopersList
+          list={pomParsed.developers}
+        />
+
       </>
     );
   }
