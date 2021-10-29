@@ -13,13 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import { parseOnGrouping } from './SearchUtil';
 
 describe('SearchUtil.parseOnGrouping test', () => {
   test('should parse query strings appropriately', () => {
-    // Test converting and to AND
+    // Test converting and/&& to AND
     expect(parseOnGrouping('a:junit and g:junit')).toBe('a:junit AND g:junit');
+    expect(parseOnGrouping('a:junit and g:junit && v:4.1.1')).toBe(
+      'a:junit AND g:junit AND v:4.1.1',
+    );
+
     // Test that it passes through correctly for normal query
     expect(parseOnGrouping('junit')).toBe('junit');
   });
