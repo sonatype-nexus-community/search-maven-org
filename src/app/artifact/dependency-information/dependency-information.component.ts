@@ -92,6 +92,9 @@ export class DependencyInformationComponent implements OnChanges {
       case "groovygrape": {
         return this.groovyGrapeTemplate(this.g, this.a, this.v);
       }
+      case "clojure": {
+        return this.clojureDepsTemplate(this.g, this.a, this.v);
+      }
       case "leiningen": {
         return this.leiningenTemplate(this.g, this.a, this.v);
       }
@@ -138,6 +141,10 @@ export class DependencyInformationComponent implements OnChanges {
 
   scalaSbtTemplate(g: string, a: string, v: string): string {
     return `libraryDependencies += "${g}" % "${a}" % "${v}"`;
+  }
+
+  clojureDepsTemplate(g: string, a: string, v: string): string {
+    return `${g}/${a} {:mvn/version "${v}"}`;
   }
 
   leiningenTemplate(g: string, a: string, v: string): string {
