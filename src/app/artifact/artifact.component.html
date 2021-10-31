@@ -123,8 +123,8 @@
       </button>
       <mat-menu #menuDownloads="matMenu">
           <a *ngFor="let dl of downloadLinks"
-             mat-menu-item 
-             target="_blank" 
+             mat-menu-item
+             target="_blank"
              href="{{ dl.link }}" >{{ dl.name }}</a>
       </mat-menu>
     </div>
@@ -207,6 +207,16 @@
                                   subTextUrl="http://groovy-lang.org/grape.html"
                                   image="groovy"
                                   type="groovygrape"
+                                  g="{{group}}"
+                                  a="{{artifact}}"
+                                  v="{{version}}">
+      </app-dependency-information>
+
+      <app-dependency-information i18n-headerText headerText="Clojure Deps"
+                                  subText="clojure.org"
+                                  subTextUrl="https://clojure.org/guides/deps_and_cli"
+                                  image="clojure"
+                                  type="clojure"
                                   g="{{group}}"
                                   a="{{artifact}}"
                                   v="{{version}}">

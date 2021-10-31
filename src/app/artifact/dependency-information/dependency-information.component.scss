@@ -133,6 +133,10 @@
       @include avatar-img('leiningen.jpg');
     }
 
+    &.img-clojure {
+      @include avatar-img('clojure.png');
+    }
+
     &.img-xml {
       @include avatar-img('xml.svg');
       background-position-x: center;
