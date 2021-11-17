@@ -28,64 +28,51 @@
 
 ## Prerequisites
 
-You will need node setup, preferably something fresh. At least one of us uses `nvm` to manage node, for Angular you'll need a version higher than 10.9.0
+You will need node setup, preferably something fresh. At least one of us uses `nvm` to manage node, for this project we are now at node 14.18 or higher (untested with node 16 at current time)
 
 It's important to note, as part of understanding this project, how and why it was intially setup.
 
 * Technology choices
-  * Angular 8 - Really low start up cost to learn and to implement
-  * Angular CLI - Command Line tool for super easy creation of Angular components
-  * Typescript - Easy language for most of our developers to jump on
-  * NPM - package manager that is supported by Nexus Repository
-    * You can use Yarn if you'd like
-  * SASS - currently one of the best CSS precompilers
-  * Angular Material 6 - Easy setup of a simple UI look and feel
-    * We followed the [Quick start guide from Angular](https://angular.io/guide/quickstart)
+  * React, it's what we use at Sonatype, and a pretty dominant library in the webspace at time being (October, 2021)
+  * TypeScript, because strong typing is nice
+  * Webpack, because it's pretty good at taking Typescript and creating something else useful
+  * Yarn, it's been good to us at Sonatype, we like it
 
 ## Installation
-* NPM
-  * install npm from https://nodejs.org/en/
-  * install the latest angular cli with `npm install -g @angular/cli@latest`
-  * install all other dependencies with `npm install` from project root
-
 * Yarn
   * install [yarn](https://yarnpkg.com/en/docs/install)
-  * install angular cli with `yarn global add @angular/cli@latest`
   * install all other dependencies with `yarn` from project root
 
 ### Development
 
 #### Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-#### Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `yarn start` for a dev server. Navigate to `http://localhost:3000/`. The app will automatically reload if you change any of the source files.
 
 #### Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Run `yarn build` to build the project.
+
+#### Lint
+
+Run `yarn lint` to run `eslint` as well as `prettier`. You can also run `yarn lint --fix` to take care of the majority of the warnings.
+
+Our eslint settings and ignore are at:
+- `.eslintrc.js`
+- `.eslintignore`
+
+Our prettier settings are at:
+- `.prettierrc.json`
+
+Everything is negotiable except for spaces, 2 of them to be exact :)
 
 #### Running unit tests
 
-Currently not running, help us out and get them running!
+Run `yarn test`
 
 #### Running end-to-end tests
 
 Currently not running, help us out and get them running!
-
-#### Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-#### Style Guide
-
-We currently follow the [Angular.io style guide](https://angular.io/guide/styleguide).
-
-#### IntelliJ Settings
-
-* Preferences > Editor > Code Style > TypeScript > Spaces > Within : Enable "ES6 import/export" braces
 
 #### Data
 

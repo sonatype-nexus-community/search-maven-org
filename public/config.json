@@ -1,0 +1,11 @@
+{
+  "search": {
+    "endpoint": "https://search.maven.org/solrsearch/select"
+  },
+  "quickStats": {
+    "endpoint": "https://search.maven.org/quickstats"
+  },
+  "smoBaseUrl": {
+    "endpoint": "https://search.maven.org"
+  }
+}

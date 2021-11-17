@@ -1,23 +1,19 @@
 {
-  "compileOnSave": false,
   "compilerOptions": {
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
-    "declaration": false,
+    "esModuleInterop": true,
+    "jsx": "react",
     "module": "esnext",
     "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "target": "es2015",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
+    "resolveJsonModule": true,
     "lib": [
-      "es2018",
-      "dom"
-    ]
+      "dom",
+      "esnext"
+    ],
+    "strict": true,
+    "sourceMap": true,
+    "target": "esnext",
   },
-  "angularCompilerOptions": {
-    "preserveWhitespaces": true
-  }
+  "exclude": [
+    "node_modules"
+  ]
 }

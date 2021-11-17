@@ -1,0 +1,70 @@
+/*
+ * Copyright (c) 2021-present Sonatype, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+:root {
+  --smo-avatar-size: 50px;
+  --smo-avatar-text-size: 150px;
+  --smo-avatar-font-size: 12px;
+  --smo-avatar-initials-background-color: #ccc;
+}
+
+.nx-grid-row {
+  &.smo-avatar-grid {
+    flex-wrap: wrap;
+
+    .nx-grid-col {
+      border: none;
+      flex: 1 1 auto;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  &.smo-avatar-grid-row {
+    padding-bottom: 15px;
+
+    .nx-grid-col {
+      border: none;
+      font-size: var(--smo-avatar-font-size);
+
+      &:nth-child(odd) {
+        max-width: var(--smo-avatar-size);
+        min-width: var(--smo-avatar-size);
+        padding: 0;
+      }
+
+      &:nth-child(even) {
+        margin: auto 15px;
+        min-width: var(--smo-avatar-text-size);
+      }
+    }
+  }
+}
+
+.smo-avatar {
+  background-color: var(--smo-avatar-initials-background-color);
+  border-radius: 50%;
+  height: var(--smo-avatar-size);
+  text-align: center;
+  width: var(--smo-avatar-size);
+
+  .smo-avatar-initials {
+    font-size: calc(var(--smo-avatar-size) / 2); /* 50% of parent */
+    line-height: 1;
+    position: relative;
+    top: calc(var(--smo-avatar-size) / 4); /* 25% of parent */
+  }
+}
