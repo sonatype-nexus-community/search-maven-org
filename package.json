@@ -15,7 +15,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
-    "@sonatype/react-shared-components": "^9.0.15",
+    "@sonatype/react-shared-components": "9.1.15",
     "packageurl-js": "^0.0.5",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",

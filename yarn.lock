@@ -997,7 +997,14 @@
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.36"
 
-"@fortawesome/free-solid-svg-icons@^5.15.1", "@fortawesome/free-solid-svg-icons@^5.15.4":
+"@fortawesome/free-regular-svg-icons@^5.15.4":
+  version "5.15.4"
+  resolved "https://registry.yarnpkg.com/@fortawesome/free-regular-svg-icons/-/free-regular-svg-icons-5.15.4.tgz#b97edab436954333bbeac09cfc40c6a951081a02"
+  integrity sha512-9VNNnU3CXHy9XednJ3wzQp6SwNwT3XaM26oS4Rp391GsxVYA+0oDR2J194YCIWf7jNRCYKjUCOduxdceLrx+xw==
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.36"
+
+"@fortawesome/free-solid-svg-icons@^5.15.4":
   version "5.15.4"
   resolved "https://registry.yarnpkg.com/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.15.4.tgz#2a68f3fc3ddda12e52645654142b9e4e8fbb6cc5"
   integrity sha512-JLmQfz6tdtwxoihXLg6lT78BorrFyCf59SAwBM6qV/0zXyVeDygJVb3fk+j5Qat+Yvcxp1buLTY5iDh1ZSAQ8w==
@@ -1365,13 +1372,14 @@
     in-publish "^2.0.0"
     prop-types "^15.5.10"
 
-"@sonatype/react-shared-components@^9.0.15":
-  version "9.0.15"
-  resolved "https://registry.yarnpkg.com/@sonatype/react-shared-components/-/react-shared-components-9.0.15.tgz#cacda48a9685b1126353aab8d539b3a2c8dd0995"
-  integrity sha512-ySqyymZlNEzgmqiJqrjAdpO6EOSJ+AnVE2JyRP4bgx/dO0V64aY34RGQHsyPl0mzF26ri2a3bakIpdSG3RunZA==
+"@sonatype/react-shared-components@9.1.15":
+  version "9.1.14"
+  resolved "https://registry.yarnpkg.com/@sonatype/react-shared-components/-/react-shared-components-9.1.14.tgz#4b595e9d003430dd2fb25eee53fe359c5c2189df"
+  integrity sha512-c0yh+KTCjIuK+/5Jnu3G3he9vncmpY8NXgaqnt7ttEsD8c+gANg0T0MxwBTuSb5/wfTogZSlH6r47roa7uexLA==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.32"
-    "@fortawesome/free-solid-svg-icons" "^5.15.1"
+    "@fortawesome/free-regular-svg-icons" "^5.15.4"
+    "@fortawesome/free-solid-svg-icons" "^5.15.4"
     "@fortawesome/react-fontawesome" "^0.1.14"
     "@material-ui/core" "^4.11.2"
     "@react-hook/merged-ref" "^1.3.0"
